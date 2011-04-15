@@ -7,9 +7,6 @@ set modeline
 set modelines=5                " default numbers of lines to read for
 set autowrite                  " Writes on make/shell commands
 set autoread
-
-set nobackup
-set nowritebackup
 set directory=/tmp//           " prepend(^=) $HOME/.tmp/ to default path;
 " use full path as backup filename(//)
 set hidden                     " The current buffer can be put to the
@@ -21,12 +18,27 @@ set tabstop=4                  " tab size eql 2 spaces
 set softtabstop=4
 set autoindent
 syntax on                      " enable syntax
+filetype plugin indent on " load filetype plugins/indent settings
+set backup " make backup files
+set backupdir=~/.vim/backup " where to put backup files
+set clipboard+=unnamed " share windows clipboard
+set directory=~/.vim/tmp " directory to place swap files in
 set mouse=a "enable mouse in GUI mode
 set mousehide                 " Hide mouse after chars typed
 set showmatch                 " Show matching brackets.
 set novisualbell              " No blinking
 set noerrorbells              " No noise.
 set vb t_vb=                  " disable any beeps or flashes on error
+map <F2> <ESC>:NERDTreeToggle<RETURN>
+set encoding=utf8
+try
+    lang en_US
+catch
+endtry
+set ai "Auto indent
+set si "Smart indet
+set wrap "Wrap lines
+
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
@@ -34,8 +46,15 @@ Bundle 'https://github.com/vim-scripts/nginx.vim.git'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'https://github.com/mattn/zencoding-vim.git'
 colorscheme solarized
+"set gfn=Monaco:h14
 if has ('gui_running')
 	set background=light
+	nmap <C-V> "+gP
+	imap <C-V> <ESC><C-V>i
+	vmap <C-C> "+y
+	:set guioptions-=T
+	:set guioptions-=m
 else
 	set background=dark
 endif
+au BufNewFile,BufRead *.cshtml set filetype=html

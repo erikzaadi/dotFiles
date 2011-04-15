@@ -9,13 +9,12 @@ alias bim="vim" #FixUberFailingRepetiveTypo
 # Source the git bash completion file
 if [ -f ~/.git-completion.bash ]; then
 	    source ~/.git-completion.bash
+fi
 	    export GIT_PS1_SHOWDIRTYSTATE=true
 	    txtylw='\033[1;33m' # Yellow
 	    fgcolor="\033[0m"    # unsets color to term's fg color
 	    gitprompt='$(__git_ps1 "[%s]")'
 		txtgreen='\[\e[1;32m\]'
 		txtred='\[\e[1;31m\]'
-	    export PS1="$txtylw\u@\H $txtgreen\w\n[$txtred\t$fgcolor]$gitprompt"' $ '
-	    fi
-
+	    export PS1="$txtylw\u@\H$txtgreen\w\n[$txtred\t$fgcolor]$gitprompt"' $ '
 export PS1
