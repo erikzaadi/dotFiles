@@ -28,7 +28,7 @@ set mousehide                 " Hide mouse after chars typed
 set showmatch                 " Show matching brackets.
 set novisualbell              " No blinking
 set noerrorbells              " No noise.
-set vb t_vb=                  " disable any beeps or flashes on error
+set visualbell vb t_vb=                  " disable any beeps or flashes on error
 map <F2> <ESC>:NERDTreeToggle<RETURN>
 set encoding=utf8
 try
@@ -46,6 +46,7 @@ Bundle 'https://github.com/vim-scripts/nginx.vim.git'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'https://github.com/mattn/zencoding-vim.git'
 Bundle 'HTML-AutoCloseTag'
+Bundle 'https://github.com/tpope/vim-fugitive.git'
 colorscheme solarized
 "set gfn=Monaco:h14
 if has ('gui_running')
@@ -59,3 +60,14 @@ else
 	set background=dark
 endif
 au BufNewFile,BufRead *.cshtml set filetype=html
+if has('statusline')
+	set laststatus=2
+	" Broken down into easily includeable segments
+	set statusline=%<%f\    " Filename
+	set statusline+=%w%h%m%r " Options
+	set statusline+=%{fugitive#statusline()} "  Git Hotness
+	set statusline+=\ [%{&ff}/%Y]            " filetype
+	set statusline+=\ [%{getcwd()}]          " current dir
+	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
