@@ -38,7 +38,7 @@ endtry
 set ai "Auto indent
 set si "Smart indet
 set wrap "Wrap lines
-
+set number
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
