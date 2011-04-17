@@ -45,6 +45,7 @@ Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle 'https://github.com/vim-scripts/nginx.vim.git'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'https://github.com/mattn/zencoding-vim.git'
+Bundle 'HTML-AutoCloseTag'
 colorscheme solarized
 "set gfn=Monaco:h14
 if has ('gui_running')
