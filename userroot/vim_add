@@ -60,6 +60,7 @@ else
 	set background=dark
 endif
 au BufNewFile,BufRead *.cshtml set filetype=html
+au BufNewFile,BufRead *.less set filetype=css
 if has('statusline')
 	set laststatus=2
 	" Broken down into easily includeable segments
