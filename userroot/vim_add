@@ -48,9 +48,9 @@ Bundle 'https://github.com/mattn/zencoding-vim.git'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'https://github.com/tpope/vim-fugitive.git'
 colorscheme solarized
-"set gfn=Monaco:h14
 if has ('gui_running')
 	set background=light
+    set gfn=Monaco:h14
 	nmap <C-V> "+gP
 	imap <C-V> <ESC><C-V>i
 	vmap <C-C> "+y
