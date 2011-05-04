@@ -28,7 +28,6 @@ set mousehide                 " Hide mouse after chars typed
 set showmatch                 " Show matching brackets.
 set novisualbell              " No blinking
 set noerrorbells              " No noise.
-set visualbell vb t_vb=                  " disable any beeps or flashes on error
 map <F2> <ESC>:NERDTreeToggle<RETURN>
 set encoding=utf8
 try
@@ -47,6 +46,7 @@ Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'https://github.com/mattn/zencoding-vim.git'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'https://github.com/tpope/vim-fugitive.git'
+Bundle 'Command-T'
 colorscheme solarized
 if has ('gui_running')
 	set background=light
