@@ -29,6 +29,7 @@ set showmatch                 " Show matching brackets.
 set novisualbell              " No blinking
 set noerrorbells              " No noise.
 map <F2> <ESC>:NERDTreeToggle<RETURN>
+map <F3> <ESC>:CommandT<RETURN>
 set encoding=utf8
 try
     lang en_US
