@@ -52,6 +52,7 @@ colorscheme solarized
 if has ('gui_running')
 	set background=light
     set gfn=Monaco:h14
+	set guifont=Monaco\ 14
 	nmap <C-V> "+gP
 	imap <C-V> <ESC><C-V>i
 	vmap <C-C> "+y
