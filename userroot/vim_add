@@ -52,8 +52,12 @@ Bundle 'loremipsum'
 colorscheme solarized
 if has ('gui_running')
 	set background=light
-    set gfn=Monaco:h14
 	set guifont=Monaco\ 14
+	if has('mac')
+		set gfn=Monaco:h14
+	else 
+		set guifont=Monaco\ 14
+	endif	
 	nmap <C-V> "+gP
 	imap <C-V> <ESC><C-V>i
 	vmap <C-C> "+y
