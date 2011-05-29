@@ -57,9 +57,6 @@ if has ('gui_running')
 	else 
 		set guifont=Monaco\ 14
 	endif
-	#nmap <C-V> "+gP
-	#imap <C-V> <ESC><C-V>i
-	#vmap <C-C> "+y
 	:set guioptions-=T
 	:set guioptions-=m
 else
