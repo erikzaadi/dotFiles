@@ -50,6 +50,8 @@ Bundle 'https://github.com/tpope/vim-fugitive.git'
 Bundle 'Command-T'
 Bundle 'loremipsum'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'TaskList.vim'
+"Bundle 'pythoncomplete'
 colorscheme solarized
 if has ('gui_running')
 	set background=light
