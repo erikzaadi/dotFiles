@@ -17,8 +17,6 @@ let g:is_posix = 1             " vim's default is archaic bourne shell,
 set tabstop=4                  " tab size eql 2 spaces
 set softtabstop=4
 set autoindent
-syntax on                      " enable syntax
-filetype plugin indent on " load filetype plugins/indent settings
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
 set clipboard+=unnamed " share windows clipboard
@@ -66,6 +64,7 @@ else
 	set background=dark
 endif
 au BufNewFile,BufRead *.cshtml set filetype=html
+au BufNewFile,BufRead *.master set filetype=html
 au BufNewFile,BufRead *.less set filetype=less
 if has('statusline')
 	set laststatus=2
@@ -80,3 +79,5 @@ if has('statusline')
 endif
 let g:user_zen_expandabbr_key='<C-e>'
 call togglebg#map("<F5>")
+syntax on                      " enable syntax
+filetype plugin indent on " load filetype plugins/indent settings
