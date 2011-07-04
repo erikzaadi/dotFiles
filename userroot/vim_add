@@ -16,6 +16,10 @@ set incsearch                  " show matches while typing
 let g:is_posix = 1             " vim's default is archaic bourne shell,
 set tabstop=4                  " tab size eql 2 spaces
 set softtabstop=4
+set sts=4
+set sw=4
+set expandtab
+set tw=140
 set autoindent
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
