@@ -58,9 +58,9 @@ colorscheme solarized
 if has ('gui_running')
 	set background=light
 	if has('mac')
-		set gfn=Monaco:h14
+		set gfn=Monaco:h13
 	else 
-		set guifont=Monaco\ 14
+		set guifont=Monaco\ 13
 	endif
 	:set guioptions-=T
 	:set guioptions-=m
