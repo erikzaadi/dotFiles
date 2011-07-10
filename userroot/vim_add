@@ -56,7 +56,6 @@ Bundle 'TaskList.vim'
 "Bundle 'pythoncomplete'
 colorscheme solarized
 if has ('gui_running')
-	set background=light
 	if has('mac')
 		set gfn=Monaco:h13
 	else 
@@ -64,12 +63,12 @@ if has ('gui_running')
 	endif
 	:set guioptions-=T
 	:set guioptions-=m
-else
-	set background=dark
 endif
+set background=dark
 au BufNewFile,BufRead *.cshtml set filetype=html
 au BufNewFile,BufRead *.master set filetype=html
 au BufNewFile,BufRead *.less set filetype=less
+au BufNewFile,BufRead *.nuspec set filetype=xml
 if has('statusline')
 	set laststatus=2
 	" Broken down into easily includeable segments
