@@ -30,6 +30,10 @@ echo 'Adding vim addons'
 rm -rf ~/.vim_add
 ln -s $current/userroot/vim_add ~/.vim_add
 
+echo 'Adding gitconfig'
+rm -rf ~/.gitconfig
+ln -s $current/userroot/gitconfig ~/.gitconfig
+
 echo 'Adding git bash completion'
 rm -rf ~/.git-completion.bash
 ln -s $current/userroot/git-conpletion.bash ~/.git-completion.bash
