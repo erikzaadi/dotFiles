@@ -53,7 +53,8 @@ Bundle 'Command-T'
 Bundle 'loremipsum'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'TaskList.vim'
-"Bundle 'pythoncomplete'
+"Bundle 'bash-support.vim'
+Bundle 'pythoncomplete'
 colorscheme solarized
 if has ('gui_running')
 	if has('mac')
@@ -84,3 +85,4 @@ let g:user_zen_expandabbr_key='<C-e>'
 call togglebg#map("<F5>")
 syntax on                      " enable syntax
 filetype plugin indent on " load filetype plugins/indent settings
+let NERDTreeShowHidden=1
