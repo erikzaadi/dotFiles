@@ -55,6 +55,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'TaskList.vim'
 "Bundle 'bash-support.vim'
 Bundle 'pythoncomplete'
+Bundle 'https://github.com/orestis/pysmell.git'
 colorscheme solarized
 if has ('gui_running')
 	if has('mac')
@@ -86,3 +87,15 @@ call togglebg#map("<F5>")
 syntax on                      " enable syntax
 filetype plugin indent on " load filetype plugins/indent settings
 let NERDTreeShowHidden=1
+" Adding PIDA relevant code
+if !exists("PIDA_EMBEDDED")
+
+" your vim-only vimrc commands here
+
+endif
+
+if exists("PIDA_EMBEDDED")
+
+" your vim-in-pida vimrc commands here
+
+endif
