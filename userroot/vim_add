@@ -41,8 +41,9 @@ set ai "Auto indent
 set si "Smart indet
 set wrap "Wrap lines
 set number
-set rtp+=~/.vim/vundle.git/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'gmarik/vundle'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle 'https://github.com/vim-scripts/nginx.vim.git'
 Bundle 'https://github.com/scrooloose/nerdtree.git'

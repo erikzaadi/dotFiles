@@ -38,10 +38,10 @@ echo 'Adding git bash completion'
 rm -rf ~/.git-completion.bash
 ln -s $current/userroot/git-conpletion.bash ~/.git-completion.bash
 
-if [ -f ~/.vim/vundle.git/.git/config ]; then
+if [ -f ~/.vim/bundle/vundle/.git/config ]; then
 	echo "vundle already exists"
 else
-	echo "cloning vundle" && git clone https://github.com/gmarik/vundle.git ~/.vim/vundle.git
+	echo "cloning vundle" && git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi
 
 echo 'Installing vim bundles'
