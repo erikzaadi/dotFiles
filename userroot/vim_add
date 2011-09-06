@@ -30,8 +30,9 @@ set mousehide                 " Hide mouse after chars typed
 set showmatch                 " Show matching brackets.
 set novisualbell              " No blinking
 set noerrorbells              " No noise.
-map <F2> <ESC>:NERDTreeToggle<RETURN>
-map <F3> <ESC>:CommandT<RETURN>
+map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
+map <silent> <S-F2> :NERDTreeClose <CR>
+map <silent> <F3> <ESC>:CommandT<RETURN>
 set encoding=utf8
 try
     lang en_US
@@ -52,11 +53,14 @@ Bundle 'HTML-AutoCloseTag'
 Bundle 'https://github.com/tpope/vim-fugitive.git'
 Bundle 'Command-T'
 Bundle 'loremipsum'
-Bundle 'kchmck/vim-coffee-script'
+"Bundle 'kchmck/vim-coffee-script'
 Bundle 'TaskList.vim'
 "Bundle 'bash-support.vim'
 Bundle 'pythoncomplete'
-Bundle 'https://github.com/orestis/pysmell.git'
+Bundle 'nvie/vim-pyunit'
+Bundle 'nvie/vim-pep8'
+Bundle 'nvie/vim-pyflakes'
+
 colorscheme solarized
 if has ('gui_running')
 	if has('mac')
@@ -88,15 +92,16 @@ call togglebg#map("<F5>")
 syntax on                      " enable syntax
 filetype plugin indent on " load filetype plugins/indent settings
 let NERDTreeShowHidden=1
-" Adding PIDA relevant code
-if !exists("PIDA_EMBEDDED")
-
-" your vim-only vimrc commands here
-
-endif
-
-if exists("PIDA_EMBEDDED")
-
-" your vim-in-pida vimrc commands here
-
-endif
+let g:pyflakes_use_quickfix = 0
+autocmd BufNewFile,BufRead *.py compiler nose
+autocmd BufWritePost *.py call Pyflakes()
+function! g:ToogleNERDTreeLikeAChamp()
+    "Opens NERDTree if closed, focus on NERDTree if open and focus on a file or (FINALLY) close when focused on the NERDTree
+    if exists("t:NERDTreeBufName")
+        if (bufwinnr(t:NERDTreeBufName) != -1)
+            :wincmd w
+            return
+        endif
+    endif
+    :NERDTreeToggle
+endfunction

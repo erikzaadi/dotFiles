@@ -1,5 +1,12 @@
 #!/bin/bash
+
+CLEAN=$1
+
 echo "dotFiles installation FTW!"
+if [ "$CLEAN" == "clean" ]; then
+    echo "Clean activated!"
+fi
+
 mkdir -p ~/.vim
 
 if ( grep "dotFiles start" ~/.vimrc -q ); then
@@ -38,13 +45,20 @@ echo 'Adding git bash completion'
 rm -rf ~/.git-completion.bash
 ln -s $current/userroot/git-conpletion.bash ~/.git-completion.bash
 
+if [ "$CLEAN" == "clean" ]; then
+
+    echo 'Removing old bundles'
+
+    rm -rf ~/.vim/bundle
+fi
+mkdir -p ~/.vim/bundle
+
 if [ -f ~/.vim/bundle/vundle/.git/config ]; then
 	echo "vundle already exists"
 else
 	echo "cloning vundle" && git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi
-
-echo 'Installing vim bundles'
-vim -c BundleInstall!
+echo 'Installing vim bundles, ignore the error about solarized, will work fine next time you launch vim'
+vim -c 'BundleInstall!' -c 'qa!'
 
 echo "You're good to go!"
