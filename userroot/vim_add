@@ -31,7 +31,7 @@ set showmatch                 " Show matching brackets.
 set novisualbell              " No blinking
 set noerrorbells              " No noise.
 map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
-map <silent> <S-F2> :NERDTreeClose <CR>
+map <silent> <S-F2> <ESC>:NERDTreeClose <RETURN><CR>
 map <silent> <F3> <ESC>:CommandT<RETURN>
 set encoding=utf8
 try
@@ -93,7 +93,6 @@ syntax on                      " enable syntax
 filetype plugin indent on " load filetype plugins/indent settings
 let NERDTreeShowHidden=1
 let g:pyflakes_use_quickfix = 0
-autocmd BufNewFile,BufRead *.py compiler nose
 autocmd BufWritePost *.py call Pyflakes()
 function! g:ToogleNERDTreeLikeAChamp()
     "Opens NERDTree if closed, focus on NERDTree if open and focus on a file or (FINALLY) close when focused on the NERDTree
@@ -105,3 +104,7 @@ function! g:ToogleNERDTreeLikeAChamp()
     endif
     :NERDTreeToggle
 endfunction
+let g:PyUnitTestsStructure = "nose"
+let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
+let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && /opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
+let g:PyUnitTestPrefix = "tests/test_"
