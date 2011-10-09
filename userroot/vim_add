@@ -60,6 +60,8 @@ Bundle 'pythoncomplete'
 Bundle 'nvie/vim-pyunit'
 Bundle 'nvie/vim-pep8'
 Bundle 'nvie/vim-pyflakes'
+Bundle 'juvenn/mustache'
+Bundle 'groenewege/vim-less'
 
 colorscheme solarized
 if has ('gui_running')
