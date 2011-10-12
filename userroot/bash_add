@@ -8,6 +8,7 @@ alias gitpsh="git push"
 alias gitac="git add. && git commit -a"
 alias gitc="git commit -a"
 alias bim="vim" #FixUberFailingRepetiveTypo
+alias xclipc="xclip -selection c"
 # Source the git bash completion file
 if [ -f ~/.git-completion.bash ]; then
 	    source ~/.git-completion.bash
