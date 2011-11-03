@@ -53,7 +53,7 @@ Bundle 'HTML-AutoCloseTag'
 Bundle 'https://github.com/tpope/vim-fugitive.git'
 Bundle 'Command-T'
 Bundle 'loremipsum'
-"Bundle 'kchmck/vim-coffee-script'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'TaskList.vim'
 "Bundle 'bash-support.vim'
 Bundle 'pythoncomplete'
@@ -78,6 +78,7 @@ au BufNewFile,BufRead *.cshtml set filetype=html
 au BufNewFile,BufRead *.master set filetype=html
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.nuspec set filetype=xml
+au BufNewFile,BufRead *.coffee set filetype=coffee
 if has('statusline')
 	set laststatus=2
 	" Broken down into easily includeable segments
