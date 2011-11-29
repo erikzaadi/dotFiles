@@ -62,7 +62,7 @@ Bundle 'nvie/vim-pep8'
 Bundle 'nvie/vim-pyflakes'
 Bundle 'juvenn/mustache'
 Bundle 'groenewege/vim-less'
-
+Bundle 'https://github.com/scrooloose/syntastic.git'
 colorscheme solarized
 if has ('gui_running')
 	if has('mac')
