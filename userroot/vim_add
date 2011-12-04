@@ -58,12 +58,25 @@ Bundle 'TaskList.vim'
 "Bundle 'bash-support.vim'
 Bundle 'pythoncomplete'
 Bundle 'nvie/vim-pyunit'
+Bundle 'Pydiction'
+Bundle 'SuperTab'
 Bundle 'nvie/vim-pep8'
 Bundle 'nvie/vim-pyflakes'
 Bundle 'juvenn/mustache'
 Bundle 'groenewege/vim-less'
 Bundle 'https://github.com/scrooloose/syntastic.git'
-colorscheme solarized
+Bundle 'taglist.vim'
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'dickeytk/status.vim'
+Bundle 'Rykka/ColorV'
+Bundle 'gregsexton/MatchTag'
+Bundle 'tpope/vim-haml'
+Bundle 'pangloss/vim-javascript'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'leshill/vim-json'
+Bundle 'Lokaltog/vim-easymotion'
+
+colorschem solarized
 if has ('gui_running')
 	if has('mac')
 		set gfn=Monaco:h13
@@ -79,6 +92,7 @@ au BufNewFile,BufRead *.master set filetype=html
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.nuspec set filetype=xml
 au BufNewFile,BufRead *.coffee set filetype=coffee
+au! BufRead,BufNewFile *.json set filetype=json 
 if has('statusline')
 	set laststatus=2
 	" Broken down into easily includeable segments
@@ -111,3 +125,4 @@ let g:PyUnitTestsStructure = "nose"
 let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
 let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && /opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
 let g:PyUnitTestPrefix = "tests/test_"
+let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
