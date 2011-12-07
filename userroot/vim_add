@@ -75,6 +75,11 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'leshill/vim-json'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Tagbar'
+Bundle 'manalang/jshint.vim'
+Bundle 'mmalecki/vim-node.js'
+Bundle 'wavded/vim-stylus'
+Bundle 'snipMate'
 
 colorschem solarized
 if has ('gui_running')
