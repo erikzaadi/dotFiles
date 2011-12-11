@@ -88,8 +88,8 @@ if has ('gui_running')
 	else 
 		set guifont=Monaco\ 13
 	endif
-	:set guioptions-=T
-	:set guioptions-=m
+    set guioptions+=LlRrbmT
+    set guioptions-=LlRrbmT
 endif
 set background=dark
 au BufNewFile,BufRead *.cshtml set filetype=html
