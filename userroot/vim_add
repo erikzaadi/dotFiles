@@ -59,27 +59,26 @@ Bundle 'TaskList.vim'
 Bundle 'pythoncomplete'
 Bundle 'nvie/vim-pyunit'
 Bundle 'Pydiction'
-Bundle 'SuperTab'
+"Bundle 'SuperTab'
 Bundle 'nvie/vim-pep8'
 Bundle 'nvie/vim-pyflakes'
 Bundle 'juvenn/mustache'
 Bundle 'groenewege/vim-less'
-Bundle 'https://github.com/scrooloose/syntastic.git'
 Bundle 'taglist.vim'
 Bundle 'mutewinter/vim-indent-guides'
-Bundle 'dickeytk/status.vim'
+"Bundle 'dickeytk/status.vim'
 Bundle 'Rykka/ColorV'
 Bundle 'gregsexton/MatchTag'
-Bundle 'tpope/vim-haml'
+"Bundle 'tpope/vim-haml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'leshill/vim-json'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Tagbar'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'Tagbar'
 Bundle 'manalang/jshint.vim'
 Bundle 'mmalecki/vim-node.js'
 Bundle 'wavded/vim-stylus'
-Bundle 'snipMate'
+"Bundle 'snipMate'
 
 colorschem solarized
 if has ('gui_running')
@@ -96,18 +95,19 @@ au BufNewFile,BufRead *.cshtml set filetype=html
 au BufNewFile,BufRead *.master set filetype=html
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.nuspec set filetype=xml
+au BufNewFile,BufRead *.webconfig set filetype=xml
 au BufNewFile,BufRead *.coffee set filetype=coffee
 au! BufRead,BufNewFile *.json set filetype=json 
 if has('statusline')
 	set laststatus=2
 	" Broken down into easily includeable segments
 	set statusline=%<%f\    " Filename
-	set statusline+=%w%h%m%r " Options
+	"set statusline+=%w%h%m%r " Options
 	set statusline+=%{fugitive#statusline()} "  Git Hotness
 	set statusline+=\ [%{&ff}/%Y]            " filetype
 	set statusline+=\ [%{getcwd()}]          " current dir
 	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
-	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+	"set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 let g:user_zen_expandabbr_key='<C-e>'
 call togglebg#map("<F5>")
