@@ -98,6 +98,9 @@ au BufNewFile,BufRead *.nuspec set filetype=xml
 au BufNewFile,BufRead *.webconfig set filetype=xml
 au BufNewFile,BufRead *.coffee set filetype=coffee
 au! BufRead,BufNewFile *.json set filetype=json 
+au BufNewFile,BufRead *.styl set filetype=stylus
+au BufNewFile,BufRead *.stylus set filetype=stylus
+
 if has('statusline')
 	set laststatus=2
 	" Broken down into easily includeable segments
@@ -131,3 +134,6 @@ let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
 let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && /opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
 let g:PyUnitTestPrefix = "tests/test_"
 let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
+
+au! BufWinEnter *.styl call colorv#preview("S")
+au! bufwritepost *.styl call colorv#preview("S")
