@@ -137,3 +137,4 @@ let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict'
 
 au! BufWinEnter *.styl call colorv#preview("S")
 au! bufwritepost *.styl call colorv#preview("S")
+set colorcolumn=81
