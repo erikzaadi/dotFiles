@@ -1,148 +1,227 @@
-set nocompatible               " be iMproved
-set history=256                " Number of things to remember in history.
-set timeoutlen=250             " Time to wait after ESC (default causes an
-" annoying delay)
-set clipboard+=unnamed         " Yanks go on clipboard instead.
-set modeline
-set modelines=5                " default numbers of lines to read for
-set autowrite                  " Writes on make/shell commands
-set autoread
-set directory=/tmp//           " prepend(^=) $HOME/.tmp/ to default path;
-" use full path as backup filename(//)
-set hidden                     " The current buffer can be put to the
-" background without writing to disk
-set hlsearch                   " highlight search
-set incsearch                  " show matches while typing
-let g:is_posix = 1             " vim's default is archaic bourne shell,
-set tabstop=4                  " tab size eql 2 spaces
-set softtabstop=4
-set sts=4
-set sw=4
-set expandtab
-set tw=140
-set autoindent
-set backup " make backup files
-set backupdir=~/.vim/backup " where to put backup files
-set clipboard+=unnamed " share windows clipboard
-set directory=~/.vim/tmp " directory to place swap files in
-set mouse=a "enable mouse in GUI mode
-set mousehide                 " Hide mouse after chars typed
-set showmatch                 " Show matching brackets.
-set novisualbell              " No blinking
-set noerrorbells              " No noise.
-map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
-map <silent> <S-F2> <ESC>:NERDTreeClose <RETURN><CR>
-map <silent> <F3> <ESC>:CommandT<RETURN>
-set encoding=utf8
-try
-    lang en_US
-catch
-endtry
-set ai "Auto indent
-set si "Smart indet
-set wrap "Wrap lines
-set number
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'https://github.com/altercation/vim-colors-solarized.git'
-Bundle 'https://github.com/vim-scripts/nginx.vim.git'
-Bundle 'https://github.com/scrooloose/nerdtree.git'
-Bundle 'https://github.com/mattn/zencoding-vim.git'
-Bundle 'HTML-AutoCloseTag'
-Bundle 'https://github.com/tpope/vim-fugitive.git'
-Bundle 'Command-T'
-Bundle 'loremipsum'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'TaskList.vim'
-"Bundle 'bash-support.vim'
-Bundle 'pythoncomplete'
-Bundle 'nvie/vim-pyunit'
-Bundle 'Pydiction'
-"Bundle 'SuperTab'
-Bundle 'nvie/vim-pep8'
-Bundle 'nvie/vim-pyflakes'
-Bundle 'juvenn/mustache'
-Bundle 'groenewege/vim-less'
-Bundle 'taglist.vim'
-Bundle 'int3/vim-taglist-plus'
-Bundle 'mutewinter/vim-indent-guides'
-"Bundle 'dickeytk/status.vim'
-Bundle 'Rykka/ColorV'
-Bundle 'gregsexton/MatchTag'
-"Bundle 'tpope/vim-haml'
-Bundle 'pangloss/vim-javascript'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'leshill/vim-json'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'Tagbar'
-Bundle 'manalang/jshint.vim'
-Bundle 'mmalecki/vim-node.js'
-Bundle 'wavded/vim-stylus'
-"Bundle 'snipMate'
+" Vim config - optimized for Python, Node and a bit of C#
 
-colorschem solarized
-if has ('gui_running')
-	if has('mac')
-		set gfn=Monaco:h13
-	else 
-		set guifont=Monaco\ 13
-	endif
-    set guioptions+=LlRrbmT
-    set guioptions-=LlRrbmT
-endif
-set background=dark
-au BufNewFile,BufRead *.cshtml set filetype=html
-au BufNewFile,BufRead *.master set filetype=html
-au BufNewFile,BufRead *.less set filetype=less
-au BufNewFile,BufRead *.nuspec set filetype=xml
-au BufNewFile,BufRead *.webconfig set filetype=xml
-au BufNewFile,BufRead *.coffee set filetype=coffee
-au! BufRead,BufNewFile *.json set filetype=json 
-au BufNewFile,BufRead *.styl set filetype=stylus
-au BufNewFile,BufRead *.stylus set filetype=stylus
-
-if has('statusline')
-	set laststatus=2
-	" Broken down into easily includeable segments
-	set statusline=%<%f\    " Filename
-	"set statusline+=%w%h%m%r " Options
-	set statusline+=%{fugitive#statusline()} "  Git Hotness
-	set statusline+=\ [%{&ff}/%Y]            " filetype
-	set statusline+=\ [%{getcwd()}]          " current dir
-	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
-	"set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
-let g:user_zen_expandabbr_key='<C-e>'
-call togglebg#map("<F5>")
-syntax on                      " enable syntax
-filetype plugin indent on " load filetype plugins/indent settings
-let NERDTreeShowHidden=1
-let g:pyflakes_use_quickfix = 0
-autocmd BufWritePost *.py call Pyflakes()
-function! g:ToogleNERDTreeLikeAChamp()
-    "Opens NERDTree if closed, focus on NERDTree if open and focus on a file or (FINALLY) close when focused on the NERDTree
-    if exists("t:NERDTreeBufName")
-        if (bufwinnr(t:NERDTreeBufName) != -1)
-            :wincmd w
-            return
+" Vundle
+    " Setting up Vundle - the vim plugin bundler
+        let iCanHazVundle=1
+        let vundle_readme=expand("~/.vim/bundle/vundle/README.md")
+        if !filereadable(vundle_readme) 
+        "if !isdirectory("~/.vim/bundle/vundle")
+            echo "Installing Vundle.."
+            echo ""
+            silent !mkdir -p ~/.vim/bundle
+            silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+            let iCanHazVundle=0
         endif
-    endif
-    :NERDTreeToggle
-endfunction
-let g:PyUnitTestsStructure = "nose"
-let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
-let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && /opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
-let g:PyUnitTestPrefix = "tests/test_"
-let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
+        set rtp+=~/.vim/bundle/vundle/
+        call vundle#rc()
+        Bundle 'gmarik/vundle'
+    " Setting up Vundle - the vim plugin bundler end
 
-au! BufWinEnter *.styl call colorv#preview("S")
-au! bufwritepost *.styl call colorv#preview("S")
-set colorcolumn=81
-au BufRead,BufNewFile *.ejs set filetype=html
-au BufNewFile,BufRead *.coffee set shiftwidth=2
-au FileType javascript set shiftwidth=2
-au BufNewFile,BufRead *.coffee set tabstop=2
-au FileType javascript set tabstop=2
-au BufNewFile,BufRead *.coffee set softtabstop=2
-au FileType javascript set softtabstop=2
+    " Bundles
+        " General Vim
+            Bundle 'altercation/vim-colors-solarized'
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'https://github.com/tpope/vim-fugitive.git'
+            Bundle 'Command-T'
+            Bundle 'loremipsum'
+            Bundle 'TaskList.vim'
+            Bundle 'taglist.vim'
+            Bundle 'int3/vim-taglist-plus'
+            Bundle 'mutewinter/vim-indent-guides'
+            Bundle 'reinh/vim-makegreen'
+        " General Vim end
+    
+        " Python
+            Bundle 'pythoncomplete'
+            Bundle 'nvie/vim-pyunit'
+            Bundle 'Pydiction'
+            Bundle 'nvie/vim-pep8'
+            Bundle 'nvie/vim-pyflakes'
+            Bundle 'olethanh/Vim-nosecompiler'
+        " Python end
+    
+        " Web (generic)
+            Bundle 'mattn/zencoding-vim'
+            Bundle 'HTML-AutoCloseTag'
+            Bundle 'juvenn/mustache'
+            Bundle 'groenewege/vim-less'
+            Bundle 'Rykka/ColorV'
+            Bundle 'gregsexton/MatchTag'
+            Bundle 'wavded/vim-stylus'
+        " Web (generic) end
+    
+        " Javascript / node / coffeescript 
+            Bundle 'pangloss/vim-javascript'
+            Bundle 'itspriddle/vim-jquery'
+            Bundle 'leshill/vim-json'
+            Bundle 'kchmck/vim-coffee-script'
+            Bundle 'manalang/jshint.vim'
+            Bundle 'mmalecki/vim-node.js'
+            Bundle 'lambdalisue/nodeunit.vim'
+        " Javascript / node /coffeescript end
+    
+        " C# / .Niet
+    
+        " C# / .Niet end
+    
+        " Misc
+            Bundle 'vim-scripts/nginx.vim'
+        " Misc end
+    
+        " Unused (for now)
+            "Bundle 'bash-support.vim'
+            "Bundle 'SuperTab'
+            "Bundle 'dickeytk/status.vim'
+            "Bundle 'snipMate'
+            "Bundle 'tpope/vim-haml'
+            "Bundle 'Lokaltog/vim-easymotion'
+            "Bundle 'Tagbar'
+        " Unused (for now) end
+    " Bundles end
+    if iCanHazVundle == 0
+        echo "Installing Bundles, please ignore key map error messages"
+        echo ""
+    :BundleInstall
+    endif
+" Vundle end
+
+"Set Vim defaults
+    set nocompatible               " be iMproved
+    set history=256                " Number of things to remember in history.
+    set timeoutlen=250             " Time to wait after ESC (default causes an
+    " annoying delay)
+    set clipboard+=unnamed         " Yanks go on clipboard instead.
+    set modeline
+    set modelines=5                " default numbers of lines to read for
+    set autowrite                  " Writes on make/shell commands
+    set autoread
+    set directory=/tmp//           " prepend(^=) $HOME/.tmp/ to default path;
+    " use full path as backup filename(//)
+    set hidden                     " The current buffer can be put to the
+    " background without writing to disk
+    set hlsearch                   " highlight search
+    set incsearch                  " show matches while typing
+    let g:is_posix = 1             " vim's default is archaic bourne shell,
+    set tabstop=4                  " tab size eql 4 spaces
+    set softtabstop=4
+    set sts=4
+    set sw=4
+    set expandtab
+    set tw=140
+    set autoindent
+    set backup " make backup files
+    set backupdir=~/.vim/backup " where to put backup files
+    set clipboard+=unnamed " share windows clipboard
+    set directory=~/.vim/tmp " directory to place swap files in
+    set mouse=a "enable mouse in GUI mode
+    set mousehide                 " Hide mouse after chars typed
+    set showmatch                 " Show matching brackets.
+    set novisualbell              " No blinking
+    set noerrorbells              " No noise.
+    set colorcolumn=81            " Right column
+    set encoding=utf8
+    set ai "Auto indent
+    set si "Smart indet
+    set wrap "Wrap lines
+    set number                    " Line numers
+
+    try
+        lang en_US
+    catch
+    endtry
+" Vim defaults end
+
+" Keymaps
+    map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
+    map <silent> <S-F2> <ESC>:NERDTreeClose <RETURN><CR>
+    map <silent> <F3> <ESC>:CommandT<RETURN>
+    map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
+    call togglebg#map("<F5>")
+" Keymaps end
+
+" Filetype overrides
+    " Python
+        autocmd BufWritePost *.py call Pyflakes()
+    " Python end   
+
+    " Javascript / Coffeescript / Node
+        au BufNewFile,BufRead *.less set filetype=less
+        au BufNewFile,BufRead *.coffee set filetype=coffee
+        au! BufRead,BufNewFile *.json set filetype=json 
+        au BufRead,BufNewFile *.ejs set filetype=html
+        au BufNewFile,BufRead *.coffee set shiftwidth=2
+        au FileType javascript set shiftwidth=2
+        au BufNewFile,BufRead *.coffee set tabstop=2
+        au FileType javascript set tabstop=2
+        au BufNewFile,BufRead *.coffee set softtabstop=2
+        au FileType javascript softtabstop=2
+        au BufNewFile,BufRead *.coffee compiler nodeunit
+        au FileType javascript compiler nodeunit
+    " Javascript / Coffeescript / Node end
+
+    " Web
+        au BufNewFile,BufRead *.styl set filetype=stylus
+        au BufNewFile,BufRead *.stylus set filetype=stylus
+        au! BufWinEnter *.styl call colorv#preview("S")
+        au! bufwritepost *.styl call colorv#preview("S")
+    " Web end
+
+    " C# / .NIET
+        au BufNewFile,BufRead *.cshtml set filetype=html
+        au BufNewFile,BufRead *.master set filetype=html
+        au BufNewFile,BufRead *.webconfig set filetype=xml
+        au BufNewFile,BufRead *.nuspec set filetype=xml
+    " C# / .NIET end
+" Filetype overrides end
+
+
+" Vim Plugin Configs
+
+    colorscheme solarized
+    if has ('gui_running')
+    	if has('mac')
+    		set gfn=Monaco:h13
+    	else 
+    		set guifont=Monaco\ 13
+    	endif
+        set guioptions+=LlRrbmT
+        set guioptions-=LlRrbmT
+    endif
+    set background=dark
+    if has('statusline')
+    	set laststatus=2
+    	" Broken down into easily includeable segments
+    	set statusline=%<%f\    " Filename
+    	set statusline+=%{fugitive#statusline()} "  Git Hotness
+    	set statusline+=\ [%{&ff}/%Y]            " filetype
+    	set statusline+=\ [%{getcwd()}]          " current dir
+    endif
+    let g:user_zen_expandabbr_key='<C-e>'
+    syntax on                      " enable syntax
+    filetype plugin indent on " load filetype plugins/indent settings
+    let NERDTreeShowHidden=1
+    let g:pyflakes_use_quickfix = 0
+    let g:PyUnitTestsStructure = "nose"
+    let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
+    let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
+
+    "need to change this, really not optimized.
+    "let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && 
+    "/opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
+    "let g:PyUnitTestPrefix = "tests/test_"
+ 
+" Vim Plugin Configs end
+
+" Custom functions FTW
+    function! g:ToogleNERDTreeLikeAChamp()
+        "Opens NERDTree if closed, focus on NERDTree if open
+        "and focus on a file or (FINALLY) close when focused on the NERDTree
+        if exists("t:NERDTreeBufName")
+            if (bufwinnr(t:NERDTreeBufName) != -1)
+                :wincmd w
+                return
+            endif
+        endif
+        :NERDTreeToggle
+    endfunction
+" Custom functions FTW end
