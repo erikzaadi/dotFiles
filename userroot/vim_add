@@ -43,7 +43,7 @@
         " Web (generic)
             Bundle 'mattn/zencoding-vim'
             Bundle 'HTML-AutoCloseTag'
-            Bundle 'juvenn/mustache'
+            Bundle 'juvenn/mustache.vim'
             Bundle 'groenewege/vim-less'
             Bundle 'Rykka/ColorV'
             Bundle 'gregsexton/MatchTag'
@@ -149,6 +149,7 @@
         au BufNewFile,BufRead *.coffee set filetype=coffee
         au! BufRead,BufNewFile *.json set filetype=json 
         au BufRead,BufNewFile *.ejs set filetype=html
+        au BufRead,BufNewFile *.eco set filetype=html
         au BufNewFile,BufRead *.coffee set shiftwidth=2
         au FileType javascript set shiftwidth=2
         au BufNewFile,BufRead *.coffee set tabstop=2
