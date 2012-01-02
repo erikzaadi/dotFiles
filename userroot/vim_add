@@ -29,6 +29,7 @@
             Bundle 'int3/vim-taglist-plus'
             Bundle 'mutewinter/vim-indent-guides'
             Bundle 'reinh/vim-makegreen'
+            Bundle 'Conque-Shell'
         " General Vim end
     
         " Python
@@ -155,7 +156,7 @@
         au BufNewFile,BufRead *.coffee set tabstop=2
         au FileType javascript set tabstop=2
         au BufNewFile,BufRead *.coffee set softtabstop=2
-        au FileType javascript softtabstop=2
+        au FileType javascript set softtabstop=2
         au BufNewFile,BufRead *.coffee compiler nodeunit
         au FileType javascript compiler nodeunit
     " Javascript / Coffeescript / Node end
