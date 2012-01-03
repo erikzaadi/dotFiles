@@ -210,6 +210,7 @@
     let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
     let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
 
+    let g:ConqueTerm_TERM = 'xterm'
     "need to change this, really not optimized.
     "let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && 
     "/opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
