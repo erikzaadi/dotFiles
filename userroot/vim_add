@@ -24,12 +24,12 @@
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'Command-T'
             Bundle 'loremipsum'
-            Bundle 'TaskList.vim'
+            "Bundle 'TaskList.vim'
             Bundle 'taglist.vim'
             Bundle 'int3/vim-taglist-plus'
             Bundle 'mutewinter/vim-indent-guides'
             Bundle 'reinh/vim-makegreen'
-            Bundle 'Conque-Shell'
+            Bundle 'rosenfeld/conque-term'
         " General Vim end
     
         " Python
@@ -136,7 +136,8 @@
     map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
     map <silent> <S-F2> <ESC>:NERDTreeClose <RETURN><CR>
     map <silent> <F3> <ESC>:CommandT<RETURN>
-    map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
+    "map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
+    "map <silent> <F8> :call MakeGreen() <RETURN>
     call togglebg#map("<F5>")
 " Keymaps end
 
@@ -158,6 +159,7 @@
         au BufNewFile,BufRead *.coffee set softtabstop=2
         au FileType javascript set softtabstop=2
         au BufNewFile,BufRead *.coffee compiler nodeunit
+        autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
         au FileType javascript compiler nodeunit
     " Javascript / Coffeescript / Node end
 
@@ -180,6 +182,7 @@
 " Vim Plugin Configs
 
     colorscheme solarized
+    set background=dark
     if has ('gui_running')
     	if has('mac')
     		set gfn=Monaco:h13
@@ -188,8 +191,8 @@
     	endif
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
+        set background=light
     endif
-    set background=dark
     if has('statusline')
     	set laststatus=2
     	" Broken down into easily includeable segments
