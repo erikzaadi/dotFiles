@@ -30,6 +30,7 @@
             Bundle 'mutewinter/vim-indent-guides'
             Bundle 'reinh/vim-makegreen'
             Bundle 'rosenfeld/conque-term'
+            Bundle 'kien/ctrlp.vim'
         " General Vim end
     
         " Python
