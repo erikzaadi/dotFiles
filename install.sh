@@ -45,6 +45,12 @@ echo 'Adding git bash completion'
 rm -rf ~/.git-completion.bash
 ln -s $current/userroot/git-conpletion.bash ~/.git-completion.bash
 
+echo 'Adding terminator config'
+mkdir -p ~/.config/terminator
+rm -rf ~/.config/terminator/config
+ln -s $current/terminatorconfig ~/.config/terminator/config
+
+
 if [ "$CLEAN" == "clean" ]; then
 
     echo 'Removing old bundles'
