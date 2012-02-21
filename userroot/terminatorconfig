@@ -16,7 +16,6 @@
     use_custom_command = True
     icon_bell = False
     show_titlebar = False
-    custom_command = /usr/bin/zsh
     font = Monaco 10
     background_color = "#002b36"
     scrollback_infinite = True

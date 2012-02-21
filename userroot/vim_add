@@ -31,6 +31,7 @@
             Bundle 'reinh/vim-makegreen'
             Bundle 'rosenfeld/conque-term'
             Bundle 'kien/ctrlp.vim'
+            Bundle 'scrooloose/syntastic'
         " General Vim end
     
         " Python
@@ -38,7 +39,7 @@
             Bundle 'nvie/vim-pyunit'
             Bundle 'Pydiction'
             Bundle 'nvie/vim-pep8'
-            Bundle 'nvie/vim-pyflakes'
+            "Bundle 'nvie/vim-pyflakes'
             Bundle 'olethanh/Vim-nosecompiler'
         " Python end
     
@@ -50,11 +51,13 @@
             Bundle 'Rykka/ColorV'
             Bundle 'gregsexton/MatchTag'
             Bundle 'wavded/vim-stylus'
+            Bundle 'JavaScript-Indent'
         " Web (generic) end
     
         " Javascript / node / coffeescript 
             Bundle 'pangloss/vim-javascript'
             Bundle 'itspriddle/vim-jquery'
+            Bundle 'digitaltoad/vim-jade'
             Bundle 'leshill/vim-json'
             Bundle 'kchmck/vim-coffee-script'
             Bundle 'manalang/jshint.vim'
@@ -144,7 +147,7 @@
 
 " Filetype overrides
     " Python
-        autocmd BufWritePost *.py call Pyflakes()
+        "autocmd BufWritePost *.py call Pyflakes()
     " Python end   
 
     " Javascript / Coffeescript / Node
@@ -160,7 +163,7 @@
         au BufNewFile,BufRead *.coffee set softtabstop=2
         au FileType javascript set softtabstop=2
         "au BufNewFile,BufRead *.coffee compiler nodeunit
-        au BufNewFile,BufRead *.coffee compiler coffee
+        "au BufNewFile,BufRead *.coffee compiler coffee
         "autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
         "au FileType javascript compiler nodeunit
     " Javascript / Coffeescript / Node end
@@ -193,7 +196,7 @@
     	endif
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
-        set background=light
+        "set background=light
     endif
     if has('statusline')
     	set laststatus=2
@@ -207,12 +210,12 @@
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
     let NERDTreeShowHidden=1
-    let g:pyflakes_use_quickfix = 0
+    "let g:pyflakes_use_quickfix = 0
     let g:PyUnitTestsStructure = "nose"
     let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
     let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
 
-    let g:ConqueTerm_TERM = 'xterm-color'
+    let g:ConqueTerm_TERM = 'xterm-color256'
     let g:ConqueTerm_ReadUnfocused = 1
     let g:ConqueTerm_InsertOnEnter = 1
     "need to change this, really not optimized.
