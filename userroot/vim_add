@@ -129,7 +129,6 @@
     set si "Smart indet
     set wrap "Wrap lines
     set number                    " Line numers
-
     try
         lang en_US
     catch
@@ -138,7 +137,7 @@
 
 " Keymaps
     map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
-    map <silent> <S-F2> <ESC>:NERDTreeClose <RETURN><CR>
+    map <silent> <S-F2> <ESC>:NERDTreeToggle <RETURN><CR>
     map <silent> <F3> <ESC>:CommandT<RETURN>
     "map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
     "map <silent> <F8> :call MakeGreen() <RETURN>
@@ -185,9 +184,12 @@
 
 
 " Vim Plugin Configs
-
-    colorscheme solarized
     set background=dark
+    "set t_Co=256
+    "let g:solarized_termcolors=256
+    "let g:solarized_termcolors=16
+    "let g:solarized_termtrans=1
+    colorscheme solarized
     if has ('gui_running')
     	if has('mac')
     		set gfn=Monaco:h13
@@ -222,6 +224,9 @@
     "let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && 
     "/opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
     "let g:PyUnitTestPrefix = "tests/test_"
+    let g:syntastic_python_checker = 'pylint'
+    let g:syntastic_check_on_open=1
+    let g:syntastic_auto_loc_list=1
  
 " Vim Plugin Configs end
 
