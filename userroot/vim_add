@@ -20,6 +20,7 @@
     " Bundles
         " General Vim
             Bundle 'altercation/vim-colors-solarized'
+            Bundle 'Wombat'
             Bundle 'scrooloose/nerdtree'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'Command-T'
@@ -141,7 +142,6 @@
     map <silent> <F3> <ESC>:CommandT<RETURN>
     "map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
     "map <silent> <F8> :call MakeGreen() <RETURN>
-    call togglebg#map("<F5>")
 " Keymaps end
 
 " Filetype overrides
@@ -185,12 +185,12 @@
 
 " Vim Plugin Configs
     set background=dark
-    "set t_Co=256
+    set t_Co=256
     "let g:solarized_termcolors=256
     "let g:solarized_termcolors=16
     "let g:solarized_termtrans=1
-    colorscheme solarized
     if has ('gui_running')
+        colorscheme solarized
     	if has('mac')
     		set gfn=Monaco:h13
     	else 
@@ -199,6 +199,9 @@
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
         "set background=light
+        call togglebg#map("<F5>")
+    else
+        colorscheme wombat
     endif
     if has('statusline')
     	set laststatus=2
