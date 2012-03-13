@@ -20,11 +20,12 @@
     " Bundles
         " General Vim
             Bundle 'altercation/vim-colors-solarized'
-            Bundle 'Wombat'
+            Bundle 'cschlueter/vim-ir_black'
             Bundle 'scrooloose/nerdtree'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'Command-T'
             Bundle 'loremipsum'
+            Bundle 'sjl/gundo.vim'
             "Bundle 'TaskList.vim'
             Bundle 'taglist.vim'
             Bundle 'int3/vim-taglist-plus'
@@ -39,9 +40,12 @@
             Bundle 'pythoncomplete'
             Bundle 'nvie/vim-pyunit'
             Bundle 'Pydiction'
+            Bundle 'alfredodeza/pytest.vim'
+            Bundle 'fs111/pydoc.vim'
             Bundle 'nvie/vim-pep8'
             "Bundle 'nvie/vim-pyflakes'
             Bundle 'olethanh/Vim-nosecompiler'
+            Bundle 'gordyt/rope-vim'
         " Python end
     
         " Web (generic)
@@ -53,6 +57,8 @@
             Bundle 'gregsexton/MatchTag'
             Bundle 'wavded/vim-stylus'
             Bundle 'JavaScript-Indent'
+            Bundle 'tangledhelix/vim-octopress'
+            Bundle 'tpope/vim-haml'
         " Web (generic) end
     
         " Javascript / node / coffeescript 
@@ -113,7 +119,7 @@
     set sts=4
     set sw=4
     set expandtab
-    set tw=140
+    "set tw=80
     set autoindent
     set backup " make backup files
     set backupdir=~/.vim/backup " where to put backup files
@@ -124,7 +130,7 @@
     set showmatch                 " Show matching brackets.
     set novisualbell              " No blinking
     set noerrorbells              " No noise.
-    set colorcolumn=81            " Right column
+    set cc=121 " Right column
     set encoding=utf8
     set ai "Auto indent
     set si "Smart indet
@@ -139,9 +145,20 @@
 " Keymaps
     map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
     map <silent> <S-F2> <ESC>:NERDTreeToggle <RETURN><CR>
+    noremap <F1> <Esc> "typo hell fix - via http://vimbits.com/bits/154
     map <silent> <F3> <ESC>:CommandT<RETURN>
     "map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
     "map <silent> <F8> :call MakeGreen() <RETURN>
+    "Oy vei, trying without arrows
+    "nnoremap <up> <nop>
+    "nnoremap <down> <nop>
+    "nnoremap <left> <nop>
+    "nnoremap <right> <nop>
+    "inoremap <up> <nop>
+    "inoremap <down> <nop>
+    "inoremap <left> <nop>
+    "inoremap <right> <nop>
+
 " Keymaps end
 
 " Filetype overrides
@@ -172,6 +189,7 @@
         au BufNewFile,BufRead *.stylus set filetype=stylus
         au! BufWinEnter *.styl call colorv#preview("S")
         au! bufwritepost *.styl call colorv#preview("S")
+        autocmd BufNewFile,BufRead *.markdown setfiletype octopress
     " Web end
 
     " C# / .NIET
@@ -186,11 +204,12 @@
 " Vim Plugin Configs
     set background=dark
     set t_Co=256
+    colorscheme solarized
     "let g:solarized_termcolors=256
     "let g:solarized_termcolors=16
-    "let g:solarized_termtrans=1
+    call togglebg#map("<F5>")
+    let g:solarized_termtrans=1
     if has ('gui_running')
-        colorscheme solarized
     	if has('mac')
     		set gfn=Monaco:h13
     	else 
@@ -199,9 +218,9 @@
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
         "set background=light
-        call togglebg#map("<F5>")
-    else
-        colorscheme wombat
+    "else
+    "    colorscheme ir_black
+    "    set background=light
     endif
     if has('statusline')
     	set laststatus=2
