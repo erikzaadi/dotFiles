@@ -39,4 +39,5 @@ alias xclipc="xclip -selection c"
 #alias lvds='xrandr --output VGA1 --off --output DP1 --off --output LVDS1 --1280x800 --primary'
 #alias vga='xrandr --output DP1 --off --output VGA1 --auto --primary --output LVDS1 --mode 1280x800 --left-of VGA1'
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 export TERM=xterm-256color

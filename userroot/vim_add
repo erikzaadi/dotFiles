@@ -45,7 +45,7 @@
             Bundle 'nvie/vim-pep8'
             "Bundle 'nvie/vim-pyflakes'
             Bundle 'olethanh/Vim-nosecompiler'
-            Bundle 'gordyt/rope-vim'
+            Bundle 'rope-vim'
         " Python end
     
         " Web (generic)
@@ -247,7 +247,7 @@
     "/opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
     "let g:PyUnitTestPrefix = "tests/test_"
     let g:syntastic_python_checker = 'pylint'
-    let g:syntastic_check_on_open=1
+    let g:syntastic_check_on_open=0
     let g:syntastic_auto_loc_list=1
  
 " Vim Plugin Configs end

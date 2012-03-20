@@ -25,3 +25,5 @@ fi
 		cyan='\[\033[0;36m\]'
 	    export PS1="$cyan\u$blue@$cyan\H $green\w\r\n$orange[$yellow\t$orange]$green$gitprompt$yellow \$ $fgcolor" 
 export PS1
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
