@@ -25,7 +25,7 @@
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'Command-T'
             Bundle 'loremipsum'
-            Bundle 'sjl/gundo.vim'
+            "Bundle 'sjl/gundo.vim'
             "Bundle 'TaskList.vim'
             Bundle 'taglist.vim'
             Bundle 'int3/vim-taglist-plus'
@@ -34,18 +34,20 @@
             Bundle 'rosenfeld/conque-term'
             Bundle 'kien/ctrlp.vim'
             Bundle 'scrooloose/syntastic'
+            Bundle 'kana/vim-smartinput'
         " General Vim end
     
         " Python
-            Bundle 'pythoncomplete'
-            Bundle 'nvie/vim-pyunit'
-            Bundle 'Pydiction'
-            Bundle 'alfredodeza/pytest.vim'
-            Bundle 'fs111/pydoc.vim'
-            Bundle 'nvie/vim-pep8'
+            "Bundle 'pythoncomplete'
+            "Bundle 'nvie/vim-pyunit'
+            "Bundle 'Pydiction'
+            "Bundle 'alfredodeza/pytest.vim'
+            "Bundle 'fs111/pydoc.vim'
+            "Bundle 'nvie/vim-pep8'
             "Bundle 'nvie/vim-pyflakes'
-            Bundle 'olethanh/Vim-nosecompiler'
-            Bundle 'rope-vim'
+            "Bundle 'olethanh/Vim-nosecompiler'
+            "Bundle 'rope-vim'
+            Bundle 'klen/python-mode'
         " Python end
     
         " Web (generic)
@@ -140,10 +142,13 @@
         lang en_US
     catch
     endtry
+    "set exrc			" enable per-directory .vimrc files
+    "set secure         " disable unsafe commands in local .vimrc files
 " Vim defaults end
 
 " Keymaps
-    map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
+    map <silent> <F2> :silent NERDTreeToggle() <CR>
+    "map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
     map <silent> <S-F2> <ESC>:NERDTreeToggle <RETURN><CR>
     noremap <F1> <Esc> "typo hell fix - via http://vimbits.com/bits/154
     map <silent> <F3> <ESC>:CommandT<RETURN>
@@ -208,7 +213,7 @@
     "let g:solarized_termcolors=256
     "let g:solarized_termcolors=16
     call togglebg#map("<F5>")
-    let g:solarized_termtrans=1
+    let g:solarized_termtrans=0
     if has ('gui_running')
     	if has('mac')
     		set gfn=Monaco:h13
@@ -234,21 +239,14 @@
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
     let NERDTreeShowHidden=1
-    "let g:pyflakes_use_quickfix = 0
-    let g:PyUnitTestsStructure = "nose"
-    let g:ProjRootIndicators = [".git", "setup.py", "setup.cfg", ".projectroot"]
-    let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict' 
-
     let g:ConqueTerm_TERM = 'xterm-color256'
     let g:ConqueTerm_ReadUnfocused = 1
     let g:ConqueTerm_InsertOnEnter = 1
-    "need to change this, really not optimized.
-    "let g:PyUnitCmd = "export PYTHONPATH=$PWD/lib:$PWD/deps && 
-    "/opt/xpyv/bin/nosetests -v -s --exe  -a \!tau_test -q --with-machineout"
-    "let g:PyUnitTestPrefix = "tests/test_"
-    let g:syntastic_python_checker = 'pylint'
+    "let g:syntastic_python_checker = 'pylint'
     let g:syntastic_check_on_open=0
-    let g:syntastic_auto_loc_list=1
+    "let g:syntastic_auto_loc_list=1
+    "let g:ropevim_guess_project=1
+    let g:pymode_folding=0
  
 " Vim Plugin Configs end
 
