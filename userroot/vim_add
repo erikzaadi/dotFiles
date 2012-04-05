@@ -147,7 +147,7 @@
 " Vim defaults end
 
 " Keymaps
-    map <silent> <F2> :silent NERDTreeToggle() <CR>
+    map <silent> <F2> :silent NERDTreeToggle <CR>
     "map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
     map <silent> <S-F2> <ESC>:NERDTreeToggle <RETURN><CR>
     noremap <F1> <Esc> "typo hell fix - via http://vimbits.com/bits/154
