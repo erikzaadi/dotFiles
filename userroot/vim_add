@@ -35,6 +35,7 @@
             Bundle 'kien/ctrlp.vim'
             Bundle 'scrooloose/syntastic'
             Bundle 'kana/vim-smartinput'
+            Bundle 'sjl/clam.vim'
         " General Vim end
     
         " Python
@@ -144,13 +145,24 @@
     endtry
     "set exrc			" enable per-directory .vimrc files
     "set secure         " disable unsafe commands in local .vimrc files
+
+    "http://vim.wikia.com/wiki/Create_underlines,_overlines,_and_strikethroughs_using_combining_characters
+    " modify selected text using combining diacritics
+    command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
+    command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
+    command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
+    command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
+    
+    function! s:CombineSelection(line1, line2, cp)
+      execute 'let char = "\u'.a:cp.'"'
+      execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+    endfunction
 " Vim defaults end
 
 " Keymaps
     map <silent> <F2> :silent NERDTreeToggle <CR>
     "map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
     map <silent> <S-F2> <ESC>:NERDTreeToggle <RETURN><CR>
-    noremap <F1> <Esc> "typo hell fix - via http://vimbits.com/bits/154
     map <silent> <F3> <ESC>:CommandT<RETURN>
     "map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
     "map <silent> <F8> :call MakeGreen() <RETURN>
@@ -163,7 +175,8 @@
     "inoremap <down> <nop>
     "inoremap <left> <nop>
     "inoremap <right> <nop>
-
+    map <F1> <Esc>
+    imap <F1> <Esc>
 " Keymaps end
 
 " Filetype overrides
@@ -239,15 +252,17 @@
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
     let NERDTreeShowHidden=1
-    let g:ConqueTerm_TERM = 'xterm-color256'
+    "let g:ConqueTerm_TERM = 'xterm-color256'
     let g:ConqueTerm_ReadUnfocused = 1
     let g:ConqueTerm_InsertOnEnter = 1
+    let g:pymode_lint_checker = "pylint"
     "let g:syntastic_python_checker = 'pylint'
     let g:syntastic_check_on_open=0
     "let g:syntastic_auto_loc_list=1
     "let g:ropevim_guess_project=1
     let g:pymode_folding=0
- 
+    let g:pymode_lint_ignore=""
+
 " Vim Plugin Configs end
 
 " Custom functions FTW

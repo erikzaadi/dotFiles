@@ -82,6 +82,8 @@
         #test = !sh -c 'echo cmd=$1 arg1=$2 arg2=$3'
     #dirstatus = !ls -d1 */.git | xargs -n1 -i{} sh -c \"cd {}/.. && echo Checking {} && git ls-files --exclude-standard -tousmd\"
 
+    # Find FIXME, TODO, etc ala @pengwinn
+    n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
 
 [core]
     whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol

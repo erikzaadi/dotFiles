@@ -24,7 +24,7 @@ ZSH_THEME="erikzaadi"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git extract npm pip python vundle cake compleat)
+plugins=(git extract npm pip python vundle cake compleat django tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -42,3 +42,4 @@ alias xclipc="xclip -selection c"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator_completion ]] && source $HOME/.tmuxinator/scripts/tmuxinator_completion
 export TERM=xterm-256color
+export EDITOR=vim
