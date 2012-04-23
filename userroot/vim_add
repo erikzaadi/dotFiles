@@ -205,6 +205,8 @@
     " Web
         au BufNewFile,BufRead *.styl set filetype=stylus
         au BufNewFile,BufRead *.stylus set filetype=stylus
+        au! BufWinEnter *.scss call colorv#preview("S")
+        au! bufwritepost *.scss call colorv#preview("S")
         au! BufWinEnter *.styl call colorv#preview("S")
         au! bufwritepost *.styl call colorv#preview("S")
         autocmd BufNewFile,BufRead *.markdown setfiletype octopress
