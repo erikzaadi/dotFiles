@@ -1,0 +1,6 @@
+#!/bin/sh
+
+MAIL_CHAR=✉
+
+mail -e && echo "(`grep -c '^From ' /var/mail/$USER`)$MAIL_CHAR "
+exit 0

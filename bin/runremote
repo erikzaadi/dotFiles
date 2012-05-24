@@ -1,0 +1,21 @@
+#!/bin/bash
+# runremote
+# usage: runremote localscript interpreter remoteuser remotehost arg1 arg2 ...
+# http://backreference.org/2011/08/10/running-local-script-remotely-with-arguments/
+
+realscript=$1
+interpreter=$2
+user=$3
+host=$4
+shift 4
+
+declare -a args
+
+count=0
+for arg in "$@"; do
+  args[count]=$(printf '%q' "$arg")
+  count=$((count+1))
+done
+
+ssh -t $user@$host "cat | ${interpreter} /dev/stdin" "${args[@]}" < "$realscript"
+

@@ -34,7 +34,7 @@
             Bundle 'rosenfeld/conque-term'
             Bundle 'kien/ctrlp.vim'
             Bundle 'scrooloose/syntastic'
-            Bundle 'kana/vim-smartinput'
+            "Bundle 'kana/vim-smartinput'
             Bundle 'sjl/clam.vim'
         " General Vim end
     
@@ -231,9 +231,9 @@
     let g:solarized_termtrans=0
     if has ('gui_running')
     	if has('mac')
-    		set gfn=Monaco:h13
+    		set gfn=Monaco:h10
     	else 
-    		set guifont=Monaco\ 13
+    		set guifont=Monaco\ 10
     	endif
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT

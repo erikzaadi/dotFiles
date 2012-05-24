@@ -1,3 +1,4 @@
+source $HOME/.envvars.rc
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -25,22 +26,43 @@ ZSH_THEME="erikzaadi"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git extract npm pip python vundle cake compleat django tmuxinator)
+#fpath=($HOME/.tmuxinator/completion ${fpath})
+#autoload -U compinit
+#compinit
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/sbin:/home/erikz/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/xpyv/bin:/media/Data/Apps/android-sdk-linux/tools:/media/Data/Apps/android-sdk-linux/platform-tools:/media/Data/Apps/frameworks/airsdk/bin
-
-export PYTHONSTARTUP=~/.pythonrc.py
-alias jenkins-cli="java -jar ~/Downloads/jenkins-cli.jar -s http://hsg-ci.xiv.ibm.com"
-eval `dircolors /media/Data/Code/Opensource/other/utils/dircolors-solarized/dircolors.256dark`
-alias la='ls -A'
+export PATH=/usr/local/sbin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/xpyv/bin:$APPSDIR/frameworks/android-sdk-linux/tools:$APPSDIR/frameworks/android-sdk-linux/platform-tools:$APPSDIR/frameworks/airsdk/bin:$APPSDIR/frameworks/android-ndk-r8
+#export PYTHONSTARTUP=~/.pythonrc.py
+export MAILPATH=/var/mail/$USER
+export MAILCHECK=60
+alias jenkins-cli="java -jar $APPSDIR/jenkinsCli/jenkins-cli.jar -s $JENKINS_URL"
+eval `dircolors $OPENSOURCEDIR/other/utils/dircolors-solarized/dircolors.256dark`
+#alias la='ls -lsa'
 alias xclipc="xclip -selection c"
 #alias lvds='xrandr --output VGA1 --off --output DP1 --off --output LVDS1 --1280x800 --primary'
 #alias vga='xrandr --output DP1 --off --output VGA1 --auto --primary --output LVDS1 --mode 1280x800 --left-of VGA1'
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator_completion ]] && source $HOME/.tmuxinator/scripts/tmuxinator_completion
 export TERM=xterm-256color
 export EDITOR=vim
-~/bin/tmux-login-session hacking
+# start tmux session hacking if the hacking session is not active/existing else just bare tmux
+if [ "$TMUX" = "" ]; then
+    # not if tmux session
+    `tmux list-session | grep hacking > /dev/null`
+    # check for hacking session
+    if [ $? = 0 ]; then
+        # tmux hacking found
+        `tmux list-session | grep attached | grep hacking > /dev/null`
+        if [ $? = 0 ]; then
+            # hacking found active create a new session
+            tmux -2 new
+        else
+            # hacking found but not active
+            tmux -2 attach -t hacking
+        fi
+    else
+        # hacking not found
+        tmux -2 new -s hacking
+    fi
+fi

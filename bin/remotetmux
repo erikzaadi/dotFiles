@@ -1,0 +1,7 @@
+#!/bin/bash
+# remotetmux
+# usage: remotetmux remoteuser remotehost session
+
+script="tmux attach-session -t \"$3\" || tmux new-session -s \"$3\" "
+
+echo $script | ssh -t $1@$2 "bash -"
