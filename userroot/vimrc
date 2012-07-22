@@ -28,7 +28,7 @@
             "Bundle 'sjl/gundo.vim'
             "Bundle 'TaskList.vim'
             Bundle 'taglist.vim'
-            Bundle 'int3/vim-taglist-plus'
+            "Bundle 'int3/vim-taglist-plus'
             Bundle 'mutewinter/vim-indent-guides'
             Bundle 'reinh/vim-makegreen'
             Bundle 'rosenfeld/conque-term'
@@ -36,6 +36,8 @@
             Bundle 'scrooloose/syntastic'
             "Bundle 'kana/vim-smartinput'
             Bundle 'sjl/clam.vim'
+            Bundle 'peterhoeg/vim-tmux'
+            Bundle 'benmills/vimux'
         " General Vim end
     
         " Python
@@ -56,7 +58,7 @@
             Bundle 'HTML-AutoCloseTag'
             Bundle 'juvenn/mustache.vim'
             Bundle 'groenewege/vim-less'
-            Bundle 'Rykka/ColorV'
+            Bundle 'Rykka/colorv.vim'
             Bundle 'gregsexton/MatchTag'
             Bundle 'wavded/vim-stylus'
             Bundle 'JavaScript-Indent'
@@ -70,7 +72,7 @@
             Bundle 'digitaltoad/vim-jade'
             Bundle 'leshill/vim-json'
             Bundle 'kchmck/vim-coffee-script'
-            Bundle 'manalang/jshint.vim'
+            Bundle 'walm/jshint.vim'
             Bundle 'mmalecki/vim-node.js'
             Bundle 'lambdalisue/nodeunit.vim'
         " Javascript / node /coffeescript end
@@ -78,11 +80,20 @@
         " C# / .Niet
     
         " C# / .Niet end
+        
+        " Java
+        "
+        " Java end
+
+        " Scala
+            Bundle 'derekwyatt/vim-scala'
+        " Scala End
     
         " Misc
             Bundle 'vim-scripts/nginx.vim'
         " Misc end
-    
+        
+   
         " Unused (for now)
             "Bundle 'bash-support.vim'
             "Bundle 'SuperTab'
@@ -110,7 +121,7 @@
     set modelines=5                " default numbers of lines to read for
     set autowrite                  " Writes on make/shell commands
     set autoread
-    set directory=/tmp//           " prepend(^=) $HOME/.tmp/ to default path;
+    set directory=/tmp/           " prepend(^=) $HOME/.tmp/ to default path;
     " use full path as backup filename(//)
     set hidden                     " The current buffer can be put to the
     " background without writing to disk
@@ -218,7 +229,20 @@
         au BufNewFile,BufRead *.webconfig set filetype=xml
         au BufNewFile,BufRead *.nuspec set filetype=xml
     " C# / .NIET end
-" Filetype overrides end
+
+    " Java 
+        au BufNewFile,BufRead *.java set tags=$PWD/.tags
+    " Java end
+
+    " Scala
+        au BufNewFile,BufRead *.scala set filetype=scala
+        au BufNewFile,BufRead *.sbt set filetype=scala
+    " Scala end
+
+    " Misc
+        au BufNewFile,BufRead *tmux.conf set filetype=tmux
+    " Misc end
+ " Filetype overrides end
 
 
 " Vim Plugin Configs
@@ -228,7 +252,7 @@
     "let g:solarized_termcolors=256
     "let g:solarized_termcolors=16
     call togglebg#map("<F5>")
-    let g:solarized_termtrans=0
+    let g:solarized_termtrans=1
     if has ('gui_running')
     	if has('mac')
     		set gfn=Monaco:h10
@@ -264,6 +288,9 @@
     "let g:ropevim_guess_project=1
     let g:pymode_folding=0
     let g:pymode_lint_ignore=""
+    let g:syntastic_mode_map = { 'mode': 'active',
+                                    \ 'active_filetypes': [],
+                                    \ 'passive_filetypes': ['java'] }
 
 " Vim Plugin Configs end
 

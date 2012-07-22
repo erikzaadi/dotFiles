@@ -2,5 +2,6 @@
 
 MAIL_CHAR=✉
 
-mail -e && echo "(`grep -c '^From ' /var/mail/$USER`)$MAIL_CHAR "
+[ -s /var/mail/$USER ] && echo "(`grep -c '^From ' /var/mail/$USER`)$MAIL_CHAR "
+
 exit 0

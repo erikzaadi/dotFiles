@@ -5,6 +5,8 @@ HEART_EMPTY=♡
 [ -z "$NUM_HEARTS" ] &&
     NUM_HEARTS=5
 
+VOLTAGE=⚡
+
 cutinate()
 {
     perc=$1
@@ -25,7 +27,7 @@ linux_get_bat ()
 {
     bf=$(cat $BAT_FULL)
     bn=$(cat $BAT_NOW)
-    echo $(( 100 * $bn / $bf ))
+    echo "$VOLTAGE$(( 100 * $bn / $bf ))"
 }
 
 freebsd_get_bat ()
