@@ -29,13 +29,14 @@ if [ "$TMUX" = "" ]; then
             tmux -2 new
         else
             # hacking found but not active
-            tmux -2 attach -t hacking
+            hack
         fi
     else
         # hacking not found
-        tmux -2 new -s hacking
+        hack
     fi
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source $HOME/nvm/nvm.sh
+xmodmap ~/.xmodmap
