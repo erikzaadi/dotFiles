@@ -1,0 +1,11 @@
+#!/bin/bash
+CURRENT_TMUX_SESSION=`tmux list-sessions | grep "(attached)" | cut -d \: -f 1 | tr '[A-Z]' '[a-z]'`
+PROJECTS=`cd ~/.tmuxinator;ls *.yml | cut -d \. -f 1 | sed "/${CURRENT_TMUX_SESSION}/d" -`
+PS3="Select tmux project:"
+select PROJECT in $PROJECTS;
+do
+    clear
+    mux start $PROJECT
+    break;
+done;
+exit 0
