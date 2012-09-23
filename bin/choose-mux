@@ -1,10 +1,14 @@
 #!/bin/bash
 CURRENT_TMUX_SESSION=`tmux list-sessions | grep "(attached)" | cut -d \: -f 1 | tr '[A-Z]' '[a-z]'`
-PROJECTS=`cd ~/.tmuxinator;ls *.yml | cut -d \. -f 1 | sed "/${CURRENT_TMUX_SESSION}/d" -`
+PROJECTS=`ls ~/.tmuxinator/*.yml | cut -d \/ -f 5 | cut -d \. -f 1 `
+if [[ "" != "${CURRENT_TMUX_SESSION}" ]]; then
+    PROJECTS=`echo $PROJECTS | sed "/${CURRENT_TMUX_SESSION}/d" -`
+fi
 PS3="Select tmux project:"
 select PROJECT in $PROJECTS;
 do
     clear
+    #cd `grep project_root ~/tmuxinator/$PROJECT.yml | cut -d \:  -f 2`
     mux start $PROJECT
     break;
 done;

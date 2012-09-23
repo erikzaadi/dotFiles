@@ -1,39 +1,19 @@
 #!/bin/sh
 
-HEART_FULL=♥
-HEART_EMPTY=♡
-[ -z "$NUM_HEARTS" ] &&
-    NUM_HEARTS=5
+VOLTAGE="⚡ "
+CHARGING="♺ "
 
-VOLTAGE=⚡
-
-cutinate()
-{
-    perc=$1
-    inc=$(( 100 / $NUM_HEARTS))
-
-
-    for i in `seq $NUM_HEARTS`; do
-        if [ $perc -lt 100 ]; then
-            echo $HEART_EMPTY
-        else
-            echo $HEART_FULL
-        fi
-        perc=$(( $perc + $inc ))
-    done
-}
 
 linux_get_bat ()
 {
     bf=$(cat $BAT_FULL)
     bn=$(cat $BAT_NOW)
-    echo "$VOLTAGE$(( 100 * $bn / $bf ))"
+    echo "${PLUGGED}$(( 100 * $bn / $bf ))"
 }
 
 freebsd_get_bat ()
 {
     echo "$(sysctl -n hw.acpi.battery.life)"
-
 }
 
 # Do with grep and awk unless too hard
@@ -46,12 +26,15 @@ case $(uname -s) in
     "Linux")
         BATPATH=/sys/class/power_supply/BAT0
         STATUS=$BATPATH/status
+        if [ "`cat $BATPATH/status`" = "Charging" ]; then
+            PLUGGED=$CHARGING
+        else
+            PLUGGED=$VOLTAGE
+        fi
         if [ -f $BATPATH/energy_full ]; then 
-            #not connected to charger
             BAT_FULL=$BATPATH/energy_full
             BAT_NOW=$BATPATH/energy_now
         else
-            #connected to charger
             BAT_FULL=$BATPATH/charge_full
             BAT_NOW=$BATPATH/charge_now
         fi
@@ -116,10 +99,5 @@ esac
 
 BATTERY_STATUS=`battery_status $1`
 [ -z "$BATTERY_STATUS" ] && exit
-
-if [ -n "$CUTE_BATTERY_INDICATOR" ]; then
-    echo `cutinate $BATTERY_STATUS`
-else
-    echo ${BATTERY_STATUS}%
-fi
+echo ${BATTERY_STATUS}%
 

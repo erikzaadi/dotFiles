@@ -19,27 +19,35 @@
 
     " Bundles
         " General Vim
-            Bundle 'altercation/vim-colors-solarized'
-            Bundle 'cschlueter/vim-ir_black'
             Bundle 'scrooloose/nerdtree'
+            Bundle 'scrooloose/nerdcommenter'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'Command-T'
             Bundle 'loremipsum'
-            "Bundle 'sjl/gundo.vim'
-            "Bundle 'TaskList.vim'
+            Bundle 'majutsushi/tagbar'
             Bundle 'taglist.vim'
-            "Bundle 'int3/vim-taglist-plus'
             Bundle 'mutewinter/vim-indent-guides'
-            Bundle 'reinh/vim-makegreen'
             Bundle 'rosenfeld/conque-term'
             Bundle 'kien/ctrlp.vim'
             Bundle 'scrooloose/syntastic'
-            "Bundle 'kana/vim-smartinput'
             Bundle 'sjl/clam.vim'
             Bundle 'peterhoeg/vim-tmux'
             Bundle 'benmills/vimux'
+            Bundle 'Lokaltog/vim-powerline'
+            Bundle 'mattn/gist-vim'
+            Bundle 'mattn/webapi-vim'
+            Bundle 'SearchComplete'
+            Bundle 'TaskList.vim'
+            Bundle 'mru.vim'
         " General Vim end
     
+        " Color Schemes
+            Bundle 'altercation/vim-colors-solarized'
+            Bundle 'cschlueter/vim-ir_black'
+            Bundle 'Zenburn'
+            Bundle 'werks.vim'
+        " Color Schemes end
+        
         " Python
             "Bundle 'pythoncomplete'
             "Bundle 'nvie/vim-pyunit'
@@ -91,6 +99,7 @@
     
         " Misc
             Bundle 'vim-scripts/nginx.vim'
+            Bundle 'uguu-org/vim-matrix-screensaver'
         " Misc end
         
    
@@ -101,7 +110,11 @@
             "Bundle 'snipMate'
             "Bundle 'tpope/vim-haml'
             "Bundle 'Lokaltog/vim-easymotion'
-            "Bundle 'Tagbar'
+            "Bundle 'kana/vim-smartinput'
+            "Bundle 'sjl/gundo.vim'
+            "Bundle 'int3/vim-taglist-plus'
+            "Bundle 'reinh/vim-makegreen'
+            "Bundle 'flomotlik/vim-livereload'
         " Unused (for now) end
     " Bundles end
     if iCanHazVundle == 0
@@ -135,7 +148,6 @@
     set expandtab
     "set tw=80
     set autoindent
-    set backup " make backup files
     set backupdir=~/.vim/backup " where to put backup files
     set clipboard+=unnamed " share windows clipboard
     set directory=~/.vim/tmp " directory to place swap files in
@@ -150,6 +162,8 @@
     set si "Smart indet
     set wrap "Wrap lines
     set number                    " Line numers
+    set nobackup
+    set noswapfile
     try
         lang en_US
     catch
@@ -188,6 +202,7 @@
     "inoremap <right> <nop>
     map <F1> <Esc>
     imap <F1> <Esc>
+    nmap <F8> :TagbarToggle<CR>
 " Keymaps end
 
 " Filetype overrides
@@ -255,9 +270,9 @@
     let g:solarized_termtrans=1
     if has ('gui_running')
     	if has('mac')
-    		set gfn=Monaco:h10
+    		set gfn=Monaco:h13
     	else 
-    		set guifont=Monaco\ 10
+    		set guifont=Monaco\ For\ Powerline\ 13
     	endif
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
@@ -278,6 +293,8 @@
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
     let NERDTreeShowHidden=1
+    "let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files
+    let NERDTreeMouseMode       =   3    
     "let g:ConqueTerm_TERM = 'xterm-color256'
     let g:ConqueTerm_ReadUnfocused = 1
     let g:ConqueTerm_InsertOnEnter = 1
@@ -291,6 +308,7 @@
     let g:syntastic_mode_map = { 'mode': 'active',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
+    let g:Powerline_symbols = 'fancy'
 
 " Vim Plugin Configs end
 
