@@ -8,8 +8,8 @@ export PATH=/usr/local/sbin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/
 #export PYTHONSTARTUP=~/.pythonrc.py
 export MAILPATH=/var/mail/$USER
 #export MAILCHECK=60
-if [ -f $OPENSOURCEDIR/other/utils/dircolors-solarized/dircolors.256dark ]; then
-    eval `dircolors $OPENSOURCEDIR/other/utils/dircolors-solarized/dircolors.256dark`
+if [ -f $OPENSOURCEDIR/other/utils/solarized/dircolors-solarized/dircolors.256dark ]; then
+    eval `dircolors $OPENSOURCEDIR/other/utils/solarized/dircolors-solarized/dircolors.256dark`
 fi
 #alias la='ls -lsa'
 alias xclipc="xclip -selection c"
