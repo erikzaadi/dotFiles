@@ -127,7 +127,9 @@
 "Set Vim defaults
     set nocompatible               " be iMproved
     set history=256                " Number of things to remember in history.
-    set timeoutlen=250             " Time to wait after ESC (default causes an
+    set notimeout
+    set ttimeout
+    set timeoutlen=50             " Time to wait after ESC (default causes an
     " annoying delay)
     set clipboard+=unnamed         " Yanks go on clipboard instead.
     set modeline
