@@ -166,6 +166,7 @@
     set number                    " Line numers
     set nobackup
     set noswapfile
+    set shortmess=at " Hide enter to continue for external apps - GIT
     try
         lang en_US
     catch
@@ -205,6 +206,7 @@
     map <F1> <Esc>
     imap <F1> <Esc>
     nmap <F8> :TagbarToggle<CR>
+    nmap <F12> :RopeGotoDefinition<CR>
 " Keymaps end
 
 " Filetype overrides
