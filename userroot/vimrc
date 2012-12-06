@@ -43,9 +43,9 @@
     
         " Color Schemes
             Bundle 'altercation/vim-colors-solarized'
-            Bundle 'cschlueter/vim-ir_black'
-            Bundle 'Zenburn'
-            Bundle 'werks.vim'
+"            Bundle 'cschlueter/vim-ir_black'
+"            Bundle 'Zenburn'
+"            Bundle 'werks.vim'
         " Color Schemes end
         
         " Python
@@ -65,13 +65,13 @@
             Bundle 'mattn/zencoding-vim'
             Bundle 'HTML-AutoCloseTag'
             Bundle 'juvenn/mustache.vim'
-            Bundle 'groenewege/vim-less'
+"            Bundle 'groenewege/vim-less'
             Bundle 'Rykka/colorv.vim'
             Bundle 'gregsexton/MatchTag'
             Bundle 'wavded/vim-stylus'
             Bundle 'JavaScript-Indent'
             Bundle 'tangledhelix/vim-octopress'
-            Bundle 'tpope/vim-haml'
+"            Bundle 'tpope/vim-haml'
         " Web (generic) end
     
         " Javascript / node / coffeescript 
@@ -94,7 +94,7 @@
         " Java end
 
         " Scala
-            Bundle 'derekwyatt/vim-scala'
+"            Bundle 'derekwyatt/vim-scala'
         " Scala End
     
         " Misc
