@@ -148,7 +148,9 @@
     set sts=4
     set sw=4
     set expandtab
-    "set tw=80
+    " set tw=120
+    " set winwidth=120 nice idea, but a bit annoying on small terminalz
+    " set winminwidth=120
     set autoindent
     set backupdir=~/.vim/backup " where to put backup files
     set clipboard+=unnamed " share windows clipboard

@@ -1,7 +1,7 @@
 source $HOME/.envvars.rc
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="erikzaadi"
-plugins=(git github ant compleat yum extract npm node pip python vundle cake compleat django tmuxinator gem bundler battery rvm ssh-agent mvn rake)
+plugins=(git github coffee ant compleat yum extract npm node pip python vundle cake compleat django tmuxinator gem bundler battery rvm ssh-agent mvn rake)
 source $ZSH/oh-my-zsh.sh
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -47,3 +47,15 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 if [ -f ~/.xmodmap ]; then
     xmodmap ~/.xmodmap
 fi
+autoload -U compinit
+compinit
+
+autoload -U bashcompinit
+bashcompinit
+
+_nosetests()
+{
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
+}
+complete -o nospace -F _nosetests nosetests
