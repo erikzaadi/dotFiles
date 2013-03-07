@@ -48,9 +48,7 @@
     rclone = clone --reference /git/cache.git/
 
     last  = cat-file commit HEAD
-    st    = ls-files --exclude-per-directory=.gitignore \
-                    --exclude-from=.git/info/exclude \
-                    -t -o -u -s -m -d
+    st    = ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude -t -o -u -s -m -d
     stc   = diff --stat --name-status --cached 
     cat   = -p cat-file -p
     up    = !git remote update ; git gc
