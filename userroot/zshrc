@@ -1,12 +1,50 @@
-
 source $HOME/.envvars.rc
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="erikzaadi"
-plugins=(git github git-flow coffee ant compleat yum extract npm node pip python vundle cake compleat django tmuxinator gem bundler battery rvm ssh-agent mvn rake)
-source $ZSH/oh-my-zsh.sh
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+source $OPENSOURCEDIR/other/utils/antigen/antigen.zsh
+# Load the oh-my-zsh's library.
+antigen-lib
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen-bundles <<EOBUNDLES
+
+git
+github
+git-flow
+coffee
+$OPENSOURCEDIR/mine/dotFiles/zsh/tmuxinator
+django
+ant
+pip
+gem
+rake
+python
+command-not-found
+battery
+npm
+node
+extract
+compleat
+rvm
+ssh-agent
+mvn
+bundler
+
+# Syntax highlighting bundle.
+zsh-users/zsh-syntax-highlighting
+
+EOBUNDLES
+
+# Load the theme.
+antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
+
+# Tell antigen that you're done.
+antigen-apply
+
+#ZSH=$HOME/.oh-my-zsh
+#ZSH_THEME="erikzaadi"
+#plugins=(git github git-flow coffee ant compleat yum extract npm node pip python vundle cake compleat django tmuxinator gem bundler battery rvm ssh-agent mvn rake)
+#source $ZSH/oh-my-zsh.sh
+#autoload -U edit-command-line
+#zle -N edit-command-line
+#bindkey -M vicmd v edit-command-line
 #perhaps move this to envvars as it's rathed specific..
 export PATH=/usr/local/sbin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/xpyv/bin:$APPSDIR/frameworks/android-sdk-linux/tools:$APPSDIR/frameworks/android-sdk-linux/platform-tools:$APPSDIR/frameworks/airsdk/bin:$APPSDIR/frameworks/android-ndk-r8:${JAVA_HOME}/bin:$HOME/.tmuxinator/scripts
 #export PYTHONSTARTUP=~/.pythonrc.py
