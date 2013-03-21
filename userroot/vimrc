@@ -59,6 +59,7 @@
             "Bundle 'olethanh/Vim-nosecompiler'
             "Bundle 'rope-vim'
             Bundle 'klen/python-mode'
+            Bundle 'django.vim'
         " Python end
     
         " Web (generic)
