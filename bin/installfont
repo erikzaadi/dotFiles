@@ -1,0 +1,15 @@
+#!/bin/bash
+FONT=$1
+FONT_BARE=`basename ${FONT}`
+FONT_NAME=${FONT_BARE%.*}
+FONT_EXT=${FONT_BARE##*.}
+FONT_EXT=`echo ${FONT_EXT} | tr '[A-Z]' '[a-z]'`
+if [[ ${FONT_EXT} == "otf" ]]; then
+    FONT_DIR=opentype
+else
+    FONT_DIR=truetype
+fi
+echo "FONT_DIR : ${FONT_DIR}, FONT_EXT : ${FONT_EXT} FONT_NAME : ${FONT_NAME} "
+sudo mkdir -p /usr/share/fonts/${FONT_DIR}/${FONT_NAME}
+sudo cp $FONT /usr/share/fonts/${FONT_DIR}/${FONT_NAME}/
+sudo fc-cache -f -v

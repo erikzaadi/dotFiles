@@ -1,0 +1,2 @@
+#!/bin/sh
+tmux set-option default-path $PWD

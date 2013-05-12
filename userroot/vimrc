@@ -15,12 +15,13 @@
         set rtp+=~/.vim/bundle/vundle/
         call vundle#rc()
         Bundle 'gmarik/vundle'
+
     " Setting up Vundle - the vim plugin bundler end
 
     " Bundles
         " General Vim
             Bundle 'scrooloose/nerdtree'
-            Bundle 'scrooloose/nerdcommenter'
+            "Bundle 'scrooloose/nerdcommenter'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'Command-T'
             Bundle 'loremipsum'
@@ -28,37 +29,21 @@
             Bundle 'taglist.vim'
             Bundle 'mutewinter/vim-indent-guides'
             Bundle 'rosenfeld/conque-term'
-            Bundle 'kien/ctrlp.vim'
+            Bundle 'UltiSnips'
             Bundle 'scrooloose/syntastic'
-            Bundle 'sjl/clam.vim'
-            Bundle 'peterhoeg/vim-tmux'
-            Bundle 'benmills/vimux'
-            Bundle 'Lokaltog/vim-powerline'
-            Bundle 'mattn/gist-vim'
-            Bundle 'mattn/webapi-vim'
-            Bundle 'SearchComplete'
-            Bundle 'TaskList.vim'
-            Bundle 'mru.vim'
+            Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
+            Bundle 'terryma/vim-multiple-cursors'
+            Bundle 'sjl/gundo.vim'
         " General Vim end
     
         " Color Schemes
             Bundle 'altercation/vim-colors-solarized'
-"            Bundle 'cschlueter/vim-ir_black'
-"            Bundle 'Zenburn'
-"            Bundle 'werks.vim'
         " Color Schemes end
         
         " Python
-            "Bundle 'pythoncomplete'
-            "Bundle 'nvie/vim-pyunit'
-            "Bundle 'Pydiction'
-            "Bundle 'alfredodeza/pytest.vim'
-            "Bundle 'fs111/pydoc.vim'
-            "Bundle 'nvie/vim-pep8'
-            "Bundle 'nvie/vim-pyflakes'
-            "Bundle 'olethanh/Vim-nosecompiler'
-            "Bundle 'rope-vim'
-            Bundle 'klen/python-mode'
+            Bundle 'pytest.vim'
+            "Bundle 'klen/python-mode'
+            Bundle 'davidhalter/jedi-vim'
             Bundle 'django.vim'
         " Python end
     
@@ -66,13 +51,11 @@
             Bundle 'mattn/zencoding-vim'
             Bundle 'HTML-AutoCloseTag'
             Bundle 'juvenn/mustache.vim'
-"            Bundle 'groenewege/vim-less'
             Bundle 'Rykka/colorv.vim'
             Bundle 'gregsexton/MatchTag'
             Bundle 'wavded/vim-stylus'
             Bundle 'JavaScript-Indent'
             Bundle 'tangledhelix/vim-octopress'
-"            Bundle 'tpope/vim-haml'
         " Web (generic) end
     
         " Javascript / node / coffeescript 
@@ -100,23 +83,9 @@
     
         " Misc
             Bundle 'vim-scripts/nginx.vim'
+            " I can haz red pill?
             Bundle 'uguu-org/vim-matrix-screensaver'
         " Misc end
-        
-   
-        " Unused (for now)
-            "Bundle 'bash-support.vim'
-            "Bundle 'SuperTab'
-            "Bundle 'dickeytk/status.vim'
-            "Bundle 'snipMate'
-            "Bundle 'tpope/vim-haml'
-            "Bundle 'Lokaltog/vim-easymotion'
-            "Bundle 'kana/vim-smartinput'
-            "Bundle 'sjl/gundo.vim'
-            "Bundle 'int3/vim-taglist-plus'
-            "Bundle 'reinh/vim-makegreen'
-            "Bundle 'flomotlik/vim-livereload'
-        " Unused (for now) end
     " Bundles end
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
@@ -127,18 +96,17 @@
 
 "Set Vim defaults
     set nocompatible               " be iMproved
+    set nobackup
+    set noswapfile
     set history=256                " Number of things to remember in history.
     set notimeout
     set ttimeout
     set timeoutlen=50             " Time to wait after ESC (default causes an
     " annoying delay)
-    set clipboard+=unnamed         " Yanks go on clipboard instead.
     set modeline
     set modelines=5                " default numbers of lines to read for
     set autowrite                  " Writes on make/shell commands
     set autoread
-    set directory=/tmp/           " prepend(^=) $HOME/.tmp/ to default path;
-    " use full path as backup filename(//)
     set hidden                     " The current buffer can be put to the
     " background without writing to disk
     set hlsearch                   " highlight search
@@ -153,9 +121,6 @@
     " set winwidth=120 nice idea, but a bit annoying on small terminalz
     " set winminwidth=120
     set autoindent
-    set backupdir=~/.vim/backup " where to put backup files
-    set clipboard+=unnamed " share windows clipboard
-    set directory=~/.vim/tmp " directory to place swap files in
     set mouse=a "enable mouse in GUI mode
     set mousehide                 " Hide mouse after chars typed
     set showmatch                 " Show matching brackets.
@@ -167,8 +132,6 @@
     set si "Smart indet
     set wrap "Wrap lines
     set number                    " Line numers
-    set nobackup
-    set noswapfile
     set shortmess=at " Hide enter to continue for external apps - GIT
     try
         lang en_US
@@ -192,11 +155,7 @@
 
 " Keymaps
     map <silent> <F2> :silent NERDTreeToggle <CR>
-    "map <silent> <F2> :call g:ToogleNERDTreeLikeAChamp() <CR>
-    map <silent> <S-F2> <ESC>:NERDTreeToggle <RETURN><CR>
     map <silent> <F3> <ESC>:CommandT<RETURN>
-    "map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
-    "map <silent> <F8> :call MakeGreen() <RETURN>
     "Oy vei, trying without arrows
     "nnoremap <up> <nop>
     "nnoremap <down> <nop>
@@ -207,18 +166,15 @@
     "inoremap <left> <nop>
     "inoremap <right> <nop>
     map <F1> <Esc>
-    imap <F1> <Esc>
-    nmap <F8> :TagbarToggle<CR>
-    nmap <F12> :RopeGotoDefinition<CR>
+    map <F6> <Esc> :lnext<CR>
+    map <S-F6> <Esc> :lprev<CR>
+    map <F8> <Esc> :TagbarToggle<CR>
+    map <F9> <Esc>:Pytest file<CR>
+    map <F10> <Esc> :Pytest method<CR>
 " Keymaps end
 
 " Filetype overrides
-    " Python
-        "autocmd BufWritePost *.py call Pyflakes()
-    " Python end   
-
-    " Javascript / Coffeescript / Node
-        au BufNewFile,BufRead *.less set filetype=less
+     " Javascript / Coffeescript / Node
         au BufNewFile,BufRead *.coffee set filetype=coffee
         au! BufRead,BufNewFile *.json set filetype=json 
         au BufRead,BufNewFile *.ejs set filetype=html
@@ -229,19 +185,16 @@
         au FileType javascript set tabstop=2
         au BufNewFile,BufRead *.coffee set softtabstop=2
         au FileType javascript set softtabstop=2
-        "au BufNewFile,BufRead *.coffee compiler nodeunit
-        "au BufNewFile,BufRead *.coffee compiler coffee
-        "autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
-        "au FileType javascript compiler nodeunit
     " Javascript / Coffeescript / Node end
 
     " Web
+        au BufNewFile,BufRead *.less set filetype=less
+        au BufRead,BufNewFile *.jade set filetype=jade
         au BufNewFile,BufRead *.styl set filetype=stylus
         au BufNewFile,BufRead *.stylus set filetype=stylus
-        au! BufWinEnter *.scss call colorv#preview("S")
-        au! bufwritepost *.scss call colorv#preview("S")
-        au! BufWinEnter *.styl call colorv#preview("S")
-        au! bufwritepost *.styl call colorv#preview("S")
+        au! BufWinEnter,bufwritepost *.scss call colorv#preview("S")
+        au! BufWinEnter,bufwritepost *.styl call colorv#preview("S")
+        au! BufWinEnter,bufwritepost *.less call colorv#preview("S")
         autocmd BufNewFile,BufRead *.markdown setfiletype octopress
     " Web end
 
@@ -276,10 +229,10 @@
     call togglebg#map("<F5>")
     let g:solarized_termtrans=1
     if has ('gui_running')
-    	if has('mac')
-    		set gfn=Monaco:h13
+    	if has('mac') " wishfull thinking..
+    		set gfn=Source\ Code\ Pro\ for\ Powerline:h13
     	else 
-    		set guifont=Monaco\ For\ Powerline\ 13
+    		set guifont=Source\ Code\ Pro\ for\ Powerline\ 13
     	endif
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
@@ -296,26 +249,31 @@
     	set statusline+=\ [%{&ff}/%Y]            " filetype
     	set statusline+=\ [%{getcwd()}]          " current dir
     endif
-    let g:user_zen_expandabbr_key='<C-e>'
-    syntax on                      " enable syntax
-    filetype plugin indent on " load filetype plugins/indent settings
-    let NERDTreeShowHidden=1
-    "let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files
+    let g:user_zen_expandabbr_key = '<C-e>'
+    let NERDTreeShowHidden = 1
+    let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files
+    set wildignore+=*.pyc
+    set wildignore+=**/node_modules
     let NERDTreeMouseMode       =   3    
-    "let g:ConqueTerm_TERM = 'xterm-color256'
-    let g:ConqueTerm_ReadUnfocused = 1
-    let g:ConqueTerm_InsertOnEnter = 1
-    let g:pymode_lint_checker = "pylint"
-    "let g:syntastic_python_checker = 'pylint'
-    let g:syntastic_check_on_open=0
-    "let g:syntastic_auto_loc_list=1
-    "let g:ropevim_guess_project=1
-    let g:pymode_folding=0
-    let g:pymode_lint_ignore=""
+    let g:syntastic_python_checkers = ['flake8', 'pylint']
+    let g:syntastic_check_on_open = 0
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_style_warning_symbol='☔'
+    let g:syntastic_style_error_symbol='⚑'
+    let g:syntastic_error_symbol='✗'
+    let g:syntastic_warning_symbol='⚠'
     let g:syntastic_mode_map = { 'mode': 'active',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
     let g:Powerline_symbols = 'fancy'
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#rename_command = "<S-F12>"
+    let g:jedi#goto_command = "<F12>"
+
+    let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
+    syntax on                      " enable syntax
+    filetype plugin indent on " load filetype plugins/indent settings
+ 
 
 " Vim Plugin Configs end
 

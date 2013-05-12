@@ -97,3 +97,5 @@
 
 [help]
 	autocorrect = 1
+[gitreview]
+	username = erikzaadi
