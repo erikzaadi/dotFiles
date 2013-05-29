@@ -29,9 +29,6 @@ zsh-users/zsh-syntax-highlighting
 #additional completions
 zsh-users/zsh-completions
 
-#proper vim mode
-sharat87/zsh-vim-mode
-
 #pip-env-isoz
 sharat87/pip-app
 
@@ -56,6 +53,9 @@ alias pwdc='pwd | xclipc'
 alias chuck='sudo'
 psgrep() {
     ps aux | grep $1 | egrep -v "grep"
+}
+psgrep-id() {
+    ps aux | grep $1 | egrep -v "grep" | awk '{print $2;}'
 }
 alias apt-search="aptitude search"
 alias apt-show="aptitude show"

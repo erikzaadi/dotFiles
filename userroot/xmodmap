@@ -1,3 +1,4 @@
 clear Lock
 keycode 66 = Alt_L
 keycode 78 = Caps_Lock
+keycode 108 = Menu
