@@ -1,0 +1,7 @@
+#!/bin/bash
+
+VENV_DIR=$1
+if [[ "${VENV_DIR}" = "" ]]; then
+    VENV_DIR="${PWD}/.venv"
+fi
+source ${VENV_DIR}/bin/activate
