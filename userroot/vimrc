@@ -132,7 +132,8 @@
     set si "Smart indet
     set wrap "Wrap lines
     set number                    " Line numers
-    set shortmess=at " Hide enter to continue for external apps - GIT
+    set shortmess=atTI " Hide enter to continue for external apps - GIT
+    set cmdheight=1
     try
         lang en_US
     catch
