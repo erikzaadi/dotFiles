@@ -5,3 +5,4 @@ if [[ "${VENV_DIR}" = "" ]]; then
     VENV_DIR="${PWD}/.venv"
 fi
 source ${VENV_DIR}/bin/activate
+export PATH=${VENV_DIR}/bin:${PATH}

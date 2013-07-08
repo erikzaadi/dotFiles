@@ -29,7 +29,7 @@
             Bundle 'taglist.vim'
             Bundle 'mutewinter/vim-indent-guides'
             Bundle 'rosenfeld/conque-term'
-            Bundle 'UltiSnips'
+            Bundle 'MarcWeber/ultisnips'
             Bundle 'scrooloose/syntastic'
             Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
             Bundle 'terryma/vim-multiple-cursors'
@@ -82,6 +82,8 @@
         " Scala End
     
         " Misc
+            Bundle 'Puppet-Syntax-Highlighting'
+            Bundle 'honza/vim-snippets'
             Bundle 'vim-scripts/nginx.vim'
             " I can haz red pill?
             Bundle 'uguu-org/vim-matrix-screensaver'
@@ -167,6 +169,7 @@
     "inoremap <left> <nop>
     "inoremap <right> <nop>
     map <F1> <Esc>
+    map <S-F5> <Esc> :setlocal spell spelllang=en_us<CR>
     map <F6> <Esc> :lnext<CR>
     map <S-F6> <Esc> :lprev<CR>
     map <F8> <Esc> :TagbarToggle<CR>
@@ -217,6 +220,7 @@
 
     " Misc
         au BufNewFile,BufRead *tmux.conf set filetype=tmux
+        au BufNewFile,BufRead *.pp set filetype=puppet
     " Misc end
  " Filetype overrides end
 
@@ -270,8 +274,12 @@
     let g:jedi#popup_on_dot = 0
     let g:jedi#rename_command = "<S-F12>"
     let g:jedi#goto_command = "<F12>"
+    let g:jedi#use_tabs_not_buffers = 0
 
-    let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
+    let g:UltiSnips = {}
+    let g:UltiSnips.ExpandTrigger = "<s-tab>"
+    let g:UltiSnips.snipmate_ft_filter = { 'default' : { 'filetypes': ["FILETYPE"] }, }
+    let g:UltiSnips.always_use_first_snippet = 1
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
  

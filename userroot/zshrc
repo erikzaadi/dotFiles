@@ -43,7 +43,7 @@ antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
 # Tell antigen that you're done.
 antigen-apply
 
-export PATH=/usr/local/sbin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$APPSDIR/frameworks/android-sdk-linux/tools:$APPSDIR/frameworks/android-sdk-linux/platform-tools:$APPSDIR/frameworks/airsdk/bin:$APPSDIR/frameworks/android-ndk-r8:${JAVA_HOME}/bin:$HOME/.rvm/bin
+export PATH=/usr/local/sbin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$APPSDIR/frameworks/android-sdk-linux/tools:$APPSDIR/frameworks/android-sdk-linux/platform-tools:$APPSDIR/frameworks/airsdk/bin:$APPSDIR/frameworks/android-ndk-r8:${JAVA_HOME}/bin:$HOME/.rvm/bin:${APPSDIR}/frameworks/node-webkit
 export MAILPATH=/var/mail/$USER
 if [ -f $OPENSOURCEDIR/other/utils/solarized/dircolors-solarized/dircolors.256dark ]; then
     eval `dircolors $OPENSOURCEDIR/other/utils/solarized/dircolors-solarized/dircolors.256dark`
@@ -93,6 +93,11 @@ autoload -U compinit
 compinit
 autoload -U zmv
 alias mmv='noglob zmv -W'
+alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
+delete-line()
+{
+    sed -i -e "$2d" $1
+}
 autoload -U bashcompinit
 bashcompinit
 
@@ -105,4 +110,4 @@ _nosetests()
 complete -o nospace -F _nosetests nosetests
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-cn
+#cn  #commented out, productivity killerz
