@@ -1,16 +1,15 @@
 source $HOME/.envvars.rc
 source $OPENSOURCEDIR/other/utils/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
-antigen-lib
+antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundles <<EOBUNDLES
 
-git
-github
+#git
+#github
 git-flow
 coffee
 django
-ant
 pip
 gem
 rake
@@ -19,37 +18,43 @@ command-not-found
 npm
 node
 extract
-compleat
 ssh-agent
-mvn
+brew
+bower
+bundler
+colored-man
+fabric
+lol
+git-extras
+vagrant
+virtualenv
 
 # Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
 
 #additional completions
-zsh-users/zsh-completions
+#zsh-users/zsh-completions
 
 #pip-env-isoz
-sharat87/pip-app
+#sharat87/pip-app
 
 #virtualenv
 KristianOellegaard/zsh-plugins
 
+aziz/tmuxinator completion
+
 EOBUNDLES
 
 # Load the theme.
-antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
+#antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
+antigen-theme agnoster
 
 # Tell antigen that you're done.
 antigen-apply
 
-export PATH=/usr/local/sbin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$APPSDIR/frameworks/android-sdk-linux/tools:$APPSDIR/frameworks/android-sdk-linux/platform-tools:$APPSDIR/frameworks/airsdk/bin:$APPSDIR/frameworks/android-ndk-r8:${JAVA_HOME}/bin:$HOME/.rvm/bin:${APPSDIR}/frameworks/node-webkit
+export PATH=/usr/local/sbin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${JAVA_HOME}/bin:$HOME/.rvm/bin
 export MAILPATH=/var/mail/$USER
-if [ -f $OPENSOURCEDIR/other/utils/solarized/dircolors-solarized/dircolors.256dark ]; then
-    eval `dircolors $OPENSOURCEDIR/other/utils/solarized/dircolors-solarized/dircolors.256dark`
-fi
-alias xclipc="xclip -selection c"
-alias pwdc='pwd | xclipc'
+alias pwdc='pwd | pbcopy'
 alias chuck='sudo'
 psgrep() {
     ps aux | grep $1 | egrep -v "grep"
@@ -57,13 +62,15 @@ psgrep() {
 psgrep-id() {
     ps aux | grep $1 | egrep -v "grep" | awk '{print $2;}'
 }
-alias apt-search="aptitude search"
-alias apt-show="aptitude show"
-installed() {
-    apt-search $1 | grep "^i"
-}
+#alias apt-search="aptitude search"
+#alias apt-show="aptitude show"
+#installed() {
+#    apt-search $1 | grep "^i"
+#}
+alias git="hub"
 alias gf='git flow'
 export TERM=xterm-256color
+#export TERM=screen-256color
 export EDITOR=vim
 # start tmux session hacking if the hacking session is not active/existing else just bare tmux
 if [ "$TMUX" = "" ]; then
@@ -86,9 +93,9 @@ if [ "$TMUX" = "" ]; then
     fi
 fi
 
-if [ -f ~/.xmodmap ]; then
-    xmodmap ~/.xmodmap
-fi
+#if [ -f ~/.xmodmap ]; then
+#    xmodmap ~/.xmodmap
+#fi
 autoload -U compinit
 compinit
 autoload -U zmv
@@ -101,7 +108,6 @@ delete-line()
 autoload -U bashcompinit
 bashcompinit
 
-compdef "_arguments '*: :($(tenper completions))'" tenper
 _nosetests()
 {
     cur="${COMP_WORDS[COMP_CWORD]}"

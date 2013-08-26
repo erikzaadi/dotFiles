@@ -31,7 +31,8 @@
             Bundle 'rosenfeld/conque-term'
             Bundle 'MarcWeber/ultisnips'
             Bundle 'scrooloose/syntastic'
-            Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
+            Bundle 'bling/vim-airline'
+            "Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'sjl/gundo.vim'
         " General Vim end
@@ -87,6 +88,7 @@
             Bundle 'vim-scripts/nginx.vim'
             " I can haz red pill?
             Bundle 'uguu-org/vim-matrix-screensaver'
+            Bundle 'vim-scripts/applescript.vim'
         " Misc end
     " Bundles end
     if iCanHazVundle == 0
@@ -230,14 +232,13 @@
     "set t_Co=256
     colorscheme solarized
     "let g:solarized_termcolors=256
-    "let g:solarized_termcolors=16
+    "let g:solarized_termtrans=1
     call togglebg#map("<F5>")
-    let g:solarized_termtrans=1
     if has ('gui_running')
-    	if has('mac') " wishfull thinking..
-    		set gfn=Source\ Code\ Pro\ for\ Powerline:h13
+    	if has('mac')
+    		set gfn=Monaco\ for\ Powerline:h13
     	else 
-    		set guifont=Source\ Code\ Pro\ for\ Powerline\ 13
+    		set guifont=Monaco\ for\ Powerline\ 13
     	endif
         set guioptions+=LlRrbmT
         set guioptions-=LlRrbmT
@@ -246,8 +247,8 @@
     "    colorscheme ir_black
     "    set background=light
     endif
+    set laststatus=2
     if has('statusline')
-    	set laststatus=2
     	" Broken down into easily includeable segments
     	set statusline=%<%f\    " Filename
     	set statusline+=%{fugitive#statusline()} "  Git Hotness
@@ -270,10 +271,11 @@
     let g:syntastic_mode_map = { 'mode': 'active',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
-    let g:Powerline_symbols = 'fancy'
+    "let g:Powerline_symbols = 'fancy'
+    let g:airline_powerline_fonts = 1
     let g:jedi#popup_on_dot = 0
     let g:jedi#rename_command = "<S-F12>"
-    let g:jedi#goto_command = "<F12>"
+    let g:jedi#goto_assignments_command = "<F12>"
     let g:jedi#use_tabs_not_buffers = 0
 
     let g:UltiSnips = {}
