@@ -1,45 +1,28 @@
 source $HOME/.envvars.rc
+autoload -U compinit
+compinit
+autoload -U bashcompinit
+bashcompinit
 source $OPENSOURCEDIR/other/utils/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundles <<EOBUNDLES
 
-#git
-#github
 git-flow
 coffee
 django
 pip
 gem
-rake
-python
-command-not-found
-npm
-node
 extract
 ssh-agent
 brew
-bower
 bundler
 colored-man
 fabric
 lol
 git-extras
 vagrant
-virtualenv
-
-# Syntax highlighting bundle.
-zsh-users/zsh-syntax-highlighting
-
-#additional completions
-#zsh-users/zsh-completions
-
-#pip-env-isoz
-#sharat87/pip-app
-
-#virtualenv
-KristianOellegaard/zsh-plugins
 
 aziz/tmuxinator completion
 
@@ -47,7 +30,7 @@ EOBUNDLES
 
 # Load the theme.
 #antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
-antigen-theme agnoster
+antigen-theme jonathan
 
 # Tell antigen that you're done.
 antigen-apply
@@ -73,31 +56,29 @@ export TERM=xterm-256color
 #export TERM=screen-256color
 export EDITOR=vim
 # start tmux session hacking if the hacking session is not active/existing else just bare tmux
-if [ "$TMUX" = "" ]; then
-    # not if tmux session
-    `tmux list-session | grep hacking > /dev/null`
-    # check for hacking session
-    if [ $? = 0 ]; then
-        # tmux hacking found
-        `tmux list-session | grep attached | grep hacking > /dev/null`
-        if [ $? = 0 ]; then
-            # hacking found active create a new session
-            tmux -2 new
-        else
-            # hacking found but not active
-            hack
-        fi
-    else
-        # hacking not found
-        hack
-    fi
-fi
+#if [ "$TMUX" = "" ]; then
+#    # not if tmux session
+#    `tmux list-session | grep hacking > /dev/null`
+#    # check for hacking session
+#    if [ $? = 0 ]; then
+#        # tmux hacking found
+#        `tmux list-session | grep attached | grep hacking > /dev/null`
+#        if [ $? = 0 ]; then
+#            # hacking found active create a new session
+#            tmux -2 new
+#        else
+#            # hacking found but not active
+#            hack
+#        fi
+#    else
+#        # hacking not found
+#        hack
+#    fi
+#fi
 
 #if [ -f ~/.xmodmap ]; then
 #    xmodmap ~/.xmodmap
 #fi
-autoload -U compinit
-compinit
 autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
@@ -105,15 +86,13 @@ delete-line()
 {
     sed -i -e "$2d" $1
 }
-autoload -U bashcompinit
-bashcompinit
 
-_nosetests()
-{
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
-}
-complete -o nospace -F _nosetests nosetests
+#_nosetests()
+#{
+#    cur="${COMP_WORDS[COMP_CWORD]}"
+#    COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
+#}
+#complete -o nospace -F _nosetests nosetests
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 #cn  #commented out, productivity killerz
