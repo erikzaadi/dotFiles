@@ -42,5 +42,6 @@ on run argv
 		else
 			return usage
 		end if
+        return "All of your base are belong to us"
 	end tell
 end run

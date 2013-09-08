@@ -32,7 +32,6 @@
             Bundle 'MarcWeber/ultisnips'
             Bundle 'scrooloose/syntastic'
             Bundle 'bling/vim-airline'
-            "Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'sjl/gundo.vim'
         " General Vim end
@@ -49,7 +48,8 @@
         " Python end
     
         " Web (generic)
-            Bundle 'mattn/zencoding-vim'
+            Bundle 'mattn/emmet-vim'
+            Bundle 'mattn/gist-vim'
             Bundle 'HTML-AutoCloseTag'
             Bundle 'juvenn/mustache.vim'
             Bundle 'Rykka/colorv.vim'
@@ -255,6 +255,8 @@
     	set statusline+=\ [%{&ff}/%Y]            " filetype
     	set statusline+=\ [%{getcwd()}]          " current dir
     endif
+
+
     let g:user_zen_expandabbr_key = '<C-e>'
     let NERDTreeShowHidden = 1
     let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files

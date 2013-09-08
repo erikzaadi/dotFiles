@@ -1,6 +1,4 @@
-# This is the default .slate file.
-# If no ~/.slate file exists this is the file that will be used.
-
+#minimal slate. Most keyboard resize/move are done via betterTouchTool
 config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
@@ -10,79 +8,28 @@ alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
 
-alias monitor-macbook 1280x800
-alias monitor-dell 1920x1200
-alias monitor-lg 1920x1080
-
-## Resize Bindings  alt+cmd+arrow + , shift+alt+cmd+arrow -
-bind right:alt;cmd       resize +10% +0
-bind left:shift;alt;cmd       resize -10% +0
-bind left:alt;cmd       resize +10% +0 bottom-right
-bind right:shift;alt;cmd       resize -10% +0 bottom-right
-bind down:alt;cmd       resize +0 +10%
-bind up:shift;alt;cmd       resize +0 -10%
-bind up:alt;cmd       resize +0 +10% bottom-left
-bind down:shift;alt;cmd       resize +0 -10% bottom-left
-
-## Nudge Bindings shift+alt+arrow
-bind right:shift;alt nudge +10% +0
-bind left:shift;alt  nudge -10% +0
-bind up:shift;alt    nudge +0   -10%
-bind down:shift;alt  nudge +0   +10%
-
-# Throw Bindings shift+ctrl+alt+arrow
-bind right:shift;ctrl;alt;cmd   throw right
-bind left:shift;ctrl;alt;cmd    throw left
-
-# Position Bindings ctrl+alt+cmd+arrow
-bind up:ctrl;alt;cmd ${full}
-bind left:ctrl;alt;cmd ${lefthalf}
-bind right:ctrl;alt;cmd ${righthalf}
-
-## Focus Bindings
-#bind right:cmd    focus right
-#bind left:cmd     focus left
-#bind up:cmd       focus up
-#bind down:cmd     focus down
-#bind up:cmd;shift focus above
-#bind down:cmd;shift focus behind
-#
-## Window Hints
-#bind esc:cmd hint
-
 alias terminal 'iTerm'
 bind esc:cmd focus ${terminal}
 
 alias browser 'Google Chrome'
 bind f1:cmd focus ${browser}
 
-alias socialApps 'Twitter Adium LimeChat'
-alias assignTo '~/bin/assignTo '
-
-
-layout work BEFORE shell '${assignTo} all ${socialApps}' 
-layout work 'Adium':REPEAT throw right | move 300;300 300;200 1
-layout work 'Twitter': throw right | ${lefthalf} 1
-layout work 'LimeChat': throw right | ${righthalf} 1
-layout work ${browser}: ${full} 0
-layout work ${terminal}: ${full} 0
-
+layout multiple BEFORE shell '~/bin/assignTo all Adium Twitter LimeChat'
+layout multiple 'Adium':REPEAT throw right | move 300;300 300;200 1
+layout multiple 'Twitter': throw right | ${lefthalf} 1
+layout multiple 'LimeChat': throw right | ${righthalf} 1
+layout multiple ${browser}: ${full} 0
+layout multiple ${terminal}: ${full} 0
 
 layout single 'Adium':REPEAT move 300;300 300;200 0
 layout single 'Twitter': ${lefthalf} 0
 layout single 'LimeChat': ${righthalf} 0
 layout single ${browser}: ${lefthalf} 0
 layout single ${terminal}: ${full} 0
-layout single BEFORE shell '${assignTo} this ${socialApps}'
+layout single BEFORE shell '~/bin/assignTo this Adium Twitter LimeChat'
 
+default multiple count:2
+default single count:1
 
-layout workSingle BEFORE shell '${assignTo} this ${socialApps}'
-layout homeSingle BEFORE shell '${assignTo} this ${socialApps}'
-layout homeMultiple BEFORE shell '${assignTo} all ${socialApps}'
-
-
-default work resolutions:${monitor-dell};${monitor-macbook}
-default workSingle resolutions:${monitor-dell}
-default homeMultiple resolutions:${monitor-lg};${monitor-macbook}
-default homeSingle resolutions:${monitor-lg}
-default single resolutions:${monitor-macbook}
+bind 1:cmd;ctrl layout single
+bind 2:cmd;ctrl layout multiple
