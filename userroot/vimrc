@@ -23,7 +23,8 @@
             Bundle 'scrooloose/nerdtree'
             "Bundle 'scrooloose/nerdcommenter'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
-            Bundle 'Command-T'
+            "Bundle 'Command-T'
+            Bundle 'kien/ctrlp.vim'
             Bundle 'loremipsum'
             Bundle 'majutsushi/tagbar'
             Bundle 'taglist.vim'
@@ -160,7 +161,7 @@
 
 " Keymaps
     map <silent> <F2> :silent NERDTreeToggle <CR>
-    map <silent> <F3> <ESC>:CommandT<RETURN>
+    map <silent> <F3> <ESC>:CtrlP<RETURN>
     "Oy vei, trying without arrows
     "nnoremap <up> <nop>
     "nnoremap <down> <nop>

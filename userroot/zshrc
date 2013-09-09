@@ -29,8 +29,7 @@ aziz/tmuxinator completion
 EOBUNDLES
 
 # Load the theme.
-#antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
-antigen-theme jonathan
+antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
 
 # Tell antigen that you're done.
 antigen-apply
@@ -55,27 +54,6 @@ alias gf='git flow'
 export TERM=xterm-256color
 #export TERM=screen-256color
 export EDITOR=vim
-# start tmux session hacking if the hacking session is not active/existing else just bare tmux
-#if [ "$TMUX" = "" ]; then
-#    # not if tmux session
-#    `tmux list-session | grep hacking > /dev/null`
-#    # check for hacking session
-#    if [ $? = 0 ]; then
-#        # tmux hacking found
-#        `tmux list-session | grep attached | grep hacking > /dev/null`
-#        if [ $? = 0 ]; then
-#            # hacking found active create a new session
-#            tmux -2 new
-#        else
-#            # hacking found but not active
-#            hack
-#        fi
-#    else
-#        # hacking not found
-#        hack
-#    fi
-#fi
-
 #if [ -f ~/.xmodmap ]; then
 #    xmodmap ~/.xmodmap
 #fi
@@ -87,12 +65,6 @@ delete-line()
     sed -i -e "$2d" $1
 }
 
-#_nosetests()
-#{
-#    cur="${COMP_WORDS[COMP_CWORD]}"
-#    COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
-#}
-#complete -o nospace -F _nosetests nosetests
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 #cn  #commented out, productivity killerz

@@ -1,104 +1,143 @@
-#-------------------------------------------------------------------------------
-# Sunrise theme for oh-my-zsh by Adam Lindberg (eproxus@gmail.com)
-# Intended to be used with Solarized: http://ethanschoonover.com/solarized
-# (Needs Git plugin for current_branch method)
-#-------------------------------------------------------------------------------
+functions rbenv_prompt_info >& /dev/null || rbenv_prompt_info(){}
 
-# Color shortcuts
-R=$fg[red]
-G=$fg[green]
-M=$fg[magenta]
-RB=$fg_bold[red]
-YB=$fg_bold[yellow]
-BB=$fg_bold[blue]
-RESET=$reset_color
+function theme_precmd {
+    local TERMWIDTH
+    (( TERMWIDTH = ${COLUMNS} - 1 ))
 
-#if [ "$(whoami)" = "root" ]; then
-#    PROMPTCOLOR="%{$RB%}" PREFIX="-!-";
-#else
-#    PROMPTCOLOR="" PREFIX="---";
-#fi
 
-if [ "$(whoami)" = "root" ]; then
-    PROMPTCOLOR="%{$RB%}"
-else
-    PROMPTCOLOR=""
-fi
+    ###
+    # Truncate the path if it's too long.
 
-local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
+    PR_FILLBAR=""
+    PR_PWDLEN=""
 
-# Get the status of the working tree (copied and modified from git.zsh)
-custom_git_prompt_status() {
-  INDEX=$(git status --porcelain 2> /dev/null)
-  STATUS=""
-  # Non-staged
-  if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_UNTRACKED$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^UU ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_UNMERGED$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^ D ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_DELETED$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^.M ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS"
-  elif $(echo "$INDEX" | grep '^AM ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS"
-  elif $(echo "$INDEX" | grep '^ T ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS"
-  fi
-  # Staged
-  if $(echo "$INDEX" | grep '^D  ' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_STAGED_DELETED$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^R' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_STAGED_RENAMED$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^M' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_STAGED_MODIFIED$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^A' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_STAGED_ADDED$STATUS"
-  fi
+    local promptsize=${#${(%):---(%n@%m:%l)---()--}}
+    local rubyprompt=`rvm_prompt_info || rbenv_prompt_info`
+    local rubypromptsize=${#${rubyprompt}}
+    local pwdsize=${#${(%):-%~}}
 
-  if $(echo -n "$STATUS" | grep '.*' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_STATUS_PREFIX$STATUS"
-  fi
+    if [[ "$promptsize + $rubypromptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+      ((PR_PWDLEN=$TERMWIDTH - $promptsize))
+    else
+      PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $rubypromptsize + $pwdsize)))..${PR_HBAR}.)}"
+    fi
 
-  echo $STATUS
 }
 
-# get the name of the branch we are on (copied and modified from git.zsh)
-function custom_git_prompt() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$(git_prompt_ahead)$(custom_git_prompt_status)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+
+setopt extended_glob
+theme_preexec () {
+    if [[ "$TERM" == "screen" ]]; then
+	local CMD=${1[(wr)^(*=*|sudo|-*)]}
+	echo -n "\ek$CMD\e\\"
+    fi
 }
 
-# %B sets bold text
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%}%{$fg[cyan]%}@%{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}%{$fg[red]%}:%{$reset_color%}%{$fg[cyan]%}%1~%{$reset_color%}%{$fg[red]%}|%{$reset_color%}$(custom_git_prompt)%{$fg[cyan]%}⇒  %{$reset_color%}'
 
-#PROMPT='%B$PREFIX %2~ $()%{$M%}%B»%b%{$RESET%} '
-RPS1="${return_code}%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}"
+setprompt () {
+    ###
+    # Need this so the prompt will work.
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$YB%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$YB%}›%{$RESET%} "
+    setopt prompt_subst
 
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$R%}*"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$BB%}➔"
+    ###
+    # See if we can use colors.
 
-ZSH_THEME_GIT_STATUS_PREFIX=" "
+    autoload colors zsh/terminfo
+    if [[ "$terminfo[colors]" -ge 8 ]]; then
+	colors
+    fi
+    for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE GREY; do
+	eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+	eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+	(( count = $count + 1 ))
+    done
+    PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-# Staged
-ZSH_THEME_GIT_PROMPT_STAGED_ADDED="%{$G%}A"
-ZSH_THEME_GIT_PROMPT_STAGED_MODIFIED="%{$G%}M"
-ZSH_THEME_GIT_PROMPT_STAGED_RENAMED="%{$G%}R"
-ZSH_THEME_GIT_PROMPT_STAGED_DELETED="%{$G%}D"
+    ###
+    # Modify Git prompt
+    ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+    ZSH_THEME_GIT_PROMPT_DIRTY=""
+    ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-# Not-staged
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$R%}⁇"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$R%}M"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$R%}D"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$R%}UU"
+    ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} ✚"
+    ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} ✹"
+    ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} ✖"
+    ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} ➜"
+    ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
+
+    ###
+    # See if we can use extended characters to look nicer.
+
+    typeset -A altchar
+    set -A altchar ${(s..)terminfo[acsc]}
+    PR_SET_CHARSET="%{$terminfo[enacs]%}"
+    PR_SHIFT_IN="%{$terminfo[smacs]%}"
+    PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
+    PR_HBAR=${altchar[q]:--}
+    PR_ULCORNER=${altchar[l]:--}
+    PR_LLCORNER=${altchar[m]:--}
+    PR_LRCORNER=${altchar[j]:--}
+    PR_URCORNER=${altchar[k]:--}
+
+
+    ###
+    # Decide if we need to set titlebar text.
+
+    case $TERM in
+	xterm*)
+	    PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
+	    ;;
+	screen)
+	    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
+	    ;;
+	*)
+	    PR_TITLEBAR=''
+	    ;;
+    esac
+
+
+    ###
+    # Decide whether to set a screen title
+    if [[ "$TERM" == "screen" ]]; then
+	PR_STITLE=$'%{\ekzsh\e\\%}'
+    else
+	PR_STITLE=''
+    fi
+
+
+    ###
+    # Finally, the prompt.
+
+    PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
+$PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT$PR_GREY(\
+$PR_GREEN%$PR_PWDLEN<...<%~%<<\
+$PR_GREY)`rvm_prompt_info || rbenv_prompt_info`$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_HBAR${(e)PR_FILLBAR}$PR_HBAR$PR_SHIFT_OUT$PR_GREY(\
+$PR_CYAN%(!.%SROOT%s.%n)$PR_GREY@$PR_GREEN%m:%l\
+$PR_GREY)$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_URCORNER$PR_SHIFT_OUT\
+
+$PR_CYAN$PR_SHIFT_IN$PR_LLCORNER$PR_BLUE$PR_HBAR$PR_SHIFT_OUT(\
+$PR_YELLOW%D{%H:%M:%S}\
+$PR_LIGHT_BLUE%{$reset_color%}`git_prompt_info``git_prompt_status`$PR_BLUE)$PR_CYAN$PR_SHIFT_IN$PR_HBAR\
+$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
+>$PR_NO_COLOUR '
+
+    # display exitcode on the right when >0
+    return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
+    RPROMPT=' $return_code$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_BLUE$PR_HBAR$PR_SHIFT_OUT\
+($PR_YELLOW%D{%a,%b%d}$PR_BLUE)$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_LRCORNER$PR_SHIFT_OUT$PR_NO_COLOUR'
+
+    PS2='$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
+$PR_BLUE$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT(\
+$PR_LIGHT_GREEN%_$PR_BLUE)$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
+$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
+}
+
+setprompt
+
+autoload -U add-zsh-hook
+add-zsh-hook precmd  theme_precmd
+add-zsh-hook preexec theme_preexec
