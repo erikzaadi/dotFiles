@@ -41,6 +41,7 @@ reattach-to-user-namespace
 rlwrap
 s3cmd
 sqlite
+ssh-copy-id
 tmux
 tokyo-cabinet
 unzip
