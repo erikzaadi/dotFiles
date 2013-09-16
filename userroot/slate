@@ -24,7 +24,7 @@ layout multiple ${terminal}: ${full} 0
 layout single 'Adium':REPEAT move 300;300 300;200 0
 layout single 'Twitter': ${lefthalf} 0
 layout single 'LimeChat': ${righthalf} 0
-layout single ${browser}: ${lefthalf} 0
+layout single ${browser}: ${full} 0
 layout single ${terminal}: ${full} 0
 layout single BEFORE shell '~/bin/assignTo this Adium Twitter LimeChat'
 
