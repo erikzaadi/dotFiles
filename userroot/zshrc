@@ -51,6 +51,7 @@ psgrep-id() {
 #}
 alias git="hub"
 alias gf='git flow'
+alias ms="mux start"
 export TERM=xterm-256color
 #export TERM=screen-256color
 export EDITOR=vim
@@ -64,6 +65,7 @@ delete-line()
 {
     sed -i -e "$2d" $1
 }
+alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm

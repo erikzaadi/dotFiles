@@ -1,4 +1,5 @@
 apple-gcc42
+asciidoc
 atk
 autoconf
 automake
@@ -6,11 +7,13 @@ awk
 bash-completion
 brew-cask
 cairo
+cmake
 coreutils
 cowsay
 cscope
 ctags
 curl
+docbook
 findutils
 fontconfig
 freetype
@@ -19,9 +22,12 @@ gdk-pixbuf
 gettext
 gist
 git
+git-cal
 git-multipush
 glib
+gnu-sed
 gnu-tar
+gobject-introspection
 grep
 gtk+
 harfbuzz
@@ -44,7 +50,6 @@ macvim
 make
 meld
 mercurial
-mobile-shell
 multitail
 mutt
 mysql
@@ -59,11 +64,13 @@ py2cairo
 pygobject
 pygtk
 python
+qt
 rarian
 readline
 reattach-to-user-namespace
 rlwrap
 s3cmd
+shiboken
 sqlite
 ssh-copy-id
 terminal-notifier

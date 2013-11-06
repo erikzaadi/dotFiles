@@ -1,0 +1,20 @@
+#!/bin/bash
+
+TARGET=$1
+
+ssh -T $TARGET <<'EOI'
+
+TERM=dumb
+export TERM
+
+cat <<'EOF' >> /etc/sysctl.conf
+# IPv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+EOF
+
+sysctl -p
+
+exit
+EOI

@@ -28,7 +28,6 @@
             Bundle 'loremipsum'
             Bundle 'majutsushi/tagbar'
             Bundle 'taglist.vim'
-            Bundle 'mutewinter/vim-indent-guides'
             Bundle 'rosenfeld/conque-term'
             Bundle 'MarcWeber/ultisnips'
             Bundle 'scrooloose/syntastic'
@@ -43,8 +42,8 @@
         
         " Python
             Bundle 'pytest.vim'
-            "Bundle 'klen/python-mode'
-            Bundle 'davidhalter/jedi-vim'
+            Bundle 'klen/python-mode'
+            "Bundle 'davidhalter/jedi-vim'
             Bundle 'django.vim'
         " Python end
     
@@ -264,7 +263,7 @@
     set wildignore+=*.pyc
     set wildignore+=**/node_modules
     let NERDTreeMouseMode       =   3    
-    let g:syntastic_python_checkers = ['flake8', 'pylint']
+    let g:syntastic_python_checkers = [] " ['flake8', 'pylint']
     let g:syntastic_check_on_open = 0
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_style_warning_symbol='☔'
@@ -276,10 +275,15 @@
                                     \ 'passive_filetypes': ['java'] }
     "let g:Powerline_symbols = 'fancy'
     let g:airline_powerline_fonts = 1
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#rename_command = "<S-F12>"
-    let g:jedi#goto_assignments_command = "<F12>"
-    let g:jedi#use_tabs_not_buffers = 0
+
+    "let g:jedi#popup_on_dot = 0
+    "let g:jedi#rename_command = "<S-F12>"
+    "let g:jedi#goto_assignments_command = "<F12>"
+    "let g:jedi#use_tabs_not_buffers = 0
+
+    let g:pymode_folding = 0
+    nmap <F12> :RopeGotoDefinition<CR>
+    nmap <S-F12> :RopeRename<CR>
 
     let g:UltiSnips = {}
     let g:UltiSnips.ExpandTrigger = "<s-tab>"

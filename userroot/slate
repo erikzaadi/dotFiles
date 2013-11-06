@@ -14,7 +14,8 @@ bind esc:cmd focus ${terminal}
 alias browser 'Google Chrome'
 bind f1:cmd focus ${browser}
 
-layout multiple BEFORE shell '~/bin/assignTo all Adium Twitter LimeChat'
+#not needed for mavericks
+#layout multiple BEFORE shell '~/bin/assignTo all Twitter LimeChat'
 layout multiple 'Adium':REPEAT throw right | move 300;300 300;200 1
 layout multiple 'Twitter': throw right | ${lefthalf} 1
 layout multiple 'LimeChat': throw right | ${righthalf} 1
@@ -26,7 +27,7 @@ layout single 'Twitter': ${lefthalf} 0
 layout single 'LimeChat': ${righthalf} 0
 layout single ${browser}: ${full} 0
 layout single ${terminal}: ${full} 0
-layout single BEFORE shell '~/bin/assignTo this Adium Twitter LimeChat'
+#layout single BEFORE shell '~/bin/assignTo this Twitter LimeChat'
 
 default multiple count:2
 default single count:1
