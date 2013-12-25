@@ -1,5 +1,4 @@
 #!/bin/bash
-#TODO: Alter path according to os?
-TMUX_EXEC=/usr/local/bin/tmux
+TMUX_EXEC=$(which tmux)
 WANTED_SESSION=$1
 ${TMUX_EXEC} new -A -s ${WANTED_SESSION}

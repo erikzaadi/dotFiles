@@ -1,0 +1,12 @@
+# Unicode FTW
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+# zsh > bash
+autoload -U compinit
+compinit
+autoload -U bashcompinit
+bashcompinit
+#
+# Local settings -> sets $DOTFILESDIR
+source $HOME/.envvars.rc

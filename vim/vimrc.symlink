@@ -27,12 +27,16 @@
             Bundle 'kien/ctrlp.vim'
             Bundle 'loremipsum'
             Bundle 'majutsushi/tagbar'
+            Bundle 'ZoomWin'
             Bundle 'taglist.vim'
             Bundle 'rosenfeld/conque-term'
-            Bundle 'MarcWeber/ultisnips'
+            Bundle 'SirVer/ultisnips'
+            Bundle 'junegunn/vim-emoji'
+            Bundle 'junegunn/vim-github-dashboard'
             Bundle 'scrooloose/syntastic'
             Bundle 'bling/vim-airline'
-            Bundle 'terryma/vim-multiple-cursors'
+            "Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+            "Bundle 'terryma/vim-multiple-cursors'
             Bundle 'sjl/gundo.vim'
         " General Vim end
     
@@ -41,10 +45,11 @@
         " Color Schemes end
         
         " Python
-            Bundle 'pytest.vim'
-            Bundle 'klen/python-mode'
-            "Bundle 'davidhalter/jedi-vim'
-            Bundle 'django.vim'
+            "Bundle 'pytest.vim'
+            "Bundle 'klen/python-mode'
+            Bundle 'jmcantrell/vim-virtualenv'
+            Bundle 'davidhalter/jedi-vim'
+            "Bundle 'django.vim'
         " Python end
     
         " Web (generic)
@@ -60,14 +65,14 @@
         " Web (generic) end
     
         " Javascript / node / coffeescript 
-            Bundle 'pangloss/vim-javascript'
-            Bundle 'itspriddle/vim-jquery'
+            "Bundle 'pangloss/vim-javascript'
+            "Bundle 'itspriddle/vim-jquery'
             Bundle 'digitaltoad/vim-jade'
-            Bundle 'leshill/vim-json'
+            "Bundle 'leshill/vim-json'
             Bundle 'kchmck/vim-coffee-script'
-            Bundle 'walm/jshint.vim'
+            "Bundle 'walm/jshint.vim'
             Bundle 'mmalecki/vim-node.js'
-            Bundle 'lambdalisue/nodeunit.vim'
+            "Bundle 'lambdalisue/nodeunit.vim'
         " Javascript / node /coffeescript end
     
         " C# / .Niet
@@ -262,33 +267,46 @@
     let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files
     set wildignore+=*.pyc
     set wildignore+=**/node_modules
+    "let g:syntastic_ignore_files = ['\.py$']
     let NERDTreeMouseMode       =   3    
-    let g:syntastic_python_checkers = [] " ['flake8', 'pylint']
+    "let g:syntastic_python_checkers = ["pylama" , 'flake8', 'pylint']
+    let g:syntastic_python_checkers = ['pylint']
     let g:syntastic_check_on_open = 0
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_style_warning_symbol='☔'
     let g:syntastic_style_error_symbol='⚑'
     let g:syntastic_error_symbol='✗'
     let g:syntastic_warning_symbol='⚠'
+    "let g:pymode_lint_todo_symbol = 'WW'
+    "let g:pymode_lint_comment_symbol = 'CC'
+    "let g:pymode_lint_visual_symbol = 'RR'
+    "let g:pymode_lint_error_symbol = 'EE'
+    "let g:pymode_lint_info_symbol = 'II'
+    "let g:pymode_lint_pyflakes_symbol = 'FF'
+    "let g:pymode_lint_checker = "pylint"
+
     let g:syntastic_mode_map = { 'mode': 'active',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
     "let g:Powerline_symbols = 'fancy'
     let g:airline_powerline_fonts = 1
+    let g:airline_theme='solarized'
+    "let g:airline_exclude_preview=1
 
-    "let g:jedi#popup_on_dot = 0
-    "let g:jedi#rename_command = "<S-F12>"
-    "let g:jedi#goto_assignments_command = "<F12>"
-    "let g:jedi#use_tabs_not_buffers = 0
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#rename_command = "<S-F12>"
+    let g:jedi#goto_assignments_command = "<F12>"
+    let g:jedi#use_tabs_not_buffers = 0
 
-    let g:pymode_folding = 0
-    nmap <F12> :RopeGotoDefinition<CR>
-    nmap <S-F12> :RopeRename<CR>
+    "let g:pymode_virtualenv = 0
+    "let g:pymode_folding = 0
+    "nmap <F12> :RopeGotoDefinition<CR>
+    "nmap <S-F12> :RopeRename<CR>
 
-    let g:UltiSnips = {}
-    let g:UltiSnips.ExpandTrigger = "<s-tab>"
-    let g:UltiSnips.snipmate_ft_filter = { 'default' : { 'filetypes': ["FILETYPE"] }, }
-    let g:UltiSnips.always_use_first_snippet = 1
+    let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    "let g:UltiSnips.snipmate_ft_filter = { 'default' : { 'filetypes': ["FILETYPE"] }, }
+    "let g:UltiSnips.always_use_first_snippet = 1
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
  

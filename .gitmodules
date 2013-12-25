@@ -1,0 +1,9 @@
+[submodule "deps/dircolors-solarized"]
+	path = deps/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized
+[submodule "deps/antigen"]
+	path = deps/antigen
+	url = https://github.com/zsh-users/antigen
+[submodule "deps/solarized"]
+	path = deps/solarized
+	url = https://github.com/altercation/solarized

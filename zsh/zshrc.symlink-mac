@@ -1,0 +1,13 @@
+source ~/.zshrc-pre
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export BROWSE=open
+export CLIPBOARD='pbcopy'
+export PASTE='pbpaste'
+preview()
+{
+    qlmanage -p "$@" >& /dev/null &
+}
+export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export PATH=${DOTFILESDIR}/bin-mac:${PATH}
+source ${DOTFILESDIR}/zsh/zshrc

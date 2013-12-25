@@ -17,6 +17,8 @@ docbook
 findutils
 fontconfig
 freetype
+fuse4x
+fuse4x-kext
 gdbm
 gdk-pixbuf
 gettext
@@ -30,6 +32,7 @@ gnu-tar
 gobject-introspection
 grep
 gtk+
+gtksourceview
 harfbuzz
 hub
 hubflow
@@ -39,6 +42,7 @@ jpeg
 less
 libevent
 libffi
+libgit2
 libgpg-error
 libksba
 libpng
@@ -50,9 +54,11 @@ macvim
 make
 meld
 mercurial
+mobile-shell
 multitail
 mutt
 mysql
+ntfs-3g
 openssl
 pango
 pcre
@@ -63,14 +69,13 @@ pv
 py2cairo
 pygobject
 pygtk
+pygtksourceview
 python
-qt
 rarian
 readline
 reattach-to-user-namespace
 rlwrap
 s3cmd
-shiboken
 sqlite
 ssh-copy-id
 terminal-notifier

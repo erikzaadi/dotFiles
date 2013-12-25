@@ -1,0 +1,16 @@
+source ~/.zshrc-pre
+alias apt-search="aptitude search"
+alias apt-show="aptitude show"
+alias apt-refresh="sudo apt-get update;sudo apt-get upgrade -y;sudo apt-get dist-upgrade -y;sudo apt-get autoremove -y"
+installed() {
+    apt-search $1 | grep "^i"
+}
+
+if [ -f ~/.xmodmap ]; then
+    xmodmap ~/.xmodmap
+fi
+export CLIPBOARD='xclip -i -selection clipboard'
+export PASTE='xclip -o -selection clipboard'
+export BROWSE=gnome-open
+export PATH=${DOTFILESDIR}/bin-linux:${PATH}
+source ${DOTFILESDIR}/zsh/zshrc

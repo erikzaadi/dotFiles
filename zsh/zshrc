@@ -1,9 +1,15 @@
-source $HOME/.envvars.rc
+# Unicode FTW
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+# zsh > bash
 autoload -U compinit
 compinit
 autoload -U bashcompinit
 bashcompinit
-source $OPENSOURCEDIR/other/utils/antigen/antigen.zsh
+
+# Antigen galore
+source ${DOTFILESDIR}/deps/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
@@ -26,47 +32,47 @@ vagrant
 
 aziz/tmuxinator completion
 
+github/hub etc
+
 EOBUNDLES
 
-# Load the theme.
-antigen-theme $OPENSOURCEDIR/mine/dotFiles/zsh/erikzaadi.zsh-theme
+# Load my theme.
+antigen-theme ${DOTFILESDIR}/zsh/erikzaadi.zsh-theme
 
-# Tell antigen that you're done.
 antigen-apply
 
-export PATH=/usr/local/sbin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${JAVA_HOME}/bin:$HOME/.rvm/bin
+# Paths
+export PATH=/usr/local/sbin:$HOME/bin:${DOTFILESDIR}/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
 export MAILPATH=/var/mail/$USER
-alias pwdc='pwd | pbcopy'
+
 alias chuck='sudo'
+alias git-last="git log -1 | tail -1 | awk '{print $1}'"
+alias pwdc='pwd | ${CLIPBOARD}'
+
 psgrep() {
     ps aux | grep $1 | egrep -v "grep"
 }
 psgrep-id() {
     ps aux | grep $1 | egrep -v "grep" | awk '{print $2;}'
 }
-#alias apt-search="aptitude search"
-#alias apt-show="aptitude show"
-#installed() {
-#    apt-search $1 | grep "^i"
-#}
-alias git="hub"
-alias gf='git flow'
-alias ms="mux start"
-export TERM=xterm-256color
-#export TERM=screen-256color
-export EDITOR=vim
-#if [ -f ~/.xmodmap ]; then
-#    xmodmap ~/.xmodmap
-#fi
-autoload -U zmv
-alias mmv='noglob zmv -W'
-alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
 delete-line()
 {
     sed -i -e "$2d" $1
 }
+
+eval "$(hub alias -s)"
+
+alias gf='git flow'
+alias ms="mux start"
+export TERM=xterm-256color
+export EDITOR=vim
+autoload -U zmv
+alias mmv='noglob zmv -W'
+alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
+
+alias ls="ls --color"
+eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.256dark`
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-#cn  #commented out, productivity killerz
