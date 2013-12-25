@@ -41,7 +41,7 @@
         " General Vim end
     
         " Color Schemes
-            Bundle 'altercation/vim-colors-solarized'
+            Bundle 'file://'.$DOTFILESDIR.'/deps/solarized/vim-colors-solarized'
         " Color Schemes end
         
         " Python

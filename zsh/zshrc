@@ -29,10 +29,15 @@ fabric
 lol
 git-extras
 vagrant
+npm
+node
+python
+virtualenv
+vundle
 
 aziz/tmuxinator completion
 
-github/hub etc
+#github/hub etc
 
 EOBUNDLES
 
@@ -46,21 +51,19 @@ export PATH=/usr/local/sbin:$HOME/bin:${DOTFILESDIR}/bin:/usr/local/bin:/usr/sbi
 export MAILPATH=/var/mail/$USER
 
 alias chuck='sudo'
-alias git-last="git log -1 | tail -1 | awk '{print $1}'"
+alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
 alias pwdc='pwd | ${CLIPBOARD}'
 
 psgrep() {
-    ps aux | grep $1 | egrep -v "grep"
+    ps aux | g_or_native grep $1 | egrep -v "grep"
 }
 psgrep-id() {
-    ps aux | grep $1 | egrep -v "grep" | awk '{print $2;}'
+    ps aux | g_or_native grep $1 | egrep -v "grep" | g_or_native awk '{print $2;}'
 }
 delete-line()
 {
-    sed -i -e "$2d" $1
+    g_or_native sed -i -e "$2d" $1
 }
-
-eval "$(hub alias -s)"
 
 alias gf='git flow'
 alias ms="mux start"
@@ -71,8 +74,8 @@ alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
-alias ls="ls --color"
-eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.256dark`
+alias ls="g_or_native ls --color"
+eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm

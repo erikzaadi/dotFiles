@@ -2,6 +2,7 @@ source ~/.zshrc-pre
 alias apt-search="aptitude search"
 alias apt-show="aptitude show"
 alias apt-refresh="sudo apt-get update;sudo apt-get upgrade -y;sudo apt-get dist-upgrade -y;sudo apt-get autoremove -y"
+
 installed() {
     apt-search $1 | grep "^i"
 }
