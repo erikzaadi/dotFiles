@@ -101,16 +101,16 @@ if [[ ! -f ~/.rvm/scripts/rvm ]]; then
 fi
 
 log_message "Installing node packages.."
-npm i -g $(cat ${SCRIPT_BASE}/packaging/node)
+npm i -g $(cat ${SCRIPT_BASE}/packages/node)
 
 log_message "Installing ruby gems.."
-gem install $(cat ${SCRIPT_BASE}/packaging/ruby)
+gem install $(cat ${SCRIPT_BASE}/packages/ruby)
 
 log_message "Installing python packages.."
 if [[ ${IS_MAC} -eq 1 ]]; then
-    pip install -r ${SCRIPT_BASE}/mac/requirements.txt
+    pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
 else
-    pip install -r ${SCRIPT_BASE}/ubuntu/requirements.txt
+    pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
 fi
 
 log_message "Installing vim bundles"
