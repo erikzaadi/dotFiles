@@ -89,10 +89,10 @@
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
         :BundleInstall
-    endif
-    if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
         call localbundle#init()
+        :LocalBundle
     endif
+    call localbundle#init()
 
 " Vundle end
 
@@ -279,7 +279,7 @@
     let g:jedi#goto_assignments_command = "<F12>"
     let g:jedi#use_tabs_not_buffers = 0
 
-    let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+    let g:UltiSnipsSnippetsDir = "~/.vim/localbundle/UltiSnips"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     "let g:UltiSnips.snipmate_ft_filter = { 'default' : { 'filetypes': ["FILETYPE"] }, }
     "let g:UltiSnips.always_use_first_snippet = 1
