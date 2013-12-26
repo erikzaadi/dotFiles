@@ -48,7 +48,7 @@ function symlink_for_pattern()
     TARGET=$3
     for symlink in `${SCRIPT_BASE}/bin/g_or_native find ${ORIGIN} -name "*${PATTERN}"`; do
         TARGET_SYMLINK=$(basename ${symlink})
-        TARGET_SYMLINK=$(log_message ${TARGET_SYMLINK} | ${SCRIPT_BASE}/bin/g_or_native sed -e "s/${PATTERN}//g")
+        TARGET_SYMLINK=$(echo ${TARGET_SYMLINK} | ${SCRIPT_BASE}/bin/g_or_native sed -e "s/${PATTERN}//g")
         ln -sf ${symlink} ~/.${TARGET_SYMLINK}
     done
 }
