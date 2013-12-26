@@ -80,10 +80,11 @@ else
 fi
 
 log_message "Setting zsh (FTW) as shell"
-chsh /bin/zsh
-sudo chsh /bin/zsh
+ZSH=$(which zsh)
+chsh ${ZSH}
+sudo chsh ${ZSH}
 
-if [[ ! -s ~/.nvm/nvm.sh ]];then 
+if [[ ! -f ~/.nvm/nvm.sh ]];then 
     log_message "Installing nvm"
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     source ~/.nvm/.nvm.sh
@@ -93,7 +94,7 @@ if [[ ! -s ~/.nvm/nvm.sh ]];then
     nvm alias default 0.10
 fi
 
-if [[ ! -s ~/.rvm/scripts/rvm ]]; then
+if [[ ! -f ~/.rvm/scripts/rvm ]]; then
     log_message "Installing rvm"
     curl -sSL https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
