@@ -20,6 +20,7 @@
 
     " Bundles
         " General Vim
+            Bundle 'Rykka/localbundle.vim'
             Bundle 'scrooloose/nerdtree'
             "Bundle 'scrooloose/nerdcommenter'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
@@ -41,7 +42,8 @@
         " General Vim end
     
         " Color Schemes
-            Bundle 'file://'.$DOTFILESDIR.'/deps/solarized/vim-colors-solarized'
+            Bundle 'file://'.$DOTFILESDIR.'/deps/solarized', {'rtp': 'vim-colors-solarized'}
+
         " Color Schemes end
         
         " Python
@@ -99,8 +101,12 @@
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
-    :BundleInstall
+        :BundleInstall
     endif
+    if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
+        call localbundle#init()
+    endif
+
 " Vundle end
 
 "Set Vim defaults
