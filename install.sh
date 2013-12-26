@@ -79,38 +79,42 @@ else
     sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
 fi
 
+
 log_message "Setting zsh (FTW) as shell"
 ZSH=$(which zsh)
-chsh ${ZSH}
-sudo chsh ${ZSH}
+chsh -s ${ZSH}
+sudo chsh -s ${ZSH}
+
 
 if [[ ! -f ~/.nvm/nvm.sh ]];then 
-    log_message "Installing nvm"
-    curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-    source ~/.nvm/.nvm.sh
-    #TODO Alter to take latest stable?
-    nvm install 0.10
-    nvm use 0.10
-    nvm alias default 0.10
+    LATEST_STABLE_NODE=$(curl -s  http://nodejs.org/dist/latest/ | ${SCRIPT_BASE}/bin/g_or_native grep "\.pkg" | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/<[^>]*>//g' | ${SCRIPT_BASE}/bin/g_or_native cut -d ' ' -f 1 | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/node-v//g' | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/\.pkg//g')
+    log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
+    git clone https://github.com/creationix/nvm.git ~/.nvm
+    source ~/.nvm/nvm.sh
+    nvm install ${LATEST_STABLE_NODE}
+    nvm use ${LATEST_STABLE_NODE}
+    nvm alias default ${LATEST_STABLE_NODE}
 fi
 
 if [[ ! -f ~/.rvm/scripts/rvm ]]; then
     log_message "Installing rvm"
-    curl -sSL https://get.rvm.io | bash -s stable
+    curl -sSL https://get.rvm.io | bash -s stable --ruby
     source ~/.rvm/scripts/rvm
 fi
 
 log_message "Installing node packages.."
 npm i -g $(cat ${SCRIPT_BASE}/packages/node)
 
+
 log_message "Installing ruby gems.."
 gem install $(cat ${SCRIPT_BASE}/packages/ruby)
+
 
 log_message "Installing python packages.."
 if [[ ${IS_MAC} -eq 1 ]]; then
     pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
 else
-    pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
+    sudo pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
 fi
 
 log_message "Installing vim bundles"

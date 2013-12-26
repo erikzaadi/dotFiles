@@ -7,7 +7,7 @@ installed() {
     apt-search $1 | grep "^i"
 }
 
-if [ -f ~/.xmodmap ]; then
+if [ -f ~/.xmodmap ] && which xmodmap > /dev/null; then
     xmodmap ~/.xmodmap
 fi
 export CLIPBOARD='xclip -i -selection clipboard'
