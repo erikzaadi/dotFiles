@@ -228,6 +228,7 @@
     " Misc
         au BufNewFile,BufRead *tmux.conf set filetype=tmux
         au BufNewFile,BufRead *.pp set filetype=puppet
+        autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
     " Misc end
  " Filetype overrides end
 

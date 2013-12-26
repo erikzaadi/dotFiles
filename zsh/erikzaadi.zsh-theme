@@ -4,6 +4,17 @@ function theme_precmd {
      local TERMWIDTH
     (( TERMWIDTH = ${COLUMNS} - 1 ))
 
+    MAC_HAND="✊ "
+    LINUX_CARET="➜"
+    CARET_PREFIX=$LINUX_CARET
+
+    #return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
+
+    if [[ "$(uname)" = "Darwin" ]]
+        then
+            CARET_PREFIX=$MAC_HAND
+    fi
+
 
     ###
     # Truncate the path if it's too long.
@@ -95,7 +106,7 @@ $PR_WHITE)$PR_CYAN$PR_SHIFT_IN${(e)PR_FILLBAR}$PR_SHIFT_OUT$PR_GREY$PR_CYAN$PR_S
 $PR_CYAN$PR_SHIFT_IN$PR_BLUE$PR_SHIFT_OUT\
 $PR_LIGHT_BLUE%{$reset_color%}`git_prompt_info``git_prompt_status`$PR_BLUE $PR_CYAN$PR_SHIFT_IN\
 $PR_SHIFT_IN$PR_SHIFT_OUT\
-✊ $PR_NO_COLOUR '
+$CARET_PREFIX$PR_NO_COLOUR '
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
