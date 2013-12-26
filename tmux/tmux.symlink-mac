@@ -1,3 +1,5 @@
+set-option -g prefix M-a
+bind-key M-a send-prefix
 set-option -g status-position top #tmux 1.8
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 source ${DOTFILESDIR}/tmux/tmux.conf

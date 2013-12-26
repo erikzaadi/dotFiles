@@ -1,1 +1,3 @@
+set-option -g prefix M-w
+bind-key M-w send-prefix
 source ${DOTFILESDIR}/tmux/tmux.conf
