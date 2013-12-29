@@ -8,6 +8,10 @@ compinit
 autoload -U bashcompinit
 bashcompinit
 
+# Paths
+export PATH=/usr/local/sbin:$HOME/bin:${DOTFILESDIR}/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
+export MAILPATH=/var/mail/$USER
+
 # Antigen galore
 source ${DOTFILESDIR}/deps/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
@@ -38,6 +42,8 @@ vundle
 aziz/tmuxinator completion
 
 #github/hub etc
+edouard-lopez/yeoman-zsh-plugin
+yonchu/grunt-zsh-completion
 
 EOBUNDLES
 
@@ -45,10 +51,6 @@ EOBUNDLES
 antigen-theme ${DOTFILESDIR}/zsh/erikzaadi.zsh-theme
 
 antigen-apply
-
-# Paths
-export PATH=/usr/local/sbin:$HOME/bin:${DOTFILESDIR}/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
-export MAILPATH=/var/mail/$USER
 
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
