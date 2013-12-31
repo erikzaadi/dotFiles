@@ -12,6 +12,10 @@ bashcompinit
 export PATH=/usr/local/sbin:$HOME/bin:${DOTFILESDIR}/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
 export MAILPATH=/var/mail/$USER
 
+#Load nvm and rvm as antigen depends on it
+[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
 # Antigen galore
 source ${DOTFILESDIR}/deps/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
@@ -79,5 +83,4 @@ alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
 
-[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
