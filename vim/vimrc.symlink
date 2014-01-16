@@ -39,6 +39,7 @@
             Bundle 'Valloric/ListToggle'
             Bundle 'suan/vim-instant-markdown'
             Bundle 'tpope/vim-markdown'
+            Bundle 'edkolev/tmuxline.vim'
         " General Vim end
     
         " Color Schemes
@@ -48,6 +49,7 @@
         " Color Schemes end
         
         " Python
+            Bundle 'jmcantrell/vim-virtualenv'
             "Bundle 'davidhalter/jedi-vim'
         " Python end
     
@@ -252,13 +254,14 @@
         set guioptions-=LlRrbmT
     endif
     set laststatus=2
-    if has('statusline')
-    	" Broken down into easily includeable segments
-    	set statusline=%<%f\    " Filename
-    	set statusline+=%{fugitive#statusline()} "  Git Hotness
-    	set statusline+=\ [%{&ff}/%Y]            " filetype
-    	set statusline+=\ [%{getcwd()}]          " current dir
-    endif
+"    if has('statusline')
+"    	" Broken down into easily includeable segments
+"    	set statusline=%<%f\    " Filename
+"    	set statusline+=%{fugitive#statusline()} "  Git Hotness
+"    	set statusline+=\ [%{&ff}/%Y]            " filetype
+"    	set statusline+=\ [%{getcwd()}]          " current dir
+"    	set statusline+=\ [%{pythonworkon}] " python virtualenv
+"    endif
 
 
     let NERDTreeShowHidden = 1
@@ -267,6 +270,7 @@
     set wildignore+=**/node_modules
     "let g:syntastic_ignore_files = ['\.py$']
     let NERDTreeMouseMode       =   3    
+    let g:virtualenv_directory = $PWD.'/.venv'
     let g:instant_markdown_autostart = 0
     let g:instant_markdown_slow = 1
     "let g:syntastic_python_checkers = ["pylama" , 'flake8', 'pylint']
@@ -289,7 +293,7 @@
     let g:jedi#rename_command = "<S-F12>"
 
     let g:UltiSnipsSnippetsDir = "~/.vim/localbundle/UltiSnips"
-    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    "let g:UltiSnipsJumpForwardTrigger="<tab>"
     "let g:UltiSnips.snipmate_ft_filter = { 'default' : { 'filetypes': ["FILETYPE"] }, }
     "let g:UltiSnips.always_use_first_snippet = 1
     syntax on                      " enable syntax

@@ -22,7 +22,8 @@
 * git
 
 ### Installing:
-    curl -L https://github.com/erikzaadi/dotFiles/raw/master/install.sh | bash -
+    curl -L https://github.com/erikzaadi/dotFiles/raw/master/install.sh > install.sh
+    bash install.sh
 
 Or
 
