@@ -22,6 +22,7 @@
         " General Vim
             Bundle 'Rykka/localbundle.vim'
             Bundle 'scrooloose/nerdtree'
+            Bundle 'tpope/vim-vinegar'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'kien/ctrlp.vim'
             Bundle 'loremipsum'
@@ -34,6 +35,10 @@
             Bundle 'scrooloose/syntastic'
             Bundle 'bling/vim-airline'
             Bundle 'sjl/gundo.vim'
+            Bundle 'Valloric/YouCompleteMe'
+            Bundle 'Valloric/ListToggle'
+            Bundle 'suan/vim-instant-markdown'
+            Bundle 'tpope/vim-markdown'
         " General Vim end
     
         " Color Schemes
@@ -43,8 +48,7 @@
         " Color Schemes end
         
         " Python
-            Bundle 'jmcantrell/vim-virtualenv'
-            Bundle 'davidhalter/jedi-vim'
+            "Bundle 'davidhalter/jedi-vim'
         " Python end
     
         " Web (generic)
@@ -56,13 +60,14 @@
             Bundle 'gregsexton/MatchTag'
             Bundle 'wavded/vim-stylus'
             Bundle 'JavaScript-Indent'
-            Bundle 'tangledhelix/vim-octopress'
+            "Bundle 'tangledhelix/vim-octopress'
         " Web (generic) end
     
         " Javascript / node / coffeescript 
             Bundle 'digitaltoad/vim-jade'
             Bundle 'kchmck/vim-coffee-script'
-            Bundle 'mmalecki/vim-node.js'
+            "Bundle 'mmalecki/vim-node.js'
+            Bundle 'marijnh/tern_for_vim'
         " Javascript / node /coffeescript end
     
         " C# / .Niet
@@ -173,14 +178,19 @@
     map <F6> <Esc> :lnext<CR>
     map <S-F6> <Esc> :lprev<CR>
     map <F8> <Esc> :TagbarToggle<CR>
-    map <F9> <Esc>:Pytest file<CR>
-    map <F10> <Esc> :Pytest method<CR>
+    map <F12> <Esc> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Keymaps end
 
 " Filetype overrides
+     " Python
+        au BufNewFile,BufRead *.py set shiftwidth=4
+        au FileType python set shiftwidth=4
+        au FileType python set tabstop=4
+     " Python End
+     
      " Javascript / Coffeescript / Node
         au BufNewFile,BufRead *.coffee set filetype=coffee
-        au! BufRead,BufNewFile *.json set filetype=json 
+        "au! BufRead,BufNewFile *.json set filetype=json 
         au BufRead,BufNewFile *.ejs set filetype=html
         au BufRead,BufNewFile *.eco set filetype=html
         au BufNewFile,BufRead *.coffee set shiftwidth=2
@@ -199,7 +209,6 @@
         au! BufWinEnter,bufwritepost *.scss call colorv#preview("S")
         au! BufWinEnter,bufwritepost *.styl call colorv#preview("S")
         au! BufWinEnter,bufwritepost *.less call colorv#preview("S")
-        autocmd BufNewFile,BufRead *.markdown setfiletype octopress
     " Web end
 
     " C# / .NIET
@@ -258,6 +267,8 @@
     set wildignore+=**/node_modules
     "let g:syntastic_ignore_files = ['\.py$']
     let NERDTreeMouseMode       =   3    
+    let g:instant_markdown_autostart = 0
+    let g:instant_markdown_slow = 1
     "let g:syntastic_python_checkers = ["pylama" , 'flake8', 'pylint']
     let g:syntastic_python_checkers = ['pylint']
     let g:syntastic_check_on_open = 0
@@ -274,10 +285,8 @@
     let g:airline_theme='solarized'
     "let g:airline_exclude_preview=1
 
-    let g:jedi#popup_on_dot = 0
+    "let g:jedi#popup_on_dot = 0
     let g:jedi#rename_command = "<S-F12>"
-    let g:jedi#goto_assignments_command = "<F12>"
-    let g:jedi#use_tabs_not_buffers = 0
 
     let g:UltiSnipsSnippetsDir = "~/.vim/localbundle/UltiSnips"
     let g:UltiSnipsJumpForwardTrigger="<tab>"

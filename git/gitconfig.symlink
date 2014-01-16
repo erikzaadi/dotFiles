@@ -35,7 +35,7 @@
     tool = vimdiff
 
 [merge] 
-    tool = vimdiff
+	tool = fugitive
 
 [rerere]
     enabled = true
@@ -101,3 +101,7 @@
 
 [gitreview]
 	username = erikzaadi
+[mergetool]
+	prompt = false
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"

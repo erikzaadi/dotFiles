@@ -1,0 +1,7 @@
+[[ -s ~/.envvars.rc ]] && . ~/.envvars.rc
+
+export PATH=$HOME/bin:${DOTFILESDIR}/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin:$PATH
+
+# Unicode FTW
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8

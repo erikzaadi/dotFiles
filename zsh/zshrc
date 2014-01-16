@@ -1,7 +1,3 @@
-# Unicode FTW
-export LC_ALL=en_US.UTF-8  
-export LANG=en_US.UTF-8
-
 # zsh > bash
 autoload -U compinit
 compinit
@@ -9,7 +5,6 @@ autoload -U bashcompinit
 bashcompinit
 
 # Paths
-export PATH=/usr/local/sbin:$HOME/bin:${DOTFILESDIR}/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
 export MAILPATH=/var/mail/$USER
 
 #Load nvm and rvm as antigen depends on it
@@ -82,5 +77,3 @@ alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
-
-
