@@ -4,6 +4,7 @@ asciidoc
 autoconf
 automake
 brew-cask
+cmake
 coreutils
 cowsay
 cscope
@@ -40,7 +41,9 @@ mysql
 ntfs-3g
 openssl
 ossp-uuid
+parallel
 pcre
+phantomjs
 pkg-config
 postgresql
 protobuf

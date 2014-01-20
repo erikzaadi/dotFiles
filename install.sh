@@ -39,6 +39,12 @@ fi
 
 if [[ ! -f ~/.envvars.rc ]]; then
     echo "export DOTFILESDIR=${SCRIPT_BASE}" > ~/.envvars.rc
+else
+    if [[ $(cat ~/.envvars.rc | grep DOTFILESDIR) ]]; then
+        echo "export DOTFILESDIR=${SCRIPT_BASE}" >> ~/.envvars.rc
+    else
+        sed -i ~/.envvars.rc -e "s/export\sDOTFILESDIR=.*$/export DOTFILESDIR=${SCRIPT_BASE}/"
+    fi
 fi
 
 function symlink_for_pattern()
@@ -56,31 +62,42 @@ function symlink_for_pattern()
 log_message "Symlinking OS agnostic links.."
 
 symlink_for_pattern ".symlink" ${SCRIPT_BASE} ~/
-IS_MAC=1
 if [[ "$(uname)" = "Darwin" ]]; then
     log_message "Symlinking Mac links.."
     symlink_for_pattern ".symlink-mac" ${SCRIPT_BASE} ~/
     log_message "Brewing ALL THE THINGS.."
-    SWALLOW=$(brew tap phinze/homebrew-cask)
-    SWALLOW=$(brew tap homebrew/dupes)
+    if [[ ! $(which brew) ]]; then
+        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    fi
+
+    SWALLOW=$(brew tap phinze/homebrew-cask > /dev/null)
+    SWALLOW=$(brew tap homebrew/dupes > /dev/null)
     for keg in $(cat ${SCRIPT_BASE}/mac/brew);do 
         brew install ${keg}
     done
     for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
         brew cask install  ${cask}
     done
+    log_message "Setting custom OS-X Settings.."
+    bash ${SCRIPT_BASE}/mac/osx-settings
+    log_message "Installing python packages.."
+    pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
+    log_message "Installing iTerm2 solarized colorschemes.."
+    open ${SCRIPT_BASE}/deps/solarized/iterm2-colors-solarized/Solarized\ Dark.itermcolors
+    open ${SCRIPT_BASE}/deps/solarized/iterm2-colors-solarized/Solarized\ Light.itermcolors
 else
-    IS_MAC=0
     log_message "Symlinking Ubuntu links.."
     symlink_for_pattern ".symlink-ubuntu" ${SCRIPT_BASE} ~/
-    log_message "Apt-getting all the things"
+    log_message "apt-get ALL THE THINGS.."
     sudo apt-get update
     sudo apt-get install -y $(cat ${SCRIPT_BASE}/ubuntu/apt)
     sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
+    log_message "Installing python packages.."
+    sudo pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
 fi
 
 
-log_message "Setting zsh (FTW) as shell"
+log_message "Setting zsh (FTW) as shell.."
 ZSH=$(which zsh)
 chsh -s ${ZSH}
 sudo chsh -s ${ZSH}
@@ -105,19 +122,10 @@ fi
 log_message "Installing node packages.."
 npm i -g $(cat ${SCRIPT_BASE}/packages/node)
 
-
 log_message "Installing ruby gems.."
 gem install $(cat ${SCRIPT_BASE}/packages/ruby)
 
-
-log_message "Installing python packages.."
-if [[ ${IS_MAC} -eq 1 ]]; then
-    pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
-else
-    sudo pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
-fi
-
-log_message "Installing vim bundles"
-vim -c 'BundleInstall!' -c 'qa!'
+log_message "Installing vim bundles and generating flat vim plugin folder.."
+vim -c 'BundleInstall!' -c 'LocalBundle' -c 'qa!'
 
 log_message "Done, great success!!1"
