@@ -38,7 +38,7 @@ defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 # Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+#defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -89,7 +89,7 @@ sudo scutil --set LocalHostName ${HOSTNAME_TO_USE}
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string ${HOSTNAME_TO_USE}
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=%80
+sudo nvram SystemAudioVolume=%20
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -104,14 +104,14 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+#sudo pmset -a hibernatemode 0
 
-# Remove the sleep image file to save disk space
-sudo rm /Private/var/vm/sleepimage
-# Create a zero-byte file instead…
-sudo touch /Private/var/vm/sleepimage
-# …and make sure it can’t be rewritten
-sudo chflags uchg /Private/var/vm/sleepimage
+## Remove the sleep image file to save disk space
+#sudo rm /Private/var/vm/sleepimage
+## Create a zero-byte file instead…
+#sudo touch /Private/var/vm/sleepimage
+## …and make sure it can’t be rewritten
+#sudo chflags uchg /Private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
 sudo pmset -a sms 0
@@ -120,10 +120,10 @@ sudo pmset -a sms 0
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+#defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+#defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+#defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Automatically illuminate built-in MacBook keyboard in low light
 defaults write com.apple.BezelServices kDim -bool true
@@ -169,7 +169,7 @@ defaults write com.twitter.twitter-mac openLinksInBackground -bool true
 # Allow closing the ‘new tweet’ window by pressing `Esc`
 defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
 
-## Hide Spotlight tray-icon (and subsequent helper)
-#sudo mdutil -a -i off
-#sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-#sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+# Hide Spotlight tray-icon (and subsequent helper)
+sudo mdutil -a -i off
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist

@@ -10,6 +10,8 @@ export MAILPATH=/var/mail/$USER
 #Load nvm and rvm as antigen depends on it
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+[[ -s $HOME/./scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+source $HOME/.zshenv
 
 # Antigen galore
 source ${DOTFILESDIR}/deps/antigen/antigen.zsh
@@ -38,10 +40,8 @@ python
 virtualenv
 vundle
 
-aziz/tmuxinator completion
-
 #github/hub etc
-edouard-lopez/yeoman-zsh-plugin
+#edouard-lopez/yeoman-zsh-plugin
 yonchu/grunt-zsh-completion
 
 EOBUNDLES
@@ -50,6 +50,10 @@ EOBUNDLES
 antigen-theme ${DOTFILESDIR}/zsh/erikzaadi.zsh-theme
 
 antigen-apply
+
+TMUXINATOR_COMPLETION=`ls $(rvm gemdir 2>/dev/null)/gems/tmuxinator-*/completion/tmuxinator.zsh | tail -n 1`
+[[ -s ${TMUXINATOR_COMPLETION} ]] && source ${TMUXINATOR_COMPLETION}
+
 
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"

@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh $1 -f -N -o ControlMaster=auto -o ControlPath=/tmp/%r@%h:%p

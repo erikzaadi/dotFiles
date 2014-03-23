@@ -7,3 +7,6 @@
 [submodule "deps/solarized"]
 	path = deps/solarized
 	url = https://github.com/altercation/solarized
+[submodule "deps/mac-rgb-external-monitor"]
+	path = deps/mac-rgb-external-monitor
+	url = https://gist.github.com/7435890.git
