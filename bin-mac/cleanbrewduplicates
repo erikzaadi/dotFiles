@@ -3,7 +3,6 @@ CASK_ROOT=/opt/homebrew-cask/Caskroom
 for CASK in $(ls ${CASK_ROOT});do 
     CASK_DIRS=$(ls ${CASK_ROOT}/${CASK} | wc -l | tr -d ' '); 
     if [[ ${CASK_DIRS} -gt 1 ]]; then 
-        echo "AAA ${CASK} ${CASK_DIRS} BBB"
         TODELETE=$(echo "${CASK_DIRS}-1" | bc)
         echo "${CASK} has ${TODELETE} absolute apps, deleting.."; 
         ls ${CASK_ROOT}/${CASK} | head -n ${TODELETE} | xargs -I {} rm -r ${CASK_ROOT}/${CASK}/{}

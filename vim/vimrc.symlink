@@ -22,7 +22,7 @@
         " General Vim
             Bundle 'Rykka/localbundle.vim'
             Bundle 'scrooloose/nerdtree'
-            Bundle 'tpope/vim-vinegar'
+            "Bundle 'tpope/vim-vinegar'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
             Bundle 'kien/ctrlp.vim'
             Bundle 'loremipsum'
@@ -32,11 +32,12 @@
             Bundle 'SirVer/ultisnips'
             Bundle 'scrooloose/syntastic'
             Bundle 'bling/vim-airline'
-            Bundle 'sjl/gundo.vim'
+            "Bundle 'sjl/gundo.vim'
             Bundle 'Valloric/YouCompleteMe'
             Bundle 'Valloric/ListToggle'
             Bundle 'tpope/vim-markdown'
             Bundle 'rizzatti/funcoo.vim'
+            Bundle 'Raimondi/delimitMate'
             Bundle 'rizzatti/dash.vim'
         " General Vim end
     
@@ -63,7 +64,9 @@
     
         " Javascript / node / coffeescript 
             Bundle 'digitaltoad/vim-jade'
+            Bundle 'othree/javascript-libraries-syntax.vim'
             Bundle 'kchmck/vim-coffee-script'
+            Bundle 'matthewsimo/angular-vim-snippets'
             Bundle 'pangloss/vim-javascript'
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'marijnh/tern_for_vim'
@@ -184,9 +187,9 @@
 
 " Filetype overrides
      " Python
-        au BufNewFile,BufRead *.py set shiftwidth=4
-        au FileType python set shiftwidth=4
-        au FileType python set tabstop=4
+        au BufNewFile,BufRead *.py set shiftwidth=4 tabstop=4 softtabstop=4
+
+        au FileType python set shiftwidth=4 tabstop=4 softtabstop=4
      " Python End
      
      " Javascript / Coffeescript / Node
@@ -194,12 +197,8 @@
         "au! BufRead,BufNewFile *.json set filetype=json 
         au BufRead,BufNewFile *.ejs set filetype=html
         au BufRead,BufNewFile *.eco set filetype=html
-        au BufNewFile,BufRead *.coffee set shiftwidth=2
-        au FileType javascript set shiftwidth=2
-        au BufNewFile,BufRead *.coffee set tabstop=2
-        au FileType javascript set tabstop=2
-        au BufNewFile,BufRead *.coffee set softtabstop=2
-        au FileType javascript set softtabstop=2
+        au BufNewFile,BufRead *.coffee,*.js set shiftwidth=2 tabstop=2 softtabstop=2
+        au FileType javascript,coffee set softtabstop=2 tabstop=2 shiftwidth=2
     " Javascript / Coffeescript / Node end
 
     " Web
@@ -207,9 +206,9 @@
         au BufRead,BufNewFile *.jade set filetype=jade
         au BufNewFile,BufRead *.styl set filetype=stylus
         au BufNewFile,BufRead *.stylus set filetype=stylus
-        au! BufWinEnter,bufwritepost *.scss call colorv#preview("S")
         au! BufWinEnter,bufwritepost *.styl call colorv#preview("S")
         au! BufWinEnter,bufwritepost *.less call colorv#preview("S")
+        au FileType jade,stylus set softtabstop=2 tabstop=2 shiftwidth=2
     " Web end
 
     " C# / .NIET
@@ -238,30 +237,13 @@
 
 " Vim Plugin Configs
     set background=dark
-    "set t_Co=256
+    set t_Co=256
     colorscheme solarized
     "let g:solarized_termcolors=256
     "let g:solarized_termtrans=1
     call togglebg#map("<F5>")
-    if has ('gui_running')
-    	if has('mac')
-    		set gfn=Monaco\ for\ Powerline:h13
-    	else 
-    		set guifont=Monaco\ for\ Powerline\ 13
-    	endif
-        set guioptions+=LlRrbmT
-        set guioptions-=LlRrbmT
-    endif
-    set laststatus=2
-"    if has('statusline')
-"    	" Broken down into easily includeable segments
-"    	set statusline=%<%f\    " Filename
-"    	set statusline+=%{fugitive#statusline()} "  Git Hotness
-"    	set statusline+=\ [%{&ff}/%Y]            " filetype
-"    	set statusline+=\ [%{getcwd()}]          " current dir
-"    	set statusline+=\ [%{pythonworkon}] " python virtualenv
-"    endif
 
+    set laststatus=2
 
     let NERDTreeShowHidden = 1
     let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files
@@ -269,9 +251,6 @@
     set wildignore+=**/node_modules
     "let g:syntastic_ignore_files = ['\.py$']
     let NERDTreeMouseMode       =   3    
-    let g:virtualenv_directory = $PWD.'/.venv'
-    let g:instant_markdown_autostart = 0
-    let g:instant_markdown_slow = 1
     "let g:syntastic_python_checkers = ["pylama" , 'flake8', 'pylint']
     let g:syntastic_python_checkers = ['pylint']
     let g:syntastic_check_on_open = 0
@@ -291,11 +270,16 @@
     "let g:jedi#popup_on_dot = 0
     let g:UltiSnipsUsePythonVersion=2
     let g:jedi#rename_command = "<S-F12>"
+    let g:ycm_add_preview_to_completeopt=0
+    let g:ycm_confirm_extra_conf=0
+    set completeopt-=preview
 
     let g:UltiSnipsSnippetsDir = "~/.vim/localbundle/UltiSnips"
-    "let g:UltiSnipsJumpForwardTrigger="<tab>"
-    "let g:UltiSnips.snipmate_ft_filter = { 'default' : { 'filetypes': ["FILETYPE"] }, }
+    let g:UltiSnipsExpandTrigger="<C-f>"
+    "let g:user_emmet_leader_key='<C-s>'
     "let g:UltiSnips.always_use_first_snippet = 1
+    "
+    let g:used_javascript_libs = 'underscore,angularjs'
     syntax on                      " enable syntax
     filetype plugin indent on " load filetype plugins/indent settings
  
