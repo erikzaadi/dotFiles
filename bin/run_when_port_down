@@ -1,8 +1,0 @@
-#!/bin/bash
-PORT=$1
-PROGRAM=${@:2}
-
-SWALLOW=$(lsof -i:${PORT} > /dev/null)
-if [[ $? -eq 0 ]]; then
-    $PROGRAM
-fi
