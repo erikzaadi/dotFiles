@@ -36,9 +36,8 @@
             Bundle 'Valloric/YouCompleteMe'
             Bundle 'Valloric/ListToggle'
             Bundle 'tpope/vim-markdown'
-            Bundle 'rizzatti/funcoo.vim'
             Bundle 'Raimondi/delimitMate'
-            Bundle 'rizzatti/dash.vim'
+            Bundle 'wellle/tmux-complete.vim'
         " General Vim end
     
         " Color Schemes
