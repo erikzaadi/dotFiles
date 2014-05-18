@@ -24,6 +24,7 @@
             Bundle 'scrooloose/nerdtree'
             "Bundle 'tpope/vim-vinegar'
             Bundle 'https://github.com/tpope/vim-fugitive.git'
+            Bundle 'tpope/vim-eunuch'
             Bundle 'kien/ctrlp.vim'
             Bundle 'loremipsum'
             Bundle 'majutsushi/tagbar'

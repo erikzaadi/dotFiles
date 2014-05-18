@@ -10,7 +10,7 @@ export MAILPATH=/var/mail/$USER
 #Load nvm and rvm as antigen depends on it
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-[[ -s $HOME/./scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
 source $HOME/.zshenv
 
 # Antigen galore
@@ -20,30 +20,22 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundles <<EOBUNDLES
 
-git-flow
-coffee
-django
-pip
-gem
 extract
 ssh-agent
 brew
-bundler
 colored-man
-fabric
-lol
 git-extras
 vagrant
 npm
-node
-python
-virtualenv
 vundle
+git-flow
+atom
+mosh
 
 #github/hub etc
 #edouard-lopez/yeoman-zsh-plugin
 yonchu/grunt-zsh-completion
-
+#sindresorhus/pure
 EOBUNDLES
 
 # Load my theme.
