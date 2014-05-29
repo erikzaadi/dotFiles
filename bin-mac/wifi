@@ -1,0 +1,19 @@
+#!/bin/bash
+
+WIFI_ON="📶 "
+WIFI_OFF="🚫 "
+WIFI_AVAILABLE="🔄 "
+
+RESULT=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I`
+if [[ "${RESULT}" = "AirPort: Off" ]]; then
+    echo "${WIFI_OFF}"
+else
+    SSID=`echo "${RESULT}" | grep "SSID:" | tail -n 1 | awk '{print $2};'`
+    if [[ "${SSID}" = "" ]]; then
+        echo "${WIFI_AVAILABLE}"
+    else
+        SIGNAL_STRENGTH=`echo "${RESULT}" | grep "agrCtlRSSI:" | awk '{print $2};'`
+        PERCENT=$(( 123 + ${SIGNAL_STRENGTH} ))""
+        echo "${WIFI_ON}${SSID}:${PERCENT}%"
+    fi
+fi
