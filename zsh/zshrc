@@ -16,10 +16,12 @@ source $HOME/.zshenv
 # Antigen galore
 source ${DOTFILESDIR}/deps/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
+#antigen use prezto
 antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundles <<EOBUNDLES
 
+git
 extract
 ssh-agent
 brew
@@ -70,6 +72,7 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
+function gi() { curl http://www.gitignore.io/api/$@ ;}
 
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
