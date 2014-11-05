@@ -22,16 +22,16 @@ antigen use oh-my-zsh
 antigen-bundles <<EOBUNDLES
 
 git
-extract
+#extract
 ssh-agent
 brew
-colored-man
-git-extras
+#colored-man
+#git-extras
 vagrant
 npm
-vundle
-git-flow
-atom
+#vundle
+#git-flow
+#atom
 mosh
 
 #github/hub etc

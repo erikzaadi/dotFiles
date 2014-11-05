@@ -10,3 +10,6 @@ export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 export PATH=${DOTFILESDIR}/bin-mac:${PATH}
 source ${DOTFILESDIR}/zsh/zshrc
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
