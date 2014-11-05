@@ -1,112 +1,99 @@
-" Vim config - optimized for Python, Node and a bit of C#
+" Vim config - optimized for AWESOMENESS
 
 " Vundle
     " Setting up Vundle - the vim plugin bundler
         let iCanHazVundle=1
-        let vundle_readme=expand("~/.vim/bundle/vundle/README.md")
+        let vundle_readme=expand("~/.vim/bundle/Vundle.vim/README.md")
         if !filereadable(vundle_readme) 
-        "if !isdirectory("~/.vim/bundle/vundle")
+        "if !isdirectory("~/.vim/bundle/Vundle")
             echo "Installing Vundle.."
             echo ""
             silent !mkdir -p ~/.vim/bundle
-            silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+            silent !git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
             let iCanHazVundle=0
         endif
-        set rtp+=~/.vim/bundle/vundle/
-        call vundle#rc()
-        Bundle 'gmarik/vundle'
+        set nocompatible              " be iMproved, required
+        filetype off                  " required
+        set rtp+=~/.vim/bundle/Vundle.vim/
+        call vundle#begin()
+        Plugin 'gmarik/Vundle.vim'
 
     " Setting up Vundle - the vim plugin bundler end
 
     " Bundles
         " General Vim
-            Bundle 'Rykka/localbundle.vim'
-            Bundle 'scrooloose/nerdtree'
-            "Bundle 'tpope/vim-vinegar'
-            Bundle 'https://github.com/tpope/vim-fugitive.git'
-            Bundle 'tpope/vim-eunuch'
-            Bundle 'kien/ctrlp.vim'
-            Bundle 'loremipsum'
-            Bundle 'majutsushi/tagbar'
-            Bundle 'ZoomWin'
-            Bundle 'rosenfeld/conque-term'
-            Bundle 'SirVer/ultisnips'
-            Bundle 'scrooloose/syntastic'
-            Bundle 'bling/vim-airline'
-            "Bundle 'sjl/gundo.vim'
-            Bundle 'Valloric/YouCompleteMe'
-            Bundle 'Valloric/ListToggle'
-            Bundle 'tpope/vim-markdown'
-            Bundle 'Raimondi/delimitMate'
-            Bundle 'wellle/tmux-complete.vim'
+            Plugin 'Rykka/localbundle.vim'
+            Plugin 'scrooloose/nerdtree'
+            Plugin 'tpope/vim-fugitive'
+            Plugin 'tpope/vim-eunuch'
+            Plugin 'kien/ctrlp.vim'
+            Plugin 'loremipsum'
+            Plugin 'majutsushi/tagbar'
+            Plugin 'ZoomWin'
+            Plugin 'SirVer/ultisnips'
+            Plugin 'scrooloose/syntastic'
+            Plugin 'bling/vim-airline'
+            Plugin 'Valloric/YouCompleteMe'
+            Plugin 'Raimondi/delimitMate'
+            Plugin 'tpope/vim-unimpaired'
+            Plugin 'wesQ3/vim-windowswap'
+            "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
     
         " Color Schemes
-            "Bundle 'file://'.$DOTFILESDIR.'/deps/solarized', {'rtp': 'vim-colors-solarized'}
-            Bundle 'altercation/vim-colors-solarized'
+            "Plugin 'file://'.$DOTFILESDIR.'/deps/solarized', {'rtp': 'vim-colors-solarized'}
+            Plugin 'altercation/vim-colors-solarized'
 
         " Color Schemes end
         
         " Python
-            "Bundle 'jmcantrell/vim-virtualenv'
-            "Bundle 'davidhalter/jedi-vim'
+            "Plugin 'jmcantrell/vim-virtualenv'
+            "Plugin 'davidhalter/jedi-vim'
         " Python end
     
         " Web (generic)
-            Bundle 'mattn/emmet-vim'
-            "Bundle 'mattn/gist-vim'
-            Bundle 'HTML-AutoCloseTag'
-            Bundle 'juvenn/mustache.vim'
-            Bundle 'Rykka/colorv.vim'
-            Bundle 'gregsexton/MatchTag'
-            Bundle 'wavded/vim-stylus'
+            Plugin 'elzr/vim-json'
+            Plugin 'mattn/emmet-vim'
+            "Plugin 'mattn/gist-vim'
+            Plugin 'hail2u/vim-css3-syntax'
+            Plugin 'HTML-AutoCloseTag'
+            Plugin 'juvenn/mustache.vim'
+            "Plugin 'Rykka/colorv.vim'
+            Plugin 'ap/vim-css-color'
+            "Plugin 'gregsexton/MatchTag'
+            Plugin 'wavded/vim-stylus'
         " Web (generic) end
     
         " Javascript / node / coffeescript 
-            Bundle 'digitaltoad/vim-jade'
-            Bundle 'othree/javascript-libraries-syntax.vim'
-            Bundle 'kchmck/vim-coffee-script'
-            Bundle 'matthewsimo/angular-vim-snippets'
-            Bundle 'pangloss/vim-javascript'
-            Bundle 'nathanaelkane/vim-indent-guides'
-            Bundle 'marijnh/tern_for_vim'
-            Bundle 'jelera/vim-javascript-syntax'
+            Plugin 'digitaltoad/vim-jade'
+            Plugin 'othree/javascript-libraries-syntax.vim'
+            Plugin 'kchmck/vim-coffee-script'
+            Plugin 'jelera/vim-javascript-syntax'
+            Plugin 'matthewsimo/angular-vim-snippets'
+            Plugin 'rstacruz/vim-ultisnips-css'
+            Plugin 'nathanaelkane/vim-indent-guides'
+            Plugin 'marijnh/tern_for_vim'
         " Javascript / node /coffeescript end
     
-        " C# / .Niet
-    
-        " C# / .Niet end
-        
-        " Java
-        "
-        " Java end
-
-        " Scala
-        " Scala End
-    
         " Misc
-            "Bundle 'Puppet-Syntax-Highlighting'
-            Bundle 'honza/vim-snippets'
-            Bundle 'vim-scripts/nginx.vim'
+            Plugin 'honza/vim-snippets'
+            Plugin 'gregsexton/gitv'
+            Plugin 'vim-scripts/nginx.vim'
             " I can haz red pill?
-            Bundle 'uguu-org/vim-matrix-screensaver'
-            Bundle 'vim-scripts/applescript.vim'
-            Bundle 'chase/vim-ansible-yaml'
+            Plugin 'uguu-org/vim-matrix-screensaver'
+            "Plugin 'vim-scripts/applescript.vim'
+            Plugin 'chase/vim-ansible-yaml'
         " Misc end
     " Bundles end
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
-        :BundleInstall
-        call localbundle#init()
-        :LocalBundle
+        :PluginInstall
     endif
-    call localbundle#init()
 
 " Vundle end
 
 "Set Vim defaults
-    set nocompatible               " be iMproved
     set nobackup
     set noswapfile
     set history=256                " Number of things to remember in history.
@@ -183,6 +170,10 @@
     map <S-F6> <Esc> :lprev<CR>
     map <F8> <Esc> :TagbarToggle<CR>
     map <F12> <Esc> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    nnoremap <A-down> <C-W>+
+    nnoremap <A-up> <C-W>-
+    nnoremap <A-left> <C-W><
+    nnoremap <A-right> <C-W>>
 " Keymaps end
 
 " Filetype overrides
@@ -238,10 +229,8 @@
 " Vim Plugin Configs
     set background=dark
     set t_Co=256
-    colorscheme solarized
     "let g:solarized_termcolors=256
     "let g:solarized_termtrans=1
-    call togglebg#map("<F5>")
 
     set laststatus=2
 
@@ -260,7 +249,7 @@
     let g:syntastic_error_symbol='✗'
     let g:syntastic_warning_symbol='⚠'
     
-    let g:syntastic_mode_map = { 'mode': 'active',
+    let g:syntastic_mode_map = { 'mode': 'passive',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
     let g:airline_powerline_fonts = 1
@@ -274,28 +263,22 @@
     let g:ycm_confirm_extra_conf=0
     set completeopt-=preview
 
-    let g:UltiSnipsSnippetsDir = "~/.vim/localbundle/UltiSnips"
-    let g:UltiSnipsExpandTrigger="<C-f>"
+    let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/UltiSnips/"
+    let g:UltiSnipsExpandTrigger="<c-f>"
     "let g:user_emmet_leader_key='<C-s>'
     "let g:UltiSnips.always_use_first_snippet = 1
     "
-    let g:used_javascript_libs = 'underscore,angularjs'
-    syntax on                      " enable syntax
+    let g:used_javascript_libs = 'underscore,angularjs,chai,jquery'
+
+    let g:limelight_conceal_ctermfg = 'gray'
+    let g:limelight_conceal_ctermfg = 240
+
+
+    call vundle#end() 
     filetype plugin indent on " load filetype plugins/indent settings
+    colorscheme solarized
+    syntax on                      " enable syntax
+    call togglebg#map("<F5>")
  
 
 " Vim Plugin Configs end
-
-" Custom functions FTW
-    function! g:ToogleNERDTreeLikeAChamp()
-        "Opens NERDTree if closed, focus on NERDTree if open
-        "and focus on a file or (FINALLY) close when focused on the NERDTree
-        if exists("t:NERDTreeBufName")
-            if (bufwinnr(t:NERDTreeBufName) != -1)
-                :wincmd w
-                return
-            endif
-        endif
-        :NERDTreeToggle
-    endfunction
-" Custom functions FTW end
