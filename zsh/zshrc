@@ -41,7 +41,7 @@ yonchu/grunt-zsh-completion
 EOBUNDLES
 
 # Load my theme.
-antigen-theme ${DOTFILESDIR}/zsh/erikzaadi.zsh-theme
+antigen-theme ${DOTFILESDIR}/zsh erikzaadi
 
 antigen-apply
 
