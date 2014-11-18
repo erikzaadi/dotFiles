@@ -5,7 +5,6 @@
         let iCanHazVundle=1
         let vundle_readme=expand("~/.vim/bundle/Vundle.vim/README.md")
         if !filereadable(vundle_readme) 
-        "if !isdirectory("~/.vim/bundle/Vundle")
             echo "Installing Vundle.."
             echo ""
             silent !mkdir -p ~/.vim/bundle
@@ -22,7 +21,7 @@
 
     " Bundles
         " General Vim
-            Plugin 'Rykka/localbundle.vim'
+            "Plugin 'Rykka/localbundle.vim'
             Plugin 'scrooloose/nerdtree'
             Plugin 'tpope/vim-fugitive'
             Plugin 'tpope/vim-eunuch'
@@ -36,7 +35,13 @@
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
             Plugin 'tpope/vim-unimpaired'
-            Plugin 'wesQ3/vim-windowswap'
+            "Plugin 'tpope/vim-tbone'
+            "Plugin 'wesQ3/vim-windowswap'
+            Plugin 'junegunn/vim-easy-align'
+            "Plugin 'szw/vim-g'
+            Plugin 'airblade/vim-gitgutter'
+            "Plugin 'Kazark/vim-http-client'
+            "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
     
@@ -77,11 +82,9 @@
     
         " Misc
             Plugin 'honza/vim-snippets'
-            Plugin 'gregsexton/gitv'
-            Plugin 'vim-scripts/nginx.vim'
-            " I can haz red pill?
-            Plugin 'uguu-org/vim-matrix-screensaver'
-            "Plugin 'vim-scripts/applescript.vim'
+            "Plugin 'gregsexton/gitv' "Cool, but tig is better
+            Plugin 'vim-scripts/nginx.vim' 
+            Plugin 'uguu-org/vim-matrix-screensaver' "I can haz red pill?
             Plugin 'chase/vim-ansible-yaml'
         " Misc end
     " Bundles end
@@ -153,8 +156,11 @@
 " Vim defaults end
 
 " Keymaps
-    map <silent> <F2> :silent NERDTreeToggle <CR>
+    "map <silent> <F2> :e .<CR>
+    map <silent> <F2> :NERDTreeToggle<CR>
     map <silent> <F3> <ESC>:CtrlP<RETURN>
+    map <silent> <F4> <ESC>:w !diff % -<RETURN>
+    vmap <Enter> <Plug>(EasyAlign)
     "Oy vei, trying without arrows
     "nnoremap <up> <nop>
     "nnoremap <down> <nop>
@@ -197,8 +203,8 @@
         au BufRead,BufNewFile *.jade set filetype=jade
         au BufNewFile,BufRead *.styl set filetype=stylus
         au BufNewFile,BufRead *.stylus set filetype=stylus
-        au! BufWinEnter,bufwritepost *.styl call colorv#preview("S")
-        au! BufWinEnter,bufwritepost *.less call colorv#preview("S")
+        "au! BufWinEnter,bufwritepost *.styl call colorv#preview("S")
+        "au! BufWinEnter,bufwritepost *.less call colorv#preview("S")
         au FileType jade,stylus set softtabstop=2 tabstop=2 shiftwidth=2
     " Web end
 
@@ -234,45 +240,46 @@
 
     set laststatus=2
 
-    let NERDTreeShowHidden = 1
-    let NERDTreeIgnore          =   ['\.pyc$','\.swp$']                 "ignore compiled python files
+    let NERDTreeShowHidden                = 1
+    let NERDTreeIgnore                    = ['\.pyc$','\.swp$']                 "ignore compiled python files
     set wildignore+=*.pyc
     set wildignore+=**/node_modules
-    "let g:syntastic_ignore_files = ['\.py$']
-    let NERDTreeMouseMode       =   3    
+    let g:syntastic_ignore_files          = ['\.py$']
+    let NERDTreeMouseMode                 = 3
     "let g:syntastic_python_checkers = ["pylama" , 'flake8', 'pylint']
-    let g:syntastic_python_checkers = ['pylint']
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_style_warning_symbol='☔'
-    let g:syntastic_style_error_symbol='⚑'
-    let g:syntastic_error_symbol='✗'
-    let g:syntastic_warning_symbol='⚠'
+    let g:syntastic_python_checkers       = ['pylint']
+    let g:syntastic_check_on_open         = 0
+    let g:syntastic_auto_loc_list         = 1
+    let g:syntastic_style_warning_symbol  = '☔'
+    let g:syntastic_style_error_symbol    = '⚑'
+    let g:syntastic_error_symbol          = '✗'
+    let g:syntastic_warning_symbol        = '⚠'
     
-    let g:syntastic_mode_map = { 'mode': 'passive',
+    let g:syntastic_mode_map              = { 'mode': 'passive',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme='solarized'
+    let g:airline_powerline_fonts         = 1
+    let g:airline_theme                   = 'solarized'
     "let g:airline_exclude_preview=1
 
     "let g:jedi#popup_on_dot = 0
-    let g:UltiSnipsUsePythonVersion=2
-    let g:jedi#rename_command = "<S-F12>"
-    let g:ycm_add_preview_to_completeopt=0
-    let g:ycm_confirm_extra_conf=0
+    let g:UltiSnipsUsePythonVersion       = 2
+    let g:jedi#rename_command             = "<S-F12>"
+    let g:ycm_add_preview_to_completeopt  = 0
+    let g:ycm_confirm_extra_conf          = 0
     set completeopt-=preview
 
-    let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/UltiSnips/"
-    let g:UltiSnipsExpandTrigger="<c-f>"
+    let g:UltiSnipsSnippetsDir            = "~/.vim/bundle/vim-snippets/UltiSnips/"
+    let g:UltiSnipsExpandTrigger          = "<c-f>"
     "let g:user_emmet_leader_key='<C-s>'
     "let g:UltiSnips.always_use_first_snippet = 1
     "
-    let g:used_javascript_libs = 'underscore,angularjs,chai,jquery'
+    let g:used_javascript_libs            = 'underscore,angularjs,chai,jquery'
+    let g:tmuxcomplete#trigger            = 'omnifunc'
 
-    let g:limelight_conceal_ctermfg = 'gray'
-    let g:limelight_conceal_ctermfg = 240
-
+    "let g:limelight_conceal_ctermfg = 'gray'
+    "let g:limelight_conceal_ctermfg = 240
+    let g:netrw_liststyle                 = 3
 
     call vundle#end() 
     filetype plugin indent on " load filetype plugins/indent settings
