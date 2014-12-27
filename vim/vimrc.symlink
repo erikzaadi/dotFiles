@@ -28,18 +28,18 @@
             Plugin 'kien/ctrlp.vim'
             Plugin 'loremipsum'
             Plugin 'majutsushi/tagbar'
-            Plugin 'ZoomWin'
+            "Plugin 'ZoomWin'
             Plugin 'SirVer/ultisnips'
             Plugin 'scrooloose/syntastic'
             Plugin 'bling/vim-airline'
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
-            Plugin 'tpope/vim-unimpaired'
+"            Plugin 'tpope/vim-unimpaired'
             "Plugin 'tpope/vim-tbone'
             "Plugin 'wesQ3/vim-windowswap'
             Plugin 'junegunn/vim-easy-align'
             "Plugin 'szw/vim-g'
-            Plugin 'airblade/vim-gitgutter'
+"           Plugin 'airblade/vim-gitgutter'
             "Plugin 'Kazark/vim-http-client'
             "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
@@ -57,8 +57,8 @@
         " Python end
     
         " Web (generic)
-            Plugin 'elzr/vim-json'
-            Plugin 'mattn/emmet-vim'
+"            Plugin 'elzr/vim-json'
+"            Plugin 'mattn/emmet-vim'
             "Plugin 'mattn/gist-vim'
             Plugin 'hail2u/vim-css3-syntax'
             Plugin 'HTML-AutoCloseTag'
@@ -71,10 +71,10 @@
     
         " Javascript / node / coffeescript 
             Plugin 'digitaltoad/vim-jade'
-            Plugin 'othree/javascript-libraries-syntax.vim'
-            Plugin 'kchmck/vim-coffee-script'
+"            Plugin 'othree/javascript-libraries-syntax.vim'
+"            Plugin 'kchmck/vim-coffee-script'
             Plugin 'jelera/vim-javascript-syntax'
-            Plugin 'matthewsimo/angular-vim-snippets'
+"            Plugin 'matthewsimo/angular-vim-snippets'
             Plugin 'rstacruz/vim-ultisnips-css'
             Plugin 'nathanaelkane/vim-indent-guides'
             Plugin 'marijnh/tern_for_vim'

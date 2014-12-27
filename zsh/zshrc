@@ -45,7 +45,7 @@ antigen-theme ${DOTFILESDIR}/zsh erikzaadi
 
 antigen-apply
 
-TMUXINATOR_COMPLETION=`ls $(rvm gemdir 2>/dev/null)/gems/tmuxinator-*/completion/tmuxinator.zsh | tail -n 1`
+TMUXINATOR_COMPLETION="$DOTFILESDIR/bin/tmuxinator.zsh"
 [[ -s ${TMUXINATOR_COMPLETION} ]] && source ${TMUXINATOR_COMPLETION}
 
 
@@ -71,6 +71,8 @@ export EDITOR=vim
 autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
+alias :e=vim 
+alias e=vim 
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 function gi() { curl http://www.gitignore.io/api/$@ ;}
 
