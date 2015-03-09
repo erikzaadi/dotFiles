@@ -102,9 +102,9 @@ ZSH=$(which zsh)
 chsh -s ${ZSH}
 sudo chsh -s ${ZSH}
 
-
 if [[ ! -f ~/.nvm/nvm.sh ]];then 
-    LATEST_STABLE_NODE=$(curl -s  http://nodejs.org/dist/latest/ | ${SCRIPT_BASE}/bin/g_or_native grep "\.pkg" | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/<[^>]*>//g' | ${SCRIPT_BASE}/bin/g_or_native cut -d ' ' -f 1 | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/node-v//g' | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/\.pkg//g')
+    #LATEST_STABLE_NODE=$(curl -s  http://nodejs.org/dist/latest/ | ${SCRIPT_BASE}/bin/g_or_native grep "\.pkg" | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/<[^>]*>//g' | ${SCRIPT_BASE}/bin/g_or_native cut -d ' ' -f 1 | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/node-v//g' | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/\.pkg//g')
+    LATEST_STABLE_NODE=0.10
     log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
     git clone https://github.com/creationix/nvm.git ~/.nvm
     source ~/.nvm/nvm.sh
@@ -125,7 +125,6 @@ npm i -g $(cat ${SCRIPT_BASE}/packages/node)
 log_message "Installing ruby gems.."
 gem install $(cat ${SCRIPT_BASE}/packages/ruby)
 
-log_message "Installing vim bundles and generating flat vim plugin folder.."
-vim -c 'BundleInstall!' -c 'LocalBundle' -c 'qa!'
+vim -c 'BundleInstall!' -c 'qa!'
 
 log_message "Done, great success!!1"
