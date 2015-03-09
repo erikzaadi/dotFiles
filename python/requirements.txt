@@ -1,3 +1,6 @@
 nose
 mock
 sniffer
+pytest
+pytest-xdist
+httpie

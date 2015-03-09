@@ -1,1 +1,1 @@
-coffee-script less stylus nib grunt-cli express underscore-cli bower yo cn instant-server http-server
+coffee-script less stylus nib grunt-cli express underscore-cli bower yo cn instant-server http-server nodemon mocha
