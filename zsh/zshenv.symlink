@@ -1,3 +1,7 @@
+if [[ ${ZSHENV_LOADED:-BLA} = 1 ]]; then
+   return
+fi
+
 [[ -s ~/.envvars.rc ]] && . ~/.envvars.rc
 
 export PATH=$(rvm gemdir 2>/dev/null)/bin:$HOME/bin:${DOTFILESDIR}/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin:$PATH
@@ -5,3 +9,5 @@ export PATH=$(rvm gemdir 2>/dev/null)/bin:$HOME/bin:${DOTFILESDIR}/bin:$HOME/.rv
 # Unicode FTW
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
+
+export ZSHENV_LOADED=1

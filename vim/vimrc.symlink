@@ -34,6 +34,7 @@
             Plugin 'bling/vim-airline'
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
+            Plugin 'terryma/vim-multiple-cursors'
 "            Plugin 'tpope/vim-unimpaired'
             "Plugin 'tpope/vim-tbone'
             "Plugin 'wesQ3/vim-windowswap'
@@ -72,7 +73,7 @@
         " Javascript / node / coffeescript 
             Plugin 'digitaltoad/vim-jade'
 "            Plugin 'othree/javascript-libraries-syntax.vim'
-"            Plugin 'kchmck/vim-coffee-script'
+            Plugin 'kchmck/vim-coffee-script'
             Plugin 'jelera/vim-javascript-syntax'
 "            Plugin 'matthewsimo/angular-vim-snippets'
             Plugin 'rstacruz/vim-ultisnips-css'
@@ -228,6 +229,8 @@
         au BufNewFile,BufRead *tmux.conf set filetype=tmux
         au BufNewFile,BufRead *.pp set filetype=puppet
         autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+        au BufNewFile,BufReadPost *.md set filetype=markdown
+        let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'stylus', 'python']
     " Misc end
  " Filetype overrides end
 

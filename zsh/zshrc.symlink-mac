@@ -1,3 +1,6 @@
+if [[ "${ZSHENV_LOADED:="BLA"}" = "BLA" ]]; then
+    source $HOME/.zshenv
+fi
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export BROWSE=open
 export CLIPBOARD='pbcopy'

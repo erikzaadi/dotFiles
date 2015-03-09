@@ -72,6 +72,7 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
 alias :e=vim 
+alias edit=vim 
 alias e=vim 
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 function gi() { curl http://www.gitignore.io/api/$@ ;}
