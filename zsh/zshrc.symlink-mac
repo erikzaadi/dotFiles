@@ -11,7 +11,7 @@ preview()
 }
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export PATH=${DOTFILESDIR}/bin-mac:${PATH}
+export PATH=${DOTFILESDIR}/bin-mac:${GOPATH}/bin:${PATH}
 source ${DOTFILESDIR}/zsh/zshrc
 
 # added by travis gem
