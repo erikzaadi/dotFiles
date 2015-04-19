@@ -71,6 +71,7 @@
             "Plugin 'Rykka/colorv.vim'
             Plugin 'ap/vim-css-color'
             "Plugin 'gregsexton/MatchTag'
+            Plugin 'moll/vim-node'
             Plugin 'wavded/vim-stylus'
         " Web (generic) end
     
@@ -126,7 +127,6 @@
     " set tw=120
     " set winwidth=120 nice idea, but a bit annoying on small terminalz
     " set winminwidth=120
-    set autoindent
     set mouse=a "enable mouse in GUI mode
     set mousehide                 " Hide mouse after chars typed
     set showmatch                 " Show matching brackets.
@@ -135,7 +135,6 @@
     set cc=121 " Right column
     set encoding=utf8
     set ai "Auto indent
-    set si "Smart indet
     set wrap "Wrap lines
     set number                    " Line numers
     set shortmess=atTI " Hide enter to continue for external apps - GIT
