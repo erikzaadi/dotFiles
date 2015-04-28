@@ -38,6 +38,7 @@ mosh
 #edouard-lopez/yeoman-zsh-plugin
 yonchu/grunt-zsh-completion
 #sindresorhus/pure
+zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
 # Load my theme.

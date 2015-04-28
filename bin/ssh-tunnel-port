@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ $# -lt 3 ]]; then
+    echo "Usage : ssh-tunnel-port LOCAL_PORT REMOTE_PORT [OPTIONAL_USER@]REMOTE_SERVER"
+    echo
+    echo "E.g."
+    echo "ssh-tunnel-port 8080 8009 remoteserver.com"
+    echo "Or"
+    echo "ssh-tunnel-port 8080 8009 ssh_yser@remoteserver.com"
+    exit 0
+fi
+ssh -N -L $1:localhost:$2 $3
