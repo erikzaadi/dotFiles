@@ -67,7 +67,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
     symlink_for_pattern ".symlink-mac" ${SCRIPT_BASE} ~/
     log_message "Brewing ALL THE THINGS.."
     if [[ ! $(which brew) ]]; then
-        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
     SWALLOW=$(brew tap phinze/homebrew-cask > /dev/null)
