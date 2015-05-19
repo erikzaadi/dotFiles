@@ -93,6 +93,8 @@
     #http://stackoverflow.com/a/12056944/110124
     sed = !sh -c 'git grep --null --full-name --name-only --perl-regexp -e \"$1\" | xargs -0 perl -i -p -e \"s/$1/$2/g\"' -
 
+    ragecommit = !git commit -m "$(random_emoticon)"
+
 [core]
     whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
 	editor = vim
