@@ -84,6 +84,7 @@
             Plugin 'rstacruz/vim-ultisnips-css'
             Plugin 'nathanaelkane/vim-indent-guides'
             Plugin 'marijnh/tern_for_vim'
+            Plugin 'myhere/vim-nodejs-complete'
         " Javascript / node /coffeescript end
     
         " Misc
@@ -245,6 +246,7 @@
     "let g:solarized_termtrans=1
 
     set laststatus=2
+    set guioptions-=LR
 
     let NERDTreeShowHidden                = 1
     let NERDTreeIgnore                    = ['\.pyc$','\.swp$']                 "ignore compiled python files

@@ -4,7 +4,8 @@ function theme_precmd {
      local TERMWIDTH
     (( TERMWIDTH = ${COLUMNS} - 1 ))
 
-    MAC_HAND="✊ "
+    #MAC_HAND="✊ "
+    MAC_HAND="$(random_emoticon)"
     LINUX_CARET="➜"
     CARET_PREFIX=$LINUX_CARET
 

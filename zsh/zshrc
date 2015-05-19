@@ -21,24 +21,20 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundles <<EOBUNDLES
 
+zsh-users/zsh-syntax-highlighting
 git
-#extract
 ssh-agent
 brew
-#colored-man
-#git-extras
 vagrant
 npm
-#vundle
-#git-flow
-#atom
 mosh
+grunt
+bower
+docker
+jsontools
 
-#github/hub etc
-#edouard-lopez/yeoman-zsh-plugin
-yonchu/grunt-zsh-completion
-#sindresorhus/pure
-zsh-users/zsh-syntax-highlighting
+history-substring-search
+
 EOBUNDLES
 
 # Load my theme.
@@ -48,7 +44,6 @@ antigen-apply
 
 TMUXINATOR_COMPLETION="$DOTFILESDIR/bin/tmuxinator.zsh"
 [[ -s ${TMUXINATOR_COMPLETION} ]] && source ${TMUXINATOR_COMPLETION}
-
 
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
