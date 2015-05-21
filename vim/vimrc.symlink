@@ -190,7 +190,6 @@
 " Filetype overrides
      " Python
         au BufNewFile,BufRead *.py set shiftwidth=4 tabstop=4 softtabstop=4
-
         au FileType python set shiftwidth=4 tabstop=4 softtabstop=4
      " Python End
      
@@ -208,17 +207,8 @@
         au BufRead,BufNewFile *.jade set filetype=jade
         au BufNewFile,BufRead *.styl set filetype=stylus
         au BufNewFile,BufRead *.stylus set filetype=stylus
-        "au! BufWinEnter,bufwritepost *.styl call colorv#preview("S")
-        "au! BufWinEnter,bufwritepost *.less call colorv#preview("S")
         au FileType jade,stylus set softtabstop=2 tabstop=2 shiftwidth=2
     " Web end
-
-    " C# / .NIET
-        au BufNewFile,BufRead *.cshtml set filetype=html
-        au BufNewFile,BufRead *.master set filetype=html
-        au BufNewFile,BufRead *.webconfig set filetype=xml
-        au BufNewFile,BufRead *.nuspec set filetype=xml
-    " C# / .NIET end
 
     " Java 
         au BufNewFile,BufRead *.java set tags=$PWD/.tags
@@ -256,7 +246,6 @@
     set wildignore+=**/node_modules
     let g:syntastic_ignore_files          = ['\.py$']
     let NERDTreeMouseMode                 = 3
-    "let g:syntastic_python_checkers = ["pylama" , 'flake8', 'pylint']
     let g:syntastic_python_checkers       = ['pylint']
     let g:syntastic_check_on_open         = 0
     let g:syntastic_auto_loc_list         = 1
@@ -270,9 +259,6 @@
                                     \ 'passive_filetypes': ['java'] }
     let g:airline_powerline_fonts         = 1
     let g:airline_theme                   = 'solarized'
-    "let g:airline_exclude_preview=1
-
-    "let g:jedi#popup_on_dot = 0
     let g:UltiSnipsUsePythonVersion       = 2
     let g:jedi#rename_command             = "<S-F12>"
     let g:ycm_add_preview_to_completeopt  = 0
@@ -287,9 +273,6 @@
     let g:used_javascript_libs            = 'underscore,angularjs,chai,jquery'
     let g:tmuxcomplete#trigger            = 'omnifunc'
     let g:airline#extensions#branch#format = 'Git_flow_branch_format'
-
-    "let g:limelight_conceal_ctermfg = 'gray'
-    "let g:limelight_conceal_ctermfg = 240
     let g:netrw_liststyle                 = 3
 
     call vundle#end() 
