@@ -23,6 +23,7 @@
         " General Vim
             Plugin 'scrooloose/nerdtree'
             Plugin 'tpope/vim-fugitive'
+            Plugin 'idanarye/vim-merginal'
             Plugin 'tpope/vim-eunuch'
             Plugin 'kien/ctrlp.vim'
             Plugin 'loremipsum'
@@ -254,26 +255,27 @@
     let g:syntastic_error_symbol          = '✗'
     let g:syntastic_warning_symbol        = '⚠'
     
-    let g:syntastic_mode_map              = { 'mode': 'passive',
+    let g:syntastic_mode_map                = { 'mode': 'passive',
                                     \ 'active_filetypes': [],
                                     \ 'passive_filetypes': ['java'] }
-    let g:airline_powerline_fonts         = 1
-    let g:airline_theme                   = 'solarized'
-    let g:UltiSnipsUsePythonVersion       = 2
-    let g:jedi#rename_command             = "<S-F12>"
-    let g:ycm_add_preview_to_completeopt  = 0
-    let g:ycm_confirm_extra_conf          = 0
+    let g:airline_powerline_fonts           = 1
+    let g:airline_theme                     = 'solarized'
+    let g:UltiSnipsUsePythonVersion         = 2
+    let g:jedi#rename_command               = "<S-F12>"
+    let g:ycm_add_preview_to_completeopt    = 0
+    let g:ycm_confirm_extra_conf            = 0
     set completeopt-=preview
 
-    let g:UltiSnipsSnippetsDir            = "~/.vim/bundle/vim-snippets/UltiSnips/"
-    let g:UltiSnipsExpandTrigger          = "<c-f>"
+    let g:UltiSnipsSnippetsDir              = "~/.vim/bundle/vim-snippets/UltiSnips/"
+    let g:UltiSnipsExpandTrigger            = "<c-f>"
     "let g:user_emmet_leader_key='<C-s>'
     "let g:UltiSnips.always_use_first_snippet = 1
     "
-    let g:used_javascript_libs            = 'underscore,angularjs,chai,jquery'
-    let g:tmuxcomplete#trigger            = 'omnifunc'
-    let g:airline#extensions#branch#format = 'Git_flow_branch_format'
-    let g:netrw_liststyle                 = 3
+    let g:used_javascript_libs              = 'underscore,angularjs,chai,jquery'
+    let g:tmuxcomplete#trigger              = 'omnifunc'
+    let g:airline#extensions#branch#format  = 'Git_flow_branch_format'
+    let g:netrw_liststyle                   = 3
+    let g:delimitmate_expand_cr             = 2
 
     call vundle#end() 
     filetype plugin indent on " load filetype plugins/indent settings
