@@ -23,61 +23,24 @@
         " General Vim
             Plugin 'scrooloose/nerdtree'
             Plugin 'tpope/vim-fugitive'
-            Plugin 'idanarye/vim-merginal'
             Plugin 'tpope/vim-eunuch'
             Plugin 'kien/ctrlp.vim'
-            Plugin 'loremipsum'
-            Plugin 'majutsushi/tagbar'
             Plugin 'SirVer/ultisnips'
             Plugin 'scrooloose/syntastic'
             Plugin 'bling/vim-airline'
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
-            Plugin 'terryma/vim-multiple-cursors'
             Plugin 'junegunn/vim-easy-align'
-            Plugin 'AndrewRadev/linediff.vim'
-            Plugin 'vim-scripts/git-flow-format'
-            Plugin 'tpope/vim-commentary'
             Plugin 'tpope/vim-dispatch'
-            "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
-            "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
     
         " Color Schemes
             Plugin 'altercation/vim-colors-solarized'
         " Color Schemes end
-        
-        " Python
-            "YouCompleteMe got me covered
-            "Plugin 'jmcantrell/vim-virtualenv'
-            "Plugin 'davidhalter/jedi-vim'
-        " Python end
-    
-        " Web (generic)
-            Plugin 'hail2u/vim-css3-syntax'
-            Plugin 'HTML-AutoCloseTag'
-            Plugin 'juvenn/mustache.vim'
-            "Plugin 'ap/vim-css-color'
-            Plugin 'digitaltoad/vim-jade'
-            Plugin 'wavded/vim-stylus'
-            Plugin 'rstacruz/vim-ultisnips-css'
-        " Web (generic) end
-    
-        " Javascript / node / coffeescript 
-            Plugin 'wookiehangover/jshint.vim'
-            Plugin 'moll/vim-node'
-            Plugin 'kchmck/vim-coffee-script'
-            Plugin 'jelera/vim-javascript-syntax'
-            Plugin 'nathanaelkane/vim-indent-guides'
-            Plugin 'marijnh/tern_for_vim'
-            Plugin 'myhere/vim-nodejs-complete'
-        " Javascript / node /coffeescript end
-    
         " Misc
             Plugin 'honza/vim-snippets'
             Plugin 'vim-scripts/nginx.vim' 
             Plugin 'chase/vim-ansible-yaml'
-            Plugin 'shime/vim-livedown'
         " Misc end
     " Bundles end
     if iCanHazVundle == 0
@@ -118,7 +81,7 @@
     set showmatch                 " Show matching brackets.
     set novisualbell              " No blinking
     set noerrorbells              " No noise.
-    "set cc=121 " Right column
+    set cc=121 " Right column
     set encoding=utf8
     set ai "Auto indent
     set wrap "Wrap lines
@@ -146,56 +109,7 @@
 " Vim defaults end
 
 " Keymaps
-    let mapleader = "\<Space>""
-    map <silent> <F2> :NERDTreeToggle<CR>
-    map <silent> <F3> <ESC>:CtrlP<RETURN>
-    nnoremap <Leader>w :w<CR>
-    nnoremap <Leader>o :CtrlP<CR>
     vmap <Enter> <Plug>(EasyAlign)
-    "Oy vei, trying without arrows
-""    nnoremap <up> <nop>
-""    nnoremap <down> <nop>
-""    nnoremap <left> <nop>
-""    nnoremap <right> <nop>
-""    inoremap <up> <nop>
-""    inoremap <down> <nop>
-""    inoremap <left> <nop>
-""    inoremap <right> <nop>
-    map <F1> <Esc>
-    map <S-F5> <Esc> :setlocal spell spelllang=en_us<CR>
-    map <F6> <Esc> :lnext<CR>
-    map <S-F6> <Esc> :lprev<CR>
-    map <F8> <Esc> :TagbarToggle<CR>
-    map <F12> <Esc> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    nnoremap <Leader><Leader>h :noh<CR>
-    nnoremap <Leader><Leader>r :redraw!<CR>
-    nnoremap <A-down> <C-W>+
-    nnoremap <A-up> <C-W>-
-    nnoremap <A-left> <C-W><
-    nnoremap <A-right> <C-W>>
-    nnoremap <Leader>o :CtrlP<CR>
-
-    " fugitive git bindings -
-    " http://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
-    nnoremap <Leader>ga :Git add %:p<CR><CR>
-    nnoremap <Leader>gs :Gstatus<CR>
-    nnoremap <Leader>gc :Gcommit -v -q<CR>
-    nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
-    nnoremap <Leader>gd :Gdiff<CR>
-    nnoremap <Leader>ge :Gedit<CR>
-    nnoremap <Leader>gr :Gread<CR>
-    nnoremap <Leader>gw :Gwrite<CR><CR>
-    nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
-    nnoremap <Leader>gp :Ggrep<Space>
-    nnoremap <Leader>gm :Gmove<Space>
-    nnoremap <Leader>gb :Git branch<Space>
-    nnoremap <Leader>go :Git checkout<Space>
-    nnoremap <Leader>gps :Dispatch! git push<CR>
-    nnoremap <Leader>gpl :Dispatch! git pull<CR>
-
-    nnoremap <CR> G
-    nnoremap <BS> gg
-    map q: :q
 " Keymaps end
 
 " Filetype overrides
@@ -221,15 +135,6 @@
         au FileType jade,stylus set softtabstop=2 tabstop=2 shiftwidth=2
     " Web end
 
-    " Java 
-        au BufNewFile,BufRead *.java set tags=$PWD/.tags
-    " Java end
-
-    " Scala
-        au BufNewFile,BufRead *.scala set filetype=scala
-        au BufNewFile,BufRead *.sbt set filetype=scala
-    " Scala end
-
     " Misc
         au BufNewFile,BufRead *tmux.conf set filetype=tmux
         au BufNewFile,BufRead *.pp set filetype=puppet
@@ -243,8 +148,6 @@
 " Vim Plugin Configs
     set background=dark
     set t_Co=256
-    set term=xterm-256color
-    set t_ut=
     "let g:solarized_termcolors=256
     "let g:solarized_termtrans=1
 
@@ -256,7 +159,7 @@
     let NERDTreeShowHidden                = 1
     let NERDTreeIgnore                    = ['\.pyc$','\.swp$']                 "ignore compiled python files
     set wildignore+=*.pyc
-    "set wildignore+=**/node_modules
+    set wildignore+=**/node_modules
     let g:syntastic_ignore_files          = ['\.py$']
     let NERDTreeMouseMode                 = 3
     let g:syntastic_python_checkers       = ['pylint']
@@ -280,13 +183,14 @@
 
     let g:UltiSnipsSnippetsDir              = "~/.vim/bundle/vim-snippets/UltiSnips/"
     let g:UltiSnipsExpandTrigger            = "<c-f>"
-    let g:used_javascript_libs             = 'underscore,angularjs,chai,jquery'
-    let g:tmuxcomplete#trigger             = 'omnifunc'
-    let g:airline#extensions#branch#format = 'Git_flow_branch_format'
-    let g:netrw_liststyle                  = 3
-    let g:delimitmate_expand_cr            = 2
-
-    let g:livedown_port                    = 1447
+    "let g:user_emmet_leader_key='<C-s>'
+    "let g:UltiSnips.always_use_first_snippet = 1
+    "
+    let g:used_javascript_libs              = 'underscore,angularjs,chai,jquery'
+    let g:tmuxcomplete#trigger              = 'omnifunc'
+    let g:airline#extensions#branch#format  = 'Git_flow_branch_format'
+    let g:netrw_liststyle                   = 3
+    let g:delimitmate_expand_cr             = 2
 
     call vundle#end() 
     filetype plugin indent on " load filetype plugins/indent settings

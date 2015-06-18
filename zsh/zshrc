@@ -45,6 +45,9 @@ antigen-apply
 TMUXINATOR_COMPLETION="$DOTFILESDIR/bin/tmuxinator.zsh"
 [[ -s ${TMUXINATOR_COMPLETION} ]] && source ${TMUXINATOR_COMPLETION}
 
+bindkey "^[OA" up-line-or-history
+bindkey "^[OB" down-line-or-history
+
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
 alias pwdc='pwd | ${CLIPBOARD}'
@@ -71,7 +74,6 @@ alias :e=vim
 alias edit=vim 
 alias e=vim 
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
-function gi() { curl http://www.gitignore.io/api/$@ ;}
 
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
