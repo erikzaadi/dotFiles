@@ -39,6 +39,7 @@
             Plugin 'vim-scripts/git-flow-format'
             Plugin 'tpope/vim-commentary'
             Plugin 'tpope/vim-dispatch'
+            Plugin 'airblade/vim-gitgutter'
             "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
@@ -287,6 +288,10 @@
     let g:delimitmate_expand_cr            = 2
 
     let g:livedown_port                    = 1447
+
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
 
     call vundle#end() 
     filetype plugin indent on " load filetype plugins/indent settings
