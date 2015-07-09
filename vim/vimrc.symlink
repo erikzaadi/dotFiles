@@ -23,7 +23,6 @@
         " General Vim
             Plugin 'scrooloose/nerdtree'
             Plugin 'tpope/vim-fugitive'
-            Plugin 'idanarye/vim-merginal'
             Plugin 'tpope/vim-eunuch'
             Plugin 'kien/ctrlp.vim'
             Plugin 'loremipsum'
@@ -33,13 +32,15 @@
             Plugin 'bling/vim-airline'
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
-            Plugin 'terryma/vim-multiple-cursors'
+            "Plugin 'terryma/vim-multiple-cursors'
             Plugin 'junegunn/vim-easy-align'
-            Plugin 'AndrewRadev/linediff.vim'
-            Plugin 'vim-scripts/git-flow-format'
-            Plugin 'tpope/vim-commentary'
+            "Plugin 'AndrewRadev/linediff.vim'
+            "Plugin 'vim-scripts/git-flow-format'
+            "Plugin 'tpope/vim-commentary'
             Plugin 'tpope/vim-dispatch'
             Plugin 'airblade/vim-gitgutter'
+            Plugin 'wincent/terminus'
+            Plugin 'editorconfig/editorconfig-vim'
             "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
@@ -72,13 +73,13 @@
             Plugin 'nathanaelkane/vim-indent-guides'
             Plugin 'marijnh/tern_for_vim'
             Plugin 'myhere/vim-nodejs-complete'
+            "Plugin 'facebook/vim-flow'
         " Javascript / node /coffeescript end
     
         " Misc
             Plugin 'honza/vim-snippets'
             Plugin 'vim-scripts/nginx.vim' 
             Plugin 'chase/vim-ansible-yaml'
-            Plugin 'shime/vim-livedown'
         " Misc end
     " Bundles end
     if iCanHazVundle == 0
@@ -181,21 +182,13 @@
     nnoremap <Leader>ga :Git add %:p<CR><CR>
     nnoremap <Leader>gs :Gstatus<CR>
     nnoremap <Leader>gc :Gcommit -v -q<CR>
-    nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
     nnoremap <Leader>gd :Gdiff<CR>
-    nnoremap <Leader>ge :Gedit<CR>
-    nnoremap <Leader>gr :Gread<CR>
-    nnoremap <Leader>gw :Gwrite<CR><CR>
-    nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
     nnoremap <Leader>gp :Ggrep<Space>
     nnoremap <Leader>gm :Gmove<Space>
     nnoremap <Leader>gb :Git branch<Space>
     nnoremap <Leader>go :Git checkout<Space>
     nnoremap <Leader>gps :Dispatch! git push<CR>
     nnoremap <Leader>gpl :Dispatch! git pull<CR>
-
-    nnoremap <CR> G
-    nnoremap <BS> gg
     map q: :q
 " Keymaps end
 
@@ -243,11 +236,6 @@
 
 " Vim Plugin Configs
     set background=dark
-    set t_Co=256
-    set term=xterm-256color
-    set t_ut=
-    "let g:solarized_termcolors=256
-    "let g:solarized_termtrans=1
 
     set laststatus=2
     set guioptions-=LR
@@ -283,7 +271,6 @@
     let g:UltiSnipsExpandTrigger            = "<c-f>"
     let g:used_javascript_libs             = 'underscore,angularjs,chai,jquery'
     let g:tmuxcomplete#trigger             = 'omnifunc'
-    let g:airline#extensions#branch#format = 'Git_flow_branch_format'
     let g:netrw_liststyle                  = 3
     let g:delimitmate_expand_cr            = 2
 

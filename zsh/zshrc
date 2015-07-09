@@ -30,10 +30,7 @@ npm
 mosh
 grunt
 bower
-docker
-jsontools
-
-history-substring-search
+tmuxinator
 
 EOBUNDLES
 
@@ -41,12 +38,6 @@ EOBUNDLES
 antigen-theme ${DOTFILESDIR}/zsh erikzaadi
 
 antigen-apply
-
-TMUXINATOR_COMPLETION="$DOTFILESDIR/bin/tmuxinator.zsh"
-[[ -s ${TMUXINATOR_COMPLETION} ]] && source ${TMUXINATOR_COMPLETION}
-
-bindkey "^[OA" up-line-or-history
-bindkey "^[OB" down-line-or-history
 
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
