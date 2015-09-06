@@ -24,7 +24,8 @@
             Plugin 'scrooloose/nerdtree'
             Plugin 'tpope/vim-fugitive'
             Plugin 'tpope/vim-eunuch'
-            Plugin 'kien/ctrlp.vim'
+            Plugin 'ctrlpvim/ctrlp.vim'
+            Plugin 'tacahiroy/ctrlp-funky'
             Plugin 'loremipsum'
             Plugin 'majutsushi/tagbar'
             Plugin 'SirVer/ultisnips'
@@ -38,9 +39,10 @@
             "Plugin 'vim-scripts/git-flow-format'
             "Plugin 'tpope/vim-commentary'
             Plugin 'tpope/vim-dispatch'
-            Plugin 'airblade/vim-gitgutter'
-            Plugin 'wincent/terminus'
+"            Plugin 'airblade/vim-gitgutter'
+"            Plugin 'wincent/terminus'
             Plugin 'editorconfig/editorconfig-vim'
+            Plugin 'ryanoasis/vim-webdevicons'
             "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
@@ -57,24 +59,30 @@
     
         " Web (generic)
             Plugin 'hail2u/vim-css3-syntax'
-            Plugin 'HTML-AutoCloseTag'
-            Plugin 'juvenn/mustache.vim'
+"            Plugin 'HTML-AutoCloseTag'
+"            Plugin 'juvenn/mustache.vim'
             "Plugin 'ap/vim-css-color'
             Plugin 'digitaltoad/vim-jade'
             Plugin 'wavded/vim-stylus'
             Plugin 'rstacruz/vim-ultisnips-css'
+"            Plugin 'csscomb/vim-csscomb'
         " Web (generic) end
+
     
         " Javascript / node / coffeescript 
             Plugin 'wookiehangover/jshint.vim'
             Plugin 'moll/vim-node'
-            Plugin 'kchmck/vim-coffee-script'
-            Plugin 'jelera/vim-javascript-syntax'
-            Plugin 'nathanaelkane/vim-indent-guides'
-            Plugin 'marijnh/tern_for_vim'
-            Plugin 'myhere/vim-nodejs-complete'
+"            Plugin 'kchmck/vim-coffee-script'
+"            Plugin 'jelera/vim-javascript-syntax'
+"            Plugin 'nathanaelkane/vim-indent-guides'
+"            Plugin 'marijnh/tern_for_vim'
+"            Plugin 'myhere/vim-nodejs-complete'
             "Plugin 'facebook/vim-flow'
         " Javascript / node /coffeescript end
+
+        " Go
+            Plugin 'fatih/vim-go'
+        " Go end
     
         " Misc
             Plugin 'honza/vim-snippets'
@@ -151,6 +159,7 @@
     let mapleader = "\<Space>""
     map <silent> <F2> :NERDTreeToggle<CR>
     map <silent> <F3> <ESC>:CtrlP<RETURN>
+    map <silent> <F4> <ESC>:CtrlPFunky<RETURN>
     nnoremap <Leader>w :w<CR>
     nnoremap <Leader>o :CtrlP<CR>
     vmap <Enter> <Plug>(EasyAlign)
@@ -275,6 +284,8 @@
     let g:delimitmate_expand_cr            = 2
 
     let g:livedown_port                    = 1447
+
+    let g:webdevicons_enable_nerdtree      = 1
 
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
