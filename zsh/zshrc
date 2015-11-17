@@ -7,9 +7,8 @@ bashcompinit
 # Paths
 export MAILPATH=/var/mail/$USER
 
-#Load nvm and rvm as antigen depends on it
+#Load nvm as antigen depends on it
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 source $HOME/.zshenv
 
@@ -31,6 +30,7 @@ mosh
 grunt
 bower
 tmuxinator
+sbt
 
 EOBUNDLES
 

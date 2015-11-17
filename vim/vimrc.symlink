@@ -35,6 +35,7 @@
             Plugin 'Raimondi/delimitMate'
             "Plugin 'terryma/vim-multiple-cursors'
             Plugin 'junegunn/vim-easy-align'
+            "Plugin 'blueyed/vim-diminactive'
             "Plugin 'AndrewRadev/linediff.vim'
             "Plugin 'vim-scripts/git-flow-format'
             "Plugin 'tpope/vim-commentary'
@@ -42,7 +43,7 @@
 "            Plugin 'airblade/vim-gitgutter'
 "            Plugin 'wincent/terminus'
             Plugin 'editorconfig/editorconfig-vim'
-            Plugin 'ryanoasis/vim-webdevicons'
+            "Plugin 'ryanoasis/vim-webdevicons'
             "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
         " General Vim end
@@ -70,9 +71,8 @@
 
     
         " Javascript / node / coffeescript 
-            Plugin 'wookiehangover/jshint.vim'
             Plugin 'moll/vim-node'
-"            Plugin 'kchmck/vim-coffee-script'
+            Plugin 'kchmck/vim-coffee-script'
 "            Plugin 'jelera/vim-javascript-syntax'
 "            Plugin 'nathanaelkane/vim-indent-guides'
 "            Plugin 'marijnh/tern_for_vim'
@@ -83,11 +83,15 @@
         " Go
             Plugin 'fatih/vim-go'
         " Go end
-    
+        
+        " Scala
+            Plugin 'derekwyatt/vim-scala'
+        " Scala End
+
         " Misc
             Plugin 'honza/vim-snippets'
             Plugin 'vim-scripts/nginx.vim' 
-            Plugin 'chase/vim-ansible-yaml'
+            Plugin 'erikzaadi/vim-ansible-yaml'
         " Misc end
     " Bundles end
     if iCanHazVundle == 0
@@ -110,6 +114,7 @@
     set modelines=5                " default numbers of lines to read for
     set autowrite                  " Writes on make/shell commands
     set autoread
+    set lazyredraw
     set hidden                     " The current buffer can be put to the
     " background without writing to disk
     set hlsearch                   " highlight search
@@ -229,8 +234,8 @@
     " Java end
 
     " Scala
-        au BufNewFile,BufRead *.scala set filetype=scala
-        au BufNewFile,BufRead *.sbt set filetype=scala
+        "au BufNewFile,BufRead *.scala set filetype=scala
+        "au BufNewFile,BufRead *.sbt set filetype=scala
     " Scala end
 
     " Misc
@@ -258,16 +263,21 @@
     let g:syntastic_ignore_files          = ['\.py$']
     let NERDTreeMouseMode                 = 3
     let g:syntastic_python_checkers       = ['pylint']
+    let g:syntastic_yaml_checkers      = ['jsyaml']
+    "let g:syntastic_ansible_checkers      = ['lint']
     let g:syntastic_check_on_open         = 0
     let g:syntastic_auto_loc_list         = 1
-    let g:syntastic_style_warning_symbol  = '☔'
-    let g:syntastic_style_error_symbol    = '⚑'
-    let g:syntastic_error_symbol          = '✗'
-    let g:syntastic_warning_symbol        = '⚠'
+    let g:syntastic_javascript_checkers = ['jshint']
+    "let g:syntastic_style_warning_symbol  = '☔'
+    "let g:syntastic_style_error_symbol    = '⚑'
+    "let g:syntastic_error_symbol          = '✗'
+    "let g:syntastic_warning_symbol        = '⚠'
+    let g:syntastic_enable_signs          = 0
+    let g:syntastic_scala_checkers        = ['']
     
     let g:syntastic_mode_map                = { 'mode': 'passive',
-                                    \ 'active_filetypes': [],
-                                    \ 'passive_filetypes': ['java'] }
+                                    \ 'active_filetypes': ['javascript', 'ansible'],
+                                    \ 'passive_filetypes': ['java', 'scala'] }
     let g:airline_powerline_fonts           = 1
     let g:airline_theme                     = 'solarized'
     let g:UltiSnipsUsePythonVersion         = 2
