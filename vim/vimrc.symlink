@@ -8,14 +8,14 @@
             echo "Installing Vundle.."
             echo ""
             silent !mkdir -p ~/.vim/bundle
-            silent !git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
+            silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
             let iCanHazVundle=0
         endif
         set nocompatible              " be iMproved, required
         filetype off                  " required
         set rtp+=~/.vim/bundle/Vundle.vim/
         call vundle#begin()
-        Plugin 'gmarik/Vundle.vim'
+        Plugin 'VundleVim/Vundle.vim'
 
     " Setting up Vundle - the vim plugin bundler end
 
