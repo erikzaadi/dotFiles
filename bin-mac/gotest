@@ -1,0 +1,2 @@
+#!/bin/bash
+go test;fswatch -e '.git' . -t -r -0 -o | xargs -0 -n1 -I{} go test

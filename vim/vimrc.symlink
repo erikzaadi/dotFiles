@@ -33,6 +33,8 @@
             Plugin 'bling/vim-airline'
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
+            Plugin 'mbbill/undotree'
+            Plugin 'scrooloose/nerdcommenter'
             "Plugin 'terryma/vim-multiple-cursors'
             Plugin 'junegunn/vim-easy-align'
             "Plugin 'blueyed/vim-diminactive'
@@ -264,6 +266,7 @@
     let NERDTreeMouseMode                 = 3
     let g:syntastic_python_checkers       = ['pylint']
     let g:syntastic_yaml_checkers      = ['jsyaml']
+    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
     "let g:syntastic_ansible_checkers      = ['lint']
     let g:syntastic_check_on_open         = 0
     let g:syntastic_auto_loc_list         = 1
@@ -276,7 +279,7 @@
     let g:syntastic_scala_checkers        = ['']
     
     let g:syntastic_mode_map                = { 'mode': 'passive',
-                                    \ 'active_filetypes': ['javascript', 'ansible'],
+                                    \ 'active_filetypes': ['javascript', 'ansible', 'go'],
                                     \ 'passive_filetypes': ['java', 'scala'] }
     let g:airline_powerline_fonts           = 1
     let g:airline_theme                     = 'solarized'
