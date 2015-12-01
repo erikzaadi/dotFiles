@@ -1,2 +1,5 @@
 #!/bin/bash
-go test;fswatch -e '.git' . -t -r -0 -o | xargs -0 -n1 -I{} go test
+clear
+go test -v ./... 
+fswatch -e '.git' -t -r -o ./ | (while read; do clear; echo "changed, running"; go test -v ./...; [[ $? -ne 0 ]] && echo 'FAILED!'; done)
+
