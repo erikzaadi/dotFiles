@@ -165,6 +165,7 @@
 " Keymaps
     let mapleader = "\<Space>""
     map <silent> <F2> :NERDTreeToggle<CR>
+    map <silent> <F5> :NERDTreeFind<CR>
     map <silent> <F3> <ESC>:CtrlP<RETURN>
     map <silent> <F4> <ESC>:CtrlPFunky<RETURN>
     nnoremap <Leader>w :w<CR>
@@ -180,7 +181,6 @@
 ""    inoremap <left> <nop>
 ""    inoremap <right> <nop>
     map <F1> <Esc>
-    map <S-F5> <Esc> :setlocal spell spelllang=en_us<CR>
     map <F6> <Esc> :lnext<CR>
     map <S-F6> <Esc> :lprev<CR>
     map <F8> <Esc> :TagbarToggle<CR>
