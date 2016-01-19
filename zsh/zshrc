@@ -21,17 +21,11 @@ antigen use oh-my-zsh
 antigen-bundles <<EOBUNDLES
 
 zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-completions src
 git
 ssh-agent
-brew
-vagrant
 npm
-mosh
 grunt
-bower
-tmuxinator
-sbt
-docker
 
 EOBUNDLES
 

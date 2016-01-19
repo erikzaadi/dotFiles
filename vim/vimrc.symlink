@@ -48,6 +48,7 @@
             "Plugin 'ryanoasis/vim-webdevicons'
             "Plugin 'wellle/tmux-complete.vim' "Awesome, but slow
             "Plugin 'joonty/vdebug' "Ok, this is awesome, but VERY heavy
+            Plugin 'moorereason/vim-markdownfmt'
         " General Vim end
     
         " Color Schemes
@@ -56,7 +57,7 @@
         
         " Python
             "YouCompleteMe got me covered
-            "Plugin 'jmcantrell/vim-virtualenv'
+            Plugin 'jmcantrell/vim-virtualenv'
             "Plugin 'davidhalter/jedi-vim'
         " Python end
     
@@ -75,6 +76,7 @@
         " Javascript / node / coffeescript 
             Plugin 'moll/vim-node'
             Plugin 'kchmck/vim-coffee-script'
+            Plugin 'isRuslan/vim-es6'
 "            Plugin 'jelera/vim-javascript-syntax'
 "            Plugin 'nathanaelkane/vim-indent-guides'
 "            Plugin 'marijnh/tern_for_vim'
@@ -84,6 +86,7 @@
 
         " Go
             Plugin 'fatih/vim-go'
+            Plugin 'nsf/gocode', {'rtp': 'vim/'}
         " Go end
         
         " Scala
@@ -250,6 +253,8 @@
         autocmd FileType markdown setlocal spell
         " Spell-check Git messages
         autocmd FileType gitcommit setlocal spell
+        au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
+        au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>
     " Misc end
  " Filetype overrides end
 
@@ -268,7 +273,7 @@
     "set wildignore+=**/node_modules
     let g:syntastic_ignore_files          = ['\.py$']
     let NERDTreeMouseMode                 = 3
-    let g:syntastic_python_checkers       = ['pylint']
+    "let g:syntastic_python_checkers       = ['pylint']
     let g:syntastic_yaml_checkers      = ['jsyaml']
     let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
     let g:go_fmt_command = "goimports"
@@ -289,11 +294,12 @@
     let g:ycm_confirm_extra_conf            = 0
     set completeopt-=preview
 
-    let g:UltiSnipsSnippetsDir              = "~/.vim/bundle/vim-snippets/UltiSnips/"
-    let g:UltiSnipsExpandTrigger            = "<c-f>"
-    let g:used_javascript_libs             = 'underscore,angularjs,chai,jquery'
-    let g:netrw_liststyle                  = 3
-    let g:delimitmate_expand_cr            = 2
+    let g:UltiSnipsSnippetsDir   = "~/.vim/bundle/vim-snippets/UltiSnips/"
+    let g:UltiSnipsExpandTrigger = "<c-f>"
+    let g:used_javascript_libs   = 'underscore,angularjs,chai,jquery'
+    let g:netrw_liststyle        = 3
+    let g:delimitmate_expand_cr  = 2
+    let g:markdownfmt_command    = 'mdfmt'
 
     set spellfile=~/.vim/vim-spell-en.utf-8.add
     set complete+=kspell
@@ -307,7 +313,7 @@
     filetype plugin indent on " load filetype plugins/indent settings
     colorscheme solarized
     syntax on                      " enable syntax
-    call togglebg#map("<F5>")
+    call togglebg#map("<F6>")
  
 
 " Vim Plugin Configs end

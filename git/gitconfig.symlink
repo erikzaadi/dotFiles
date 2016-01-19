@@ -86,6 +86,8 @@
 
     c = commit
 
+    delete-remote = !git push origin :${1:-(git symbolic-ref --short HEAD)}
+
     unrust = !git pull --rebase && git submodule update --init
 
     #changes executable bit of file in index: git chmod +|- FILE
