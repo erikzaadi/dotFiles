@@ -27,10 +27,13 @@
             Plugin 'ctrlpvim/ctrlp.vim'
             Plugin 'tacahiroy/ctrlp-funky'
             Plugin 'loremipsum'
+            Plugin 'tkhren/vim-fake'
             Plugin 'majutsushi/tagbar'
+            "Plugin 'ntpeters/vim-better-whitespace'
             Plugin 'SirVer/ultisnips'
             Plugin 'scrooloose/syntastic'
-            Plugin 'bling/vim-airline'
+            Plugin 'vim-airline/vim-airline'
+            Plugin 'vim-airline/vim-airline-themes'
             Plugin 'Valloric/YouCompleteMe'
             Plugin 'Raimondi/delimitMate'
             Plugin 'mbbill/undotree'
@@ -301,6 +304,9 @@
     let g:delimitmate_expand_cr  = 2
     let g:markdownfmt_command    = 'mdfmt'
 
+    set listchars=tab:▸\ ,trail:·
+    set list
+
     set spellfile=~/.vim/vim-spell-en.utf-8.add
     set complete+=kspell
     set spelllang=en_us
@@ -309,7 +315,8 @@
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 
-    call vundle#end() 
+
+    cal vundle#end() 
     filetype plugin indent on " load filetype plugins/indent settings
     colorscheme solarized
     syntax on                      " enable syntax
