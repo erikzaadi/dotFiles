@@ -29,6 +29,9 @@
             Plugin 'loremipsum'
             Plugin 'tkhren/vim-fake'
             Plugin 'majutsushi/tagbar'
+            Plugin 'dkprice/vim-easygrep'
+            Plugin 'junegunn/gv.vim'
+            Plugin 'junegunn/vim-emoji'
             "Plugin 'ntpeters/vim-better-whitespace'
             Plugin 'SirVer/ultisnips'
             Plugin 'scrooloose/syntastic'
@@ -80,6 +83,7 @@
             Plugin 'moll/vim-node'
             Plugin 'kchmck/vim-coffee-script'
             Plugin 'isRuslan/vim-es6'
+            Plugin 'grvcoelho/vim-javascript-snippets'
 "            Plugin 'jelera/vim-javascript-syntax'
 "            Plugin 'nathanaelkane/vim-indent-guides'
 "            Plugin 'marijnh/tern_for_vim'
@@ -303,6 +307,7 @@
     let g:netrw_liststyle        = 3
     let g:delimitmate_expand_cr  = 2
     let g:markdownfmt_command    = 'mdfmt'
+    let g:EasyGrepFilesToExclude='*.swp,*~,.git/*,node_modules/*'
 
     set listchars=tab:▸\ ,trail:·
     set list
