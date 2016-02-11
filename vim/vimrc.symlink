@@ -47,29 +47,29 @@
 
         " Python
             "YouCompleteMe got me covered
-            Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
+            Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'markdown'] }
         " Python end
 
         " Web (generic)
-            Plug 'hail2u/vim-css3-syntax', { 'for' : 'css' }
-            Plug 'juvenn/mustache.vim', { 'for' : 'mustache '}
-            Plug 'digitaltoad/vim-jade', { 'for' : 'jade' }
-            Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+            Plug 'hail2u/vim-css3-syntax', { 'for' : ['css', 'markdown'] }
+            Plug 'juvenn/mustache.vim', { 'for' : ['mustache', 'markdown'] }
+            Plug 'digitaltoad/vim-jade', { 'for' : ['jade', 'markdown'] }
+            Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
             Plug 'rstacruz/vim-ultisnips-css', { 'for' : 'css' }
 
 "            Plug 'csscomb/vim-csscomb'
         " Web (generic) end
 
         " Javascript / node / coffeescript 
-            Plug 'moll/vim-node', { 'for' : ['javascript', 'json'] }
-            Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript'] }
-            Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json'] }
-            Plug 'grvcoelho/vim-javascript-snippets', { 'for' : ['javascript', 'json'] }
+            Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
+            Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
+            Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
+            Plug 'grvcoelho/vim-javascript-snippets', { 'for' : ['javascript', 'json', 'markdown'] }
         " Javascript / node /coffeescript end
 
         " Go
-            Plug 'fatih/vim-go', { 'for' : 'go' }
-            Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for' : 'go' }
+            Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
+            Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for' : ['go', 'markdown'] }
         " Go
 
         " Scala
@@ -78,8 +78,8 @@
 
         " Misc
             Plug 'honza/vim-snippets'
-            Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
-            Plug 'erikzaadi/vim-ansible-yaml', { 'for' : 'yaml' }
+            Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
+            Plug 'erikzaadi/vim-ansible-yaml', { 'for' : ['yaml', 'ansible', 'markdown'] }
         " Misc end
     " Plugs end
 
@@ -231,7 +231,7 @@
         au BufNewFile,BufRead *.pp set filetype=puppet
         autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
         au BufNewFile,BufReadPost *.md set filetype=markdown
-        let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'stylus', 'python']
+        let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'stylus', 'python', 'go', 'yaml', 'ansible', 'nginx', 'sh', 'bash=sh', 'zsh']
         " Spell-check Markdown files
         autocmd FileType markdown setlocal spell
         " Spell-check Git messages
@@ -274,6 +274,9 @@
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
+
+    set completefunc+=emoji#complete
+    set omnifunc+=emoji#complete
 
     call plug#end()
     colorscheme solarized
