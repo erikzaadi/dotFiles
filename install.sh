@@ -70,7 +70,6 @@ if [[ "$(uname)" = "Darwin" ]]; then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    SWALLOW=$(brew tap phinze/homebrew-cask > /dev/null)
     SWALLOW=$(brew tap homebrew/dupes > /dev/null)
     for keg in $(cat ${SCRIPT_BASE}/mac/brew);do 
         brew install ${keg}
@@ -103,14 +102,12 @@ chsh -s ${ZSH}
 sudo chsh -s ${ZSH}
 
 if [[ ! -f ~/.nvm/nvm.sh ]];then 
-    #LATEST_STABLE_NODE=$(curl -s  http://nodejs.org/dist/latest/ | ${SCRIPT_BASE}/bin/g_or_native grep "\.pkg" | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/<[^>]*>//g' | ${SCRIPT_BASE}/bin/g_or_native cut -d ' ' -f 1 | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/node-v//g' | ${SCRIPT_BASE}/bin/g_or_native sed -e 's/\.pkg//g')
-    LATEST_STABLE_NODE=0.10
     log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
     git clone https://github.com/creationix/nvm.git ~/.nvm
     source ~/.nvm/nvm.sh
-    nvm install ${LATEST_STABLE_NODE}
-    nvm use ${LATEST_STABLE_NODE}
-    nvm alias default ${LATEST_STABLE_NODE}
+    nvm install node
+    nvm use node
+    nvm alias default node
 fi
 
 if [[ ! -f ~/.rvm/scripts/rvm ]]; then
@@ -127,9 +124,9 @@ log_message "Installing ruby gems.."
 gem install $(cat ${SCRIPT_BASE}/packages/ruby)
 
 log_message "Installing Vim Packages.."
-vim -c 'BundleInstall!' -c 'qa!'
-cd ~/.vim/bundle/YouCompleteMe
-./install.sh
+vim  -c 'qa!'
+cd ~/.vim/plugged/YouCompleteMe
+./install.py
 cd -
 
 log_message "Done, great success!!1"
