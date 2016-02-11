@@ -30,7 +30,7 @@
             Plug 'scrooloose/syntastic'
             Plug 'vim-airline/vim-airline'
             Plug 'vim-airline/vim-airline-themes'
-            Plug 'Valloric/YouCompleteMe'
+            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py --gocode-completer --tern-completer' }
             Plug 'Raimondi/delimitMate'
             Plug 'mbbill/undotree'
             Plug 'scrooloose/nerdcommenter'
@@ -175,7 +175,7 @@
     map <F6> <Esc> :lnext<CR>
     map <S-F6> <Esc> :lprev<CR>
     map <F8> <Esc> :TagbarToggle<CR>
-    map <F12> <Esc> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    map <F12> <Esc> :YcmCompleter GoTo<CR>
     nnoremap <Leader><Leader>h :noh<CR>
     nnoremap <Leader><Leader>r :redraw!<CR>
     nnoremap <A-down> <C-W>+
@@ -242,33 +242,34 @@
  " Filetype overrides end
 
 " Vim Plug Configs
-    let NERDTreeShowHidden                = 1
-    let NERDTreeIgnore                    = ['\.pyc$','\.swp$']                 "ignore compiled python files
-    let g:syntastic_ignore_files          = ['\.py$']
-    let NERDTreeMouseMode                 = 3
-    let g:syntastic_yaml_checkers      = ['jsyaml']
-    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-    let g:go_fmt_command = "goimports"
-    let g:syntastic_check_on_open         = 0
-    let g:syntastic_auto_loc_list         = 1
-    let g:syntastic_javascript_checkers = ['jshint']
-    let g:syntastic_enable_signs          = 1
-    let g:syntastic_scala_checkers        = ['']
-    let g:syntastic_mode_map                = { 'mode': 'passive',
+    let g:plug_timeout                   = 180
+    let NERDTreeShowHidden               = 1
+    let NERDTreeIgnore                   = ['\.pyc$','\.swp$']                 "ignore compiled python files
+    let g:syntastic_ignore_files         = ['\.py$']
+    let NERDTreeMouseMode                = 3
+    let g:syntastic_yaml_checkers        = ['jsyaml']
+    let g:syntastic_go_checkers          = ['golint', 'govet', 'errcheck']
+    let g:go_fmt_command                 = "goimports"
+    let g:syntastic_check_on_open        = 0
+    let g:syntastic_auto_loc_list        = 1
+    let g:syntastic_javascript_checkers  = ['jshint']
+    let g:syntastic_enable_signs         = 1
+    let g:syntastic_scala_checkers       = ['']
+    let g:syntastic_mode_map             = { 'mode': 'passive',
                                     \ 'active_filetypes': ['javascript', 'ansible', 'go'],
                                     \ 'passive_filetypes': ['java', 'scala'] }
-    let g:airline_powerline_fonts           = 1
-    let g:airline_theme                     = 'solarized'
-    let g:UltiSnipsUsePythonVersion         = 2
-    let g:ycm_add_preview_to_completeopt    = 0
-    let g:ycm_confirm_extra_conf            = 0
-    let g:UltiSnipsSnippetsDir   = "~/.vim/plugged/vim-snippets/UltiSnips/"
-    let g:UltiSnipsExpandTrigger = "<c-f>"
-    let g:used_javascript_libs   = 'underscore,angularjs,chai,jquery'
-    let g:netrw_liststyle        = 3
-    let g:delimitmate_expand_cr  = 2
-    let g:markdownfmt_command    = 'mdfmt'
-    let g:EasyGrepFilesToExclude='*.swp,*~,.git/*,node_modules/*'
+    let g:airline_powerline_fonts        = 1
+    let g:airline_theme                  = 'solarized'
+    let g:UltiSnipsUsePythonVersion      = 2
+    let g:ycm_add_preview_to_completeopt = 0
+    let g:ycm_confirm_extra_conf         = 0
+    let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
+    let g:UltiSnipsExpandTrigger         = "<c-f>"
+    let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
+    let g:netrw_liststyle                = 3
+    let g:delimitmate_expand_cr          = 2
+    let g:markdownfmt_command            = 'mdfmt'
+    let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
 
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -276,6 +277,6 @@
 
     call plug#end()
     colorscheme solarized
-    call togglebg#map("<F5>")
+    call togglebg#map("<F7>")
 
 " Vim Plug Configs end

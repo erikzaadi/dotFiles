@@ -3,8 +3,7 @@
 " Plug
     " Setting up Plug - A minimalist Vim plugin manager
         if empty(glob('~/.vim/autoload/plug.vim'))
-            silent !curl -sfLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+            silent !curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
             autocmd VimEnter * PlugInstall | source ~/.vimrc
         endif
         set nocompatible              " be iMproved, required
