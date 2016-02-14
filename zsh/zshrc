@@ -25,6 +25,9 @@ zsh-users/zsh-completions src
 git
 ssh-agent
 npm
+nvm
+mosh
+golang
 grunt
 
 EOBUNDLES

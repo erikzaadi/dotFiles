@@ -14,7 +14,7 @@
 
     " Plugs
         " General Vim
-            Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+            Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
             Plug 'tpope/vim-fugitive'
             Plug 'tpope/vim-eunuch'
             Plug 'ctrlpvim/ctrlp.vim', { 'on':  'CtrlP' }
@@ -197,6 +197,7 @@
     nnoremap <Leader>gps :Dispatch! git push<CR>
     nnoremap <Leader>gpl :Dispatch! git pull<CR>
     map q: :q
+    nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
 " Keymaps end
 
 " Filetype overrides
