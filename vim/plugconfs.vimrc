@@ -27,6 +27,8 @@
     let g:delimitmate_expand_cr          = 2
     let g:markdownfmt_command            = 'mdfmt'
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
+    set grepprg=git\ grep\ -n
+    let g:EasyGrepCommand = 1
 
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
