@@ -22,6 +22,7 @@
             Plug 'SirVer/ultisnips'
             Plug 'vim-airline/vim-airline'
             Plug 'vim-airline/vim-airline-themes'
+            Plug 'itspriddle/vim-stripper'
             Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py --gocode-completer --tern-completer' }
             Plug 'Raimondi/delimitMate'
             Plug 'chip/vim-fat-finger'
