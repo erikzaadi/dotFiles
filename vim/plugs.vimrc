@@ -51,7 +51,7 @@
 "            Plug 'csscomb/vim-csscomb'
         " Web (generic) end
 
-        " Javascript / node / coffeescript 
+        " Javascript / node / coffeescript
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
@@ -68,6 +68,7 @@
         " Scala End
 
         " Misc
+            Plug 'joehanchoi/vim-jinja'
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'erikzaadi/vim-ansible-yaml', { 'for' : ['yaml', 'ansible', 'markdown'] }
