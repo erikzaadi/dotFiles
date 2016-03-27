@@ -16,13 +16,13 @@ ${STAR_LINE}"""
 log_message """
 
 
-  /\\/|      _       _   ______ _ _           
- |/\\/      | |     | | |  ____(_) |          
-         __| | ___ | |_| |__   _| | ___  ___ 
+  /\\/|      _       _   ______ _ _
+ |/\\/      | |     | | |  ____(_) |
+         __| | ___ | |_| |__   _| | ___  ___
         / _\` |/ _ \\| __|  __| | | |/ _ \\/ __|
        | (_| | (_) | |_| |    | | |  __/\\__ \\
         \\__,_|\\___/ \\__|_|    |_|_|\\___||___/
-                                             
+
 """
 
 if [[ ! -d ${SCRIPT_BASE}/.git ]]; then
@@ -71,7 +71,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
     fi
 
     SWALLOW=$(brew tap homebrew/dupes > /dev/null)
-    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do 
+    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
         brew install ${keg}
     done
     for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
@@ -101,7 +101,7 @@ ZSH=$(which zsh)
 chsh -s ${ZSH}
 sudo chsh -s ${ZSH}
 
-if [[ ! -f ~/.nvm/nvm.sh ]];then 
+if [[ ! -f ~/.nvm/nvm.sh ]];then
     log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
     git clone https://github.com/creationix/nvm.git ~/.nvm
     source ~/.nvm/nvm.sh
@@ -125,8 +125,5 @@ gem install $(cat ${SCRIPT_BASE}/packages/ruby)
 
 log_message "Installing Vim Packages.."
 vim  -c 'qa!'
-cd ~/.vim/plugged/YouCompleteMe
-./install.py
-cd -
 
 log_message "Done, great success!!1"
