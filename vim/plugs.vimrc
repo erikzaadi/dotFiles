@@ -10,7 +10,7 @@
             Plug 'scrooloose/nerdcommenter'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/vim-emoji'
-            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'on': 'FZF' }
             Plug 'junegunn/vim-easy-align'
             Plug 'ctrlpvim/ctrlp.vim', { 'on':  'CtrlP' }
             Plug 'tacahiroy/ctrlp-funky', { 'on':  'CtrlPFunky' }

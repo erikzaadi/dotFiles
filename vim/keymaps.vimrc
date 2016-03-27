@@ -2,7 +2,7 @@
     let mapleader = "\<Space>""
     map <silent> <F2> :NERDTreeToggle<CR>
     map <silent> <F5> :NERDTreeFind<CR>
-    map <silent> <F3> <ESC>:CtrlP<RETURN>
+    map <silent> <F3> <ESC>:FZF<RETURN>
     map <silent> <F4> <ESC>:CtrlPFunky<RETURN>
     nnoremap <Leader>w :w<CR>
     nnoremap <Leader>o :CtrlP<CR>
