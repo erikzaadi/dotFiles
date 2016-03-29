@@ -59,10 +59,17 @@ export EDITOR=vim
 autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
-alias :e=vim 
-alias edit=vim 
-alias e=vim 
+alias :e=vim
+alias edit=vim
+alias e=vim
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
+
+# Solarized FZF
+export FZF_DEFAULT_OPTS='
+  --bind ctrl-f:page-down,ctrl-b:page-up
+  --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
+  --color info:254,prompt:37,spinner:108,pointer:235,marker:235
+'
