@@ -71,6 +71,7 @@
             Plug 'joehanchoi/vim-jinja'
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
+            Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
             Plug 'erikzaadi/vim-ansible-yaml', { 'for' : ['yaml', 'ansible', 'markdown'] }
         " Misc end
     " Plugs end
