@@ -3,10 +3,10 @@
     map <silent> <F2> :NERDTreeToggle<CR>
     map <silent> <F5> :NERDTreeFind<CR>
     map <silent> <F3> <ESC>:GitFiles<RETURN>
-    map <silent> <S-F3> <ESC>:FZF<RETURN>
+    map <silent> <Leader>f <ESC>:FZF<RETURN>
     map <silent> <F4> <ESC>:CtrlPFunky<RETURN>
     nnoremap <Leader>w :w<CR>
-    nnoremap <Leader>o :CtrlP<CR>
+    nnoremap <Leader>o :GitFiles<CR>
     vmap <Enter> <Plug>(EasyAlign)
     "Oy vei, trying without arrows
 ""    nnoremap <up> <nop>
@@ -19,7 +19,6 @@
 ""    inoremap <right> <nop>
     map <F1> <Esc>
     map <F6> <Esc> :lnext<CR>
-    map <S-F6> <Esc> :lprev<CR>
     map <F8> <Esc> :TagbarToggle<CR>
     map <F12> <Esc> :YcmCompleter GoTo<CR>
     nnoremap <Leader><Leader>h :noh<CR>
@@ -28,20 +27,29 @@
     nnoremap <A-up> <C-W>-
     nnoremap <A-left> <C-W><
     nnoremap <A-right> <C-W>>
-    nnoremap <Leader>o :CtrlP<CR>
 
     " fugitive git bindings -
     " http://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
-    nnoremap <Leader>ga :Git add %:p<CR><CR>
     nnoremap <Leader>gs :Gstatus<CR>
     nnoremap <Leader>gc :Gcommit -v -q<CR>
     nnoremap <Leader>gd :Gdiff<CR>
-    nnoremap <Leader>gp :Ggrep<Space>
     nnoremap <Leader>gm :Gmove<Space>
-    nnoremap <Leader>gb :Git branch<Space>
     nnoremap <Leader>go :Git checkout<Space>
     nnoremap <Leader>gps :Dispatch! git push<CR>
-    nnoremap <Leader>gpl :Dispatch! git pull<CR>
     map q: :q
     nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
-" Keymaps end
+    nmap <silent>  <Leader><Leader>;  :source $MYVIMRC<CR>
+
+    " Mapping selecting mappings
+    nmap <leader><tab> <plug>(fzf-maps-n)
+    xmap <leader><tab> <plug>(fzf-maps-x)
+    omap <leader><tab> <plug>(fzf-maps-o)
+
+
+    " Insert mode completion
+    imap <c-x><c-k> <plug>(fzf-complete-word)
+    imap <c-x><c-f> <plug>(fzf-complete-path)
+    imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+    imap <c-x><c-l> <plug>(fzf-complete-line)
+
+    " Keymaps end
