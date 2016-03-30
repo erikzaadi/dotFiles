@@ -69,7 +69,7 @@
         " Scala End
 
         " Misc
-            Plug 'joehanchoi/vim-jinja'
+            Plug 'joehanchoi/vim-jinja', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
