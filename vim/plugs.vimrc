@@ -31,6 +31,7 @@
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
+            Plug 'rizzatti/dash.vim'
         " General Vim end
 
         " Color Schemes
