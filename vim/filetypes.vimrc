@@ -1,7 +1,7 @@
 " Filetype overrides
      " Python
-        au BufNewFile,BufRead *.py set shiftwidth=4 tabstop=4 softtabstop=4
-        au FileType python set shiftwidth=4 tabstop=4 softtabstop=4
+        au BufNewFile,BufRead *.py set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+        au FileType python set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
      " Python End
 
      " Javascript / Coffeescript / Node
@@ -9,12 +9,12 @@
         "au! BufRead,BufNewFile *.json set filetype=json
         au BufRead,BufNewFile *.ejs set filetype=html
         au BufRead,BufNewFile *.eco set filetype=html
-        au BufNewFile,BufRead *.coffee,*.js set shiftwidth=2 tabstop=2 softtabstop=2
-        au FileType javascript,coffee set softtabstop=2 tabstop=2 shiftwidth=2
+        au BufNewFile,BufRead *.coffee,*.js set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+        au FileType javascript,coffee set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
     " Javascript / Coffeescript / Node end
 
     " Go
-        au BufNewFile,BufRead *.coffee,*.js set shiftwidth=4 tabstop=4 softtabstop=4 expandtab=off
+        au BufNewFile,BufRead *.coffee,*.js set shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
     " Go end
 
     " Web
@@ -22,7 +22,7 @@
         au BufRead,BufNewFile *.jade set filetype=jade
         au BufNewFile,BufRead *.styl set filetype=stylus
         au BufNewFile,BufRead *.stylus set filetype=stylus
-        au FileType jade,stylus set softtabstop=2 tabstop=2 shiftwidth=2
+        au FileType jade,stylus set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
     " Web end
 
     " Java
