@@ -4,10 +4,12 @@ WIFI_ON="📶 "
 WIFI_OFF="🚫 "
 WIFI_AVAILABLE="🔄 "
 
-RESULT=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I`
-if [[ "${RESULT}" = "AirPort: Off" ]]; then
-    echo "${WIFI_OFF}"
-else
+if [[ "$(uname)" == "Darwin" ]]; then
+    RESULT=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I`
+    if [[ "${RESULT}" = "AirPort: Off" ]]; then
+        echo "${WIFI_OFF}"
+        exit 0
+    fi
     SSID=`echo "${RESULT}" | grep "SSID:" | tail -n 1 | awk '{print $2};'`
     if [[ "${SSID}" = "" ]]; then
         echo "${WIFI_AVAILABLE}"
@@ -21,4 +23,6 @@ else
         fi
         echo "${WIFI_ON}${SSID}:${PERCENT}%"
     fi
+else
+    echo "${WIFI_ON}$(awk 'NR==3 {print \"\" (\$3/70)*100 \"%\"}' /proc/net/wireless)"
 fi
