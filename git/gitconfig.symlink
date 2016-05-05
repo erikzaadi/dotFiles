@@ -113,3 +113,5 @@
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [credential]
 	helper = osxkeychain
+[ghi]
+	token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
