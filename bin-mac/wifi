@@ -13,7 +13,12 @@ else
         echo "${WIFI_AVAILABLE}"
     else
         SIGNAL_STRENGTH=`echo "${RESULT}" | grep "agrCtlRSSI:" | awk '{print $2};'`
-        PERCENT=$(( 123 + ${SIGNAL_STRENGTH} ))""
+
+        if [[ ${SIGNAL_STRENGTH} -gt -51 ]]; then
+            PERCENT=100
+        else
+            PERCENT=$(( 2 * (100 + ${SIGNAL_STRENGTH}) ))""
+        fi
         echo "${WIFI_ON}${SSID}:${PERCENT}%"
     fi
 fi
