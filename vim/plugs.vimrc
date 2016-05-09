@@ -32,6 +32,7 @@
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'rizzatti/dash.vim'
+            Plug 'idanarye/vim-merginal'
         " General Vim end
 
         " Color Schemes
