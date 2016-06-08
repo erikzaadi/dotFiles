@@ -1,6 +1,6 @@
 [github]
 	user = erikzaadi
-	token = 
+	token =
 
 [user]
 	name = erikzaadi
@@ -16,7 +16,7 @@
     pager = true
 
 [color "branch"]
-    current = cyan 
+    current = cyan
     local = yellow
     remote = green
 
@@ -35,7 +35,7 @@
 [diff]
     tool = vimdiff
 
-[merge] 
+[merge]
 	tool = fugitive
 
 [rerere]
@@ -50,7 +50,7 @@
 
     last  = cat-file commit HEAD
     st    = ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude -t -o -u -s -m -d
-    stc   = diff --stat --name-status --cached 
+    stc   = diff --stat --name-status --cached
     cat   = -p cat-file -p
     up    = !git remote update ; git gc
     debug = !GIT_PAGER= gdb --args git
@@ -115,3 +115,5 @@
 	helper = osxkeychain
 [ghi]
 	token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
+[rebase]
+	autosquash = true

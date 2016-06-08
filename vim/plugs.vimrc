@@ -13,8 +13,6 @@
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
             Plug 'junegunn/vim-easy-align'
-            Plug 'ctrlpvim/ctrlp.vim', { 'on':  'CtrlP' }
-            Plug 'tacahiroy/ctrlp-funky', { 'on':  'CtrlPFunky' }
             Plug 'loremipsum'
             Plug 'tkhren/vim-fake'
             Plug 'majutsushi/tagbar'
@@ -72,11 +70,13 @@
         " Scala End
 
         " Misc
-            Plug 'joehanchoi/vim-jinja', { 'for': ['jinja', 'jinja2']}
+            Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
             Plug 'erikzaadi/vim-ansible-yaml', { 'for' : ['yaml', 'ansible', 'markdown'] }
+            Plug 'diepm/vim-rest-console', { '': ['rest'] }
+            Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
         " Misc end
     " Plugs end
 
