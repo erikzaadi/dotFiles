@@ -68,6 +68,8 @@ alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # Solarized FZF
 export FZF_DEFAULT_OPTS='
   --bind ctrl-f:page-down,ctrl-b:page-up
