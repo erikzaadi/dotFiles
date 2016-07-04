@@ -1,25 +1,21 @@
 #!/bin/bash
 
 containers=()
-A=`docker version 2>&1 /dev/null`
+A=`docker version 2> /dev/null`
 if [[ $? -ne 0 ]]; then
     #docker not running
     echo ""
     exit 0
 fi
 
-for container in `docker ps | tail -n +2 | awk '{print $NF};'`; do
+for container in `docker ps --format "{{.Names}}"`; do
   containers+=("$container")
 done
 
 if [ ${#containers[@]} -eq 1 ]; then
-  echo "🐳: ${containers[0]}"
+  echo "🐳: ${containers[0]} "
 elif [ ${#containers[@]} -gt 1 ]; then
-  echo "🐳 ${#containers[@]}"
-#  for container in ${containers[@]}; do
-#    containername=$(echo ${container} | cut -d'_' -f 1)
-#    echo "$containername\""
-#  done
+  echo "🐳 ${#containers[@]} "
 else
     echo ""
 fi

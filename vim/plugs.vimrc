@@ -77,6 +77,7 @@
             Plug 'erikzaadi/vim-ansible-yaml', { 'for' : ['yaml', 'ansible', 'markdown'] }
             Plug 'diepm/vim-rest-console', { '': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
+            Plug 'docker/docker' , {'rtp': 'contrib/syntax/vim/'}
         " Misc end
     " Plugs end
 
