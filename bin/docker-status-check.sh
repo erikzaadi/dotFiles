@@ -1,7 +1,7 @@
 #!/bin/bash
 
 containers=()
-A=`docker version 2> /dev/null`
+A=`timeout 1s docker version 2> /dev/null`
 if [[ $? -ne 0 ]]; then
     #docker not running
     echo ""

@@ -78,6 +78,13 @@
             Plug 'diepm/vim-rest-console', { '': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'docker/docker' , {'rtp': 'contrib/syntax/vim/'}
+            Plug 'robbles/logstash.vim'
+            Plug 'vim-scripts/SyntaxRange'
+            Plug 'vim-scripts/ingo-library'
+            Plug 'junkblocker/patchreview-vim', { 'on': ['CodeReview']}
+            Plug 'codegram/vim-codereview', { 'on': ['CodeReview']}
+            "Plug 'llvm-mirror/lldb', {'rtp': 'utils/vim-lldb'}
+            "Plug 'gilligan/vim-lldb'
         " Misc end
     " Plugs end
 
