@@ -12,31 +12,32 @@ export MAILPATH=/var/mail/$USER
 
 source $HOME/.zshenv
 
+source <(antibody init)
+antibody bundle < $DOTFILESDIR/zsh/plugins
+
 # Antigen galore
-source ${DOTFILESDIR}/deps/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 #antigen use prezto
-antigen use oh-my-zsh
+#antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen-bundles <<EOBUNDLES
-
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-completions src
-git
-ssh-agent
-npm
-nvm
-mosh
-golang
-grunt
-docker
-
-EOBUNDLES
-
-# Load my theme.
-antigen-theme ${DOTFILESDIR}/zsh erikzaadi
-
-antigen-apply
+#antigen-bundles <<EOBUNDLES
+#
+#zsh-users/zsh-syntax-highlighting
+#zsh-users/zsh-completions src
+#git
+#ssh-agent
+#npm
+#nvm
+#mosh
+#golang
+#grunt
+#docker
+#
+#EOBUNDLES
+#
+## Load my theme.
+#antigen-theme ${DOTFILESDIR}/zsh erikzaadi
+source ${DOTFILESDIR}/zsh/erikzaadi.zsh-theme
 
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"

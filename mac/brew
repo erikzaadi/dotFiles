@@ -1,5 +1,5 @@
-angband
 ansifilter
+antibody
 apple-gcc42
 asciidoc
 asciinema
@@ -7,9 +7,11 @@ atk
 autoconf
 automake
 autossh
+bash-completion
 berkeley-db
 blueutil
 boost
+brew-cask-completion
 bsdmake
 cairo
 ccache
@@ -24,9 +26,9 @@ czmq
 dfu-util
 dirmngr
 docbook
-docker
-docker-compose
-docker-machine
+docker-completion
+duck
+erlang
 etcdctl
 faad2
 figlet
@@ -46,6 +48,7 @@ git-extras
 git-flow
 gitsh
 glib
+glide
 gmp
 gnome-icon-theme
 gnu-getopt
@@ -55,7 +58,13 @@ gnupg
 gnupg2
 go
 gobject-introspection
+godep
 gpg-agent
+gpm
+gpm-bootstrap
+gpm-link
+gradle
+graphviz
 grc
 grep
 gsettings-desktop-schemas
@@ -64,6 +73,8 @@ gtk+3
 gtk-mac-integration
 gtksourceview
 gtksourceview3
+gtm
+gvp
 harfbuzz
 hicolor-icon-theme
 highlight
@@ -79,7 +90,9 @@ intltool
 itstool
 jpeg
 jq
+kafkacat
 lastpass-cli
+legit
 less
 libao
 libassuan
@@ -94,6 +107,7 @@ libksba
 libmagic
 libogg
 libpng
+librdkafka
 librsvg
 libsodium
 libtasn1
@@ -104,12 +118,16 @@ libusb-compat
 libvorbis
 libxml2
 libyaml
+llnode
+lnav
 lsof
 lua
+lzlib
 macvim
 mad
 make
 makensis
+mas
 maven
 meld
 mercurial
@@ -120,7 +138,6 @@ mr
 mutt
 mysql
 n
-ngrok
 npth
 nspr
 nss
@@ -134,6 +151,7 @@ parallel
 pass
 pcre
 pinentry
+pip-completion
 pixman
 pkg-config
 popt
@@ -149,6 +167,7 @@ pygobject3
 pygtk
 pygtksourceview
 python
+python3
 rabbitmq
 rarian
 readline
@@ -166,6 +185,7 @@ spark
 sphinx
 sqlite
 ssh-copy-id
+swig
 terminal-notifier
 the_silver_searcher
 tig
@@ -174,9 +194,12 @@ tokyo-cabinet
 tree
 ttygif
 ttyrec
+unixodbc
 unzip
+vagrant-completion
 watch
 wget
+wxmac
 x264
 xhyve
 xvid
@@ -184,3 +207,4 @@ xz
 yasm
 zeromq
 zsh
+zsh-completions
