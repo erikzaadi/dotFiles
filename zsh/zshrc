@@ -13,7 +13,6 @@ source $HOME/.zshenv
 
 source <(antibody init)
 
-export EMOJI_CLI_KEYBIND=
 antibody bundle < $DOTFILESDIR/zsh/plugins
 
 ## Load my theme.
