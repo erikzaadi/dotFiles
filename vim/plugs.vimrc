@@ -74,7 +74,7 @@
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
-            Plug 'erikzaadi/vim-ansible-yaml', { 'for' : ['yaml', 'ansible', 'markdown'] }
+            Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
             Plug 'diepm/vim-rest-console', { '': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'docker/docker' , {'rtp': 'contrib/syntax/vim/'}
@@ -83,8 +83,6 @@
             Plug 'vim-scripts/ingo-library'
             Plug 'junkblocker/patchreview-vim', { 'on': ['CodeReview']}
             Plug 'codegram/vim-codereview', { 'on': ['CodeReview']}
-            "Plug 'llvm-mirror/lldb', {'rtp': 'utils/vim-lldb'}
-            "Plug 'gilligan/vim-lldb'
         " Misc end
     " Plugs end
 

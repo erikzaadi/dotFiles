@@ -4,3 +4,6 @@ sniffer
 pytest
 pytest-xdist
 httpie
+ansible
+ansible-toolkit
+ansible-lint

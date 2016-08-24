@@ -7,36 +7,16 @@ bashcompinit
 # Paths
 export MAILPATH=/var/mail/$USER
 
-#Load nvm as antigen depends on it
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 
 source $HOME/.zshenv
 
 source <(antibody init)
+
+export EMOJI_CLI_KEYBIND=
 antibody bundle < $DOTFILESDIR/zsh/plugins
 
-# Antigen galore
-# Load the oh-my-zsh's library.
-#antigen use prezto
-#antigen use oh-my-zsh
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-#antigen-bundles <<EOBUNDLES
-#
-#zsh-users/zsh-syntax-highlighting
-#zsh-users/zsh-completions src
-#git
-#ssh-agent
-#npm
-#nvm
-#mosh
-#golang
-#grunt
-#docker
-#
-#EOBUNDLES
-#
 ## Load my theme.
-#antigen-theme ${DOTFILESDIR}/zsh erikzaadi
 source ${DOTFILESDIR}/zsh/erikzaadi.zsh-theme
 
 alias chuck='sudo'
@@ -67,7 +47,7 @@ alias e=vim
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
 alias ls="g_or_native ls --color"
-eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.ansi-universal`
+eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.256dark`
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -77,3 +57,4 @@ export FZF_DEFAULT_OPTS='
   --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
   --color info:254,prompt:37,spinner:108,pointer:235,marker:235
 '
+

@@ -4,8 +4,7 @@ function theme_precmd {
      local TERMWIDTH
     (( TERMWIDTH = ${COLUMNS} - 1 ))
 
-    #MAC_HAND="✊ "
-    MAC_HAND="$(random_emoticon)"
+    MAC_HAND="✊"
     LINUX_CARET="➜"
     CARET_PREFIX=$LINUX_CARET
 
@@ -14,6 +13,10 @@ function theme_precmd {
     if [[ "$(uname)" = "Darwin" ]]
         then
             CARET_PREFIX=$MAC_HAND
+    fi
+    if [[ "$(which random_emoticon > /dev/null || echo 'NOT')" != "NOT" ]]
+       then
+            CARET_PREFIX="${CARET_PREFIX}  $(random_emoticon)"
     fi
 
 
@@ -55,28 +58,28 @@ setprompt () {
 
     autoload colors zsh/terminfo
     if [[ "$terminfo[colors]" -ge 8 ]]; then
-	colors
+        colors
     fi
     for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE GREY; do
-	eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-	eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-	(( count = $count + 1 ))
+        eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+        eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+        (( count = $count + 1 ))
     done
     PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
     ###
     # Modify Git prompt
-    ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[green]%}"
-    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-    ZSH_THEME_GIT_PROMPT_DIRTY=""
-    ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-    ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} ✚"
-    ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} ✹"
-    ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} ✖"
-    ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} ➜"
-    ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
-    ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}("
+    ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
+    ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[green]%}"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[cyan]%}✭"
+    ZSH_THEME_GIT_PROMPT_SEPARATOR=" |"
+    ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[yellow]%}%{● %G%}"
+    ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖ %G%}"
+    ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[green]%}%{✚ %G%}"
+    ZSH_THEME_GIT_PROMPT_BEHIND=" %{$fg[red]↓ ${%G%}"
+    ZSH_THEME_GIT_PROMPT_AHEAD=" %{$fg[magenta]↑ %G%}"
+    ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}%{✔ %G%}"
 
     ###
     # See if we can use extended characters to look nicer.
@@ -111,7 +114,7 @@ $CARET_PREFIX$PR_NO_COLOUR '
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
-    RPROMPT='`basename "$VIRTUAL_ENV"` $return_code'
+    RPROMPT='`virtualenv_prompt_info` $return_code'
 
     PS2='$PR_CYAN$PR_SHIFT_IN$PR_SHIFT_OUT\
 $PR_BLUE$PR_SHIFT_IN$PR_SHIFT_OUT(\

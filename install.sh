@@ -40,7 +40,7 @@ fi
 if [[ ! -f ~/.envvars.rc ]]; then
     echo "export DOTFILESDIR=${SCRIPT_BASE}" > ~/.envvars.rc
 else
-    if [[ $(cat ~/.envvars.rc | grep DOTFILESDIR) ]]; then
+    if [[ ! $(cat ~/.envvars.rc | grep DOTFILESDIR) ]]; then
         echo "export DOTFILESDIR=${SCRIPT_BASE}" >> ~/.envvars.rc
     else
         sed -i ~/.envvars.rc -e "s/export\sDOTFILESDIR=.*$/export DOTFILESDIR=${SCRIPT_BASE}/"
@@ -70,12 +70,14 @@ if [[ "$(uname)" = "Darwin" ]]; then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    SWALLOW=$(brew tap homebrew/dupes > /dev/null)
+    for tap in $(cat ${SCRIPT_BASE}/mac/tap);do
+        brew tap ${tap}
+    done
     for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
         brew install ${keg}
     done
     for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
-        brew cask install  ${cask}
+        brew cask install ${cask}
     done
     log_message "Setting custom OS-X Settings.."
     bash ${SCRIPT_BASE}/mac/osx-settings
@@ -85,6 +87,8 @@ if [[ "$(uname)" = "Darwin" ]]; then
     open ${SCRIPT_BASE}/deps/solarized/iterm2-colors-solarized/Solarized\ Dark.itermcolors
     open ${SCRIPT_BASE}/deps/solarized/iterm2-colors-solarized/Solarized\ Light.itermcolors
 else
+    log_message "Installing Antibody for zsh (FTW)"
+    curl -s https://raw.githubusercontent.com/getantibody/installer/master/install | bash -s
     log_message "Symlinking Ubuntu links.."
     symlink_for_pattern ".symlink-ubuntu" ${SCRIPT_BASE} ~/
     log_message "apt-get ALL THE THINGS.."

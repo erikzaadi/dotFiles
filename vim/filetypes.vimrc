@@ -41,6 +41,7 @@
         " Spell-check Git messages
         autocmd FileType gitcommit setlocal spell
         au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
+        au BufNewFile,BufRead *.yml set filetype=yaml.ansible
         au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>
     " Misc end
  " Filetype overrides end

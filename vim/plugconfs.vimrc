@@ -8,6 +8,7 @@
     let g:syntastic_go_checkers          = ['golint', 'govet', 'errcheck']
     let g:go_fmt_command                 = "goimports"
     let g:syntastic_check_on_open        = 0
+    let g:ansible_extra_syntaxes         = "nginx.vim sh.vim json.vim"
     let g:syntastic_auto_loc_list        = 1
     let g:syntastic_javascript_checkers  = ['eslint']
     let g:syntastic_enable_signs         = 1
