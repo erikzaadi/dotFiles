@@ -1,2 +1,2 @@
 #!/bin/bash
-mux start hacking
+tmuxp load hacking -y

@@ -7,3 +7,4 @@ httpie
 ansible
 ansible-toolkit
 ansible-lint
+tmuxp

@@ -1,3 +1,7 @@
+#all ze completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(${DOTFILESDIR}/zsh/completions $fpath)
+
 # zsh > bash
 autoload -U compinit
 compinit
@@ -34,7 +38,7 @@ delete-line()
 }
 
 alias gf='git flow'
-alias ms="mux start"
+alias ms="tmuxp load"
 export TERM=xterm-256color
 export EDITOR=vim
 autoload -U zmv
@@ -47,9 +51,7 @@ alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
 alias ls="g_or_native ls --color"
 eval `dircolors ${DOTFILESDIR}/deps/dircolors-solarized/dircolors.256dark`
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
+#
 # Solarized FZF
 export FZF_DEFAULT_OPTS='
   --bind ctrl-f:page-down,ctrl-b:page-up

@@ -1,0 +1,32 @@
+#compdef tmuxp
+
+# zsh completion for tmuxp
+
+_tmuxp() {
+    local -a projects
+    projects=(`find ~/.tmuxp/ -name \*.yml | xargs -I {} basename {} .yml`)
+
+    local -a commands
+    commands=(
+	'load:start a tmux session using project'\''s tmuxp config'
+	'freeze:freeze current tmuxp session'
+	'import:import from tmuxinator and teamocil'
+	'convert:convert to and from JSON/YML'
+	'-V:shows tmuxp version number'
+	'--help:shows tmuxp help'
+    )
+
+    if (( CURRENT == 2 )); then
+	_describe -t commands 'commands' commands
+    elif (( CURRENT == 3 )); then
+	case $words[2] in
+	    load)
+		_arguments '*:projects:($projects)'
+		;;
+	esac
+    fi
+
+    return 0
+}
+
+_tmuxp
