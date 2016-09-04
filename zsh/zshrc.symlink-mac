@@ -18,3 +18,5 @@ source ${DOTFILESDIR}/zsh/zshrc
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm

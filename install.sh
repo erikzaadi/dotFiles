@@ -127,7 +127,17 @@ npm i -g $(cat ${SCRIPT_BASE}/packages/node)
 #log_message "Installing ruby gems.."
 #gem install $(cat ${SCRIPT_BASE}/packages/ruby)
 
+if [[ ! -f ~/.gvm/scripts/gvm ]]; then
+    log_message "Installing GVM"
+    zsh < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+    source ~/.gvm/scripts/gvm
+    gvm install 1.4 -B
+    gvm install 1.7 -B
+    gvm use 1.7 --default
+fi
+
 log_message "Installing Vim Packages.."
-vim  -c 'qa!'
+vim -c 'qa!'
+vim -c ':GoInstallBinaries'
 
 log_message "Done, great success!!1"
