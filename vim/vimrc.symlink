@@ -28,4 +28,5 @@
     call plug#end()
     colorscheme solarized
     call togglebg#map("<F7>")
+    filetype plugin indent on
 " Plug end
