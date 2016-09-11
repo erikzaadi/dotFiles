@@ -125,3 +125,6 @@ function nvm_prompt_info() {
   nvm_prompt=${nvm_prompt:1}
   echo "${ZSH_THEME_NVM_PROMPT_PREFIX}node:${nvm_prompt}${ZSH_THEME_NVM_PROMPT_SUFFIX}"
 }
+
+setopt MENU_COMPLETE
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
