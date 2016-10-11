@@ -78,7 +78,7 @@
             Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
             Plug 'diepm/vim-rest-console', { '': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
-            Plug 'docker/docker' , {'rtp': 'contrib/syntax/vim/'}
+            Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
             Plug 'vim-scripts/SyntaxRange'
             Plug 'vim-scripts/ingo-library'
