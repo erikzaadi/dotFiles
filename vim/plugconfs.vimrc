@@ -31,6 +31,8 @@
     let g:UltiSnipsUsePythonVersion      = 2
     let g:ycm_add_preview_to_completeopt = 0
     let g:ycm_confirm_extra_conf         = 0
+    let g:ycm_gocode_binary_path = "$GOPATH/bin/gocode"
+    let g:ycm_godef_binary_path = "$GOPATH/bin/godef"
     let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
     let g:UltiSnipsExpandTrigger         = "<c-f>"
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
