@@ -78,7 +78,7 @@
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
             Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
-            Plug 'diepm/vim-rest-console', { '': ['rest'] }
+            Plug 'diepm/vim-rest-console', { 'for': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'

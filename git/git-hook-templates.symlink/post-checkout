@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [[ $1 == 00000000000* ]]; then
+  git email-guess
+fi

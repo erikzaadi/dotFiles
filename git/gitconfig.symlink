@@ -105,6 +105,7 @@
 [core]
     whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
 	editor = vim
+	hooksPath = ~/.git-hook-templates
 
 [help]
 	autocorrect = 1
