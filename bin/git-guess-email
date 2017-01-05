@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #http://willi.am/blog/2015/02/27/dynamically-configure-your-git-email/
-remote=`git remote -v | awk '/\(push\)$/ {print $2}'`
-email=erik.zaadi@gmail.com #default
+REMOTE=`git remote -v | awk '/\(push\)$/ {print $2}'`
+EMAIL=erik.zaadi@gmail.com #default
 
-if [[ $remote == *github.com:bigpandaio* ]]; then
-  email=erik@bigpanda.io
+if [[ ${REMOTE} == *github.com:bigpandaio* ]]; then
+  EMAIL=erik@bigpanda.io
 fi
 
-echo "Configuring user.email as $email"
-git config user.email $email
+echo "Configuring user.email as ${EMAIL}"
+git config user.email ${EMAIL}
