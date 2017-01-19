@@ -1,0 +1,2 @@
+#!/bin/bash
+ln -s ${DOTFILESDIR}/vim/tern-config.symlink ./.tern-project

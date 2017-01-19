@@ -26,11 +26,9 @@
             Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } "--gocode-completer
             Plug 'Raimondi/delimitMate'
             Plug 'chip/vim-fat-finger'
-            Plug 'mbbill/undotree'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
-            Plug 'rizzatti/dash.vim'
             Plug 'idanarye/vim-merginal'
             Plug 'skywind3000/asyncrun.vim'
         " General Vim end
@@ -55,7 +53,7 @@
         " Web (generic) end
 
         " Javascript / node / coffeescript
-            Plug 'ternjs/tern_for_vim', {'for' : ['javascript', 'json', 'markdown'] }
+            "Plug 'ternjs/tern_for_vim', {'for' : ['javascript', 'json', 'markdown'] }
             Plug 'mtscout6/syntastic-local-eslint.vim', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
@@ -84,8 +82,6 @@
             Plug 'robbles/logstash.vim'
             Plug 'vim-scripts/SyntaxRange'
             Plug 'vim-scripts/ingo-library'
-            Plug 'junkblocker/patchreview-vim', { 'on': ['CodeReview']}
-            Plug 'codegram/vim-codereview', { 'on': ['CodeReview']}
         " Misc end
     " Plugs end
 
