@@ -6,7 +6,7 @@
             Plug 'tpope/vim-abolish'
             Plug 'tpope/vim-dispatch'
             Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
-            Plug 'scrooloose/syntastic'
+            Plug 'w0rp/ale'
             Plug 'scrooloose/nerdcommenter'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/vim-emoji'
@@ -52,9 +52,8 @@
 "            Plug 'csscomb/vim-csscomb'
         " Web (generic) end
 
-        " Javascript / node / coffeescript
-            "Plug 'ternjs/tern_for_vim', {'for' : ['javascript', 'json', 'markdown'] }
-            Plug 'mtscout6/syntastic-local-eslint.vim', { 'for' : ['javascript', 'json', 'markdown'] }
+        " Javascript / node / coffeescript / typescript
+            Plug 'leafgarland/typescript-vim' ", { 'for' : ['typesript', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
@@ -76,12 +75,12 @@
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
             Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
-            Plug 'diepm/vim-rest-console', { 'for': ['rest'] }
+            "Plug 'diepm/vim-rest-console', { 'for': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
-            Plug 'vim-scripts/SyntaxRange'
-            Plug 'vim-scripts/ingo-library'
+            "Plug 'vim-scripts/SyntaxRange'
+            "Plug 'vim-scripts/ingo-library'
         " Misc end
     " Plugs end
 
