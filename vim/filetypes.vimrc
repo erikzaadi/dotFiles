@@ -6,13 +6,11 @@
 
      " Javascript / Coffeescript / Node
         au BufNewFile,BufRead *.coffee set filetype=coffee
-        "au! BufRead,BufNewFile *.json set filetype=json
         au BufRead,BufNewFile *.ejs set filetype=html
         au BufRead,BufNewFile *.eco set filetype=html
         au BufRead,BufNewFile *.ts set filetype=typescript
         au BufNewFile,BufRead *.coffee,*.js set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-        au FileType javascript,coffee set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
-        au FileType typescript set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+        au FileType javascript,coffee,typescript set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
     " Javascript / Coffeescript / Node end
 
     " Go
