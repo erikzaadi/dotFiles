@@ -50,6 +50,4 @@
     set statusline+=%{ALEGetStatusLine()}
     set statusline+=%*
 
-    set completefunc+=emoji#complete
-    set omnifunc+=emoji#complete
 " Vim Plug Configs end

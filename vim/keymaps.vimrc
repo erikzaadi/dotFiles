@@ -3,8 +3,8 @@
     map <silent> <F2> :NERDTreeToggle<CR>
     map <silent> <F5> :NERDTreeFind<CR>
     map <silent> <F3> <ESC>:GitFiles<RETURN>
+    map <silent> <S-F3> <ESC>:Files<RETURN>
     map <silent> <Leader>f <ESC>:FZF<RETURN>
-    map <silent> <F4> <ESC>:CtrlPFunky<RETURN>
     nnoremap <Leader>w :w<CR>
     nnoremap <Leader>o :GitFiles<CR>
     vmap <Enter> <Plug>(EasyAlign)
@@ -18,8 +18,10 @@
 ""    inoremap <left> <nop>
 ""    inoremap <right> <nop>
     map <F1> <Esc>
-    map <F6> <Esc> :lnext<CR>
-    map <F8> <Esc> :TagbarToggle<CR>
+    map <silent> <F6> <Esc> :lnext<CR>
+    map <silent> <S-F6> <Esc> :lprevious<CR>
+    map <silent> <F7> <Esc> :lopen<CR>
+    map <silent> <F8> <Esc> :TagbarToggle<CR>
     map <F12> <Esc> :YcmCompleter GoTo<CR>
     nnoremap <Leader><Leader>h :noh<CR>
     nnoremap <Leader><Leader>r :redraw!<CR>
@@ -52,6 +54,4 @@
     imap <c-x><c-j> <plug>(fzf-complete-file-ag)
     imap <c-x><c-l> <plug>(fzf-complete-line)
 
-    nmap <silent> <leader>d <Plug>DashSearch
-
-    " Keymaps end
+" Keymaps end

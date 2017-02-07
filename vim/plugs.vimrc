@@ -9,28 +9,23 @@
             Plug 'w0rp/ale'
             Plug 'scrooloose/nerdcommenter'
             Plug 'junegunn/gv.vim'
-            Plug 'junegunn/vim-emoji'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'loremipsum'
-            Plug 'tkhren/vim-fake'
             Plug 'majutsushi/tagbar'
             Plug 'dkprice/vim-easygrep'
-            Plug 'ruanyl/vim-gh-line'
             Plug 'SirVer/ultisnips'
             Plug 'vim-airline/vim-airline'
             Plug 'vim-airline/vim-airline-themes'
             Plug 'itspriddle/vim-stripper'
             Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } "--gocode-completer
             Plug 'Raimondi/delimitMate'
-            Plug 'chip/vim-fat-finger'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'idanarye/vim-merginal'
-            Plug 'skywind3000/asyncrun.vim'
         " General Vim end
 
         " Color Schemes
@@ -38,7 +33,6 @@
         " Color Schemes end
 
         " Python
-            Plug 'davidhalter/jedi-vim', { 'for': ['python', 'markdown'] }
             Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'markdown'] }
         " Python end
 
@@ -53,7 +47,7 @@
         " Web (generic) end
 
         " Javascript / node / coffeescript / typescript
-            Plug 'leafgarland/typescript-vim' ", { 'for' : ['typesript', 'markdown'] }
+            Plug 'leafgarland/typescript-vim', { 'for' : ['typescript', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
@@ -75,12 +69,9 @@
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
             Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
-            "Plug 'diepm/vim-rest-console', { 'for': ['rest'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
-            "Plug 'vim-scripts/SyntaxRange'
-            "Plug 'vim-scripts/ingo-library'
         " Misc end
     " Plugs end
 
