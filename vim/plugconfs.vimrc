@@ -24,6 +24,7 @@
 
 
     let g:airline_powerline_fonts        = 0
+    let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
     let g:airline_left_sep               = ''
     let g:airline_right_sep              = ''
     let g:airline_theme                  = 'solarized'
@@ -46,8 +47,11 @@
     set grepprg=git\ grep\ -n
     let g:EasyGrepCommand = 1
 
+    command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+
     set statusline+=%#warningmsg#
     set statusline+=%{ALEGetStatusLine()}
     set statusline+=%*
+
 
 " Vim Plug Configs end

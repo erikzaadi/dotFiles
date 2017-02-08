@@ -3,20 +3,19 @@
     map <silent> <F2> :NERDTreeToggle<CR>
     map <silent> <F5> :NERDTreeFind<CR>
     map <silent> <F3> <ESC>:GitFiles<RETURN>
-    map <silent> <S-F3> <ESC>:Files<RETURN>
+    map <silent> <F4> <ESC>:Files<RETURN>
     map <silent> <Leader>f <ESC>:FZF<RETURN>
     nnoremap <Leader>w :w<CR>
-    nnoremap <Leader>o :GitFiles<CR>
     vmap <Enter> <Plug>(EasyAlign)
     "Oy vei, trying without arrows
-""    nnoremap <up> <nop>
-""    nnoremap <down> <nop>
-""    nnoremap <left> <nop>
-""    nnoremap <right> <nop>
-""    inoremap <up> <nop>
-""    inoremap <down> <nop>
-""    inoremap <left> <nop>
-""    inoremap <right> <nop>
+    nnoremap <up> <nop>
+    nnoremap <down> <nop>
+    nnoremap <left> <nop>
+    nnoremap <right> <nop>
+    inoremap <up> <nop>
+    inoremap <down> <nop>
+    inoremap <left> <nop>
+    inoremap <right> <nop>
     map <F1> <Esc>
     map <silent> <F6> <Esc> :lnext<CR>
     map <silent> <S-F6> <Esc> :lprevious<CR>
@@ -37,7 +36,7 @@
     nnoremap <Leader>gd :Gdiff<CR>
     nnoremap <Leader>gm :Gmove<Space>
     nnoremap <Leader>go :Git checkout<Space>
-    nnoremap <Leader>gps :Dispatch! git push<CR>
+    nnoremap <Leader>gps :Gpush<CR>
     map q: :q
     nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
     nmap <silent>  <Leader><Leader>;  :source $MYVIMRC<CR>
