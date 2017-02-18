@@ -21,7 +21,7 @@
     map <silent> <S-F6> <Esc> :lprevious<CR>
     map <silent> <F7> <Esc> :lopen<CR>
     map <silent> <F8> <Esc> :TagbarToggle<CR>
-    map <F12> <Esc> :YcmCompleter GoTo<CR>
+    map <F12> <Esc> :YcmCompleter GoToDefinition<CR>
     nnoremap <Leader><Leader>h :noh<CR>
     nnoremap <Leader><Leader>r :redraw!<CR>
     nnoremap <A-down> <C-W>+

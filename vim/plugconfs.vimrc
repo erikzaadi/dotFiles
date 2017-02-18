@@ -24,7 +24,7 @@
 
 
     let g:airline_powerline_fonts        = 0
-    let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+ "   let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
     let g:airline_left_sep               = ''
     let g:airline_right_sep              = ''
     let g:airline_theme                  = 'solarized'

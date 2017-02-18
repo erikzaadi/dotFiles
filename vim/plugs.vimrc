@@ -4,7 +4,6 @@
             Plug 'tpope/vim-fugitive'
             Plug 'tpope/vim-eunuch'
             Plug 'tpope/vim-abolish'
-            "Plug 'tpope/vim-dispatch'
             Plug 'skywind3000/asyncrun.vim'
             Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
             Plug 'w0rp/ale'
