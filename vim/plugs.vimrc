@@ -39,10 +39,10 @@
         " Web (generic)
             Plug 'hail2u/vim-css3-syntax', { 'for' : ['css', 'markdown'] }
             Plug 'juvenn/mustache.vim', { 'for' : ['mustache', 'markdown'] }
-            Plug 'digitaltoad/vim-jade', { 'for' : ['jade', 'markdown'] }
+            Plug 'digitaltoad/vim-pug', { 'for' : ['jade', 'pug', 'markdown'] }
             Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
             Plug 'rstacruz/vim-ultisnips-css', { 'for' : 'css' }
-
+            Plug 'mattn/emmet-vim'
 "            Plug 'csscomb/vim-csscomb'
         " Web (generic) end
 
