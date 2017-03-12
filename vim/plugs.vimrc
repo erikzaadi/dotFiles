@@ -58,7 +58,6 @@
             Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
             Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for' : ['go', 'markdown'] }
             Plug 'jodosha/vim-godebug', { 'for' : ['go'] }
-
         " Go
 
         " Scala
@@ -74,6 +73,7 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
+            Plug 'tweekmonster/startuptime.vim'
         " Misc end
     " Plugs end
 
