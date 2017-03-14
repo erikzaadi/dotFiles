@@ -29,7 +29,8 @@
         " General Vim end
 
         " Color Schemes
-            Plug 'altercation/vim-colors-solarized'
+            "Plug 'altercation/vim-colors-solarized'
+            Plug 'lifepillar/vim-solarized8'
         " Color Schemes end
 
         " Python
