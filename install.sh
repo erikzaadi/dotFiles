@@ -1,5 +1,6 @@
 #!/bin/bash
 SCRIPT_BASE="$( cd -P "$( dirname "$0" )" && pwd )"
+export PATH=${PATH}:${SCRIPT_BASE}/bin
 
 #UBER hacky way to generate a star banner
 STAR_LINE="`python -c 'import os;columns = os.popen("stty size", "r").read().split()[-1];print "*" * int(columns)'`"
@@ -73,12 +74,12 @@ if [[ "$(uname)" = "Darwin" ]]; then
     for tap in $(cat ${SCRIPT_BASE}/mac/tap);do
         brew tap ${tap}
     done
-    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
-        brew install ${keg}
-    done
-    for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
-        brew cask install ${cask}
-    done
+#    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
+#        brew install ${keg}
+#    done
+#    for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
+#        brew cask install ${cask}
+#    done
     log_message "Setting custom OS-X Settings.."
     bash ${SCRIPT_BASE}/mac/osx-settings
     log_message "Installing python packages.."
@@ -133,7 +134,8 @@ if [[ ! -f ~/.gvm/scripts/gvm ]]; then
     source ~/.gvm/scripts/gvm
     gvm install 1.4 -B
     gvm install 1.7 -B
-    gvm use 1.7 --default
+    gvm install 1.8 -B
+    gvm use 1.8 --default
 fi
 
 log_message "Installing Vim Packages.."

@@ -8,14 +8,17 @@
     nnoremap <Leader>w :w<CR>
     vmap <Enter> <Plug>(EasyAlign)
     "Oy vei, trying without arrows
-    nnoremap <up> <nop>
-    nnoremap <down> <nop>
-    nnoremap <left> <nop>
-    nnoremap <right> <nop>
-    inoremap <up> <nop>
-    inoremap <down> <nop>
-    inoremap <left> <nop>
-    inoremap <right> <nop>
+"    nnoremap <up> <nop>
+"    nnoremap <down> <nop>
+"    nnoremap <left> <nop>
+"    nnoremap <right> <nop>
+"    inoremap <up> <nop>
+"    inoremap <down> <nop>
+"    inoremap <left> <nop>
+"    inoremap <right> <nop>
+    imap <F1> <Esc>
+    nmap <F1> <Esc>
+    vmap <F1> <Esc>
     map <F1> <Esc>
     map <silent> <F6> <Esc> :lnext<CR>
     map <silent> <S-F6> <Esc> :lprevious<CR>

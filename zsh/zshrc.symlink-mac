@@ -21,4 +21,4 @@ source ${DOTFILESDIR}/zsh/zshrc
 
 [ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
-source /usr/local/share/zsh/site-functions/_awless
+[[ -s "/Users/erikzaadi/.gvm/scripts/gvm" ]] && source "/Users/erikzaadi/.gvm/scripts/gvm"

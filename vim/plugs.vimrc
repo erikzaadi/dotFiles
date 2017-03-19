@@ -52,7 +52,7 @@
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
-            Plug 'grvcoelho/vim-javascript-snippets', { 'for' : ['javascript', 'json', 'markdown'] }
+            "Plug 'grvcoelho/vim-javascript-snippets', { 'for' : ['javascript', 'json', 'markdown'] }
         " Javascript / node /coffeescript end
 
         " Go
