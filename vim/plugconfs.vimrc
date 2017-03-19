@@ -49,6 +49,9 @@
 
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
+    let g:solarized_termtrans = 1
+    let g:solarized_term_italics = 1
+
     set statusline+=%#warningmsg#
     set statusline+=%{ALEGetStatusLine()}
     set statusline+=%*

@@ -40,7 +40,7 @@
         lang en_US
     catch
     endtry
-    set background=dark
+    "set background=dark
     set laststatus=2
     set guioptions-=LR
     set wildmode=list:longest,full
