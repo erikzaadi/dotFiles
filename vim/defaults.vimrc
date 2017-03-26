@@ -24,7 +24,7 @@
     " set tw=120
     " set winwidth=120 nice idea, but a bit annoying on small terminalz
     " set winminwidth=120
-    set mouse=a "enable mouse in GUI mode
+    set mouse=                    "duck the mouse
     set mousehide                 " Hide mouse after chars typed
     set showmatch                 " Show matching brackets.
     set novisualbell              " No blinking
