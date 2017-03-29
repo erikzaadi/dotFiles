@@ -1,30 +1,18 @@
 " Keymaps
     let mapleader = "\<Space>""
-    map <silent> <F2> :NERDTreeToggle<CR>
-    map <silent> <F5> :NERDTreeFind<CR>
-    map <silent> <F3> <ESC>:GitFiles<RETURN>
-    map <silent> <F4> <ESC>:Files<RETURN>
-    map <silent> <Leader>f <ESC>:FZF<RETURN>
-    nnoremap <Leader>w :w<CR>
+    map <silent> <Leader>f <ESC>:GitFiles<RETURN>
+    map <silent> <Leader>F <ESC>:Files<RETURN>
+    map <silent> <Leader>g <ESC>:NERDTreeToggle<RETURN>
+    map <silent> <Leader>G <ESC>:NERDTreeFind<RETURN>
+    map <silent> <Leader>d <ESC>:YcmCompleter GoToDefinition<RETURN>
+    map <silent> <Leader>r <ESC>:lnext<RETURN>
+    map <silent> <Leader>R <ESC>:lprevious<RETURN>
+    map <silent> <Leader>t <ESC>:lopen<RETURN>
     vmap <Enter> <Plug>(EasyAlign)
-    "Oy vei, trying without arrows
-"    nnoremap <up> <nop>
-"    nnoremap <down> <nop>
-"    nnoremap <left> <nop>
-"    nnoremap <right> <nop>
-"    inoremap <up> <nop>
-"    inoremap <down> <nop>
-"    inoremap <left> <nop>
-"    inoremap <right> <nop>
     imap <F1> <Esc>
     nmap <F1> <Esc>
     vmap <F1> <Esc>
     map <F1> <Esc>
-    map <silent> <F6> <Esc> :lnext<CR>
-    map <silent> <S-F6> <Esc> :lprevious<CR>
-    map <silent> <F7> <Esc> :lopen<CR>
-    map <silent> <F8> <Esc> :TagbarToggle<CR>
-    map <F12> <Esc> :YcmCompleter GoToDefinition<CR>
     nnoremap <Leader><Leader>h :noh<CR>
     nnoremap <Leader><Leader>r :redraw!<CR>
     nnoremap <A-down> <C-W>+
@@ -49,11 +37,15 @@
     xmap <leader><tab> <plug>(fzf-maps-x)
     omap <leader><tab> <plug>(fzf-maps-o)
 
-
     " Insert mode completion
     imap <c-x><c-k> <plug>(fzf-complete-word)
     imap <c-x><c-f> <plug>(fzf-complete-path)
     imap <c-x><c-j> <plug>(fzf-complete-file-ag)
     imap <c-x><c-l> <plug>(fzf-complete-line)
 
+    " Toggle Colorscheme
+    nnoremap  <leader>B :<c-u>exe "colors" (g:colors_name =~# "dark"
+        \ ? substitute(g:colors_name, 'dark', 'light', '')
+        \ : substitute(g:colors_name, 'light', 'dark', '')
+        \ )<cr>
 " Keymaps end
