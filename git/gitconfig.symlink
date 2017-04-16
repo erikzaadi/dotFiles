@@ -1,18 +1,18 @@
 [github]
-	user = erikzaadi
-	token =
+    user = erikzaadi
+    token =
 
 [user]
-	name = erikzaadi
-	email = erik.zaadi@gmail.com
+    name = erikzaadi
+    email = erik.zaadi@gmail.com
     editor = vim
 
 [color]
     diff = auto
     status = auto
     branch = auto
-	interactive = auto
-	ui = true
+    interactive = auto
+    ui = true
     pager = true
 
 [color "branch"]
@@ -25,7 +25,7 @@
     frag = magenta bold
     old = red bold
     new = green bold
-	whitespace = red reverse
+    whitespace = red reverse
 
 [color "status"]
     added = yellow
@@ -36,7 +36,7 @@
     tool = vimdiff
 
 [merge]
-	tool = fugitive
+    tool = fugitive
 
 [rerere]
     enabled = true
@@ -45,31 +45,22 @@
     default = tracking
 
 [alias]
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    rclone = clone --reference /git/cache.git/
-
     last  = cat-file commit HEAD
     st    = ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude -t -o -u -s -m -d
     stc   = diff --stat --name-status --cached
     cat   = -p cat-file -p
     up    = !git remote update ; git gc
-    debug = !GIT_PAGER= gdb --args git
 
     top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
 
-    push-head = !git push origin `git symbolic-ref HEAD`
-    publish = push publish
-    pushall = !git remote | xargs -n1 git push
-    pushalltags = !git remote | xargs -n1 git push --tags
     pushu = !git push -u origin $(git symbolic-ref --short HEAD)
 
     tblog = log --not-grep='Auto-increment of build number due to changes in directory '
-    tbk   = !gitk --not-grep='Auto-increment of build number due to changes in directory '
 
     vgc = repack -f -a -d --depth=250 --window=250
     nvgc = !ionice -n7 nice -n20 git vgc
-
-    svnup = !git config --get-regexp 'svn-remote.*url' | cut -d . -f 2 | xargs -n1 git svn fetch
 
     log1 = log --pretty=oneline --abbrev-commit --decorate
 
@@ -79,14 +70,13 @@
     file-blame = !git ls-files | xargs -n1 -i{} git log -1 --pretty=format:\"%ci {}\" -- {}
     amend = commit --amend -C HEAD
 
-    # Find FIXME, TODO, etc ala @pengwinn
-    pr = pull --rebase
+    pr = !hub pull-request -o
 
     su = submodule update --init
 
     c = commit
 
-    delete-remote = !git push origin :${1:-(git symbolic-ref --short HEAD)}
+    delete-remote = !git push origin :${1:-(git branch-name)}
 
     unrust = !git pull --rebase && git submodule update --init
 
@@ -102,23 +92,34 @@
 
     pullf = pull --ff-only
 
+    f-n-m = !git fetch origin $1:$1
+
+    prune-remote = remote prune origin
+
+    cleanup-local-merged = '!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f'
+
+
+    reset-to-head = "!git reset --hard origin/$(git branch-name)"
+
+    list-aliases = "!git config -l | grep alias | cut -c 7-"
+
 [core]
     whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
-	editor = vim
-	hooksPath = ~/.git-hook-templates
+    editor = vim
+    hooksPath = ~/.git-hook-templates
 
 [help]
-	autocorrect = 1
+    autocorrect = 1
 
 [gitreview]
-	username = erikzaadi
+    username = erikzaadi
 [mergetool]
-	prompt = false
+    prompt = false
 [mergetool "fugitive"]
-	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+    cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [ghi]
-	token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
+    token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
 [rebase]
-	autosquash = true
+    autosquash = true
