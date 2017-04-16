@@ -92,11 +92,11 @@
 
     pullf = pull --ff-only
 
-    f-n-m = !git fetch origin $1:$1
+    f-n-m = "!f() { WANTED_BRANCH="${1:-develop}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
     prune-remote = remote prune origin
 
-    cleanup-local-merged = '!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f'
+    cleanup-local-merged = '!f() { git branch --merged ${1:-master} | grep -v " ${1:-master}$" | xargs -r git branch -d; }; f'
 
 
     reset-to-head = "!git reset --hard origin/$(git branch-name)"
