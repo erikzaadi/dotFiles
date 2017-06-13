@@ -21,4 +21,4 @@ source ${DOTFILESDIR}/zsh/zshrc
 
 [ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
-[[ -s "/Users/erikzaadi/.gvm/scripts/gvm" ]] && source "/Users/erikzaadi/.gvm/scripts/gvm"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

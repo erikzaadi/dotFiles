@@ -76,7 +76,7 @@
 
     c = commit
 
-    delete-remote = !git push origin :${1:-(git branch-name)}
+    delete-remote = "!f() { echo "Deleting $1" && git push origin ":$1"; }; f"
 
     unrust = !git pull --rebase && git submodule update --init
 
