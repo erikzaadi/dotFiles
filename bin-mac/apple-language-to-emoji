@@ -1,0 +1,18 @@
+#!/bin/bash
+CURRENT_LANGUAGE=`apple-language`
+SWEDEN="🇸🇪"
+ISRAEL="🇮🇱"
+US="🇺🇸"
+
+
+case ${CURRENT_LANGUAGE} in
+    ABC)
+        echo ${US}
+        ;;
+    Swedish)
+        echo ${SWEDEN}
+        ;;
+    Hebrew)
+        echo ${ISRAEL}
+        ;;
+esac
