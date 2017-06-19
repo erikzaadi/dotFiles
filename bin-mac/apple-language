@@ -1,4 +1,5 @@
 #!/usr/bin/env osascript
+# https://stackoverflow.com/questions/21597804/determine-os-x-keyboard-layout-input-source-in-the-terminal-a-script
 # Example call.
 #set activeKbdLayout to my getActiveKeyboardLayout() # ->, e.g., "U.S."
 
