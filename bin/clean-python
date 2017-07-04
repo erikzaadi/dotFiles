@@ -1,5 +1,8 @@
 #!/bin/bash
 
-for file in `find -name "*.pyc"`;do 
-    rm -rf $file;
-done
+FIND=find
+if [[ `which gfind` ]]; then
+    FIND=gfind
+fi
+
+${FIND} -name "*.pyc" -delete

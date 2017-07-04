@@ -35,6 +35,7 @@
 
         " Python
             Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'markdown'] }
+            "Plug 'python-mode/python-mode', { 'for': ['python', 'markdown'] }
         " Python end
 
         " Web (generic)
@@ -66,6 +67,7 @@
         " Scala End
 
         " Misc
+            Plug 'johngrib/vim-game-code-break'
             Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }

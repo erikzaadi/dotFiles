@@ -21,6 +21,7 @@
     "let g:ale_set_loclist = 0
     "let g:ale_set_quickfix = 1
     let g:ale_enable_signs               = 1
+    let g:ale_virtualenv_dir_names = ['.venv', '.env']
 
 
     let g:airline_powerline_fonts        = 0
