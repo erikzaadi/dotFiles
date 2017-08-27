@@ -5,8 +5,7 @@
 
     map <silent> <Leader>f <ESC>:GitFiles<RETURN>
     map <silent> <Leader>F <ESC>:Files<RETURN>
-    map <silent> <Leader>g <ESC>:NERDTreeToggle<RETURN>
-    map <silent> <Leader>G <ESC>:NERDTreeFind<RETURN>
+    map <silent> <Leader>g <ESC>:Explore<RETURN>
     map <silent> <Leader>d <ESC>:YcmCompleter GoToDefinition<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
     map <silent> <Leader>R <ESC>:lprevious<RETURN>

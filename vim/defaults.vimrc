@@ -40,7 +40,7 @@
         lang en_US
     catch
     endtry
-    "set background=dark
+    set background=dark
     set laststatus=2
     set guioptions-=LR
     set wildmode=list:longest,full
@@ -58,9 +58,16 @@
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
         set termguicolors
     endif
-    if has("macligatures")
-        set macligatures
-    endif
+    "if has("macligatures")
+    "    set macligatures
+    "endif
+
+    """ NetRW
+    let g:netrw_liststyle = 1 " Detail View
+    let g:netrw_sizestyle = "H" " Human-readable file sizes
+    let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
+    let g:netrw_hide = 1 " hide dotfiles by default
+    let g:netrw_banner = 0 " Turn off banner
 
     "http://vim.wikia.com/wiki/Create_underlines,_overlines,_and_strikethroughs_using_combining_characters
     " modify selected text using combining diacritics

@@ -4,17 +4,17 @@
             Plug 'tpope/vim-fugitive'
             Plug 'tpope/vim-eunuch'
             Plug 'tpope/vim-abolish'
+            Plug 'tpope/vim-commentary'
+            Plug 'tpope/vim-vinegar'
+
             Plug 'skywind3000/asyncrun.vim'
-            Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
             Plug 'w0rp/ale'
-            Plug 'scrooloose/nerdcommenter'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'loremipsum'
-            Plug 'majutsushi/tagbar'
             Plug 'dkprice/vim-easygrep'
             Plug 'SirVer/ultisnips'
             Plug 'vim-airline/vim-airline'
@@ -58,8 +58,6 @@
 
         " Go
             Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
-            Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for' : ['go', 'markdown'] }
-            Plug 'jodosha/vim-godebug', { 'for' : ['go'] }
         " Go
 
         " Scala
@@ -67,7 +65,7 @@
         " Scala End
 
         " Misc
-            Plug 'johngrib/vim-game-code-break'
+            " Plug 'johngrib/vim-game-code-break'
             Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
@@ -76,7 +74,7 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
-            Plug 'tweekmonster/startuptime.vim'
+            " Plug 'tweekmonster/startuptime.vim'
         " Misc end
     " Plugs end
 
