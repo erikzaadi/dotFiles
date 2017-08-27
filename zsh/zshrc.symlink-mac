@@ -3,8 +3,8 @@ if [[ "${ZSHENV_LOADED:="BLA"}" = "BLA" ]]; then
 fi
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export BROWSE=open
-export CLIPBOARD='pbcopy'
-export PASTE='pbpaste'
+export CLIPBOARD='reattach-to-user-namespace pbcopy'
+export PASTE='reattach-to-user-namespace pbpaste'
 preview()
 {
     qlmanage -p "$@" >& /dev/null &
