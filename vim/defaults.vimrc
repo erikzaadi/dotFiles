@@ -48,6 +48,7 @@
     set completeopt-=preview
     set listchars=tab:▸\ ,trail:·
     set list
+    set backspace=indent,eol,start
 
     set spellfile=~/.vim/vim-spell-en.utf-8.add
     set complete+=kspell
