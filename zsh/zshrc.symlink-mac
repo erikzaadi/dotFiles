@@ -10,7 +10,7 @@ preview()
     qlmanage -p "$@" >& /dev/null &
 }
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=${DOTFILESDIR}/bin-mac:${GOPATH}/bin:${PATH}
 source ${DOTFILESDIR}/zsh/zshrc
 
