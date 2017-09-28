@@ -1,14 +1,5 @@
-argon/mas
-caskroom/versions
-getantibody/antibody
-git-time-metric/gtm
-homebrew/boneyard
-homebrew/completions
+caskroom/cask
+cema-sp/tap
+getantibody/tap
 homebrew/core
 homebrew/dupes
-homebrew/fuse
-homebrew/versions
-homebrew/x11
-jimbojsb/launchrocket
-px4/px4
-thoughtbot/formulae

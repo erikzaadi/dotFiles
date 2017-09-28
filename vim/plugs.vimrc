@@ -6,6 +6,8 @@
             Plug 'tpope/vim-abolish'
             Plug 'tpope/vim-commentary'
             Plug 'tpope/vim-vinegar'
+            Plug 'tpope/vim-surround'
+            Plug 'tpope/vim-repeat'
 
             Plug 'skywind3000/asyncrun.vim'
             Plug 'w0rp/ale'
@@ -74,6 +76,7 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
+            Plug 'zirrostig/vim-jack-syntax', {'for': ['jack']}
             " Plug 'tweekmonster/startuptime.vim'
         " Misc end
     " Plugs end
