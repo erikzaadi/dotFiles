@@ -37,9 +37,9 @@
         au BufNewFile,BufReadPost *.md set filetype=markdown
         let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'stylus', 'python', 'go', 'yaml', 'ansible', 'nginx', 'sh', 'bash=sh', 'zsh', 'groovy']
         " Spell-check Markdown files
-        autocmd FileType markdown setlocal spell
+        " autocmd FileType markdown setlocal spell
         " Spell-check Git messages
-        autocmd FileType gitcommit setlocal spell
+        " autocmd FileType gitcommit setlocal spell
         au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
         au BufNewFile,BufRead *.yml set filetype=yaml.ansible
         au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>

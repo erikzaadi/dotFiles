@@ -74,9 +74,12 @@
             Plug 'tmux-plugins/vim-tmux', { 'for': ['tmux', 'markdown'] }
             Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
-            Plug 'ekalinin/Dockerfile.vim' , {'for': ['Dockerfile', 'markdown']}
+            Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
-            Plug 'zirrostig/vim-jack-syntax', {'for': ['jack']}
+            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
+            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
+            Plug 'inkarkat/vim-ingo-library' " , { 'for': ['markdown', 'gitcommit']}
+            Plug 'inkarkat/vim-SpellCheck', { 'for': ['markdown', 'gitcommit']}
             " Plug 'tweekmonster/startuptime.vim'
         " Misc end
     " Plugs end
