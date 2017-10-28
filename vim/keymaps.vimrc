@@ -1,7 +1,7 @@
 " Keymaps
     let mapleader = "\<Space>""
 
-    nnoremap Q <nop> " Good bye ex mode
+    nnoremap Q <nop>
 
     map <silent> <Leader>f <ESC>:GitFiles<RETURN>
     map <silent> <Leader>F <ESC>:Files<RETURN>
