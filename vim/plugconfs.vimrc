@@ -41,7 +41,7 @@
     "let g:airline_right_sep              = ''
     "let g:airline_theme                  = 'solarized'
     let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
