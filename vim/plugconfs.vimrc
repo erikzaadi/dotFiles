@@ -17,9 +17,13 @@
 
     let g:ansible_extra_syntaxes         = "nginx.vim sh.vim json.vim"
 
-    "let g:ale_open_list = 1
-    "let g:ale_set_loclist = 0
-    "let g:ale_set_quickfix = 1
+    let g:gitgutter_map_keys = 0
+    let g:gitgutter_sign_added = '•'
+    let g:gitgutter_sign_modified = '•'
+    let g:gitgutter_sign_removed = '•'
+    let g:gitgutter_sign_modified_removed = '•'
+    let g:gitgutter_highlight_lines = 1
+
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
 
@@ -34,14 +38,14 @@
     highlight link ALEErrorSign Title
 
 
+"    " Disable Background Color Erase when within tmux - https://stackoverflow.com/q/6427650/102704
+    if $TMUX != ""
+        set t_ut=
+    endif
 
-    "let g:airline_powerline_fonts        = 0
-    "let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
-    "let g:airline_left_sep               = ''
-    "let g:airline_right_sep              = ''
-    "let g:airline_theme                  = 'solarized'
+
     let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -64,7 +68,6 @@
       \ }
 
 
-
     " https://github.com/statico/dotfiles
 
 
@@ -72,19 +75,20 @@
         return g:asyncrun_status
     endfunction
 
-
     function! LightlineLinterWarnings() abort
         let l:counts = ale#statusline#Count(bufnr(''))
         let l:all_errors = l:counts.error + l:counts.style_error
         let l:all_non_errors = l:counts.total - l:all_errors
         return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
     endfunction
+
     function! LightlineLinterErrors() abort
         let l:counts = ale#statusline#Count(bufnr(''))
         let l:all_errors = l:counts.error + l:counts.style_error
         let l:all_non_errors = l:counts.total - l:all_errors
         return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
     endfunction
+
     function! LightlineLinterOK() abort
         let l:counts = ale#statusline#Count(bufnr(''))
         let l:all_errors = l:counts.error + l:counts.style_error
@@ -123,10 +127,5 @@
     let g:solarized_termtrans = 1
     let g:solarized_term_italics = 1
     let g:solarized_termcolors = 256
-
-    "set statusline+=%#warningmsg#
-    "set statusline+=%{ALEGetStatusLine()}
-    "set statusline+=%*
-
 
 " Vim Plug Configs end
