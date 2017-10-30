@@ -23,12 +23,82 @@
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
 
+    if !has('gui_running')
+      set t_Co=256
+    endif
 
-    let g:airline_powerline_fonts        = 0
- "   let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
-    let g:airline_left_sep               = ''
-    let g:airline_right_sep              = ''
-    let g:airline_theme                  = 'solarized'
+
+    let g:ale_sign_warning = '▲'
+    let g:ale_sign_error = '✗'
+    highlight link ALEWarningSign String
+    highlight link ALEErrorSign Title
+
+
+
+    "let g:airline_powerline_fonts        = 0
+    "let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+    "let g:airline_left_sep               = ''
+    "let g:airline_right_sep              = ''
+    "let g:airline_theme                  = 'solarized'
+    let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [['readonly', 'linter_warnings', 'linter_errors', 'linter_ok', 'asyncrun']]
+      \ },
+      \ 'component_expand': {
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \   'linter_ok': 'LightlineLinterOK',
+      \   'asyncrun': 'LightLineAsuncRun'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component_type': {
+      \   'readonly': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
+      \ },
+      \ }
+
+
+
+    " https://github.com/statico/dotfiles
+
+
+    function! LightLineAsuncRun() abort
+        return g:asyncrun_status
+    endfunction
+
+
+    function! LightlineLinterWarnings() abort
+        let l:counts = ale#statusline#Count(bufnr(''))
+        let l:all_errors = l:counts.error + l:counts.style_error
+        let l:all_non_errors = l:counts.total - l:all_errors
+        return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+    endfunction
+    function! LightlineLinterErrors() abort
+        let l:counts = ale#statusline#Count(bufnr(''))
+        let l:all_errors = l:counts.error + l:counts.style_error
+        let l:all_non_errors = l:counts.total - l:all_errors
+        return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+    endfunction
+    function! LightlineLinterOK() abort
+        let l:counts = ale#statusline#Count(bufnr(''))
+        let l:all_errors = l:counts.error + l:counts.style_error
+        let l:all_non_errors = l:counts.total - l:all_errors
+        return l:counts.total == 0 ? '✓ ' : ''
+    endfunction
+
+    " Update and show lightline but only if it's visible (e.g., not in Goyo)
+    autocmd User ALELint call s:MaybeUpdateLightline()
+    function! s:MaybeUpdateLightline()
+        if exists('#lightline')
+            call lightline#update()
+        end
+    endfunction
 
     let g:UltiSnipsUsePythonVersion      = 2
     let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
@@ -52,10 +122,11 @@
 
     let g:solarized_termtrans = 1
     let g:solarized_term_italics = 1
+    let g:solarized_termcolors = 256
 
-    set statusline+=%#warningmsg#
-    set statusline+=%{ALEGetStatusLine()}
-    set statusline+=%*
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{ALEGetStatusLine()}
+    "set statusline+=%*
 
 
 " Vim Plug Configs end

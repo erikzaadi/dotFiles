@@ -45,6 +45,7 @@
     set guioptions-=LR
     set wildmode=list:longest,full
     set wildignore+=*.pyc
+    set noshowmode
     set completeopt-=preview
     set listchars=tab:▸\ ,trail:·
     set list
