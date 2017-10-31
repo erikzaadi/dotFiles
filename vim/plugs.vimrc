@@ -19,8 +19,6 @@
             Plug 'vim-scripts/loremipsum'
             Plug 'dkprice/vim-easygrep'
             Plug 'SirVer/ultisnips'
-            "Plug 'vim-airline/vim-airline'
-            "Plug 'vim-airline/vim-airline-themes'
             Plug 'itchyny/lightline.vim'
             Plug 'itspriddle/vim-stripper'
             Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } "--gocode-completer
@@ -32,13 +30,11 @@
         " General Vim end
 
         " Color Schemes
-            "Plug 'altercation/vim-colors-solarized'
             Plug 'lifepillar/vim-solarized8'
         " Color Schemes end
 
         " Python
             Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'markdown'] }
-            "Plug 'python-mode/python-mode', { 'for': ['python', 'markdown'] }
         " Python end
 
         " Web (generic)
@@ -56,7 +52,6 @@
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
-            "Plug 'grvcoelho/vim-javascript-snippets', { 'for' : ['javascript', 'json', 'markdown'] }
         " Javascript / node /coffeescript end
 
         " Go

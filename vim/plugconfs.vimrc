@@ -22,7 +22,7 @@
     let g:gitgutter_sign_modified = '•'
     let g:gitgutter_sign_removed = '•'
     let g:gitgutter_sign_modified_removed = '•'
-    let g:gitgutter_highlight_lines = 1
+    let g:gitgutter_highlight_lines = 0
 
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
@@ -48,8 +48,8 @@
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [['readonly', 'linter_warnings', 'linter_errors', 'linter_ok', 'asyncrun']]
+      \             [ 'filename', 'modified' ] ],
+      \   'right': [['readonly', 'gitbranch', 'linter_warnings', 'linter_errors', 'linter_ok', 'asyncrun']]
       \ },
       \ 'component_expand': {
       \   'linter_warnings': 'LightlineLinterWarnings',
@@ -119,8 +119,7 @@
     let g:markdownfmt_command            = 'mdfmt'
 
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
-    set grepprg=git\ grep\ -n
-    let g:EasyGrepCommand = 1
+    let g:EasyGrepCommand='rg'
 
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 

@@ -4,6 +4,7 @@
     nnoremap Q <nop>
 
     map <silent> <Leader>f <ESC>:GitFiles<RETURN>
+    map <silent> <Leader>c <ESC>:GitFiles?<RETURN>
     map <silent> <Leader>F <ESC>:Files<RETURN>
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
@@ -14,6 +15,7 @@
     map <silent> <Leader>E <ESC>:cprevious<RETURN>
     map <silent> <Leader>t <ESC>:lopen<RETURN>
     map <silent> <Leader>T <ESC>:copen<RETURN>
+    nnoremap K :Ag <C-R><C-W><CR>:cw<CR>
     vmap <Enter> <Plug>(EasyAlign)
     imap <F1> <Esc>
     nmap <F1> <Esc>
