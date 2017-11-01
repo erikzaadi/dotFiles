@@ -34,8 +34,8 @@
 
     let g:ale_sign_warning = '▲'
     let g:ale_sign_error = '✗'
-    highlight link ALEWarningSign String
-    highlight link ALEErrorSign Title
+    hi link ALEWarningSign GitGutterChange
+    hi link ALEErrorSign GitGutterDelete
 
 
 "    " Disable Background Color Erase when within tmux - https://stackoverflow.com/q/6427650/102704
