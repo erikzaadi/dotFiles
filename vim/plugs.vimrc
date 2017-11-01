@@ -20,6 +20,7 @@
             Plug 'dkprice/vim-easygrep'
             Plug 'SirVer/ultisnips'
             Plug 'itchyny/lightline.vim'
+            Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
             Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } "--gocode-completer
             Plug 'Raimondi/delimitMate'
