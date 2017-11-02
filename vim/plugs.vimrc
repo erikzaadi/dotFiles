@@ -8,6 +8,7 @@
             Plug 'tpope/vim-vinegar'
             Plug 'tpope/vim-surround'
             Plug 'tpope/vim-repeat'
+            Plug 'tpope/vim-rhubarb'
 
             Plug 'skywind3000/asyncrun.vim'
             Plug 'w0rp/ale'
