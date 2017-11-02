@@ -3,6 +3,7 @@
 
     nnoremap Q <nop>
 
+    map <silent> <Leader>a <ESC>:AgArgs<space>
     map <silent> <Leader>f <ESC>:GitFiles<RETURN>
     map <silent> <Leader>c <ESC>:GitFiles?<RETURN>
     map <silent> <Leader>F <ESC>:Files<RETURN>

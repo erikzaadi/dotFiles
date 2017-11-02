@@ -69,11 +69,7 @@
       \ }
 
 
-    " https://github.com/statico/dotfiles
-
-    function! LightLineAsuncRun() abort
-        return g:asyncrun_status
-    endfunction
+    " ht https://github.com/statico/dotfiles
 
     let g:UltiSnipsUsePythonVersion      = 2
     let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
@@ -91,8 +87,6 @@
 
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
     let g:EasyGrepCommand='rg'
-
-    command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
     let g:solarized_termtrans = 1
     let g:solarized_term_italics = 1

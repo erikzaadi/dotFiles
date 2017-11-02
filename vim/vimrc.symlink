@@ -19,6 +19,8 @@
         endfunction
 
         call LoadRC("plugs")
+        call LoadRC("functions")
+        call LoadRC("commands")
         call LoadRC("defaults")
         call LoadRC("keymaps")
         call LoadRC("filetypes")
