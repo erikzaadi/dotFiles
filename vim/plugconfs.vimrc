@@ -26,6 +26,7 @@
 
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
+    let g:ale_linters = { 'javascript': ['eslint'] }
 
     if !has('gui_running')
       set t_Co=256
@@ -36,12 +37,6 @@
     let g:ale_sign_error = '✗'
     hi link ALEWarningSign GitGutterChange
     hi link ALEErrorSign GitGutterDelete
-
-
-"    " Disable Background Color Erase when within tmux - https://stackoverflow.com/q/6427650/102704
-    if $TMUX != ""
-        set t_ut=
-    endif
 
     let g:lightline#ale#indicator_ok = '✓'
 
