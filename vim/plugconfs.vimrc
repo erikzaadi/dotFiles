@@ -78,7 +78,12 @@
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
     let g:netrw_liststyle                = 3
     let g:delimitmate_expand_cr          = 2
-    let g:markdownfmt_command            = 'mdfmt'
+
+    let g:markdownfmt_autosave           = 1
+
+    let g:markdownfmt_command = 'mdfmt'
+
+    let g:markdown_fenced_languages = ['python', 'sh', 'nginx', 'bash=sh', 'scala', 'javascript', 'yaml', 'json', 'go', 'tmux', 'ansible']
 
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
     let g:EasyGrepCommand='rg'

@@ -28,6 +28,6 @@
 
     " Setup includes end
     call plug#end()
-    colorscheme solarized8_dark
+    colorscheme solarized8
     filetype plugin indent on
 " Plug end

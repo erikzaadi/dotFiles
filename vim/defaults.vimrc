@@ -54,6 +54,8 @@
     set spellfile=~/.vim/vim-spell-en.utf-8.add
     set complete+=kspell
     set spelllang=en_us
+    set conceallevel=2
+    set concealcursor="niv"
     if has("termguicolors")
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

@@ -76,9 +76,9 @@
             Plug 'robbles/logstash.vim'
             Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
             Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
-            Plug 'inkarkat/vim-ingo-library' " , { 'for': ['markdown', 'gitcommit']}
-            Plug 'inkarkat/vim-SpellCheck', { 'for': ['markdown', 'gitcommit']}
-            " Plug 'tweekmonster/startuptime.vim'
+            "Plug 'inkarkat/vim-ingo-library' " , { 'for': ['markdown', 'gitcommit']}
+            "Plug 'inkarkat/vim-SpellCheck', { 'for': ['markdown', 'gitcommit']}
+            "Plug 'tweekmonster/startuptime.vim'
         " Misc end
     " Plugs end
 
