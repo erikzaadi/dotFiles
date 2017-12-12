@@ -61,7 +61,7 @@
         " Go
 
         " Scala
-            Plug 'derekwyatt/vim-scala', { 'for' : 'scala' }
+            Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
         " Scala End
 
         " Misc
