@@ -92,7 +92,7 @@
 
     pullf = pull --ff-only
 
-    f-n-m = "!f() { WANTED_BRANCH="${1:-develop}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+    f-n-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
     prune-remote = remote prune origin
 
