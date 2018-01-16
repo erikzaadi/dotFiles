@@ -16,7 +16,7 @@ function theme_precmd {
     fi
     if [[ "$(which random_emoticon > /dev/null || echo 'NOT')" != "NOT" ]]
        then
-            CARET_PREFIX="${CARET_PREFIX}  $(random_emoticon)"
+            CARET_PREFIX="${CARET_PREFIX}  $(random_emoticon) %f"
     fi
 
 
@@ -114,7 +114,7 @@ $CARET_PREFIX$PR_NO_COLOUR '
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
-    RPROMPT='`virtualenv_prompt_info` $return_code'
+    RPROMPT='$return_code'
 
     PS2='$PR_CYAN$PR_SHIFT_IN$PR_SHIFT_OUT\
 $PR_BLUE$PR_SHIFT_IN$PR_SHIFT_OUT(\
