@@ -28,7 +28,7 @@ prompt_custom() {
     preprompt+=( "%F{blue}%c%f" )
 }
 
-PURE_PROMPT_SYMBOL="$(random_emoticon)  ✊ "
+PURE_PROMPT_SYMBOL="$(random_emoticon) ➜"
 if [[ ! -e /usr/local/share/zsh/site-functions/async ]]; then
     ln -s $(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-intelfx-SLASH-pure/async.zsh /usr/local/share/zsh/site-functions/async
 fi

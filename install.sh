@@ -74,12 +74,12 @@ if [[ "$(uname)" = "Darwin" ]]; then
     for tap in $(cat ${SCRIPT_BASE}/mac/tap);do
         brew tap ${tap}
     done
-#    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
-#        brew install ${keg}
-#    done
-#    for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
-#        brew cask install ${cask}
-#    done
+    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
+        brew install ${keg}
+    done
+    for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
+        brew cask install ${cask}
+    done
     log_message "Setting custom OS-X Settings.."
     bash ${SCRIPT_BASE}/mac/osx-settings
     log_message "Installing python packages.."
@@ -115,12 +115,12 @@ if [[ ! -f ~/.nvm/nvm.sh ]];then
     nvm alias default node
 fi
 
-#if [[ ! -f ~/.rvm/scripts/rvm ]]; then
-#    log_message "Installing rvm"
-#    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-#    curl -sSL https://get.rvm.io | bash -s stable --ruby
-#    source ~/.rvm/scripts/rvm
-#fi
+if [[ ! -f ~/.rvm/scripts/rvm ]]; then
+    log_message "Installing rvm"
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    curl -sSL https://get.rvm.io | bash -s stable --ruby
+    source ~/.rvm/scripts/rvm
+fi
 
 log_message "Installing node packages.."
 npm i -g $(cat ${SCRIPT_BASE}/packages/node)
