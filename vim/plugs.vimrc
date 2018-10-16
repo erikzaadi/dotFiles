@@ -23,7 +23,7 @@
             Plug 'itchyny/lightline.vim'
             Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
-            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } "--gocode-completer
+            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } " --gocode-completer
             Plug 'Raimondi/delimitMate'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
@@ -49,12 +49,12 @@
 "            Plug 'csscomb/vim-csscomb'
         " Web (generic) end
 
-        " Javascript / node / coffeescript / typescript
-            Plug 'leafgarland/typescript-vim', { 'for' : ['typescript', 'markdown'] }
+        " Javascript / node
+            Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
+            Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
-            Plug 'kchmck/vim-coffee-script', { 'for' : ['coffee', 'coffeescript', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
-        " Javascript / node /coffeescript end
+        " Javascript / node
 
         " Go
             Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
@@ -74,8 +74,8 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
-            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
-            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
+"            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
+"            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
             "Plug 'inkarkat/vim-ingo-library' " , { 'for': ['markdown', 'gitcommit']}
             "Plug 'inkarkat/vim-SpellCheck', { 'for': ['markdown', 'gitcommit']}
             "Plug 'tweekmonster/startuptime.vim'

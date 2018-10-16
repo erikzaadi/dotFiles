@@ -5,6 +5,12 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export BROWSE=open
 export CLIPBOARD='reattach-to-user-namespace pbcopy'
 export PASTE='reattach-to-user-namespace pbpaste'
+
+dashush()
+{
+    open "dash://$@"
+}
+
 preview()
 {
     qlmanage -p "$@" >& /dev/null &
@@ -22,3 +28,10 @@ source ${DOTFILESDIR}/zsh/zshrc
 [ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/sls.zsh

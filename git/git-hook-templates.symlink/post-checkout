@@ -1,5 +1,5 @@
 #!/bin/bash
 
 if [[ $1 == 00000000000* ]]; then
-  ${DOTFILESDIR}/bin/git-guess-email
+  ~/Code/Opensource/mine/dotFiles/bin/git-guess-email
 fi

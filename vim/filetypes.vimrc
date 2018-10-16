@@ -9,8 +9,8 @@
         au BufRead,BufNewFile *.ejs set filetype=html
         au BufRead,BufNewFile *.eco set filetype=html
         au BufRead,BufNewFile *.ts set filetype=typescript
-        au BufNewFile,BufRead *.coffee,*.js set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-        au FileType javascript,coffee,typescript set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+        au BufNewFile,BufRead *.coffee,*.js,*.jsx set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+        au FileType javascript,coffee,typescript,jsx set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
     " Javascript / Coffeescript / Node end
 
     " Go

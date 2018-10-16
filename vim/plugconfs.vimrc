@@ -74,12 +74,15 @@
     let g:ycm_confirm_extra_conf         = 0
     let g:ycm_gocode_binary_path = "$GOPATH/bin/gocode"
     let g:ycm_godef_binary_path = "$GOPATH/bin/godef"
+    let g:ycm_python_binary_path = '/usr/local/bin/python'
+    let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
+    let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
     let g:netrw_liststyle                = 3
     let g:delimitmate_expand_cr          = 2
 
-    let g:markdownfmt_autosave           = 1
+    let g:markdownfmt_autosave           = 0
 
     let g:markdownfmt_command = 'mdfmt'
 

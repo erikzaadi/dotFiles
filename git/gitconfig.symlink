@@ -36,6 +36,9 @@
     tool = vimdiff
 
 [merge]
+    ; tool = vimdiff
+    conflictstyle = diff3
+    prompt = false
     tool = fugitive
 
 [rerere]
@@ -94,10 +97,13 @@
 
     f-n-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
+    r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase -i "${WANTED_BRANCH}"; }; f"
+
+    mic-drop = "!f() { echo "Cleaning up like a boss!";git branch -d "${1}";git push origin ":${1}"; }; f"
+
     prune-remote = remote prune origin
 
     cleanup-local-merged = '!f() { git branch --merged ${1:-master} | grep -v " ${1:-master}$" | xargs -r git branch -d; }; f'
-
 
     reset-to-head = "!git reset --hard origin/$(git branch-name)"
 
@@ -107,7 +113,7 @@
     whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
     editor = vim
     hooksPath = ~/.git-hook-templates
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = diff-so-fancy | less --tabs=4 -RFX
 
 [help]
     autocorrect = 1
