@@ -41,7 +41,7 @@
     let g:lightline#ale#indicator_ok = '✓'
 
     let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'filename', 'modified' ] ],
@@ -77,6 +77,8 @@
     let g:ycm_python_binary_path = '/usr/local/bin/python'
     let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
     let g:ycm_server_python_interpreter = '/usr/local/bin/python'
+
+    let g:UltiSnipsUsePythonVersion = 3
 
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
     let g:netrw_liststyle                = 3

@@ -32,7 +32,8 @@
         " General Vim end
 
         " Color Schemes
-            Plug 'lifepillar/vim-solarized8'
+            " Plug 'lifepillar/vim-solarized8'
+            Plug 'morhetz/gruvbox'
         " Color Schemes end
 
         " Python

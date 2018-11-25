@@ -28,7 +28,7 @@
 
     " Setup includes end
     call plug#end()
-    colorscheme solarized8
+    colorscheme gruvbox
     filetype plugin indent on
     set omnifunc=syntaxcomplete#Complete
 " Plug end
