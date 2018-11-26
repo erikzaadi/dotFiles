@@ -3,3 +3,4 @@ zlsun/solarized-man
 zsh-users/zsh-syntax-highlighting
 akoenig/npm-run.plugin.zsh
 intelfx/pure kind:dummy
+superbrothers/zsh-kubectl-prompt

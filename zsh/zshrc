@@ -16,6 +16,10 @@ source $HOME/.zshenv
 
 source <(kubectl completion zsh)
 
+source <(helm completion zsh)
+
+source <(stern --completion=zsh)
+
 source <(antibody init)
 
 antibody bundle < $DOTFILESDIR/zsh/plugins
