@@ -9,8 +9,11 @@
     map <silent> <Leader>F <ESC>:Files<RETURN>
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
-    map <silent> <Leader>d <ESC>:YcmCompleter GoToDefinition<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
+    map <silent> <Leader>d <ESC>:YcmCompleter GoTo<RETURN>
+    map <silent> <Leader>D <ESC>:YcmCompleter GetDoc<RETURN>
+    map <silent> <Leader>ll <ESC>:YcmCompleter FixIt<RETURN>
+    map <silent> <Leader>nn <ESC>:YcmCompleter RefactorRename<space>
     map <silent> <Leader>R <ESC>:lprevious<RETURN>
     map <silent> <Leader>e <ESC>:cnext<RETURN>
     map <silent> <Leader>E <ESC>:cprevious<RETURN>
@@ -37,6 +40,7 @@
     nnoremap <Leader>gm :Gmove<Space>
     nnoremap <Leader>go :Git checkout<Space>
     nnoremap <Leader>gps :Gpush<CR>
+    nnoremap <Leader>gpf :Gpush -f<CR>
     map q: :q
     nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
     nmap <silent>  <Leader><Leader>;  :source $MYVIMRC<CR>

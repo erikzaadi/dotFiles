@@ -23,7 +23,7 @@
             Plug 'itchyny/lightline.vim'
             Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
-            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --tern-completer' } " --gocode-completer
+            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --ts-completer' } " --gocode-completer
             Plug 'Raimondi/delimitMate'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
@@ -32,8 +32,7 @@
         " General Vim end
 
         " Color Schemes
-            " Plug 'lifepillar/vim-solarized8'
-            Plug 'morhetz/gruvbox'
+            Plug 'lifepillar/gruvbox8'
         " Color Schemes end
 
         " Python
@@ -47,7 +46,6 @@
             Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
             Plug 'rstacruz/vim-ultisnips-css', { 'for' : 'css' }
             Plug 'mattn/emmet-vim'
-"            Plug 'csscomb/vim-csscomb'
         " Web (generic) end
 
         " Javascript / node
@@ -66,7 +64,6 @@
         " Scala End
 
         " Misc
-            " Plug 'johngrib/vim-game-code-break'
             Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
@@ -77,8 +74,6 @@
             Plug 'robbles/logstash.vim'
 "            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
 "            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
-            "Plug 'inkarkat/vim-ingo-library' " , { 'for': ['markdown', 'gitcommit']}
-            "Plug 'inkarkat/vim-SpellCheck', { 'for': ['markdown', 'gitcommit']}
             "Plug 'tweekmonster/startuptime.vim'
         " Misc end
     " Plugs end

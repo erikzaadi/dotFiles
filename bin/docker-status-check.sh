@@ -4,7 +4,7 @@ containers=()
 A=`timeout 1s docker version 2> /dev/null`
 if [[ $? -ne 0 ]]; then
     #docker not running
-    echo ""
+    echo "🐡"
     exit 0
 fi
 
@@ -17,5 +17,5 @@ if [ ${#containers[@]} -eq 1 ]; then
 elif [ ${#containers[@]} -gt 1 ]; then
   echo "🐳 ${#containers[@]} "
 else
-    echo ""
+  echo "🐳"
 fi

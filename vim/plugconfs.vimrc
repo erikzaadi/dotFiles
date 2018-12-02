@@ -28,9 +28,9 @@
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
     let g:ale_linters = { 'javascript': ['eslint'] }
 
-    if !has('gui_running')
-      set t_Co=256
-    endif
+    " if !has('gui_running')
+    "   set t_Co=256
+    " endif
 
 
     let g:ale_sign_warning = '▲'
@@ -41,10 +41,10 @@
     let g:lightline#ale#indicator_ok = '✓'
 
     let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'filename', 'modified' ] ],
+      \             [ 'cocstatus', 'filename', 'modified' ] ],
       \   'right': [['readonly', 'gitbranch', 'linter_warnings', 'linter_errors', 'linter_ok', 'asyncrun']]
       \ },
       \ 'component_expand': {
@@ -54,7 +54,8 @@
       \   'asyncrun': 'LightLineAsuncRun'
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+      \   'cocstatus': 'coc#status'
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
@@ -69,6 +70,7 @@
     let g:UltiSnipsUsePythonVersion      = 2
     let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
     let g:UltiSnipsExpandTrigger         = "<c-f>"
+    let g:UltiSnipsUsePythonVersion = 3
 
     let g:ycm_add_preview_to_completeopt = 0
     let g:ycm_confirm_extra_conf         = 0
@@ -78,7 +80,13 @@
     let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
     let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 
-    let g:UltiSnipsUsePythonVersion = 3
+    " coc.nvim
+
+    " Use <c-space> for trigger completion.
+    " inoremap <silent><expr> <c-space> coc#refresh()
+
+    " Remap for rename current word
+
 
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
     let g:netrw_liststyle                = 3
@@ -93,8 +101,19 @@
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
     let g:EasyGrepCommand='rg'
 
-    let g:solarized_termtrans = 1
-    let g:solarized_term_italics = 1
-    let g:solarized_termcolors = 256
+    let g:gruvbox_transp_bg = 1
+    let g:gruvbox_italic = 1
+
+    if has('termguicolors')
+        " set termguicolors
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+
+
+
+    " let g:solarized_termtrans = 1
+    " let g:solarized_term_italics = 1
+    " let g:solarized_termcolors = 256
 
 " Vim Plug Configs end

@@ -56,11 +56,6 @@
     set spelllang=en_us
     set conceallevel=2
     set concealcursor="niv"
-    if has("termguicolors")
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-        set termguicolors
-    endif
     "if has("macligatures")
     "    set macligatures
     "endif
