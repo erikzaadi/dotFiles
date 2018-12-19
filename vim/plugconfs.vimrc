@@ -28,6 +28,15 @@
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
     let g:ale_linters = { 'javascript': ['eslint'] }
 
+    " Configuration for vim-lsc
+    let g:lsc_enable_autocomplete = v:false
+    let g:lsc_server_commands = {
+                \ 'scala': 'metals-vim'
+                \}
+    let g:lsc_auto_map = {
+                \ 'GoToDefinition': 'gd',
+                \}
+
     " if !has('gui_running')
     "   set t_Co=256
     " endif

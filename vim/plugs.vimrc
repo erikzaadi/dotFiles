@@ -61,6 +61,7 @@
 
         " Scala
             Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
+            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'] }
         " Scala End
 
         " Misc
