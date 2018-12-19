@@ -1,0 +1,18 @@
+#!/bin/bash
+PREFIX=/usr/local/bin
+if [[ -f ${PREFIX}/coursier ]]; then
+    exit 0
+fi
+curl -Ls -o ${PREFIX}/coursier https://git.io/coursier
+chmod +x  ${PREFIX}/coursier
+${PREFIX}/coursier bootstrap \
+    --java-opt -XX:+UseG1GC \
+    --java-opt -XX:+UseStringDeduplication  \
+    --java-opt -Xss4m \
+    --java-opt -Xms1G \
+    --java-opt -Xmx4G  \
+    --java-opt -Dmetals.client=vim-lsc \
+    org.scalameta:metals_2.12:0.3.3 \
+    -r bintray:scalacenter/releases \
+    -r sonatype:snapshots \
+    -o /usr/local/bin/metals-vim -f

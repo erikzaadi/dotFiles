@@ -61,7 +61,7 @@
 
         " Scala
             Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
-            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'] }
+            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
         " Scala End
 
         " Misc
