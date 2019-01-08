@@ -28,6 +28,11 @@
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
     let g:ale_linters = { 'javascript': ['eslint'] }
 
+    let g:prettier#exec_cmd_async = 1
+    let g:prettier#autoformat = 0
+    let g:prettier#config#arrow_parens = 'always'
+
+
     " Configuration for vim-lsc
     let g:lsc_enable_autocomplete = v:false
     let g:lsc_server_commands = {

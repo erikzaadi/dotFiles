@@ -53,6 +53,9 @@
             Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
+            Plug 'prettier/vim-prettier', {
+                  \ 'do': 'npm install',
+                  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
         " Javascript / node
 
         " Go
