@@ -26,7 +26,7 @@
 
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
-    let g:ale_linters = { 'javascript': ['eslint'] }
+    let g:ale_linters = { 'javascript': ['eslint'] , 'python': ['pycodestyle'] }
 
     let g:prettier#exec_cmd_async = 1
     let g:prettier#autoformat = 0

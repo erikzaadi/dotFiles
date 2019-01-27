@@ -99,6 +99,10 @@
 
     r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase -i "${WANTED_BRANCH}"; }; f"
 
+    f-n-r = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch origin ${BRANCH}; git reset origin/${BRANCH}; }; f"
+
+    f-n-r-h = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch origin ${BRANCH}; git reset --hard origin/${BRANCH}; }; f"
+
     mic-drop = "!f() { echo "Cleaning up like a boss!";git branch -d "${1}";git push origin ":${1}"; }; f"
 
     prune-remote = remote prune origin
