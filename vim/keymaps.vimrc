@@ -11,9 +11,12 @@
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
     map <silent> <Leader>d <ESC>:YcmCompleter GoTo<RETURN>
+    map <silent> <Leader>sd <ESC>:LSClientGoToDefinition<RETURN>
     map <silent> <Leader>D <ESC>:YcmCompleter GetDoc<RETURN>
     map <silent> <Leader>ll <ESC>:YcmCompleter FixIt<RETURN>
     map <silent> <Leader>nn <ESC>:YcmCompleter RefactorRename<space>
+    map <silent> <Leader>snn <ESC>:LSClientRename<RETURN>
+    map <silent> <Leader>sca <ESC>:LSClientFindCodeActions<RETURN>
     map <silent> <Leader>R <ESC>:lprevious<RETURN>
     map <silent> <Leader>e <ESC>:cnext<RETURN>
     map <silent> <Leader>E <ESC>:cprevious<RETURN>
