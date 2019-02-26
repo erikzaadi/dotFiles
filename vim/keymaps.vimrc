@@ -45,6 +45,7 @@
     nnoremap <Leader>gps :Gpush<CR>
     nnoremap <Leader>gpu :AsyncRun git pushu<CR>
     nnoremap <Leader>gpf :Gpush -f<CR>
+    nnoremap <Leader>gpr :Ginitpull<CR>
     map q: :q
     nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
     nmap <silent>  <Leader><Leader>;  :source $MYVIMRC<CR>

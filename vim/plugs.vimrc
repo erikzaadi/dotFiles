@@ -11,6 +11,7 @@
             Plug 'tpope/vim-rhubarb'
 
             Plug 'skywind3000/asyncrun.vim'
+            Plug 'AndrewRadev/ginitpull.vim'
             Plug 'w0rp/ale'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
