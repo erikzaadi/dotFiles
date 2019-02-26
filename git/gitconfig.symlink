@@ -103,7 +103,7 @@
 
     f-n-r-h = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch origin ${BRANCH}; git reset --hard origin/${BRANCH}; }; f"
 
-    mic-drop = "!f() { echo "Cleaning up like a boss!";git branch -d "${1}";git push origin ":${1}"; }; f"
+    mic-drop = "!f() { PREVIOUS_BRANCH=$(git rev-parse --symbolic-full-name @{-1} | sed 's/refs\\/heads\\///g'); WANTED_BRANCH="${1:-${PREVIOUS_BRANCH}}"; echo "Cleaning up like a boss!"; git branch -d "${WANTED_BRANCH}";git push origin ":${WANTED_BRANCH}"; }; f"
 
     prune-remote = remote prune origin
 
