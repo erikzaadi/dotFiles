@@ -27,7 +27,7 @@ source ${DOTFILESDIR}/zsh/zshrc
 
 [ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
