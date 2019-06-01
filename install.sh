@@ -84,9 +84,6 @@ if [[ "$(uname)" = "Darwin" ]]; then
     bash ${SCRIPT_BASE}/mac/osx-settings
     log_message "Installing python packages.."
     pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
-    log_message "Installing iTerm2 solarized colorschemes.."
-    open ${SCRIPT_BASE}/deps/solarized/iterm2-colors-solarized/Solarized\ Dark.itermcolors
-    open ${SCRIPT_BASE}/deps/solarized/iterm2-colors-solarized/Solarized\ Light.itermcolors
 else
     log_message "Installing Antibody for zsh (FTW)"
     curl -s https://raw.githubusercontent.com/getantibody/installer/master/install | bash -s

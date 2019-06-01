@@ -124,10 +124,4 @@
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     endif
 
-
-
-    " let g:solarized_termtrans = 1
-    " let g:solarized_term_italics = 1
-    " let g:solarized_termcolors = 256
-
 " Vim Plug Configs end
