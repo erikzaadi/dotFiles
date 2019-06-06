@@ -36,6 +36,7 @@
     set number                    " Line numers
     set shortmess=atTI " Hide enter to continue for external apps - GIT
     set cmdheight=1
+    set termbidi
     try
         lang en_US
     catch
