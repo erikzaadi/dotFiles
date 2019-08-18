@@ -34,6 +34,7 @@
 
         " Color Schemes
             Plug 'lifepillar/gruvbox8'
+            " Plug 'arcticicestudio/nord-vim'
         " Color Schemes end
 
         " Python

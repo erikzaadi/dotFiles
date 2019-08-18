@@ -98,7 +98,7 @@
 
     f-n-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
-    r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase -i "${WANTED_BRANCH}"; }; f"
+    r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash -i "${WANTED_BRANCH}"; }; f"
 
     f-n-r = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch origin ${BRANCH}; git reset origin/${BRANCH}; }; f"
 
