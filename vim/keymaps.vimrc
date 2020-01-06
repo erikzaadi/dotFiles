@@ -10,19 +10,28 @@
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
-    map <silent> <Leader>d <ESC>:YcmCompleter GoTo<RETURN>
-    map <silent> <Leader>sd <ESC>:LSClientGoToDefinition<RETURN>
-    map <silent> <Leader>D <ESC>:YcmCompleter GetDoc<RETURN>
-    map <silent> <Leader>ll <ESC>:YcmCompleter FixIt<RETURN>
-    map <silent> <Leader>nn <ESC>:YcmCompleter RefactorRename<space>
-    map <silent> <Leader>snn <ESC>:LSClientRename<RETURN>
-    map <silent> <Leader>sca <ESC>:LSClientFindCodeActions<RETURN>
-    map <silent> <Leader>R <ESC>:lprevious<RETURN>
-    map <silent> <Leader>e <ESC>:cnext<RETURN>
-    map <silent> <Leader>E <ESC>:cprevious<RETURN>
-    map <silent> <Leader>t <ESC>:lopen<RETURN>
-    map <silent> <Leader>T <ESC>:copen<RETURN>
+    " map <silent> <Leader>d <ESC>:YcmCompleter GoTo<RETURN>
+    " map <silent> <Leader>D <ESC>:YcmCompleter GetDoc<RETURN>
+    " map <silent> <Leader>ll <ESC>:YcmCompleter FixIt<RETURN>
+    " map <silent> <Leader>nn <ESC>:YcmCompleter RefactorRename<space>
+    map <silent> <Leader>d <Plug>(coc-definition)
+    map <silent> <Leader>t <Plug>(coc-type-definition)
+    map <silent> <Leader>i <Plug>(coc-implementation)
+    map <silent> <Leader>r <Plug>(coc-references)
+    map <silent> <Leader>R <Plug>(coc-rename)
+    map <silent> <Leader>a <Plug>(coc-codeaction)
+    map <silent> <Leader>v <Plug>(coc-fix-current)
+    " Use `[` and `]` to navigate diagnostics
+    nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
+    nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
+
+    " map <silent> <Leader>R <ESC>:lprevious<RETURN>
+    " map <silent> <Leader>e <ESC>:cnext<RETURN>
+    " map <silent> <Leader>E <ESC>:cprevious<RETURN>
+    " map <silent> <Leader>t <ESC>:lopen<RETURN>
+    " map <silent> <Leader>T <ESC>:copen<RETURN>
     nnoremap K :Ag <C-R><C-W><CR>:cw<CR>
+    nnoremap <silent> R :call <SID>show_documentation()<CR>
     vmap <Enter> <Plug>(EasyAlign)
     imap <F1> <Esc>
     nmap <F1> <Esc>

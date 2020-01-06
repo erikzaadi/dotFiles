@@ -24,13 +24,22 @@
             Plug 'itchyny/lightline.vim'
             Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
-            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --ts-completer' } " --gocode-completer
+            " Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --ts-completer' } " --gocode-completer
             Plug 'Raimondi/delimitMate'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'idanarye/vim-merginal'
         " General Vim end
+
+        " COC
+            Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' , 'do': { -> coc#util#install() } }
+            Plug 'neoclide/coc-python', { 'for': ['python', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-eslint', { 'for': ['javascript', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-html', { 'for': ['html', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-css', { 'for': ['css', 'sass', 'scss', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+        " COPC end
 
         " Color Schemes
             Plug 'lifepillar/gruvbox8'
@@ -66,7 +75,7 @@
 
         " Scala
             Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
-            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
+            " Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
         " Scala End
 
         " Misc
@@ -78,6 +87,7 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
+            " Plug 'tbastos/vim-lua'
 "            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
 "            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
             "Plug 'tweekmonster/startuptime.vim'
