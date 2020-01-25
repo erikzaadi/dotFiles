@@ -17,6 +17,8 @@
 
     let g:ansible_extra_syntaxes         = "nginx.vim sh.vim json.vim"
 
+    let g:coc_node_path = "/Users/erikzaadi/.nvm/versions/node/v12.14.1/bin/node"
+
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sign_added = '•'
     let g:gitgutter_sign_modified = '•'
@@ -69,7 +71,7 @@
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
@@ -77,22 +79,6 @@
       \   'linter_errors': 'error'
       \ },
       \ }
-
-
-    " ht https://github.com/statico/dotfiles
-
-    let g:UltiSnipsUsePythonVersion      = 2
-    let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
-    let g:UltiSnipsExpandTrigger         = "<c-f>"
-    let g:UltiSnipsUsePythonVersion = 3
-
-    let g:ycm_add_preview_to_completeopt = 0
-    let g:ycm_confirm_extra_conf         = 0
-    let g:ycm_gocode_binary_path = "$GOPATH/bin/gocode"
-    let g:ycm_godef_binary_path = "$GOPATH/bin/godef"
-    let g:ycm_python_binary_path = '/usr/local/bin/python'
-    let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
-    let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 
     " coc.nvim
 
@@ -119,7 +105,7 @@
     let g:gruvbox_italic = 1
 
     if has('termguicolors')
-        " set termguicolors
+        set termguicolors
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     endif

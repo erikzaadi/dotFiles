@@ -20,20 +20,37 @@
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'vim-scripts/loremipsum'
             Plug 'dkprice/vim-easygrep'
-            Plug 'SirVer/ultisnips'
             Plug 'itchyny/lightline.vim'
             Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
-            Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py  --ts-completer' } " --gocode-completer
             Plug 'Raimondi/delimitMate'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'idanarye/vim-merginal'
+            Plug 'janko/vim-test'
         " General Vim end
+
+        " COC
+            Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' , 'do': { -> coc#util#install() } }
+            Plug 'neoclide/coc-python', { 'for': ['python', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-lists', { 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-eslint', { 'for': ['javascript', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-html', { 'for': ['html', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-css', { 'for': ['css', 'sass', 'scss', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-tsserver', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-tslint-plugin', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-json', { 'for': ['json', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+
+        " COPC end
 
         " Color Schemes
             Plug 'lifepillar/gruvbox8'
+            Plug 'morhetz/gruvbox'
             " Plug 'arcticicestudio/nord-vim'
         " Color Schemes end
 
@@ -66,7 +83,6 @@
 
         " Scala
             Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
-            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
         " Scala End
 
         " Misc
@@ -78,6 +94,7 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
             Plug 'robbles/logstash.vim'
+            " Plug 'tbastos/vim-lua'
 "            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
 "            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
             "Plug 'tweekmonster/startuptime.vim'

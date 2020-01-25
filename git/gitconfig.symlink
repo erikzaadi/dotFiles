@@ -119,6 +119,7 @@
     editor = vim
     hooksPath = ~/.git-hook-templates
     pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = /Users/erikzaadi/.gitignore
 
 [help]
     autocorrect = 1
