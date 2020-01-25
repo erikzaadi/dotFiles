@@ -17,7 +17,8 @@
 
     let g:ansible_extra_syntaxes         = "nginx.vim sh.vim json.vim"
 
-    let g:coc_node_path = "/Users/erikzaadi/.nvm/versions/node/v12.14.1/bin/node"
+    let g:node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
+    let g:coc_node_path = expand("~/.nvm/versions/node/v") . g:node_version . '/bin/node'
 
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sign_added = '•'

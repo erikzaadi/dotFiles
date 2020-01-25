@@ -46,7 +46,7 @@
             Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
             Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
 
-        " COPC end
+        " COC end
 
         " Color Schemes
             Plug 'lifepillar/gruvbox8'
@@ -83,6 +83,7 @@
 
         " Scala
             Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
+            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
         " Scala End
 
         " Misc
