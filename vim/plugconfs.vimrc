@@ -1,10 +1,6 @@
 " Vim Plug Configs
     let g:plug_timeout                   = 180
 
-    let NERDTreeShowHidden               = 1
-    let NERDTreeIgnore                   = ['\.pyc$','\.swp$']                 "ignore compiled python files
-    let NERDTreeMouseMode                = 3
-
     let g:go_metalinter_enabled          = ['vet', 'golint', 'errcheck']
     let g:go_fmt_command                 = "goimports"
     let g:go_fmt_fail_silently           = 1
@@ -20,7 +16,11 @@
     let g:node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
     let g:coc_node_path = expand("~/.nvm/versions/node/v") . g:node_version . '/bin/node'
 
-    let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.7, 'highlight': 'Terminal' } }
+    let g:fzf_layout = {
+        \ 'window': {
+        \ 'width': 0.8, 'height': 0.7, 'highlight': 'Terminal'
+        \ }
+    \ }
 
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sign_added = '•'
@@ -93,6 +93,7 @@
 
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
     let g:netrw_liststyle                = 3
+    let g:netrw_hide                    = 0
     let g:delimitmate_expand_cr          = 2
 
     let g:markdownfmt_autosave           = 0
