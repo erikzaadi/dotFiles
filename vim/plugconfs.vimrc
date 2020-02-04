@@ -20,6 +20,8 @@
     let g:node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
     let g:coc_node_path = expand("~/.nvm/versions/node/v") . g:node_version . '/bin/node'
 
+    let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.7, 'highlight': 'Terminal' } }
+
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sign_added = '•'
     let g:gitgutter_sign_modified = '•'
