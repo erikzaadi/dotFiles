@@ -27,13 +27,5 @@ source ${DOTFILESDIR}/zsh/zshrc
 
 # [ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
-# eval "$(_TMUXP_COMPLETE=source tmuxp)"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-# [[ -f /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-# [[ -f /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/erikzaadi/Code/Work/BigPanda/private/statush/node_modules/tabtab/.completions/sls.zsh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

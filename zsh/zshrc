@@ -8,6 +8,9 @@ compinit
 autoload -U bashcompinit
 bashcompinit
 
+# complete -o nospace -C /usr/local/bin/terraform terraform
+complete -C /usr/local/bin/terraform terraform
+
 # Paths
 export MAILPATH=/var/mail/$USER
 
@@ -73,6 +76,10 @@ alias :e=vim
 alias edit=vim
 alias e=vim
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
+
+tfm() {
+    terraform ${1} -auto-approve "${@[@]:2}"
+}
 
 alias ls="g_or_native ls --color"
 # Solarized FZF

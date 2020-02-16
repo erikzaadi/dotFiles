@@ -87,6 +87,7 @@
         " Scala End
 
         " Misc
+            Plug 'hashivim/vim-terraform'
             Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'
             Plug 'vim-scripts/nginx.vim', { 'for': ['nginx', 'markdown'] }
