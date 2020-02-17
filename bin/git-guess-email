@@ -4,8 +4,8 @@
 REMOTE=`git remote -v | awk '/\(push\)$/ {print $2}'`
 EMAIL=erik.zaadi@gmail.com #default
 
-if [[ ${REMOTE} == *github.com:bigpandaio* ]]; then
-  EMAIL=erik@bigpanda.io
+if [[ ${REMOTE} == *github.com:salto* ]]; then
+  EMAIL=erik.zaadi@salto.io
 fi
 
 echo "Configuring user.email as ${EMAIL}"
