@@ -32,7 +32,7 @@
     " map <silent> <Leader>E <ESC>:cprevious<RETURN>
     " map <silent> <Leader>t <ESC>:lopen<RETURN>
     " map <silent> <Leader>T <ESC>:copen<RETURN>
-    nnoremap K :Ag <C-R><C-W><CR>:cw<CR>
+    nnoremap K :Ag <C-R><C-W><CR>
     nnoremap <silent> R :call <SID>show_documentation()<CR>
     vmap <Enter> <Plug>(EasyAlign)
     imap <F1> <Esc>
