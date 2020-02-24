@@ -59,7 +59,7 @@
     top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
 
     pushu = !git push -u origin $(git symbolic-ref --short HEAD)
-    pushf = !git push --force-with-lease
+    pushf = !git push origin $(git symbolic-ref --short HEAD) --force-with-lease
 
     tblog = log --not-grep='Auto-increment of build number due to changes in directory '
 
@@ -97,6 +97,8 @@
     pullf = pull --ff-only
 
     f-n-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+
+    f-n-m-u = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
     r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash -i "${WANTED_BRANCH}"; }; f"
 
