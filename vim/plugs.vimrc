@@ -28,7 +28,6 @@
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'idanarye/vim-merginal'
-            Plug 'janko/vim-test'
         " General Vim end
 
         " COC
@@ -49,9 +48,7 @@
         " COC end
 
         " Color Schemes
-            Plug 'lifepillar/gruvbox8'
             Plug 'morhetz/gruvbox'
-            " Plug 'arcticicestudio/nord-vim'
         " Color Schemes end
 
         " Python

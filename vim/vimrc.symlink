@@ -28,7 +28,6 @@
 
     " Setup includes end
     call plug#end()
-    " colorscheme nord
     colorscheme gruvbox
     filetype plugin indent on
     set omnifunc=syntaxcomplete#Complete
