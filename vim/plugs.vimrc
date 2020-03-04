@@ -92,7 +92,7 @@
             Plug 'pearofducks/ansible-vim', { 'for' : ['yaml', 'ansible', 'markdown'] }
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
-            Plug 'robbles/logstash.vim'
+            Plug 'jparise/vim-graphql', { 'for': ['graphql', 'markdown']}
             " Plug 'tbastos/vim-lua'
 "            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
 "            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
