@@ -93,6 +93,7 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
             Plug 'jparise/vim-graphql', { 'for': ['graphql', 'markdown']}
+            Plug 'segeljakt/vim-isotope' "
             " Plug 'tbastos/vim-lua'
 "            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
 "            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
