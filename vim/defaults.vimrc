@@ -10,7 +10,7 @@
     set modelines=5                " default numbers of lines to read for
     set autowrite                  " Writes on make/shell commands
     set autoread
-    set lazyredraw
+    " set lazyredraw
     set hidden                     " The current buffer can be put to the
     " background without writing to disk
     set hlsearch                   " highlight search
@@ -67,5 +67,9 @@
     let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
     let g:netrw_hide = 1 " hide dotfiles by default
     let g:netrw_banner = 0 " Turn off banner
-" Vim defaults end
 
+    if &term =~ '256color'
+        set t_ut=
+    endif
+
+" Vim defaults end
