@@ -61,10 +61,8 @@
     nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
     nmap <silent>  <Leader><Leader>;  :source $MYVIMRC<CR>
 
-    " Mapping selecting mappings
-    nmap <leader><tab> <plug>(fzf-maps-n)
-    xmap <leader><tab> <plug>(fzf-maps-x)
-    omap <leader><tab> <plug>(fzf-maps-o)
+    nmap <leader><tab> :tabnext<CR>
+    nmap <leader><S-Tab> :tabprevious<CR>
 
     " Insert mode completion
     imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -72,9 +70,4 @@
     imap <c-x><c-j> <plug>(fzf-complete-file-ag)
     imap <c-x><c-l> <plug>(fzf-complete-line)
 
-    " Toggle Colorscheme
-    nnoremap  <leader>B :<c-u>exe "colors" (g:colors_name =~# "dark"
-        \ ? substitute(g:colors_name, 'dark', 'light', '')
-        \ : substitute(g:colors_name, 'light', 'dark', '')
-        \ )<cr>
 " Keymaps end
