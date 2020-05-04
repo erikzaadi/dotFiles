@@ -10,6 +10,8 @@
         au BufRead,BufNewFile *.eco set filetype=html
         au BufRead,BufNewFile *.ts set filetype=typescript
         au BufNewFile,BufRead *.coffee,*.js,*.jsx set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+        autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+        autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
         au FileType javascript,coffee,typescript,jsx set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
     " Javascript / Coffeescript / Node end
 

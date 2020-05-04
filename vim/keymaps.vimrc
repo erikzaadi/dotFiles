@@ -16,7 +16,9 @@
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
     map <silent> <Leader>d <Plug>(coc-definition)
+    map <silent> <Leader>D <Esc>:<C-u>CocList diagnostics<cr>
     map <silent> <Leader>t <Plug>(coc-type-definition)
+    map <silent> <Leader>T <Esc>:<C-u>CocList -I symbols<cr>
     map <silent> <Leader>i <Plug>(coc-implementation)
     map <silent> <Leader>r <Plug>(coc-references)
     map <silent> <Leader>R <Plug>(coc-rename)

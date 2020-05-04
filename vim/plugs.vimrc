@@ -43,6 +43,7 @@
             Plug 'neoclide/coc-json', { 'for': ['json', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
             Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
             Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-lists', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
             Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
 
         " COC end
@@ -66,12 +67,15 @@
 
         " Javascript / node
             Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
+            Plug 'leafgarland/typescript-vim'
+            Plug 'peitalin/vim-jsx-typescript'
+            Plug 'jparise/vim-graphql'
             Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'prettier/vim-prettier', {
                   \ 'do': 'npm install',
-                  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+                  \ 'for': ['javascript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
         " Javascript / node
 
         " Go
@@ -93,7 +97,8 @@
             Plug 'sotte/presenting.vim', { 'for' : ['markdown'] }
             Plug 'ekalinin/Dockerfile.vim' , { 'for': ['Dockerfile', 'markdown']}
             Plug 'jparise/vim-graphql', { 'for': ['graphql', 'markdown']}
-            Plug 'segeljakt/vim-isotope' "
+            Plug 'segeljakt/vim-isotope'
+            Plug 'psliwka/vim-smoothie'
             " Plug 'tbastos/vim-lua'
 "            Plug 'zirrostig/vim-jack-syntax', { 'for': ['jack']}
 "            Plug 'suoto/vim-hdl', { 'for': ['vhdl', 'hdl']}
