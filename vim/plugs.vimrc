@@ -31,20 +31,20 @@
         " General Vim end
 
         " COC
-            Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' , 'do': { -> coc#util#install() } }
-            Plug 'neoclide/coc-python', { 'for': ['python', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-lists', { 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-eslint', { 'for': ['javascript', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-html', { 'for': ['html', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-css', { 'for': ['css', 'sass', 'scss', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-tsserver', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
-            Plug 'neoclide/coc-tslint-plugin', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
-            Plug 'neoclide/coc-json', { 'for': ['json', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
-            Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
-            Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
-            Plug 'neoclide/coc-lists', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' , 'do': { -> coc#util#install() } }
+            " Plug 'neoclide/coc-python', { 'for': ['python', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-lists', { 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-eslint', { 'for': ['javascript', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-html', { 'for': ['html', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-css', { 'for': ['css', 'sass', 'scss', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-tsserver', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            " Plug 'neoclide/coc-tslint-plugin', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            " Plug 'neoclide/coc-json', { 'for': ['json', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            " Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            " Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            " Plug 'neoclide/coc-lists', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
 
         " COC end
 

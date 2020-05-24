@@ -46,5 +46,6 @@
         au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
         au BufNewFile,BufRead *.yml set filetype=yaml.ansible
         au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>
+        au BufNewFile,BufRead *.nacl set filetype=salto.vhdl
     " Misc end
  " Filetype overrides end

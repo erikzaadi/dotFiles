@@ -1,0 +1,23 @@
+#compdef _salto salto
+
+function _salto {
+    local line
+
+    _arguments -C \
+        "-h[Show help information]" \
+        "--help[Show help information]" \
+        "--version[Show version information]" \
+        "1: :(init fetch preview deploy services env export import delete)" \
+        "*::arg:->args"
+
+    case $line[1] in
+        toimplement)
+            _salto_init
+        ;;
+    esac
+}
+
+function _salto_init {
+    _arguments \
+        "--repeat=[Repat the <message> any number of times]"
+}

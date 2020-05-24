@@ -81,9 +81,7 @@
 
     c = commit
 
-    delete-remote = "!f() { echo "Deleting $1" && git push origin ":$1"; }; f"
-
-    unrust = !git pull --rebase && git submodule update --init
+    deleteremote = "!f() { echo "Deleting $1" && git push origin ":$1"; }; f"
 
     #changes executable bit of file in index: git chmod +|- FILE
     chmod = "!f() { git update-index --chmod=$1x $2; }; f"
@@ -97,21 +95,16 @@
 
     pullf = pull --ff-only
 
-    f-n-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+    fnm = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
-    f-n-m-u = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+    fnmu = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
     reset-date = commit --amend --date=now
 
-    r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash -i "${WANTED_BRANCH}"; }; f"
+    # git rebase interactively based on branch ($1)
+    rbm = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash -i "${WANTED_BRANCH}"; }; f"
 
-    r-b-m-before-closing-pr = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash --ignore-date "${WANTED_BRANCH}"; }; f"
-
-    f-n-reset = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch origin ${BRANCH}; git reset origin/${BRANCH}; }; f"
-
-    f-n-reset-hard = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch origin ${BRANCH}; git reset --hard origin/${BRANCH}; }; f"
-
-    mic-drop = "!f() { PREVIOUS_BRANCH=$(git rev-parse --symbolic-full-name @{-1} | sed 's/refs\\/heads\\///g'); WANTED_BRANCH="${1:-${PREVIOUS_BRANCH}}"; echo "Cleaning up ${WANTED_BRANCH} like a boss!"; git branch -d "${WANTED_BRANCH}";git push origin ":${WANTED_BRANCH}"; }; f"
+    micdrop = "!f() { PREVIOUS_BRANCH=$(git rev-parse --symbolic-full-name @{-1} | sed 's/refs\\/heads\\///g'); WANTED_BRANCH="${1:-${PREVIOUS_BRANCH}}"; echo "Cleaning up ${WANTED_BRANCH} like a boss!"; git branch -d "${WANTED_BRANCH}";git push origin ":${WANTED_BRANCH}"; }; f"
 
     prune-remote = remote prune origin
 

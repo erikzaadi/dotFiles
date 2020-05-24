@@ -15,25 +15,27 @@
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
-    map <silent> <Leader>d <Plug>(coc-definition)
-    map <silent> <Leader>D <Esc>:<C-u>CocList diagnostics<cr>
-    map <silent> <Leader>t <Plug>(coc-type-definition)
-    map <silent> <Leader>T <Esc>:<C-u>CocList -I symbols<cr>
-    map <silent> <Leader>i <Plug>(coc-implementation)
-    map <silent> <Leader>r <Plug>(coc-references)
-    map <silent> <Leader>R <Plug>(coc-rename)
-    map <silent> <Leader>a <Plug>(coc-codeaction)
-    imap <C-f> <Plug>(coc-snippets-expand)
-    map <silent> <Leader>v <Plug>(coc-fix-current)
-    " Use `[` and `]` to navigate diagnostics
-    nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
-    nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
+    map <silent> <Leader>d <ESC>:ALEGoToDefinition<RETURN>
+    " map <silent> <Leader>D <Esc>:<C-u>CocList diagnostics<cr>
+    " map <silent> <Leader>t <Plug>(coc-type-definition)
+    " map <silent> <Leader>T <Esc>:<C-u>CocList -I symbols<cr>
+    " map <silent> <Leader>i <Plug>(coc-implementation)
+    " map <silent> <Leader>r <Plug>(coc-references)
+    " map <silent> <Leader>R <Plug>(coc-rename)
+    " map <silent> <Leader>a <Plug>(coc-codeaction)
+    " imap <C-f> <Plug>(coc-snippets-expand)
+    " map <silent> <Leader>v <Plug>(coc-fix-current)
+    " " Use `[` and `]` to navigate diagnostics
+    " nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
+    " nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
 
     " map <silent> <Leader>R <ESC>:lprevious<RETURN>
     " map <silent> <Leader>e <ESC>:cnext<RETURN>
     " map <silent> <Leader>E <ESC>:cprevious<RETURN>
     " map <silent> <Leader>t <ESC>:lopen<RETURN>
     " map <silent> <Leader>T <ESC>:copen<RETURN>
+    nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)
+    nmap <silent> <Leader>] <Plug>(ale_next_wrap)
     nnoremap K :Ag <C-R><C-W><CR>
     nnoremap <silent> R :call <SID>show_documentation()<CR>
     vmap <Enter> <Plug>(EasyAlign)

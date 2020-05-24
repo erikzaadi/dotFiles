@@ -77,6 +77,26 @@ alias edit=vim
 alias e=vim
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
+function _git_micdrop() {
+  _git_branch
+}
+
+function _git_rbm() {
+  _git_branch
+}
+
+function _git_fnmu() {
+  _git_branch
+}
+
+function _git_deleteremote() {
+  _git_branch
+}
+
+
+
+
+
 tfm() {
     terraform ${1} -auto-approve "${@[@]:2}"
 }

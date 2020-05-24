@@ -34,7 +34,7 @@
     set ai "Auto indent
     set wrap "Wrap lines
     set number                    " Line numers
-    set shortmess=atTI " Hide enter to continue for external apps - GIT
+    set shortmess=atTIF " Hide enter to continue for external apps - GIT
     set cmdheight=1
     set termbidi
     try
