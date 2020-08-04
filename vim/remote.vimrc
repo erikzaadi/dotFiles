@@ -103,7 +103,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Vim Plug Configs
 let g:plug_timeout                   = 180
-let g:UltiSnipsUsePythonVersion      = 2
+let g:UltiSnipsUsePythonVersion      = 3
 let g:UltiSnipsSnippetsDir           = "~/.vim/plugged/vim-snippets/UltiSnips/"
 let g:UltiSnipsExpandTrigger         = "<c-f>"
 let g:netrw_liststyle                = 3

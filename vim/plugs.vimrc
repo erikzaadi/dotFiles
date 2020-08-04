@@ -12,7 +12,7 @@
 
             Plug 'skywind3000/asyncrun.vim'
             Plug 'AndrewRadev/ginitpull.vim'
-            Plug 'w0rp/ale'
+            " Plug 'w0rp/ale'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
@@ -21,9 +21,9 @@
             Plug 'vim-scripts/loremipsum'
             Plug 'dkprice/vim-easygrep'
             Plug 'itchyny/lightline.vim'
-            Plug 'maximbaz/lightline-ale'
+            " Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
-            Plug 'Raimondi/delimitMate'
+            " Plug 'Raimondi/delimitMate'
             Plug 'airblade/vim-gitgutter'
             Plug 'editorconfig/editorconfig-vim'
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
@@ -31,25 +31,26 @@
         " General Vim end
 
         " COC
-            " Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' , 'do': { -> coc#util#install() } }
-            " Plug 'neoclide/coc-python', { 'for': ['python', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-lists', { 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-eslint', { 'for': ['javascript', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-html', { 'for': ['html', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-css', { 'for': ['css', 'sass', 'scss', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-tsserver', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' , 'do': { -> coc#util#install() } }
+            Plug 'neoclide/coc-python', { 'for': ['python', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-lists', { 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-eslint', { 'for': ['javascript', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-html', { 'for': ['html', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-css', { 'for': ['css', 'sass', 'scss', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-tsserver', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
             " Plug 'neoclide/coc-tslint-plugin', { 'for': ['typescript', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
-            " Plug 'neoclide/coc-json', { 'for': ['json', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
-            " Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
-            " Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
-            " Plug 'neoclide/coc-lists', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
-            " Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-json', { 'for': ['json', 'markdown' ], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-yaml', { 'for': ['yaml', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'scalameta/coc-metals', { 'for': ['scala', 'sbt', 'markdown'], 'do': 'yarn install --frozen-lockfile' }
+            Plug 'neoclide/coc-lists', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
+            Plug 'neoclide/coc-prettier', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'markdown'], 'do': 'yarn install --frozen-lockfile'}
 
         " COC end
 
         " Color Schemes
-            Plug 'morhetz/gruvbox'
+            " Plug 'gruvbox-community/gruvbox'
+            Plug 'lifepillar/vim-gruvbox8'
         " Color Schemes end
 
         " Python
@@ -73,9 +74,9 @@
             Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
-            Plug 'prettier/vim-prettier', {
-                  \ 'do': 'npm install',
-                  \ 'for': ['javascript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+            " Plug 'prettier/vim-prettier', {
+            "       \ 'do': 'npm install',
+            "       \ 'for': ['javascript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
         " Javascript / node
 
         " Go

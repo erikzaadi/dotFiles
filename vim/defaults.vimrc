@@ -68,8 +68,16 @@
     let g:netrw_hide = 1 " hide dotfiles by default
     let g:netrw_banner = 0 " Turn off banner
 
-    if &term =~ '256color'
-        set t_ut=
-    endif
+    """ Colors
+    " set term=xterm-256color
+    " set t_Co=256
+    "set t_ut=
+	let &t_ut=''
 
+
+    if has('termguicolors')
+        set termguicolors
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
 " Vim defaults end

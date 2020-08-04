@@ -32,20 +32,11 @@
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
     let g:ale_linters = { 'javascript': ['eslint'] , 'python': ['pycodestyle'] }
+    let g:ale_lint_delay = 800
 
-    let g:prettier#exec_cmd_async = 1
-    let g:prettier#autoformat = 0
-    let g:prettier#config#arrow_parens = 'always'
-
-
-    " Configuration for vim-lsc
-    let g:lsc_enable_autocomplete = v:false
-    let g:lsc_server_commands = {
-                \ 'scala': 'metals-vim'
-                \}
-    let g:lsc_auto_map = {
-                \ 'GoToDefinition': 'gd',
-                \}
+    " let g:prettier#exec_cmd_async = 1
+    " let g:prettier#autoformat = 0
+    " let g:prettier#config#arrow_parens = 'always'
 
     " if !has('gui_running')
     "   set t_Co=256
@@ -60,7 +51,7 @@
     let g:lightline#ale#indicator_ok = '✓'
 
     let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'filename', 'modified' ] ],
@@ -105,13 +96,19 @@
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
     let g:EasyGrepCommand='rg'
 
+    " if (has("autocmd") && !has("gui_running"))
+    "     augroup colorset
+    "         autocmd!
+    "         let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    "         autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+    "     augroup END
+    " endif
+
+    " let g:onedark_terminal_italics = 1
+
     let g:gruvbox_transp_bg = 1
     let g:gruvbox_italic = 1
+    let g:python_interpreter= "/usr/local/opt/python@3.8/bin/python"
 
-    if has('termguicolors')
-        set termguicolors
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    endif
 
 " Vim Plug Configs end
