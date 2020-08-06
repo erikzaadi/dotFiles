@@ -12,7 +12,7 @@
 
             Plug 'skywind3000/asyncrun.vim'
             Plug 'AndrewRadev/ginitpull.vim'
-            Plug 'w0rp/ale'
+            Plug 'dense-analysis/ale'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
@@ -32,9 +32,12 @@
         " General Vim end
 
         " Completion
-            Plug 'maralla/completor.vim'
-            Plug 'maralla/completor-typescript'
-            Plug 'tokorom/completor-shell'
+            Plug 'Shougo/vimproc.vim'
+            Plug 'Quramy/tsuquyomi'
+            Plug 'HerringtonDarkholme/yats.vim'
+            Plug 'Shougo/deoplete.nvim'
+            Plug 'roxma/nvim-yarp'
+            Plug 'roxma/vim-hug-neovim-rpc'
         " Completion End
         " Color Schemes
             " Plug 'gruvbox-community/gruvbox'
@@ -56,16 +59,11 @@
 
         " Javascript / node
             Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
-            Plug 'leafgarland/typescript-vim'
-            Plug 'peitalin/vim-jsx-typescript'
             Plug 'jparise/vim-graphql'
             Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
-            " Plug 'prettier/vim-prettier', {
-            "       \ 'do': 'npm install',
-            "       \ 'for': ['javascript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-        " Javascript / node
+            " Javascript / node end
 
         " Go
             Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }

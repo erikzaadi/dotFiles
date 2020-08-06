@@ -16,6 +16,10 @@
     map <silent> <Leader>h <ESC>:Buffers<RETURN>
     map <silent> <Leader>r <ESC>:lnext<RETURN>
     map <silent> <Leader>d <ESC>:ALEGoToDefinition<RETURN>
+    map <silent> <Leader>D <ESC>:TsuDefinition<RETURN>
+    map <silent> <Leader>T <ESC>:TsuTypeDefinition<RETURN>
+    map <silent> <Leader>R <ESC>:TsuReferences<RETURN>
+
     nmap <silent> <Leader>= <ESC>:Prettier<RETURN>
     nmap <silent> <Leader>] <Plug>(ale_next_wrap)
     nnoremap K :Ag <C-R><C-W><CR>
@@ -31,6 +35,14 @@
     nnoremap <A-left> <C-W><
     nnoremap <A-right> <C-W>>
 
+
+    " inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+    "             \ "\<lt>C-n>" :
+    "             \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+    "             \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+    "             \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+    " imap <C-@> <C-Space>
+
     " fugitive git bindings -
     " http://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
     nnoremap <Leader>gs :Gstatus<CR>
@@ -43,6 +55,8 @@
     nnoremap <Leader>gpf :Gpush --force-with-lease<CR>
     nnoremap <Leader>gpr :Ginitpull<CR>
     map q: :q
+    autocmd FileType typescript setlocal completeopt+=menu,preview
+
     nmap <silent>  <Leader>;  :next $MYVIMRC<CR>
     nmap <silent>  <Leader><Leader>;  :source $MYVIMRC<CR>
 

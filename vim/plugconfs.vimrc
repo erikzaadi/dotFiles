@@ -102,7 +102,11 @@
 
     let g:gruvbox_transp_bg = 1
     let g:gruvbox_italic = 1
+
+    let g:deoplete#enable_at_startup = 1
+
     let g:python_interpreter= "/usr/local/opt/python@3.8/bin/python"
+    let g:tsuquyomi_disable_default_mappings = 1
 
 
 " Vim Plug Configs end
