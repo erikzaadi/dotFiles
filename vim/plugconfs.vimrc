@@ -1,6 +1,9 @@
 " Vim Plug Configs
     let g:plug_timeout                   = 180
 
+    let g:UltiSnipsSnippetDirectories=[$DOTFILESDIR.'/vim/snippets']
+
+
     let g:go_metalinter_enabled          = ['vet', 'golint', 'errcheck']
     let g:go_fmt_command                 = "goimports"
     let g:go_fmt_fail_silently           = 1
@@ -14,14 +17,12 @@
     let g:ansible_extra_syntaxes         = "nginx.vim sh.vim json.vim"
 
     let g:node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
-    let g:coc_node_path = expand("~/.nvm/versions/node/v") . g:node_version . '/bin/node'
 
     let g:fzf_layout = {
         \ 'window': {
         \ 'width': 0.8, 'height': 0.7, 'highlight': 'Terminal'
         \ }
     \ }
-
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sign_added = '•'
     let g:gitgutter_sign_modified = '•'
@@ -32,7 +33,9 @@
     let g:ale_enable_signs               = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
     let g:ale_linters = { 'javascript': ['eslint'] , 'python': ['pycodestyle'] }
-    let g:ale_lint_delay = 800
+    let g:ale_fixers = {'javascript': ['prettier'], 'typescript': ['prettier'], 'typescriptreact': ['prettier'] }
+    " let g:ale_lint_delay = 800
+    let g:ale_fix_on_save = 1
 
     " let g:prettier#exec_cmd_async = 1
     " let g:prettier#autoformat = 0
@@ -54,7 +57,7 @@
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'filename', 'modified' ] ],
+      \             [ 'filename', 'modified' ] ],
       \   'right': [['readonly', 'gitbranch', 'linter_warnings', 'linter_errors', 'linter_ok', 'asyncrun']]
       \ },
       \ 'component_expand': {
@@ -65,7 +68,6 @@
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'cocstatus': 'coc#status',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
@@ -73,14 +75,6 @@
       \   'linter_errors': 'error'
       \ },
       \ }
-
-    " coc.nvim
-
-    " Use <c-space> for trigger completion.
-    " inoremap <silent><expr> <c-space> coc#refresh()
-
-    " Remap for rename current word
-
 
     let g:used_javascript_libs           = 'underscore,angularjs,chai,jquery'
     let g:netrw_liststyle                = 3
