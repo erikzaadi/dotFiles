@@ -2,6 +2,7 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 fpath=(${DOTFILESDIR}/zsh/completions $fpath)
 
+zstyle ':completion:*:*:make:*' tag-order 'targets'
 # zsh > bash
 autoload -U compinit
 compinit

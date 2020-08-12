@@ -32,13 +32,19 @@
         " General Vim end
 
         " Completion
-            Plug 'Shougo/vimproc.vim'
-            Plug 'Quramy/tsuquyomi'
-            Plug 'HerringtonDarkholme/yats.vim'
             Plug 'Shougo/deoplete.nvim'
             Plug 'roxma/nvim-yarp'
             Plug 'roxma/vim-hug-neovim-rpc'
+            Plug 'Shougo/vimproc.vim', {'do': 'make'}
+            " Plug 'Quramy/tsuquyomi'
+            " Plug 'erikzaadi/deoplete-tsuquyomi'
+            Plug 'autozimu/LanguageClient-neovim', {
+                  \ 'branch': 'next',
+                  \ 'do': 'bash install.sh',
+                  \ }
+            Plug 'fszymanski/deoplete-emoji'
         " Completion End
+
         " Color Schemes
             " Plug 'gruvbox-community/gruvbox'
             Plug 'lifepillar/vim-gruvbox8'
@@ -57,16 +63,24 @@
             Plug 'mattn/emmet-vim'
         " Web (generic) end
 
+        " Typescript
+            " Plug 'yuezk/vim-js', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+        " Typescript end
+
         " Javascript / node
             Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
             Plug 'jparise/vim-graphql'
             Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
             Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
-            " Javascript / node end
+        " Javascript / node end
 
         " Go
-            Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
+            " Plug 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
         " Go
 
         " Scala

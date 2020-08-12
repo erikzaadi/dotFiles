@@ -31,10 +31,21 @@
     let g:gitgutter_highlight_lines = 0
 
     let g:ale_enable_signs               = 1
+    let g:ale_open_list = 1
+    let g:ale_set_quickfix = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
-    let g:ale_linters = { 'javascript': ['eslint'] , 'python': ['pycodestyle'] }
-    let g:ale_fixers = {'javascript': ['prettier'], 'typescript': ['prettier'], 'typescriptreact': ['prettier'] }
+    let g:ale_linters = {
+      \ 'typescriptreact': ['eslint'],
+      \ 'typescript': ['eslint'],
+      \ 'javascript': ['eslint'],
+      \ 'python': ['pycodestyle'],
+      \ 'go': ['gopls'],
+    \}
+    let g:ale_fixers = ['prettier']
     " let g:ale_lint_delay = 800
+    " let g:ale_lint_on_text_changed = 'never'
+    " let g:ale_lint_on_insert_leave = 0
+    let g:ale_lint_on_save = 1
     let g:ale_fix_on_save = 1
 
     " let g:prettier#exec_cmd_async = 1
@@ -48,6 +59,9 @@
 
     let g:ale_sign_warning = '▲'
     let g:ale_sign_error = '✗'
+    let g:lightline#ale#indicator_warnings = '▲'
+    let g:lightline#ale#indicator_errors = '✗'
+
     hi link ALEWarningSign GitGutterChange
     hi link ALEErrorSign GitGutterDelete
 
@@ -58,10 +72,12 @@
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'filename', 'modified' ] ],
-      \   'right': [['readonly', 'gitbranch', 'linter_warnings', 'linter_errors', 'linter_ok', 'asyncrun']]
+      \   'right': [['readonly', 'gitbranch', 'linter_warnings',
+      \ 'linter_errors', 'linter_ok', 'linter_infos', 'asyncrun']]
       \ },
       \ 'component_expand': {
       \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_infos': 'lightline#ale#infos',
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok',
       \   'asyncrun': 'LightLineAsuncRun'
@@ -71,8 +87,11 @@
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
+      \   'linter_checking': 'right',
+      \   'linter_infos': 'right',
       \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'right',
       \ },
       \ }
 
@@ -90,16 +109,6 @@
     let g:EasyGrepFilesToExclude         = '*.swp,*~,.git/*,node_modules/*'
     let g:EasyGrepCommand='rg'
 
-    " if (has("autocmd") && !has("gui_running"))
-    "     augroup colorset
-    "         autocmd!
-    "         let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    "         autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
-    "     augroup END
-    " endif
-
-    " let g:onedark_terminal_italics = 1
-
     let g:gruvbox_transp_bg = 1
     let g:gruvbox_italic = 1
 
@@ -108,5 +117,25 @@
     let g:python_interpreter= "/usr/local/opt/python@3.8/bin/python"
     let g:tsuquyomi_disable_default_mappings = 1
 
+    let g:LanguageClient_serverCommands = {
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'dockerfile': ['~/.nvm/versions/node/v12.14.1/bin/docker-langserver',
+    \ '--stdio'],
+    \ 'json': ['~/.nvm/versions/node/v12.14.1/bin/vscode-json-languageserver',
+    \ '--stdio'],
+    \ 'go': ['~/.gocode/bin/gopls'],
+    \ 'terraform': ['/usr/local/bin/terraform-ls', 'serve'],
+    \ 'yaml': ['~/.nvm/versions/node/v12.14.1/bin/yaml-language-server',
+    \ '--stdio'],
+    \ 'typescript': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    \ '--stdio'],
+    \ 'typescriptreact': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    \ '--stdio'],
+    \ 'typescript.tsx': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    \ '--stdio'],
+    \ }
+
+    " Run gofmt on save
+    autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 " Vim Plug Configs end
