@@ -13,6 +13,7 @@
             Plug 'skywind3000/asyncrun.vim'
             Plug 'AndrewRadev/ginitpull.vim'
             Plug 'dense-analysis/ale'
+            Plug 'rhysd/conflict-marker.vim'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'

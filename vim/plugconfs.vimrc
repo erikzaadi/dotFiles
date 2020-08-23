@@ -34,6 +34,7 @@
     let g:ale_open_list = 1
     let g:ale_set_quickfix = 1
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
+    let g:ale_completion_autoimport = 1
     let g:ale_linters = {
       \ 'typescriptreact': ['eslint'],
       \ 'typescript': ['eslint'],
