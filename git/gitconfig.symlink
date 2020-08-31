@@ -59,7 +59,6 @@
     top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
 
     pushu = !git push -u origin $(git symbolic-ref --short HEAD)
-    push-master = !git push origin master:master
     pushf = !git push origin $(git symbolic-ref --short HEAD) --force-with-lease
 
     tblog = log --not-grep='Auto-increment of build number due to changes in directory '
@@ -97,7 +96,7 @@
 
     fnm = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
-    fnmu = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+    fnmu = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}";git push origin master:master;}; f"
 
     reset-date = commit --amend --date=now
 

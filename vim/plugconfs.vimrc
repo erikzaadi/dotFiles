@@ -31,17 +31,21 @@
     let g:gitgutter_highlight_lines = 0
 
     let g:ale_enable_signs               = 1
+    let g:ale_disable_lsp = 1
     let g:ale_open_list = 1
-    let g:ale_set_quickfix = 1
+    let g:ale_set_quickfix = 0
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
     let g:ale_completion_autoimport = 1
+    let g:ale_completion_enabled = 1
+
     let g:ale_linters = {
-      \ 'typescriptreact': ['eslint'],
-      \ 'typescript': ['eslint'],
       \ 'javascript': ['eslint'],
       \ 'python': ['pycodestyle'],
       \ 'go': ['gopls'],
     \}
+      " \ 'typescriptreact': ['eslint'],
+      " \ 'typescript': ['eslint'],
+
     let g:ale_fixers = ['prettier']
     " let g:ale_lint_delay = 800
     " let g:ale_lint_on_text_changed = 'never'
@@ -130,11 +134,13 @@
     \ '--stdio'],
     \ 'typescript': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
     \ '--stdio'],
-    \ 'typescriptreact': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
-    \ '--stdio'],
     \ 'typescript.tsx': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
     \ '--stdio'],
     \ }
+
+    " \ 'typescriptreact': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    " \ '--stdio'],
+
 
     " Run gofmt on save
     autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
