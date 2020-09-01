@@ -15,6 +15,22 @@ preview()
 {
     qlmanage -p "$@" >& /dev/null &
 }
+
+what-year-is-it()
+{
+    softwareupdate -l --product-type macOS
+    mas upgrade
+    brew update
+    brew upgrade
+    brew cleanup -s
+    tldr --update
+    if [[ $(which nvim) ]]; then
+        nvim -c ':PlugUpdate|:UpdateRemotePlugins'
+    else
+        vim -c ':PlugUpdate'
+    fi
+}
+
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=$HOME/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:${PATH}

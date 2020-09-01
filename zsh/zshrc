@@ -69,13 +69,17 @@ delete-line()
 
 alias ms="tmuxp load -y"
 export TERM=xterm-256color
-export EDITOR=vim
+if [[ $(which nvim) ]]; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
-alias :e=vim
-alias edit=vim
-alias e=vim
+alias :e=${EDITOR}
+alias edit=${EDITOR}
+alias e=${EDITOR}
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
 function _git_micdrop() {
