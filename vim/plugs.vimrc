@@ -33,6 +33,8 @@
         " General Vim end
 
         " Completion
+        Plug 'sbdchd/neoformat'
+
         if has('nvim')
             Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         else
@@ -66,18 +68,19 @@
             Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
             Plug 'rstacruz/vim-ultisnips-css', { 'for' : 'css' }
             Plug 'mattn/emmet-vim'
+            Plug 'ap/vim-css-color'
         " Web (generic) end
 
         " Typescript
             " Plug 'yuezk/vim-js', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
-            Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
             " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
             Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
-            " Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
         " Typescript end
 
         " Javascript / node
-            Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
+            " Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
             Plug 'jparise/vim-graphql'
             Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
             Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }

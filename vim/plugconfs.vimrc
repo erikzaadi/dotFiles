@@ -17,6 +17,7 @@
     let g:ansible_extra_syntaxes         = "nginx.vim sh.vim json.vim"
 
     let g:node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
+    let g:node_bin_dir = expand('~/.nvm/versions/node/v'.g:node_version.'/bin/')
 
     let g:fzf_layout = {
         \ 'window': {
@@ -41,17 +42,35 @@
     let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'python': ['pycodestyle'],
+      \ 'typescriptreact': ['eslint'],
+      \ 'typescript': ['eslint'],
       \ 'go': ['gopls'],
     \}
-      " \ 'typescriptreact': ['eslint'],
-      " \ 'typescript': ['eslint'],
+
+    " let g:neoformat_verbose = 1
+    let g:neoformat_only_msg_on_error = 1
+
+
+    let g:neoformat_typescript_prettier = {
+                \ 'exe': g:node_bin_dir."prettier",
+                \ 'args': ['--stdin-filepath', '"%:p"', '--parser', 'typescript', '--no-semi', '--single-quote', '--print-width', '100', '--arrow-parens', 'avoid'],
+                \ 'stdin': 1,
+                \ }
+
+    let g:neoformat_enabled_typescript = ['prettier']
 
     let g:ale_fixers = ['prettier']
+    let g:ale_typescript_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
+    " let g:ale_typescriptreact_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
+
+    let g:ale_linters_explicit = 1
+    " let g:ale_fixers_explicit = 1
+
     " let g:ale_lint_delay = 800
     " let g:ale_lint_on_text_changed = 'never'
     " let g:ale_lint_on_insert_leave = 0
     let g:ale_lint_on_save = 1
-    let g:ale_fix_on_save = 1
+    let g:ale_fix_on_save = 0
 
     " let g:prettier#exec_cmd_async = 1
     " let g:prettier#autoformat = 0
@@ -72,6 +91,8 @@
 
     let g:lightline#ale#indicator_ok = '✓'
 
+
+
     let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
@@ -85,7 +106,7 @@
       \   'linter_infos': 'lightline#ale#infos',
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok',
-      \   'asyncrun': 'LightLineAsuncRun'
+      \   'asyncrun': 'LightLineAsuncRun',
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
@@ -97,6 +118,7 @@
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'right',
+      \   'lsp': 'right',
       \ },
       \ }
 
@@ -124,21 +146,23 @@
 
     let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'dockerfile': ['~/.nvm/versions/node/v12.14.1/bin/docker-langserver',
+    \ 'dockerfile': [g:node_bin_dir.'docker-langserver',
     \ '--stdio'],
-    \ 'json': ['~/.nvm/versions/node/v12.14.1/bin/vscode-json-languageserver',
+    \ 'json': [g:node_bin_dir.'vscode-json-languageserver',
     \ '--stdio'],
     \ 'go': ['~/.gocode/bin/gopls'],
     \ 'terraform': ['/usr/local/bin/terraform-ls', 'serve'],
-    \ 'yaml': ['~/.nvm/versions/node/v12.14.1/bin/yaml-language-server',
+    \ 'yaml': [g:node_bin_dir.'yaml-language-server',
     \ '--stdio'],
-    \ 'typescript': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    \ 'typescript': [g:node_bin_dir.'typescript-language-server',
     \ '--stdio'],
-    \ 'typescript.tsx': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    \ 'typescript.tsx': [g:node_bin_dir.'typescript-language-server',
+    \ '--stdio'],
+    \ 'typescriptreact': [g:node_bin_dir.'typescript-language-server',
     \ '--stdio'],
     \ }
 
-    " \ 'typescriptreact': ['~/.nvm/versions/node/v12.14.1/bin/typescript-language-server',
+    " \ 'typescriptreact': [g:node_bin_dir.'typescript-language-server',
     " \ '--stdio'],
 
 

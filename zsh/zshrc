@@ -15,6 +15,10 @@ complete -C /usr/local/bin/terraform terraform
 # Paths
 export MAILPATH=/var/mail/$USER
 
+if [[ $(which bat) ]]; then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 source $HOME/.zshenv
 

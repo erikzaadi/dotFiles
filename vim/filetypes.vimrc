@@ -5,10 +5,6 @@
      " Python End
 
      " Javascript / Coffeescript / Node
-        au BufNewFile,BufRead *.coffee set filetype=coffee
-        au BufRead,BufNewFile *.ejs set filetype=html
-        au BufRead,BufNewFile *.eco set filetype=html
-        au BufRead,BufNewFile *.ts set filetype=typescript
         au BufNewFile,BufRead *.coffee,*.js,*.jsx set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
         autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
         autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -47,5 +43,9 @@
         au BufNewFile,BufRead *.yml set filetype=yaml.ansible
         au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>
         au BufNewFile,BufRead *.nacl set filetype=salto.vhdl
+        augroup fmt
+            autocmd!
+            autocmd BufWritePre * undojoin | Neoformat
+        augroup END
     " Misc end
  " Filetype overrides end

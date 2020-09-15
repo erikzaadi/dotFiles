@@ -24,7 +24,6 @@
     map <silent> <Leader>A <Plug>(lcn-action)
     map <silent> <Leader>C <Plug>(lcn-code-lens-action)
 
-    nmap <silent> <Leader>= <ESC>:Prettier<RETURN>
     nmap <silent> <Leader>] <Plug>(ale_next_wrap)
     nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)
     nnoremap K :Ag <C-R><C-W><CR>
