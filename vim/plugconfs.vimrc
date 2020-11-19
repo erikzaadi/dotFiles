@@ -19,6 +19,8 @@
     let g:node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
     let g:node_bin_dir = expand('~/.nvm/versions/node/v'.g:node_version.'/bin/')
 
+    let g:coc_node_path= g:node_bin_dir.'node'
+
     let g:fzf_layout = {
         \ 'window': {
         \ 'width': 0.8, 'height': 0.7, 'highlight': 'Terminal'
@@ -36,20 +38,28 @@
     let g:ale_open_list = 1
     let g:ale_set_quickfix = 0
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
-    let g:ale_completion_autoimport = 1
-    let g:ale_completion_enabled = 1
+    let g:ale_completion_autoimport = 0
+    let g:ale_completion_enabled = 0
 
     let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'python': ['pycodestyle'],
-      \ 'typescriptreact': ['eslint'],
-      \ 'typescript': ['eslint'],
       \ 'go': ['gopls'],
     \}
+    "
+      " \ 'typescriptreact': ['eslint'],
+      " \ 'typescript': ['eslint'],
+
 
     " let g:neoformat_verbose = 1
     let g:neoformat_only_msg_on_error = 1
 
+    let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server']
+    let g:lsp_settings_filetype_typescriptreact = ['typescript-language-server', 'eslint-language-server']
+    let g:lsp_signs_enabled = 1
+    let g:lsp_signs_error = {'text': '✗'}
+    let g:lsp_signs_warning = {'text': '➜'}
+    let g:lsp_signs_hint = {'text': '?'}
 
     let g:neoformat_typescript_prettier = {
                 \ 'exe': g:node_bin_dir."prettier",
@@ -64,7 +74,7 @@
     " let g:ale_typescriptreact_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
 
     let g:ale_linters_explicit = 1
-    " let g:ale_fixers_explicit = 1
+    let g:ale_fixes_explicit = 1
 
     " let g:ale_lint_delay = 800
     " let g:ale_lint_on_text_changed = 'never'
@@ -141,7 +151,7 @@
 
     let g:deoplete#enable_at_startup = 1
 
-    let g:python_interpreter= "/usr/local/opt/python@3.8/bin/python"
+    let g:python_interpreter= "/usr/local/opt/python/libexec/bin/python"
     let g:tsuquyomi_disable_default_mappings = 1
 
     let g:LanguageClient_serverCommands = {
@@ -154,13 +164,15 @@
     \ 'terraform': ['/usr/local/bin/terraform-ls', 'serve'],
     \ 'yaml': [g:node_bin_dir.'yaml-language-server',
     \ '--stdio'],
-    \ 'typescript': [g:node_bin_dir.'typescript-language-server',
-    \ '--stdio'],
-    \ 'typescript.tsx': [g:node_bin_dir.'typescript-language-server',
-    \ '--stdio'],
-    \ 'typescriptreact': [g:node_bin_dir.'typescript-language-server',
-    \ '--stdio'],
     \ }
+
+
+    " \ 'typescript': [g:node_bin_dir.'typescript-language-server',
+    " \ '--stdio'],
+    " \ 'typescript.tsx': [g:node_bin_dir.'typescript-language-server',
+    " \ '--stdio'],
+    " \ 'typescriptreact': [g:node_bin_dir.'typescript-language-server',
+    " \ '--stdio'],
 
     " \ 'typescriptreact': [g:node_bin_dir.'typescript-language-server',
     " \ '--stdio'],
@@ -170,3 +182,21 @@
     autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 " Vim Plug Configs end
+"
+" " " Use <c-space> to trigger completion.
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" else
+"   inoremap <silent><expr> <c-@> coc#refresh()
+" endif
+
+
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   elseif (coc#rpc#ready())
+"     call CocActionAsync('doHover')
+"   else
+"     execute '!' . &keywordprg . " " . expand('<cword>')
+"   endif
+" endfunction

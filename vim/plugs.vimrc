@@ -33,7 +33,14 @@
         " General Vim end
 
         " Completion
+        " Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'sbdchd/neoformat'
+
+        if has('nvim')
+            Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+        else
+            Plug 'Shougo/denite.nvim'
+        endif
 
         if has('nvim')
             Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -42,14 +49,17 @@
             Plug 'roxma/nvim-yarp'
             Plug 'roxma/vim-hug-neovim-rpc'
         endif
-            " Plug 'Quramy/tsuquyomi'
-            " Plug 'erikzaadi/deoplete-tsuquyomi'
+        Plug 'Shougo/vimproc.vim',  {'do' : 'make'}
 
-            Plug 'autozimu/LanguageClient-neovim', {
-                  \ 'branch': 'next',
-                  \ 'do': 'bash install.sh',
-                  \ }
-            Plug 'fszymanski/deoplete-emoji'
+        Plug 'prabirshrestha/vim-lsp'
+        Plug 'mattn/vim-lsp-settings'
+        Plug 'lighttiger2505/deoplete-vim-lsp'
+
+"         Plug 'autozimu/LanguageClient-neovim', {
+"               \ 'branch': 'next',
+"               \ 'do': 'bash install.sh',
+"               \ }
+        Plug 'fszymanski/deoplete-emoji'
         " Completion End
 
         " Color Schemes
@@ -75,7 +85,19 @@
             " Plug 'yuezk/vim-js', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
             " Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
             " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'felippepuhle/coc-graphql', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'pappasam/coc-jedi', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'pantharshit00/coc-prisma', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'bmatcuk/coc-stylelintplus', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+            " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
             Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
             Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
         " Typescript end
 
@@ -97,6 +119,7 @@
         " Scala End
 
         " Misc
+            Plug 'cespare/vim-toml'
             Plug 'hashivim/vim-terraform'
             Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja', 'jinja2']}
             Plug 'honza/vim-snippets'

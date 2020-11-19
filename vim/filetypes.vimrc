@@ -8,7 +8,7 @@
         au BufNewFile,BufRead *.coffee,*.js,*.jsx set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
         autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
         autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-        au FileType javascript,coffee,typescript,jsx,tsx set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+        au FileType javascript,coffee,typescript,typescriptreact,jsx,tsx,ts set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
     " Javascript / Coffeescript / Node end
 
     " Go
@@ -38,14 +38,14 @@
         autocmd FileType markdown setlocal spell
         " Spell-check Git messages
         autocmd FileType gitcommit setlocal spell
-        au BufNewFile,BufRead *.prisma setfiletype graphql Plug 'robbles/logstash.vim'
+        au BufNewFile,BufRead *.prisma setfiletype graphql
         au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
         au BufNewFile,BufRead *.yml set filetype=yaml.ansible
         au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>
         au BufNewFile,BufRead *.nacl set filetype=salto.vhdl
-        augroup fmt
-            autocmd!
-            autocmd BufWritePre * undojoin | Neoformat
-        augroup END
+        " augroup fmt
+        "     autocmd!
+        "     autocmd BufWritePre * undojoin | Neoformat
+        " augroup END
     " Misc end
  " Filetype overrides end

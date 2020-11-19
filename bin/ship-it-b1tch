@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+echo "┻━┻︵ \(°□°)/ ︵ ┻━┻"
+git push origin master
+git push upstream master
+echo " ㄥ(⸝ ، ⸍ )‾‾‾‾‾"

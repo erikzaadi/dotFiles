@@ -14,15 +14,38 @@
     map <silent> <Leader>F <ESC>:Files<RETURN>
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     " map <silent> <Leader>h <ESC>:Buffers<RETURN>
-    map <silent> <Leader>r <Plug>(lcn-rename)
-    map <silent> <Leader>D <ESC>:ALEGoToDefinition<RETURN>
-    map <silent> <Leader>d <Plug>(lcn-definition)
-    map <silent> <Leader>T <Plug>(lcn-type-definition)
-    map <silent> <Leader>h <Plug>(lcn-hover)
-    map <silent> <Leader>k <Plug>(lcn-menu)
-    map <silent> <Leader>R <Plug>(lcn-references)
-    map <silent> <Leader>A <Plug>(lcn-action)
-    map <silent> <Leader>C <Plug>(lcn-code-lens-action)
+    map <silent> <Leader>A <ESC>:LspCodeLens<RETURN>
+    map <silent> <Leader>a <ESC>:LspCodeAction<RETURN>
+    map <silent> <Leader>D <ESC>:LspPeekDefinition<RETURN>
+    map <silent> <Leader>d <ESC>:LspDefinition<RETURN>
+    map <silent> <Leader>k <ESC>:LspHover<RETURN>
+    map <silent> <Leader>r <ESC>:LspRename<RETURN>
+    map <silent> <Leader>R <ESC>:LspReferences<RETURN>
+    map <silent> <Leader>h <ESC>:LspDocumentFormat<RETURN>
+    map <silent> <Leader>T <ESC>:LspPeekTypeDefinition<RETURN>
+
+    " map <silent> <Leader>r <Plug>(coc-rename)
+    " map <silent> <Leader>d <Plug>(coc-definition)
+    " map <silent> <Leader>T <Plug>(coc-type-definition)
+    " map <silent> <Leader>R <Plug>(coc-references)
+    " map <silent> <Leader>h :call <SID>show_documentation()<CR>
+    " map <silent> <Leader>A <Plug>(coc-fix-current)
+    " map <silent> <Leader>a <Plug>(coc-codeaction)
+
+    " map <silent> <Leader>r <ESC>:TsuRenameSymbol<RETURN>
+    " map <silent> <Leader>d <ESC>:TsuDefinition<RETURN>
+    " map <silent> <Leader>R <ESC>:TsuReferences<RETURN>
+    " map <silent> <Leader>a <ESC>:TsuQuickFix<RETURN>
+    " " map <silent> <Leader>r <Plug>(lcn-rename)
+    " map <silent> <Leader>d <Plug>(lcn-definition)
+    " map <silent> <Leader>T <Plug>(lcn-type-definition)
+    " map <silent> <Leader>h <Plug>(lcn-hover)
+    " map <silent> <Leader>k <Plug>(lcn-menu)
+    " map <silent> <Leader>R <Plug>(lcn-references)
+    " map <silent> <Leader>A <Plug>(lcn-action)
+    " map <silent> <Leader>C <Plug>(lcn-code-lens-action)
+
+
 
     nmap <silent> <Leader>] <Plug>(ale_next_wrap)
     nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)

@@ -47,6 +47,7 @@
     set wildmode=list:longest,full
     set wildignore+=*.pyc
     set noshowmode
+    set completeopt=noinsert,noselect,menuone
     set completeopt-=preview
     set listchars=tab:▸\ ,trail:·
     set list

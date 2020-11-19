@@ -1,0 +1,33 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$status\
+$cmd_duration\
+\n\
+$custom\
+$character
+"""
+
+[status]
+disabled = false
+symbol = "\n🤦"
+
+[cmd_duration]
+min_time = 500
+format = "\n[$duration](bold yellow)"
+
+
+[custom.random_emoticon]
+command = "random_emoticon"
+when = "return 0"
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[➜](bold red) "
+
+# [time]
+# disabled = false
+
+[git_branch]
+format = "[$branch ]($style)"
