@@ -34,7 +34,7 @@
     let g:gitgutter_highlight_lines = 0
 
     let g:ale_enable_signs               = 1
-    let g:ale_disable_lsp = 1
+    " let g:ale_disable_lsp = 0
     let g:ale_open_list = 1
     let g:ale_set_quickfix = 0
     let g:ale_virtualenv_dir_names = ['.venv', '.env']
@@ -45,21 +45,19 @@
       \ 'javascript': ['eslint'],
       \ 'python': ['pycodestyle'],
       \ 'go': ['gopls'],
+      \ 'typescriptreact': ['eslint', 'tsserver'],
+      \ 'typescript': ['eslint', 'tsserver'],
     \}
-    "
-      " \ 'typescriptreact': ['eslint'],
-      " \ 'typescript': ['eslint'],
-
 
     " let g:neoformat_verbose = 1
     let g:neoformat_only_msg_on_error = 1
 
-    let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server']
-    let g:lsp_settings_filetype_typescriptreact = ['typescript-language-server', 'eslint-language-server']
-    let g:lsp_signs_enabled = 1
-    let g:lsp_signs_error = {'text': '✗'}
-    let g:lsp_signs_warning = {'text': '➜'}
-    let g:lsp_signs_hint = {'text': '?'}
+"     let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server']
+"     let g:lsp_settings_filetype_typescriptreact = ['typescript-language-server', 'eslint-language-server']
+"     let g:lsp_signs_enabled = 1
+"     let g:lsp_signs_error = {'text': '✗'}
+"     let g:lsp_signs_warning = {'text': '➜'}
+"     let g:lsp_signs_hint = {'text': '?'}
 
     let g:neoformat_typescript_prettier = {
                 \ 'exe': g:node_bin_dir."prettier",
@@ -71,10 +69,11 @@
 
     let g:ale_fixers = ['prettier']
     let g:ale_typescript_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
+    let g:ale_typescriptreact_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
     " let g:ale_typescriptreact_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
 
-    let g:ale_linters_explicit = 1
-    let g:ale_fixes_explicit = 1
+    " let g:ale_linters_explicit = 1
+    " let g:ale_fixes_explicit = 1
 
     " let g:ale_lint_delay = 800
     " let g:ale_lint_on_text_changed = 'never'

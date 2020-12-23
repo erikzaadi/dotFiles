@@ -14,15 +14,23 @@
     map <silent> <Leader>F <ESC>:Files<RETURN>
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     " map <silent> <Leader>h <ESC>:Buffers<RETURN>
-    map <silent> <Leader>A <ESC>:LspCodeLens<RETURN>
-    map <silent> <Leader>a <ESC>:LspCodeAction<RETURN>
-    map <silent> <Leader>D <ESC>:LspPeekDefinition<RETURN>
-    map <silent> <Leader>d <ESC>:LspDefinition<RETURN>
-    map <silent> <Leader>k <ESC>:LspHover<RETURN>
-    map <silent> <Leader>r <ESC>:LspRename<RETURN>
-    map <silent> <Leader>R <ESC>:LspReferences<RETURN>
-    map <silent> <Leader>h <ESC>:LspDocumentFormat<RETURN>
-    map <silent> <Leader>T <ESC>:LspPeekTypeDefinition<RETURN>
+
+    map <silent> <Leader>d <ESC>:ALEGoToDefinition<RETURN>
+    map <silent> <Leader>r <ESC>:ALERename<RETURN>
+    map <silent> <Leader>i <ESC>:ALEOrganizeImports<RETURN>
+    map <silent> <Leader>I <ESC>:ALEFix<RETURN>
+    map <silent> <Leader>R <ESC>:ALEFindReferences<RETURN>
+    map <silent> <Leader>k <ESC>:ALEHover<RETURN>
+
+    " map <silent> <Leader>A <ESC>:LspCodeLens<RETURN>
+    " map <silent> <Leader>a <ESC>:LspCodeAction<RETURN>
+    " map <silent> <Leader>D <ESC>:LspPeekDefinition<RETURN>
+    " map <silent> <Leader>d <ESC>:LspDefinition<RETURN>
+    " map <silent> <Leader>k <ESC>:LspHover<RETURN>
+    " map <silent> <Leader>r <ESC>:LspRename<RETURN>
+    " map <silent> <Leader>R <ESC>:LspReferences<RETURN>
+    " map <silent> <Leader>h <ESC>:LspDocumentFormat<RETURN>
+    " map <silent> <Leader>T <ESC>:LspPeekTypeDefinition<RETURN>
 
     " map <silent> <Leader>r <Plug>(coc-rename)
     " map <silent> <Leader>d <Plug>(coc-definition)

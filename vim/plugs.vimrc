@@ -51,20 +51,12 @@
         endif
         Plug 'Shougo/vimproc.vim',  {'do' : 'make'}
 
-        Plug 'prabirshrestha/vim-lsp'
-        Plug 'mattn/vim-lsp-settings'
-        Plug 'lighttiger2505/deoplete-vim-lsp'
-
-"         Plug 'autozimu/LanguageClient-neovim', {
-"               \ 'branch': 'next',
-"               \ 'do': 'bash install.sh',
-"               \ }
         Plug 'fszymanski/deoplete-emoji'
         " Completion End
 
         " Color Schemes
-            " Plug 'gruvbox-community/gruvbox'
-            Plug 'lifepillar/vim-gruvbox8'
+            Plug 'gruvbox-community/gruvbox'
+            " Plug 'lifepillar/vim-gruvbox8'
         " Color Schemes end
 
         " Python

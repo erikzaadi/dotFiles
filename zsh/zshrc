@@ -73,11 +73,12 @@ delete-line()
 
 alias ms="tmuxp load -y"
 export TERM=xterm-256color
-if [[ $(which nvim) ]]; then
-    export EDITOR=nvim
-else
-    export EDITOR=vim
-fi
+export EDITOR=vim
+# if [[ $(which nvim) ]]; then
+#     export EDITOR=nvim
+# else
+#     export EDITOR=vim
+# fi
 autoload -U zmv
 alias mmv='noglob zmv -W'
 alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
