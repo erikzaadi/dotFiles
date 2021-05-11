@@ -12,7 +12,6 @@
 
             Plug 'skywind3000/asyncrun.vim'
             Plug 'AndrewRadev/ginitpull.vim'
-            Plug 'dense-analysis/ale'
             Plug 'rhysd/conflict-marker.vim'
             Plug 'junegunn/gv.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -22,7 +21,6 @@
             Plug 'vim-scripts/loremipsum'
             Plug 'dkprice/vim-easygrep'
             Plug 'itchyny/lightline.vim'
-            Plug 'maximbaz/lightline-ale'
             Plug 'itspriddle/vim-stripper'
             Plug 'Raimondi/delimitMate'
             Plug 'airblade/vim-gitgutter'
@@ -30,28 +28,28 @@
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'idanarye/vim-merginal'
             Plug 'SirVer/ultisnips'
+            Plug 'dense-analysis/ale'
+            Plug 'maximbaz/lightline-ale'
         " General Vim end
 
         " Completion
         " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        Plug 'sbdchd/neoformat'
+        " Plug 'sbdchd/neoformat'
 
         if has('nvim')
             Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+            Plug 'neovim/nvim-lspconfig'
+            Plug 'Shougo/deoplete.nvim'
         else
             Plug 'Shougo/denite.nvim'
-        endif
-
-        if has('nvim')
-            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        else
             Plug 'Shougo/deoplete.nvim'
             Plug 'roxma/nvim-yarp'
             Plug 'roxma/vim-hug-neovim-rpc'
         endif
-        Plug 'Shougo/vimproc.vim',  {'do' : 'make'}
 
+        Plug 'Shougo/vimproc.vim',  {'do' : 'make'}
         Plug 'fszymanski/deoplete-emoji'
+
         " Completion End
 
         " Color Schemes
@@ -106,8 +104,8 @@
         " Go
 
         " Scala
-            Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
-            Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
+            " Plug 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
+            " Plug 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
         " Scala End
 
         " Misc

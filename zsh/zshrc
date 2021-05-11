@@ -22,6 +22,8 @@ fi
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
 source $HOME/.zshenv
 
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
 source <(kubectl completion zsh)
 
 source <(helm completion zsh)
@@ -73,7 +75,7 @@ delete-line()
 
 alias ms="tmuxp load -y"
 export TERM=xterm-256color
-export EDITOR=vim
+export EDITOR=nvim
 # if [[ $(which nvim) ]]; then
 #     export EDITOR=nvim
 # else

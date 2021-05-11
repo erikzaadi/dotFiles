@@ -48,7 +48,7 @@
     set wildignore+=*.pyc
     set noshowmode
     set completeopt=noinsert,noselect,menuone
-    set completeopt-=preview
+    " set completeopt-=preview
     set listchars=tab:▸\ ,trail:·
     set list
     set backspace=indent,eol,start
@@ -75,10 +75,12 @@
     "set t_ut=
 	let &t_ut=''
 
-
     if has('termguicolors')
         set termguicolors
         " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+    if has('nvim')
+        set exrc
     endif
 " Vim defaults end

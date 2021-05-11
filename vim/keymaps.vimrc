@@ -8,56 +8,35 @@
     " noremap <Left> <Nop>
     " noremap <Right> <Nop>
 
-    map <silent> <Leader>a <ESC>:AgArgs<space>
+    map <silent> <Leader>a <ESC>:RgArgs<space>
     map <silent> <Leader>f <ESC>:GitFiles<RETURN>
     map <silent> <Leader>c <ESC>:GitFiles?<RETURN>
     map <silent> <Leader>F <ESC>:Files<RETURN>
     map <silent> <Leader>g <ESC>:Explore<RETURN>
     " map <silent> <Leader>h <ESC>:Buffers<RETURN>
+    "
+    if has('nvim')
+        nnoremap <silent> <Leader>d <cmd>lua vim.lsp.buf.definition()<CR>
+        nnoremap <silent> <Leader>k <cmd>lua vim.lsp.buf.hover()<CR>
+        nnoremap <silent> <Leader>r <cmd>lua vim.lsp.buf.references()<CR>
+        nnoremap <silent> <Leader>R <cmd>lua vim.lsp.buf.rename()<CR>
+        nnoremap <silent> <Leader>t <cmd>lua vim.lsp.buf.type_definition()<CR>
+        nnoremap <silent> <Leader>I <cmd>lua vim.lsp.buf.formatting()<CR>
+        nnoremap <silent> <Leader>[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+        nnoremap <silent> <Leader>] <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+    else
+        nmap <silent> <Leader>] <Plug>(ale_next_wrap)
+        nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)
+        map <silent> <Leader>d <ESC>:ALEGoToDefinition<RETURN>
+        map <silent> <Leader>r <ESC>:ALERename<RETURN>
+        map <silent> <Leader>I <ESC>:ALEOrganizeImports<RETURN>
+        map <silent> <Leader>R <ESC>:ALEFindReferences<RETURN>
+        map <silent> <Leader>k <ESC>:ALEHover<RETURN>
+    endif
 
-    map <silent> <Leader>d <ESC>:ALEGoToDefinition<RETURN>
-    map <silent> <Leader>r <ESC>:ALERename<RETURN>
-    map <silent> <Leader>i <ESC>:ALEOrganizeImports<RETURN>
-    map <silent> <Leader>I <ESC>:ALEFix<RETURN>
-    map <silent> <Leader>R <ESC>:ALEFindReferences<RETURN>
-    map <silent> <Leader>k <ESC>:ALEHover<RETURN>
+    map <silent> <Leader>i <ESC>:ALEFix<RETURN>
 
-    " map <silent> <Leader>A <ESC>:LspCodeLens<RETURN>
-    " map <silent> <Leader>a <ESC>:LspCodeAction<RETURN>
-    " map <silent> <Leader>D <ESC>:LspPeekDefinition<RETURN>
-    " map <silent> <Leader>d <ESC>:LspDefinition<RETURN>
-    " map <silent> <Leader>k <ESC>:LspHover<RETURN>
-    " map <silent> <Leader>r <ESC>:LspRename<RETURN>
-    " map <silent> <Leader>R <ESC>:LspReferences<RETURN>
-    " map <silent> <Leader>h <ESC>:LspDocumentFormat<RETURN>
-    " map <silent> <Leader>T <ESC>:LspPeekTypeDefinition<RETURN>
-
-    " map <silent> <Leader>r <Plug>(coc-rename)
-    " map <silent> <Leader>d <Plug>(coc-definition)
-    " map <silent> <Leader>T <Plug>(coc-type-definition)
-    " map <silent> <Leader>R <Plug>(coc-references)
-    " map <silent> <Leader>h :call <SID>show_documentation()<CR>
-    " map <silent> <Leader>A <Plug>(coc-fix-current)
-    " map <silent> <Leader>a <Plug>(coc-codeaction)
-
-    " map <silent> <Leader>r <ESC>:TsuRenameSymbol<RETURN>
-    " map <silent> <Leader>d <ESC>:TsuDefinition<RETURN>
-    " map <silent> <Leader>R <ESC>:TsuReferences<RETURN>
-    " map <silent> <Leader>a <ESC>:TsuQuickFix<RETURN>
-    " " map <silent> <Leader>r <Plug>(lcn-rename)
-    " map <silent> <Leader>d <Plug>(lcn-definition)
-    " map <silent> <Leader>T <Plug>(lcn-type-definition)
-    " map <silent> <Leader>h <Plug>(lcn-hover)
-    " map <silent> <Leader>k <Plug>(lcn-menu)
-    " map <silent> <Leader>R <Plug>(lcn-references)
-    " map <silent> <Leader>A <Plug>(lcn-action)
-    " map <silent> <Leader>C <Plug>(lcn-code-lens-action)
-
-
-
-    nmap <silent> <Leader>] <Plug>(ale_next_wrap)
-    nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)
-    nnoremap K :Ag <C-R><C-W><CR>
+    nnoremap K :Rg <C-R><C-W><CR>
     vmap <Enter> <Plug>(EasyAlign)
     imap <F1> <Esc>
     nmap <F1> <Esc>
@@ -70,6 +49,8 @@
     nnoremap <A-left> <C-W>>
     nnoremap <A-right> <C-W><
 
+    " inoremap <C-Space> <C-x><C-o>
+    " inoremap <C-@> <C-Space>
 
     inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
                 \ "\<lt>C-n>" :
@@ -85,10 +66,11 @@
     nnoremap <Leader>gd :Gdiff<CR>
     nnoremap <Leader>gm :Gmove<Space>
     nnoremap <Leader>go :Git checkout<Space>
-    nnoremap <Leader>gps :Gpush<CR>
+    nnoremap <Leader>gps :Git push<CR>
     nnoremap <Leader>gpu :AsyncRun git pushu<CR>
-    nnoremap <Leader>gpf :Gpush --force-with-lease<CR>
+    nnoremap <Leader>gpf :Git push --force-with-lease<CR>
     nnoremap <Leader>gpr :Ginitpull<CR>
+    nnoremap <Leader>grm :Git rebase -i master<CR>
     map q: :q
     " autocmd FileType typescript setlocal completeopt+=menu,preview
 

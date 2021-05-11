@@ -28,7 +28,13 @@
 
     " Setup includes end
     call plug#end()
+    if has('nvim')
+        call LoadRC("nvim.lua")
+    endif
+
     colorscheme gruvbox
+    hi Normal guibg=NONE ctermbg=NONE
+    hi Pmenu guibg=NONE ctermbg=NONE
     filetype plugin indent on
     set omnifunc=syntaxcomplete#Complete
 " Plug end

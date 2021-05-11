@@ -47,6 +47,7 @@
       \ 'go': ['gopls'],
       \ 'typescriptreact': ['eslint', 'tsserver'],
       \ 'typescript': ['eslint', 'tsserver'],
+      \ 'terraform': ['tflint'],
     \}
 
     " let g:neoformat_verbose = 1
@@ -67,13 +68,14 @@
 
     let g:neoformat_enabled_typescript = ['prettier']
 
-    let g:ale_fixers = ['prettier']
+    let g:ale_fixers = { "typescript": ['prettier'], "typescriptreact": ['prettier'], "javascript": ['eslint'] }
     let g:ale_typescript_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
     let g:ale_typescriptreact_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
+    let g:ale_disable_lsp = 1
     " let g:ale_typescriptreact_prettier_options = '--no-semi --single-quote --trailing-comma all --print-width 100 --arrow-parens avoid'
 
     " let g:ale_linters_explicit = 1
-    " let g:ale_fixes_explicit = 1
+    let g:ale_fixes_explicit = 1
 
     " let g:ale_lint_delay = 800
     " let g:ale_lint_on_text_changed = 'never'
@@ -150,6 +152,8 @@
 
     let g:deoplete#enable_at_startup = 1
 
+    let g:completion_enable_snippet = 'UltiSnips'
+
     let g:python_interpreter= "/usr/local/opt/python/libexec/bin/python"
     let g:tsuquyomi_disable_default_mappings = 1
 
@@ -182,13 +186,6 @@
 
 " Vim Plug Configs end
 "
-" " " Use <c-space> to trigger completion.
-" if has('nvim')
-"   inoremap <silent><expr> <c-space> coc#refresh()
-" else
-"   inoremap <silent><expr> <c-@> coc#refresh()
-" endif
-
 
 " function! s:show_documentation()
 "   if (index(['vim','help'], &filetype) >= 0)
