@@ -109,7 +109,7 @@
 
     cleanup-local-merged = '!f() { git branch --merged ${1:-master} | grep -v " ${1:-master}$" | xargs -r git branch -d; }; f'
 
-    reset-to-head = "!git reset --hard origin/$(git branch-name)"
+    reset-to-head = "!f() { WANTED_REMOTE="${1:-origin}"; NEEDED_REF="${WANTED_REMOTE}/$(git branch-name)"; echo "Resettin hard to ${NEEDED_REF}"; git reset --hard ${NEEDED_REF}"
 
     list-aliases = "!git config -l | grep alias | cut -c 7-"
 
