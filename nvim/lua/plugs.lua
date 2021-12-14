@@ -1,189 +1,167 @@
 require('packer').startup(function()
-    -- General Vim
-    -- TPope, make me a child
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-eunuch'
-    use 'tpope/vim-abolish'
-    -- use 'tpope/vim-commentary'
-    use 'tpope/vim-vinegar'
-    use 'tpope/vim-surround'
-    use 'tpope/vim-repeat'
-    use 'tpope/vim-rhubarb'
+    -- [[ Speed up ]]
+    use { 'lewis6991/impatient.nvim', opt = true,
+    config = function() require('impatient') end
+}
+-- General Vim
+-- TPope, make me a child
+use 'tpope/vim-fugitive'
+use 'tpope/vim-eunuch'
+use 'tpope/vim-abolish'
+-- use 'tpope/vim-commentary'
+use 'tpope/vim-vinegar'
+use 'tpope/vim-surround'
+use 'tpope/vim-repeat'
+use 'tpope/vim-rhubarb'
 
-    use 'b3nj5m1n/kommentary' -- sorry tpope
-    use 'skywind3000/asyncrun.vim'
-    use 'AndrewRadev/ginitpull.vim'
-    use 'rhysd/conflict-marker.vim'
-    use 'junegunn/gv.vim'
-    use 'junegunn/vim-easy-align'
-    use 'AndrewRadev/splitjoin.vim'
-    use 'vim-scripts/loremipsum'
-    use 'itspriddle/vim-stripper'
-    use 'Raimondi/delimitMate'
-    use 'airblade/vim-gitgutter'
-    use 'editorconfig/editorconfig-vim'
-    use {
-        'moorereason/vim-markdownfmt',
-        ft = { 'markdown' }
-    }
-    use 'idanarye/vim-merginal'
-    use 'SirVer/ultisnips'
-    -- General Vim end
+use 'b3nj5m1n/kommentary' -- sorry tpope
+use 'skywind3000/asyncrun.vim'
+use 'AndrewRadev/ginitpull.vim'
+use 'rhysd/conflict-marker.vim'
+use 'junegunn/gv.vim'
+use 'junegunn/vim-easy-align'
+use 'AndrewRadev/splitjoin.vim'
+use 'vim-scripts/loremipsum'
+use 'itspriddle/vim-stripper'
+use 'Raimondi/delimitMate'
+-- use 'airblade/vim-gitgutter'
+use 'editorconfig/editorconfig-vim'
+use {
+    'moorereason/vim-markdownfmt',
+    ft = { 'markdown' }
+}
+use 'idanarye/vim-merginal'
+use 'SirVer/ultisnips'
+-- General Vim end
 
-    -- Completion
+-- Completion
 
-    use 'neovim/nvim-lspconfig'
+use 'neovim/nvim-lspconfig'
 
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} },
-    }
+use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} },
+}
 
-    use {
-        'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('trouble').setup {
-                position = 'bottom',
-                height = 10,
-                icons = true,
-                action_keys = {
-                    close = 'q',
-                    cancel = '<esc>',
-                    refresh = 'r',
-                },
-                auto_open = true,
-                auto_close = true,
-            }
-        end
-    }
+use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+}
 
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        },
-        config = function() require('gitsigns').setup() end
-    }
+use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim'
+    },
+}
 
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('nvim-tree').setup {
-                disable_netrw = true,
-                auto_close = false,
-                filters = {
-                    dotfiles = false,
-                    custom = {
-                        '.git', 'node_modules',
-                        'coverage', '.vscode', '.yarn',
-                    },
-                },
-                view = {
-                    width = 30,
-                    side = 'left',
-                },
-            }
-        end
-    }
-    use {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make',
-    }
+use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+}
+use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+}
 
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'f3fora/cmp-spell',
-            'alexander-born/cmp-bazel',
-            'hrsh7th/cmp-cmdline',
-            'ray-x/cmp-treesitter',
-            'quangnguyen30192/cmp-nvim-ultisnips',
-        },
-    }
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-    }
-        use {
-        'Shougo/vimproc.vim',
-        run = 'make',
-    }
-    -- Completion End
+use 'jremmen/vim-ripgrep'
 
-    -- Color Schemes
-    use 'xiyaowong/nvim-transparent'
-    use 'gruvbox-community/gruvbox'
-    use 'shaunsingh/nord.nvim'
-    -- use 'lifepillar/vim-gruvbox8'
-    -- Color Schemes end
+use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'f3fora/cmp-spell',
+        'alexander-born/cmp-bazel',
+        'hrsh7th/cmp-cmdline',
+        'ray-x/cmp-treesitter',
+        'quangnguyen30192/cmp-nvim-ultisnips',
+    },
+}
+use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+}
+use {
+    'Shougo/vimproc.vim',
+    run = 'make',
+}
+-- Completion End
 
-    -- Python
-    use {
-        'jmcantrell/vim-virtualenv',
-        ft = {'python', 'markdown'},
-    }
-    -- Python end
+-- Color Schemes
+use 'xiyaowong/nvim-transparent'
+use 'gruvbox-community/gruvbox'
+use 'shaunsingh/nord.nvim'
+-- use 'lifepillar/vim-gruvbox8'
+-- Color Schemes end
 
-    -- Web (generic)
-    use {
-        'rstacruz/vim-ultisnips-css',
-        ft = { 'css' },
-    }
-    use 'mattn/emmet-vim'
-    use 'ap/vim-css-color'
-    -- Web (generic) end
+-- Python
+use {
+    'jmcantrell/vim-virtualenv',
+    ft = {'python', 'markdown'},
+}
+-- Python end
 
-    -- Typescript
-    -- Typescript end
+-- Web (generic)
+use {
+    'rstacruz/vim-ultisnips-css',
+    ft = { 'css' },
+}
+use 'mattn/emmet-vim'
+use 'ap/vim-css-color'
+-- Web (generic) end
 
-    -- Javasc{ript / node
-    -- Javascript / node end
+-- Typescript
+-- Typescript end
 
-    -- Go
-    -- use 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
-    -- Go
+-- Javasc{ript / node
+-- Javascript / node end
 
-    -- Scala
-    -- use 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
-    -- use 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
-    -- Scala End
+-- Go
+-- use 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
+-- Go
 
-    -- Misc
-    use { 'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
-    use 'cespare/vim-toml'
-    use 'hashivim/vim-terraform'
-    use {
-        'Glench/Vim-Jinja2-Syntax',
-        ft = { 'jinja', 'jinja2' },
-    }
-    use 'honza/vim-snippets'
-    -- use {
-        -- 'vim-scripts/nginx.vim',
-        -- ft = { 'nginx', 'markdown' },
-        -- }
-        use {
-            'tmux-plugins/vim-tmux',
-            ft = { 'tmux', 'markdown' },
-        }
-        use {
-            'sotte/presenting.vim',
-            ft = { 'markdown' },
-        }
-        use {
-            'ekalinin/Dockerfile.vim' ,
-            ft = { 'Dockerfile', 'markdown' }
-        }
-        use {
-            'jparise/vim-graphql',
-            ft = { 'graphql', 'markdown' }
-        }
-        use 'segeljakt/vim-isotope'
-        use 'psliwka/vim-smoothie'
-        -- use 'tweekmonster/startuptime.vim'
-        -- Misc end
-    end)
+-- Scala
+-- use 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
+-- use 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
+-- Scala End
+
+-- Misc
+use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+}
+use 'cespare/vim-toml'
+use 'hashivim/vim-terraform'
+use {
+    'Glench/Vim-Jinja2-Syntax',
+    ft = { 'jinja', 'jinja2' },
+}
+use 'honza/vim-snippets'
+use {
+    'vim-scripts/nginx.vim',
+    ft = { 'nginx', 'markdown' },
+}
+use {
+    'tmux-plugins/vim-tmux',
+    ft = { 'tmux', 'markdown' },
+}
+use {
+    'sotte/presenting.vim',
+    ft = { 'markdown' },
+}
+use {
+    'ekalinin/Dockerfile.vim' ,
+    ft = { 'Dockerfile', 'markdown' }
+}
+use {
+    'jparise/vim-graphql',
+    ft = { 'graphql', 'markdown' }
+}
+use 'segeljakt/vim-isotope'
+use 'psliwka/vim-smoothie'
+use 'mhinz/vim-startify'
+-- use 'tweekmonster/startuptime.vim'
+-- Misc end
+end)

@@ -14,10 +14,12 @@ require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
-   },
+    },
 }
 
+require'nvim-tree'.setup({})
 
+local telescopeactions = require('telescope.actions')
 require('telescope').setup{
     extensions = {
         fzf = {
@@ -27,81 +29,102 @@ require('telescope').setup{
             case_mode = "smart_case",
         },
     },
+    defaults = {
+        vimgrep_arguments = {
+            '/usr/local/bin/rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden',
+        },
+        -- initial_mode = 'insert',
+        file_ignore_patterns = { 'node_modules' },
+        file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+        color_devicons = true,
+        mappings = {
+            i = {
+                ['<esc>'] = telescopeactions.close,
+            },
+        },
+    },
 }
 
 require('telescope').load_extension('fzf')
 
 cmp.setup({
     snippet = {
-      expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
+        expand = function(args)
+            vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
     },
     mapping = {
-      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = 'bazel' },
-      { name = 'spell' },
-      { name = 'treesitter' },
-      { name = 'nvim_lsp' },
-      { name = 'ultisnips' },
-      { name = 'buffer' },
+        { name = 'bazel' },
+        { name = 'spell' },
+        { name = 'treesitter' },
+        { name = 'nvim_lsp' },
+        { name = 'ultisnips' },
+        { name = 'buffer' },
     })
-  })
+})
 
 cmp.setup.cmdline('/', {
     sources = {
-      { name = 'buffer' }
+        { name = 'buffer' }
     }
 })
 
 cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
-      { name = 'path' },
-      { name = 'cmdline' },
+        { name = 'path' },
+        { name = 'cmdline' },
     })
 })
 
 local lsp = require 'lspconfig'
 
 local on_attach = function(client, bufnr)
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    --Enable completion triggered by <c-x><c-o>
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md for full list
 local servers = {
-  "sqlls",
-  "tsserver",
-  "yamlls",
-  "prismals",
-  "dockerls",
-  "terraformls",
-  "tflint",
-  "bashls",
-  "groovyls",
-  "html",
-  "metals",
-  "jsonls",
-  "pylsp",
-  "graphql",
-  "gopls",
+    "sqlls",
+    "tsserver",
+    "yamlls",
+    "prismals",
+    "dockerls",
+    "terraformls",
+    "tflint",
+    "bashls",
+    "groovyls",
+    "html",
+    "metals",
+    "jsonls",
+    "pylsp",
+    "graphql",
+    "gopls",
 }
 for _, proto in ipairs(servers) do
-  lsp[proto].setup {
-      on_attach = on_attach,
-      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  }
+    lsp[proto].setup {
+        on_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    }
 end
 
 g.plug_timeout = 180
@@ -125,8 +148,8 @@ g.gruvbox_italic = 1
 g.python_interpreter='/usr/local/opt/python/libexec/bin/python'
 
 require("transparent").setup({
-  enable = true, -- boolean: enable transparent
-  extra_groups = { -- table/string: additional groups that should be clear
+    enable = true, -- boolean: enable transparent
+    extra_groups = { -- table/string: additional groups that should be clear
     -- In particular, when you set it to 'all', that means all avaliable groups
 
     -- example of akinsho/nvim-bufferline.lua
@@ -136,8 +159,24 @@ require("transparent").setup({
     "BufferLineBackground",
     "BufferLineSeparator",
     "BufferLineIndicatorSelected",
-  },
-  exclude = {}, -- table: groups you don't want to clear
+},
+exclude = {}, -- table: groups you don't want to clear
 })
 
+
 require'lualine'.setup()
+
+require('trouble').setup {
+    position = 'bottom',
+    height = 10,
+    icons = true,
+    action_keys = {
+        close = 'q',
+        cancel = '<esc>',
+        refresh = 'r',
+    },
+    auto_open = false,
+    auto_close = true,
+}
+
+require('gitsigns').setup()

@@ -1,1 +1,1 @@
-http-server nodemon reveal-md
+http-server nodemon reveal-md vscode-json-languageservice
