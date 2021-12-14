@@ -24,7 +24,8 @@ what-year-is-it()
     brew upgrade
     brew cleanup -s
     tldr --update
-    nvim -c ':PackerSync|:UpdateRemotePlugins'
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    nvim --headless -c 'UpdateRemotePlugins | qa'
 }
 
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"

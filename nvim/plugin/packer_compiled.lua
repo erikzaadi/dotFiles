@@ -168,6 +168,13 @@ _G.packer_plugins = {
     path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/gv.vim",
     url = "https://github.com/junegunn/gv.vim"
   },
+  ["impatient.nvim"] = {
+    config = { "\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14impatient\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
   kommentary = {
     loaded = true,
     path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/kommentary",
@@ -182,6 +189,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nginx.vim"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/nginx.vim",
+    url = "https://github.com/vim-scripts/nginx.vim"
   },
   ["nord.nvim"] = {
     loaded = true,
@@ -217,6 +231,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["packer.nvim"] = {
+    loaded = true,
+    path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -279,11 +298,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-gitgutter"] = {
-    loaded = true,
-    path = "/Users/erikzaadi/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
-    url = "https://github.com/airblade/vim-gitgutter"
   },
   ["vim-graphql"] = {
     loaded = false,
@@ -397,23 +411,18 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType css ++once lua require("packer.load")({'vim-ultisnips-css'}, { ft = "css" }, _G.packer_plugins)]]
-vim.cmd [[au FileType graphql ++once lua require("packer.load")({'vim-graphql'}, { ft = "graphql" }, _G.packer_plugins)]]
+vim.cmd [[au FileType nginx ++once lua require("packer.load")({'nginx.vim'}, { ft = "nginx" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tmux ++once lua require("packer.load")({'vim-tmux'}, { ft = "tmux" }, _G.packer_plugins)]]
 vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-virtualenv'}, { ft = "python" }, _G.packer_plugins)]]
+vim.cmd [[au FileType css ++once lua require("packer.load")({'vim-ultisnips-css'}, { ft = "css" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'presenting.vim', 'nginx.vim', 'Dockerfile.vim', 'vim-graphql', 'vim-markdownfmt', 'vim-tmux', 'vim-virtualenv'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType graphql ++once lua require("packer.load")({'vim-graphql'}, { ft = "graphql" }, _G.packer_plugins)]]
 vim.cmd [[au FileType jinja ++once lua require("packer.load")({'Vim-Jinja2-Syntax'}, { ft = "jinja" }, _G.packer_plugins)]]
-vim.cmd [[au FileType Dockerfile ++once lua require("packer.load")({'Dockerfile.vim'}, { ft = "Dockerfile" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-tmux', 'Dockerfile.vim', 'vim-graphql', 'vim-virtualenv', 'vim-markdownfmt', 'presenting.vim'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType jinja2 ++once lua require("packer.load")({'Vim-Jinja2-Syntax'}, { ft = "jinja2" }, _G.packer_plugins)]]
+vim.cmd [[au FileType Dockerfile ++once lua require("packer.load")({'Dockerfile.vim'}, { ft = "Dockerfile" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], true)
-vim.cmd [[source /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]]
-time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], false)
-time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]], true)
-vim.cmd [[source /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]]
-time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]], false)
 time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Dockerfile.vim/ftdetect/docker-compose.vim]], true)
 vim.cmd [[source /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Dockerfile.vim/ftdetect/docker-compose.vim]]
 time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Dockerfile.vim/ftdetect/docker-compose.vim]], false)
@@ -423,6 +432,12 @@ time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack
 time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-graphql/ftdetect/graphql.vim]], true)
 vim.cmd [[source /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-graphql/ftdetect/graphql.vim]]
 time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-graphql/ftdetect/graphql.vim]], false)
+time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], true)
+vim.cmd [[source /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]]
+time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], false)
+time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]], true)
+vim.cmd [[source /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]]
+time([[Sourcing ftdetect script at: /Users/erikzaadi/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
