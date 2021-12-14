@@ -14,12 +14,12 @@
             Plug 'AndrewRadev/ginitpull.vim'
             Plug 'rhysd/conflict-marker.vim'
             Plug 'junegunn/gv.vim'
-            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-            Plug 'junegunn/fzf.vim'
+            " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+            " Plug 'junegunn/fzf.vim'
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'vim-scripts/loremipsum'
-            Plug 'dkprice/vim-easygrep'
+            " Plug 'dkprice/vim-easygrep'
             Plug 'itchyny/lightline.vim'
             Plug 'itspriddle/vim-stripper'
             Plug 'Raimondi/delimitMate'
@@ -28,8 +28,8 @@
             Plug 'moorereason/vim-markdownfmt', { 'for' : 'markdown' }
             Plug 'idanarye/vim-merginal'
             Plug 'SirVer/ultisnips'
-            Plug 'dense-analysis/ale'
-            Plug 'maximbaz/lightline-ale'
+            " Plug 'dense-analysis/ale'
+            " Plug 'maximbaz/lightline-ale'
         " General Vim end
 
         " Completion
@@ -37,24 +37,38 @@
         " Plug 'sbdchd/neoformat'
 
         if has('nvim')
-            Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+            " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+            Plug 'nvim-lua/plenary.nvim'
             Plug 'neovim/nvim-lspconfig'
-            Plug 'Shougo/deoplete.nvim'
+            " Plug 'Shougo/deoplete.nvim'
+            " Plug 'neovim/nvim-lspconfig'
+            Plug 'nvim-telescope/telescope.nvim'
+            Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+            Plug 'hrsh7th/cmp-nvim-lsp'
+            Plug 'hrsh7th/cmp-buffer'
+            Plug 'hrsh7th/cmp-path'
+            Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+            Plug 'f3fora/cmp-spell'
+            Plug 'alexander-born/cmp-bazel'
+            Plug 'hrsh7th/cmp-cmdline'
+            Plug 'ray-x/cmp-treesitter'
+            Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+            Plug 'hrsh7th/nvim-cmp'
         else
-            Plug 'Shougo/denite.nvim'
-            Plug 'Shougo/deoplete.nvim'
-            Plug 'roxma/nvim-yarp'
-            Plug 'roxma/vim-hug-neovim-rpc'
+            " Plug 'Shougo/denite.nvim'
+            " Plug 'Shougo/deoplete.nvim'
+            " Plug 'roxma/nvim-yarp'
+            " Plug 'roxma/vim-hug-neovim-rpc'
         endif
 
         Plug 'Shougo/vimproc.vim',  {'do' : 'make'}
-        Plug 'fszymanski/deoplete-emoji'
+        " Plug 'kloki/deoplete-emoji'
 
         " Completion End
 
         " Color Schemes
-            Plug 'gruvbox-community/gruvbox'
-            " Plug 'lifepillar/vim-gruvbox8'
+            " Plug 'gruvbox-community/gruvbox'
+            Plug 'lifepillar/vim-gruvbox8'
         " Color Schemes end
 
         " Python
@@ -62,7 +76,7 @@
         " Python end
 
         " Web (generic)
-            Plug 'hail2u/vim-css3-syntax', { 'for' : ['css', 'markdown'] }
+            " Plug 'hail2u/vim-css3-syntax', { 'for' : ['css', 'markdown'] }
             Plug 'juvenn/mustache.vim', { 'for' : ['mustache', 'markdown'] }
             Plug 'digitaltoad/vim-pug', { 'for' : ['jade', 'pug', 'markdown'] }
             Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
@@ -86,17 +100,17 @@
             " Plug 'bmatcuk/coc-stylelintplus', {'do': 'yarn install --frozen-lockfile'}
             " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
             " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-            Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
             " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-            Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
+            " Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact', 'tsx', 'markdown'] }
         " Typescript end
 
         " Javascript / node
             " Plug 'pangloss/vim-javascript', { 'for' : ['javascript', 'jsx', 'json', 'markdown'] }
-            Plug 'jparise/vim-graphql'
-            Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
-            Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
-            Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
+            " Plug 'jparise/vim-graphql'
+            " Plug 'mxw/vim-jsx', { 'for' : ['javascript', 'jsx', 'markdown'] }
+            " Plug 'moll/vim-node', { 'for' : ['javascript', 'json', 'markdown'] }
+            " Plug 'isRuslan/vim-es6', { 'for' : ['javascript', 'json', 'markdown'] }
         " Javascript / node end
 
         " Go

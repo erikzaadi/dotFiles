@@ -32,7 +32,7 @@
         call LoadRC("nvim.lua")
     endif
 
-    colorscheme gruvbox
+    colorscheme gruvbox8
     hi Normal guibg=NONE ctermbg=NONE
     hi Pmenu guibg=NONE ctermbg=NONE
     filetype plugin indent on

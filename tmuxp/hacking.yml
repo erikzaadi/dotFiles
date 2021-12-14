@@ -1,0 +1,13 @@
+---
+session_name: hacking
+start_directory: ~/
+windows:
+- panes:
+  - whoami
+  window_name: w00tz
+- panes:
+  - null
+  window_name: hackz
+- panes:
+  - cd ${DOTFILESDIR}
+  window_name: dotfilz

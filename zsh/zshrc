@@ -105,9 +105,24 @@ function _git_deleteremote() {
   _git_branch
 }
 
+compdef '_path_files -/ -W ~/Documents/Presentations' pwo
 
+function revealz()
+{
+    reveal-md ${1:-./presentation.md} --template ../template.html -w
+}
 
+function revealz-print()
+{
+    mkdir -p ./output
+    mkdir -p ./images
+    reveal-md ${1:-./presentation.md} --template ../template.html --port 1949 --print ./output/$(basename `pwd`).pdf --static-dirs ./images
+}
 
+function pwo()
+{
+    PRESENTATION_NAME=$1 ms presentation
+}
 
 tfm() {
     terraform ${1} -auto-approve "${@[@]:2}"

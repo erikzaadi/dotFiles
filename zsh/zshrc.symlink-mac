@@ -24,11 +24,7 @@ what-year-is-it()
     brew upgrade
     brew cleanup -s
     tldr --update
-    if [[ $(which nvim) ]]; then
-        nvim -c ':PlugUpdate|:UpdateRemotePlugins'
-    else
-        vim -c ':PlugUpdate'
-    fi
+    nvim -c ':PlugUpdate|:UpdateRemotePlugins'
 }
 
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
@@ -36,12 +32,7 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local
 export PATH=$HOME/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:${PATH}
 source ${DOTFILESDIR}/zsh/zshrc
 
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# [ -f ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
@@ -49,6 +40,3 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-
-# added by travis gem
-[ ! -s /Users/erikzaadi/.travis/travis.sh ] || source /Users/erikzaadi/.travis/travis.sh

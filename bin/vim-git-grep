@@ -1,2 +1,2 @@
 #!/bin/bash
-vim -O "+/$1" $(git grep -l "$1" | xargs echo)
+nvim -O "+/$1" $(git grep -l "$1" | xargs echo)

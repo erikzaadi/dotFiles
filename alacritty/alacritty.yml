@@ -20,6 +20,7 @@ live_config_reload: true
 alt_send_esc: true
 key_bindings:
   - { key: A, mods: Alt, chars: "\x1ba" } # Enable tmux modifier
+  - { key: F1, action: None }
 # Colors (Gruvbox dark)
 colors:
   # Default colors

@@ -1,0 +1,12 @@
+---
+session_name: "El Presento - ${PRESENTATION_NAME}"
+environment:
+  PRESENTATION_NAME: ${PRESENTATION_NAME}
+before_script: "~/bin/init-presentation ${PRESENTATION_NAME}"
+windows:
+  - panes:
+      - cd ~/Documents/Presentations/${PRESENTATION_NAME}; ${EDITOR} ./presentation.md
+    window_name: editor
+  - panes:
+      - cd ~/Documents/Presentations/${PRESENTATION_NAME}; revealz ./presentation.md
+    window_name: revealz
