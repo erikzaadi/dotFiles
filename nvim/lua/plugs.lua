@@ -19,6 +19,12 @@ require('packer').startup(function()
     use 'tpope/vim-rhubarb'
 
     use 'b3nj5m1n/kommentary' -- sorry tpope
+
+    use {
+        'lazytanuki/nvim-mapper',
+        before = 'telescope.nvim'
+    }
+
     use 'skywind3000/asyncrun.vim'
     use 'AndrewRadev/ginitpull.vim'
     use 'rhysd/conflict-marker.vim'
@@ -34,7 +40,14 @@ require('packer').startup(function()
         ft = { 'markdown' }
     }
     use 'idanarye/vim-merginal'
-    use 'SirVer/ultisnips'
+    use {
+        'fhill2/telescope-ultisnips.nvim',
+        require = {
+            'SirVer/ultisnips',
+            'nvim-telescope/telescope.nvim',
+        },
+    }
+
     -- General Vim end
 
     -- Completion
@@ -43,7 +56,7 @@ require('packer').startup(function()
 
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} },
+        requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} },
     }
 
     use {
@@ -110,6 +123,7 @@ require('packer').startup(function()
     use {
         'rstacruz/vim-ultisnips-css',
         ft = { 'css' },
+        requires = 'SirVer/ultisnips',
     }
     use 'mattn/emmet-vim'
     use 'ap/vim-css-color'

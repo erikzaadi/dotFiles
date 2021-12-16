@@ -1,7 +1,5 @@
-local cmp = require'cmp'
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local g = vim.g      -- a table to access global variables
+local g   = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
 require'nvim-treesitter.configs'.setup {
@@ -19,14 +17,20 @@ require'nvim-treesitter.configs'.setup {
 
 require'nvim-tree'.setup({})
 
+require('nvim-mapper').setup({
+    no_map = true,
+    search_path = os.getenv('HOME') .. '/.config/nvim/lua',
+})
+
 local telescopeactions = require('telescope.actions')
-require('telescope').setup{
+local Telescope = require('telescope')
+Telescope.setup{
     extensions = {
         fzf = {
             fuzzy = true,
             override_generic_sorter = true,
             override_file_sorter = true,
-            case_mode = "smart_case",
+            case_mode = 'smart_case',
         },
     },
     defaults = {
@@ -52,8 +56,12 @@ require('telescope').setup{
     },
 }
 
-require('telescope').load_extension('fzf')
+Telescope.load_extension('mapper')
+Telescope.load_extension('fzf')
+Telescope.load_extension('ultisnips')
 
+
+local cmp = require'cmp'
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -127,19 +135,19 @@ for _, proto in ipairs(servers) do
     }
 end
 
-g.plug_timeout = 180
-g.UltiSnipsSnippetDirectories={string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
--- g.node_version = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
--- g.node_bin_dir = expand('~/.nvm/versions/node/v'.g:node_version.'/bin/')
-g.netrw_liststyle                = 3
-g.netrw_hide                    = 0
-g.delimitmate_expand_cr          = 2
-g.markdownfmt_autosave           = 0
-g.markdownfmt_command = 'mdfmt'
-g.markdown_fenced_languages = {'python', 'sh', 'nginx', 'bash=sh', 'scala', 'javascript', 'yaml', 'json', 'go', 'tmux', 'ansible'}
-g.gruvbox_transp_bg = 1
-g.gruvbox_italic = 1
-g.python_interpreter='/usr/local/opt/python/libexec/bin/python'
+g.plug_timeout                = 180
+g.UltiSnipsSnippetDirectories = {string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
+-- g.node_version             = substitute(system('cat ~/.nvm/alias/default'), '\n', '', '')
+-- g.node_bin_dir             = expand('~/.nvm/versions/node/v'.g:node_version.'/bin/')
+g.netrw_liststyle             = 3
+g.netrw_hide                  = 0
+g.delimitmate_expand_cr       = 2
+g.markdownfmt_autosave        = 0
+g.markdownfmt_command         = 'mdfmt'
+g.markdown_fenced_languages   = {'python', 'sh', 'nginx', 'bash=sh', 'scala', 'javascript', 'yaml', 'json', 'go', 'tmux', 'ansible'}
+g.gruvbox_transp_bg           = 1
+g.gruvbox_italic              = 1
+g.python_interpreter          = '/usr/local/opt/python/libexec/bin/python'
 
 require("transparent").setup({
     enable = true, -- boolean: enable transparent
