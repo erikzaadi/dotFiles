@@ -65,7 +65,7 @@ local cmp = require'cmp'
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            vim.fn['UltiSnips#Anon'](args.body) -- For `ultisnips` users.
         end,
     },
     mapping = {
@@ -112,21 +112,22 @@ end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md for full list
 local servers = {
-    "sqlls",
-    "tsserver",
-    "yamlls",
-    "prismals",
-    "dockerls",
-    "terraformls",
-    "tflint",
-    "bashls",
-    "groovyls",
-    "html",
-    "metals",
-    "jsonls",
-    "pylsp",
-    "graphql",
-    "gopls",
+    'sqlls',
+    'tsserver',
+    'eslint',
+    'yamlls',
+    'prismals',
+    'dockerls',
+    'terraformls',
+    'tflint',
+    'bashls',
+    'groovyls',
+    'html',
+    -- 'metals',
+    'jsonls',
+    'pylsp',
+    'graphql',
+    'gopls',
 }
 for _, proto in ipairs(servers) do
     lsp[proto].setup {
@@ -149,18 +150,18 @@ g.gruvbox_transp_bg           = 1
 g.gruvbox_italic              = 1
 g.python_interpreter          = '/usr/local/opt/python/libexec/bin/python'
 
-require("transparent").setup({
+require('transparent').setup({
     enable = true, -- boolean: enable transparent
     extra_groups = { -- table/string: additional groups that should be clear
     -- In particular, when you set it to 'all', that means all avaliable groups
 
     -- example of akinsho/nvim-bufferline.lua
-    "BufferLineTabClose",
-    "BufferlineBufferSelected",
-    "BufferLineFill",
-    "BufferLineBackground",
-    "BufferLineSeparator",
-    "BufferLineIndicatorSelected",
+    'BufferLineTabClose',
+    'BufferlineBufferSelected',
+    'BufferLineFill',
+    'BufferLineBackground',
+    'BufferLineSeparator',
+    'BufferLineIndicatorSelected',
 },
 exclude = {}, -- table: groups you don't want to clear
 })

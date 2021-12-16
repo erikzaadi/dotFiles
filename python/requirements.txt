@@ -1,1 +1,2 @@
 tmuxp
+python-lsp-server[all]

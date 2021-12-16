@@ -1,5 +1,5 @@
-local g = vim.g      -- a table to access global variables
-local cmd = vim.cmd
+local g     = vim.g      -- a table to access global variables
+local cmd   = vim.cmd
 g.mapleader = ' '
 Mapper = require('nvim-mapper')
 local function map(mode, keyMap, command, description, category, opts)
