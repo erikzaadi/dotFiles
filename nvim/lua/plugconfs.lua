@@ -42,7 +42,7 @@ Telescope.setup{
             '--line-number',
             '--column',
             '--smart-case',
-            '--hidden',
+            -- '-u',
         },
         -- initial_mode = 'insert',
         file_ignore_patterns = { 'node_modules' },
@@ -113,9 +113,8 @@ end
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md for full list
 local servers = {
     'sqlls',
-    'tsserver',
-    'eslint',
     'yamlls',
+    'tsserver',
     'prismals',
     'dockerls',
     'terraformls',
@@ -126,8 +125,9 @@ local servers = {
     -- 'metals',
     'jsonls',
     'pylsp',
-    'graphql',
+    -- 'graphql',
     'gopls',
+    'eslint',
 }
 for _, proto in ipairs(servers) do
     lsp[proto].setup {
@@ -167,7 +167,16 @@ exclude = {}, -- table: groups you don't want to clear
 })
 
 
-require'lualine'.setup()
+require'lualine'.setup({
+    options = {
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+    },
+    sections = {lualine_a = {
+        {'mode', fmt = function(str) return str:sub(1,1) end}},
+        lualine_b = {'branch'}}
+    }
+)
 
 require('trouble').setup {
     position = 'bottom',
@@ -183,3 +192,13 @@ require('trouble').setup {
 }
 
 require('gitsigns').setup()
+
+local eslint_node_version = '17.2.0'
+local eslint_node_bin_dir = string.format('%s/.nvm/versions/node/v%s/bin', os.getenv('HOME'), eslint_node_version)
+
+function prettier_current_file()
+    local filename = vim.api.nvim_buf_get_name(0)
+    local root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+    local command = ':silent %!' .. root .. '/node_modules/.bin/prettier --stdin-filepath ' .. filename
+    vim.cmd(command)
+end

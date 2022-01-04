@@ -1,1 +1,1 @@
-http-server nodemon reveal-md vscode-json-languageservice graphql-language-service-cli vscode-langservers-extracted @prisma/language-server sql-language-server
+http-server nodemon reveal-md vscode-json-languageservice graphql-language-service-cli vscode-langservers-extracted @prisma/language-server sql-language-server graphql

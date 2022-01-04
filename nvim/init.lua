@@ -7,6 +7,9 @@ local opt = vim.opt  -- to set options
 local execute = vim.api.nvim_command
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
+g.node_version = '17.2.0'
+g.node_bin_dir = string.format('%s/.nvm/versions/node/.nvm/versions/node/v%s/bin/', os.getenv('HOME'), node_version)
+
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   execute 'packadd packer.nvim'
@@ -18,7 +21,7 @@ require('filetypes')
 require('keymaps')
 require('defaults')
 
-cmd 'colorscheme nord' -- fixes bad backgrounds
-cmd 'colorscheme gruvbox'
+-- cmd 'colorscheme nord' -- fixes bad backgrounds
 -- cmd 'hi Normal guibg=NONE ctermbg=NONE'
 -- cmd 'hi Pmenu guibg=NONE ctermbg=NONE'
+cmd 'colorscheme gruvbox'

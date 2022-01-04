@@ -19,7 +19,7 @@ preview()
 what-year-is-it()
 {
     softwareupdate -l --product-type macOS
-    mas upgrade
+    mas outdated
     brew update
     brew upgrade
     brew cleanup -s

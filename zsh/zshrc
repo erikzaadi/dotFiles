@@ -89,6 +89,10 @@ alias edit=${EDITOR}
 alias e=${EDITOR}
 alias delete-known-host-list="delete-line ~/.ssh/known_hosts"
 
+function lnav-colors() {
+    TERM=screen-256color lnav "$@"
+}
+
 function _git_micdrop() {
   _git_branch
 }

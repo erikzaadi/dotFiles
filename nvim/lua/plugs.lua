@@ -24,7 +24,6 @@ require('packer').startup(function()
         'lazytanuki/nvim-mapper',
         before = 'telescope.nvim'
     }
-
     use 'skywind3000/asyncrun.vim'
     use 'AndrewRadev/ginitpull.vim'
     use 'rhysd/conflict-marker.vim'
@@ -53,6 +52,8 @@ require('packer').startup(function()
     -- Completion
 
     use 'neovim/nvim-lspconfig'
+
+    use 'folke/lsp-colors.nvim'
 
     use {
         'nvim-telescope/telescope.nvim',
@@ -107,7 +108,9 @@ require('packer').startup(function()
 
     -- Color Schemes
     use 'xiyaowong/nvim-transparent'
-    use 'gruvbox-community/gruvbox'
+    -- use 'gruvbox-community/gruvbox'
+    use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+
     use 'shaunsingh/nord.nvim'
     -- use 'lifepillar/vim-gruvbox8'
     -- Color Schemes end
@@ -132,7 +135,9 @@ require('packer').startup(function()
     -- Typescript
     -- Typescript end
 
-    -- Javasc{ript / node
+    -- Javascript / node
+    -- use 'jose-elias-alvarez/null-ls.nvim'
+    -- use 'MunifTanjim/prettier.nvim'
     -- Javascript / node end
 
     -- Go
