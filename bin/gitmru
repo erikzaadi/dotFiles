@@ -1,0 +1,2 @@
+#!/bin/bash
+git for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(refname:short)' | egrep -v $(git branch --show-current) | fzf --layout=reverse-list --header='Choose recent branch:' | xargs git checkout
