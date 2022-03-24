@@ -1,4 +1,5 @@
 window:
+  opacity: 0.9
   dynamic_padding: true
   decorations: none
   startup_mode: Maximized
@@ -13,7 +14,6 @@ font:
     family: Hack Nerd Font Mono
   bold_italic:
     family: Hack Nerd Font Mono
-background_opacity: 0.9
 mouse:
   hide_when_typing: true
 live_config_reload: true
