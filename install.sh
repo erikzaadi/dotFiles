@@ -67,12 +67,11 @@ symlink_for_pattern "\*" ${SCRIPT_BASE}/config ~/config
 if [[ "$(uname)" = "Darwin" ]]; then
     log_message "Symlinking Mac links.."
     symlink_for_pattern ".symlink-mac" ${SCRIPT_BASE} ~/
-    brew install getantibody/tap/antibody
     log_message "Brewing ALL THE THINGS.."
+    xcode-select --install
     if [[ ! $(which brew) ]]; then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
-
     for tap in $(cat ${SCRIPT_BASE}/mac/tap);do
         brew tap ${tap}
     done
@@ -82,8 +81,8 @@ if [[ "$(uname)" = "Darwin" ]]; then
     for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
         brew install ${cask}
     done
-    log_message "Setting custom OS-X Settings.."
-    bash ${SCRIPT_BASE}/mac/osx-settings
+#    log_message "Setting custom OS-X Settings.."
+#    bash ${SCRIPT_BASE}/mac/osx-settings
     log_message "Installing python packages.."
     pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
 else
@@ -99,25 +98,28 @@ else
     sudo pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
 fi
 
-
-log_message "Setting zsh (FTW) as shell.."
-ZSH=$(which zsh)
-chsh -s ${ZSH}
-sudo chsh -s ${ZSH}
+if [[ "${SHELL}" != */zsh ]]; then
+    log_message "Setting zsh (FTW) as shell.."
+    ZSH=$(which zsh)
+    chsh -s ${ZSH}
+    sudo chsh -s ${ZSH}
+fi
 
 if [[ ! -f ~/.nvm/nvm.sh ]];then
     log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
     git clone https://github.com/creationix/nvm.git ~/.nvm
     source ~/.nvm/nvm.sh
-    nvm install lastest
-    nvm use node
-    nvm alias default node
 fi
 
-log_message "Installing node packages.."
-npm i -g $(cat ${SCRIPT_BASE}/packages/node)
+nvm install lastest
+nvm use node
+nvm alias default node
 
-log_message "Installing Vim Packages.."
-nvim -c 'qa!'
+log_message "Installing node packages.."
+npm i -g $(cat ${SCRIPT_BASE}/node/packages | tr '\n' ' ')
+
+log_message "Installing (Neo)Vim Packages.."
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless -c 'UpdateRemotePlugins | qa'
 
 log_message "Done, great success!!1"

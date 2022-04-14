@@ -116,15 +116,5 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 
-# get the node.js version
-function nvm_prompt_info() {
-  [[ -f "$NVM_DIR/nvm.sh" ]] || return
-  local nvm_prompt
-  nvm_prompt=$(node -v 2>/dev/null)
-  [[ "${nvm_prompt}x" == "x" ]] && return
-  nvm_prompt=${nvm_prompt:1}
-  echo "${ZSH_THEME_NVM_PROMPT_PREFIX}node:${nvm_prompt}${ZSH_THEME_NVM_PROMPT_SUFFIX}"
-}
-
 setopt MENU_COMPLETE
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'

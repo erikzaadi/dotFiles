@@ -1,2 +1,3 @@
 tmuxp
+neovim
 python-lsp-server[all]

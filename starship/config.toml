@@ -2,6 +2,7 @@ format = """
 $directory\
 $git_branch\
 $git_status\
+$nodejs\
 $status\
 $cmd_duration\
 \n\
@@ -31,3 +32,6 @@ error_symbol = "[➜](bold red) "
 
 [git_branch]
 format = "[$branch ]($style)"
+
+[nodejs]
+format = "[🤖 $version](bold green)"

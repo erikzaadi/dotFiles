@@ -20,6 +20,7 @@ if [[ $(which bat) ]]; then
 fi
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh && . ~/.nvm/bash_completion # This loads NVM
+
 source $HOME/.zshenv
 
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
@@ -28,8 +29,6 @@ source <(kubectl completion zsh)
 
 source <(helm completion zsh)
 
-source <(stern --completion=zsh)
-
 source <(antibody init)
 
 antibody bundle < $DOTFILESDIR/zsh/plugins
@@ -37,26 +36,6 @@ antibody bundle < $DOTFILESDIR/zsh/plugins
 autoload -U promptinit; promptinit
 
 source $DOTFILESDIR/zsh/defaults
-
-# prompt_custom() {
-#     preprompt+=( "%F{blue}%c%f" )
-# }
-
-# PURE_PROMPT_SYMBOL="$(random_emoticon) ➜"
-# if [[ ! -e /usr/local/share/zsh/site-functions/async ]]; then
-#     ln -s $(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-intelfx-SLASH-pure/async.zsh /usr/local/share/zsh/site-functions/async
-# fi
-
-# if [[ ! -e  /usr/local/share/zsh/site-functions/prompt_pure_setup ]]; then
-#     ln -s $(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-intelfx-SLASH-pure/pure.zsh /usr/local/share/zsh/site-functions/prompt_pure_setup
-# fi
-
-# prompt pure
-
-# prompt_pure_pieces=(
-# 	prompt_custom
-# 	${prompt_pure_pieces:1}
-# )
 
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
@@ -139,8 +118,6 @@ export FZF_DEFAULT_OPTS='
   --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
   --color info:254,prompt:37,spinner:108,pointer:235,marker:235
 '
-
-[[ $(which hub) ]] && eval "$(hub alias -s)"
 
 [[ -s ~/.envvars.rc ]] && . ~/.envvars.rc
 

@@ -1,0 +1,11 @@
+@prisma/language-server
+bash-language-server
+graphql
+graphql-language-service-cli
+http-server
+nodemon
+reveal-md
+serve
+sql-language-server
+vscode-langservers-extracted
+yaml-language-server

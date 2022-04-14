@@ -41,3 +41,5 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+NODE_VERSION=$(node --version)
+export PATH=/usr/local/opt/openjdk@11/bin:~/.nvm/versions/node/${NODE_VERSION}/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/opt/openjdk@11/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:/usr/local/opt/ccache/libexec:~/Code/Opensource/mine/dotFiles/bin:/usr/local/sbin:~/.fzf/bin:~/salto
