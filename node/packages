@@ -1,5 +1,6 @@
 @prisma/language-server
 bash-language-server
+dockerfile-language-server-nodejs
 graphql
 graphql-language-service-cli
 http-server

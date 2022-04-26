@@ -1,5 +1,6 @@
 antibody
 bash-completion
+bat
 brew-cask-completion
 ccache
 cmake
