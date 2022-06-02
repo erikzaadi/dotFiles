@@ -1,37 +1,53 @@
 format = """
-$directory\
-$git_branch\
+${custom.directory_with_git_root}\
+${custom.directory_relative_to_home}\
+${custom.git_branch_fixed}\
 $git_status\
+$git_state\
 $nodejs\
-$status\
-$cmd_duration\
 \n\
-$custom\
+${custom.random_emoticon}\
 $character
 """
 
+right_format = """
+$cmd_duration\
+$status\
+"""
+
+[custom.directory_with_git_root]
+command = "realpath --relative-base=\"$(git rev-parse --show-toplevel)/..\" ."
+style = "bold cyan"
+when = "git rev-parse --show-toplevel"
+format = "[](bold bright-blue)[$symbol($output )]($style)"
+
+[custom.directory_relative_to_home]
+command = "realpath --relative-base=\"$HOME\" ."
+style = "bold cyan"
+when = "git rev-parse --show-toplevel && return 1 || return 0"
+format = "[~](bold #FFFFFF)[$symbol($output )]($style)"
+
 [status]
 disabled = false
-symbol = "\n🤦"
+symbol = "🤦"
 
 [cmd_duration]
 min_time = 500
 format = "\n[$duration](bold yellow)"
 
-
 [custom.random_emoticon]
 command = "random_emoticon"
 when = "return 0"
+style = "yellow"
+
+[custom.git_branch_fixed]
+command = "git rev-parse --abbrev-ref HEAD"
+when = "git rev-parse --show-toplevel"
+style = "bold purple"
 
 [character]
 success_symbol = "[➜](bold green) "
 error_symbol = "[➜](bold red) "
-
-# [time]
-# disabled = false
-
-[git_branch]
-format = "[$branch ]($style)"
 
 [nodejs]
 format = "[🤖 $version](bold green)"
