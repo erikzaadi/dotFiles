@@ -2,6 +2,7 @@ local g   = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
 g.strip_whitespace_on_save = 1
+g.noautochdir = 1
 g.strip_whitespace_confirm = 0
 g.is_posix                 = true
 -- NetRW

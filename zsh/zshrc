@@ -41,6 +41,8 @@ alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
 alias pwdc='pwd | ${CLIPBOARD}'
 
+alias vimdiff='nvim -d'
+
 psgrep() {
     ps aux | g_or_native grep $1 | egrep -v "grep"
 }

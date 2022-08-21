@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+SCRIPT_NAME="$( basename "$0" )"
+TIMEOUT=30
+SILENT=0
+HOST=localhost
+
+usage() {
+  echo -e "Usage :  ${SCRIPT_NAME} [options]
+  Options:
+    -h       Display this message
+    -H       Host (defaults to 'localhost')
+    -t       Timeout in seconds (defaults to 30 seconds)
+    -s       Silent mode (defaults to false)
+  Examples:
+    \$ ${SCRIPT_NAME} PORT_NUMBER
+    \$ ${SCRIPT_NAME} -H my.host.com PORT_NUMBER
+    \$ ${SCRIPT_NAME} -t LONG_TIMEOUT PORT_NUMBER
+    \$ ${SCRIPT_NAME} -s PORT_NUMBER
+"
+}
+
+
+while getopts "shH:t:" opt; do
+  case ${opt} in
+  h )
+    usage;
+    exit 0
+    ;;
+
+  H )
+    HOST="${OPTARG}"
+    ;;
+
+  t )
+    TIMEOUT=$(("${OPTARG}"))
+    ;;
+
+  s )
+    SILENT=1
+    ;;
+
+  * )
+    echo "Option does not exist : ${OPTARG}";
+    usage;
+    exit 1
+    ;;
+  esac
+done
+shift $((OPTIND -1))
+
+echo_if_not_silent() {
+    [[ ${SILENT} -eq 0 ]] && echo "$@"
+}
+
+PORT=${1}
+
+if [[ -z ${PORT} ]]; then
+    usage
+    exit 1
+fi
+
+START_TIME=$(date +%s)
+MAX_TIME=$(( ${START_TIME} + ${TIMEOUT} ))
+TIME_LEFT=$((${TIMEOUT} + 1))
+
+trap interrupt SIGTERM SIGINT
+
+function interrupt () {
+    echo_if_not_silent -e "\033[1K\rStopped waiting for port ${PORT} at ${HOST}."
+    exit 0
+}
+
+until printf "" 2>>/dev/null >>/dev/tcp/${HOST}/${PORT}; do
+    if [[ $(date +%s) -lt ${MAX_TIME} ]]; then
+        TIME_LEFT=$(( ${TIME_LEFT} - 1 ))
+        echo_if_not_silent -en "\\rWaiting for port ${PORT} at ${HOST} for another ${TIME_LEFT} seconds..."
+        sleep 1
+    else
+        echo_if_not_silent -e "\\rPort ${PORT} was not available at ${HOST} after ${TIMEOUT} seconds."
+        exit 1
+    fi
+done
+
+TIME_TAKEN=$(( TIMEOUT - TIME_LEFT ))
+MESSAGE="\033[1K\rPort ${PORT} was up at ${HOST}"
+
+if [[ ${TIME_TAKEN} -gt 0 ]]; then
+    MESSAGE="${MESSAGE} after ${TIME_TAKEN} seconds"
+fi
+
+echo_if_not_silent -e ${MESSAGE}

@@ -26,6 +26,7 @@ what-year-is-it()
     tldr --update
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     nvim --headless -c 'UpdateRemotePlugins | qa'
+    nvim --headless -c 'TSUpdate | qa'
 }
 
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
