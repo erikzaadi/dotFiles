@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+MESSAGE=$1
+TITLE=${2:-"Mac Terminal Notifier"}
+osascript -e "display notification \"${MESSAGE}\" with title \"${TITLE}\""

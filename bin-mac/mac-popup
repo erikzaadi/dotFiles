@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+MESSAGE=$1
+osascript -e 'tell application "Finder"' -e 'activate' -e "display dialog \"${MESSAGE}.\" with icon note" -e 'end tell'

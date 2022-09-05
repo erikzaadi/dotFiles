@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+NEXT_UP=$(
+    # get agenda for next 20 minutes in tsv
+    gcalcli agenda --tsv $(date +"%H:%M") $(date -j -v +20M +"%H:%M") |\
+    # filter out all day events
+    egrep -v '00:00' |\
+    # format it (HH:MM-HH:MM TITLE)
+    awk '{print $2"-"$4" " substr($0, index($0,$5))};'
+    )
+if [[ -z "${NEXT_UP}" ]]; then
+    exit 0
+fi
+
+echo "[ ${NEXT_UP} ]"
