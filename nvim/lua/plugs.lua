@@ -47,6 +47,8 @@ require('packer').startup(function()
         },
     }
 
+    use 'rcarriga/nvim-notify'
+
     -- General Vim end
 
     -- Completion
@@ -183,7 +185,11 @@ require('packer').startup(function()
     }
     use 'segeljakt/vim-isotope'
     use 'psliwka/vim-smoothie'
-    use 'mhinz/vim-startify'
+    -- use 'mhinz/vim-startify'
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+    }
     -- use 'tweekmonster/startuptime.vim'
     -- Misc end
 end)

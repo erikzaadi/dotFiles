@@ -15,7 +15,13 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
-require'nvim-tree'.setup({})
+require'nvim-tree'.setup {
+    actions = {
+        change_dir = {
+            enable = false,
+        },
+    },
+}
 
 require('nvim-mapper').setup({
     no_map = true,
@@ -59,6 +65,7 @@ Telescope.setup{
 Telescope.load_extension('mapper')
 Telescope.load_extension('fzf')
 Telescope.load_extension('ultisnips')
+Telescope.load_extension('notify')
 
 
 local cmp = require'cmp'
@@ -71,12 +78,30 @@ cmp.setup({
     mapping = {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
         ['<C-e>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+        end, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+        end, { "i", "s" }),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
@@ -132,7 +157,7 @@ local servers = {
 for _, proto in ipairs(servers) do
     lsp[proto].setup {
         on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }
 end
 
@@ -202,3 +227,35 @@ function prettier_current_file()
     local command = ':silent %!' .. root .. '/node_modules/.bin/prettier --stdin-filepath ' .. filename
     vim.cmd(command)
 end
+
+-- Overriding vim.notify with fancy notify if fancy notify exists
+local notify = require("notify")
+vim.notify = notify
+print = function(...)
+    local print_safe_args = {}
+    local _ = { ... }
+    for i = 1, #_ do
+        table.insert(print_safe_args, tostring(_[i]))
+    end
+    notify(table.concat(print_safe_args, ' '), "info")
+end
+notify.setup({
+    background_colour = "#3c3836",
+})
+
+function random_fortuned_cow()
+    math.randomseed(os.time())
+    local cowsay_list = vim.split(table.concat(vim.fn.systemlist("cowsay -l | tail -n +2"), " "), " ")
+    local random_index = math.random(#cowsay_list)
+    local random_cow = cowsay_list[random_index]
+
+
+    local fortune_cow = vim.fn.systemlist("fortune -s | cowsay -f " .. random_cow)
+
+    return fortune_cow
+end
+
+local alpha = require'alpha'
+local startify = require'alpha.themes.startify'
+startify.section.header.val = random_fortuned_cow()
+alpha.setup(startify.config)

@@ -6,6 +6,8 @@ local g   = vim.g      -- a table to access global variables
     cmd 'au BufNewFile,BufRead *.py set shiftwidth=4 tabstop=4 softtabstop=4 expandtab'
     cmd 'au FileType python set shiftwidth=4 tabstop=4 softtabstop=4 expandtab'
  -- Python End
+    cmd 'au BufNewFile,BufRead *.star set shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=bzl'
+
 
  -- Javascript / Coffeescript / Node
     cmd 'au BufNewFile,BufRead *.coffee,*.js,*.jsx set shiftwidth=2 tabstop=2 softtabstop=2 expandtab'
