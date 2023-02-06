@@ -5,6 +5,7 @@ ${custom.git_branch_fixed}\
 $git_status\
 $git_state\
 $nodejs\
+${custom.raftt}\
 \n\
 ${custom.random_emoticon}\
 $character
@@ -20,6 +21,13 @@ command = "realpath --relative-base=\"$(git rev-parse --show-toplevel)/..\" ."
 style = "bold cyan"
 when = "git rev-parse --show-toplevel"
 format = "[](bold bright-blue)[$symbol($output )]($style)"
+
+[custom.raftt]
+command = "raftt-widget"
+style = "bold cyan"
+detect_folders = [".raftt"]
+format = "[$symbol( $output )]($style)"
+disabled = true
 
 [custom.directory_relative_to_home]
 command = "realpath --relative-base=\"$HOME\" ."

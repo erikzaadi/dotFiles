@@ -29,9 +29,13 @@ source <(kubectl completion zsh)
 
 source <(helm completion zsh)
 
-source <(antibody init)
+source /usr/local/opt/antidote/share/antidote/antidote.zsh
 
-antibody bundle < $DOTFILESDIR/zsh/plugins
+source <(antidote init)
+
+antidote load
+
+antidote bundle < $DOTFILESDIR/zsh/plugins
 
 autoload -U promptinit; promptinit
 

@@ -33,7 +33,13 @@
     untracked = cyan
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiffftw
+
+[difftool]
+    prompt = false
+
+[difftool "nvimdiffftw"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [merge]
     ; tool = vimdiff
@@ -132,7 +138,10 @@
 [mergetool]
     prompt = false
 [mergetool "fugitive"]
-    cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+    cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+[mergetool "native"]
+    cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+
 [credential]
     helper = osxkeychain
 [ghi]

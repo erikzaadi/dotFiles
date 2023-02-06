@@ -23,6 +23,7 @@ what-year-is-it()
     brew update
     brew upgrade
     brew cleanup -s
+    antidote update -b
     tldr --update
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     nvim --headless -c 'UpdateRemotePlugins | qa'
@@ -38,6 +39,8 @@ source ${DOTFILESDIR}/zsh/zshrc
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+eval "$(op completion zsh)"; compdef _op op
 
 # tabtab source for packages
 # uninstall by removing these lines

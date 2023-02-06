@@ -5,7 +5,7 @@ local opt = vim.opt  -- to set options
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'bash', 'javascript', 'typescript',
-        'python', 'yaml', 'css', 'dockerfile',
+        'python', 'yaml', 'css',
         'go', 'html', 'json', 'prisma',
         'scala', 'graphql', 'lua', 'tsx',
     },
@@ -59,6 +59,11 @@ Telescope.setup{
                 ['<esc>'] = telescopeactions.close,
             },
         },
+        --[[ borderchars = {
+            prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+            results = { " " },
+            preview = { " " },
+        }, ]]
     },
 }
 
@@ -86,10 +91,6 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
-            elseif has_words_before() then
-                cmp.complete()
             else
                 fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
             end
@@ -98,8 +99,6 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
             end
         end, { "i", "s" }),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -193,9 +192,11 @@ exclude = {}, -- table: groups you don't want to clear
 
 
 require'lualine'.setup({
+    theme = 'tokyonight',
     options = {
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
+        theme = "gruvbox-baby",
     },
     sections = {lualine_a = {
         {'mode', fmt = function(str) return str:sub(1,1) end}},
@@ -228,6 +229,16 @@ function prettier_current_file()
     vim.cmd(command)
 end
 
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.shfmt.with({
+            extra_args = { "-i", "2", "-ci" },
+        }),
+    },
+})
+
 -- Overriding vim.notify with fancy notify if fancy notify exists
 local notify = require("notify")
 vim.notify = notify
@@ -259,3 +270,7 @@ local alpha = require'alpha'
 local startify = require'alpha.themes.startify'
 startify.section.header.val = random_fortuned_cow()
 alpha.setup(startify.config)
+
+
+-- Enable transparent mode
+g.gruvbox_baby_transparent_mode = 1

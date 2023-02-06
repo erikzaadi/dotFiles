@@ -26,7 +26,7 @@ require('defaults')
 -- cmd 'colorscheme nord' -- fixes bad backgrounds
 -- cmd 'hi Normal guibg=NONE ctermbg=NONE'
 -- cmd 'hi Pmenu guibg=NONE ctermbg=NONE'
-require("gruvbox").setup({
+--[[ require("gruvbox").setup({
   transparent_mode = true,
-})
-cmd 'colorscheme gruvbox'
+}) ]]
+cmd 'colorscheme gruvbox-baby'

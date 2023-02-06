@@ -1,4 +1,4 @@
-local g     = vim.g      -- a table to access global variables
+local g     = vim.g      -- a table to access global variablesnvim/lua/keymaps.lua
 local cmd   = vim.cmd
 g.mapleader = ' '
 Mapper = require('nvim-mapper')
@@ -29,7 +29,7 @@ map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', 'Show references'
 map('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename')
 map('n', '<leader>t', ':TroubleToggle<cr>', 'Toggle trouble (document errors)')
 map('n', '<leader>T', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Show type definition')
-map('n', '<leader>i', '<cmd>lua vim.lsp.buf.formatting()<CR>', 'FORMAT ZE THINGZ')
+map('n', '<leader>i', '<cmd>lua vim.lsp.buf.format()<CR>', 'FORMAT ZE THINGZ')
 map('n', '<leader>[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'Goto previous lsp error')
 map('n', '<leader>]', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'Goto next lsp error')
 map('n', '<leader>s', '<cmd>:Telescope ultisnips theme=get_dropdown<cr>', 'Show snippets')

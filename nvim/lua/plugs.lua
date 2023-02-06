@@ -109,12 +109,13 @@ require('packer').startup(function()
     -- Completion End
 
     -- Color Schemes
-    use 'xiyaowong/nvim-transparent'
+    -- use 'xiyaowong/nvim-transparent'
     -- use 'gruvbox-community/gruvbox'
-    use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    use 'luisiacc/gruvbox-baby'
+    -- use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    -- use 'rmehri01/onenord.nvim'
+    -- use { 'dracula/vim', as = 'dracula' }
 
-    use 'shaunsingh/nord.nvim'
-    -- use 'lifepillar/vim-gruvbox8'
     -- Color Schemes end
 
     -- Python
@@ -138,7 +139,7 @@ require('packer').startup(function()
     -- Typescript end
 
     -- Javascript / node
-    -- use 'jose-elias-alvarez/null-ls.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
     -- use 'MunifTanjim/prettier.nvim'
     -- Javascript / node end
 
