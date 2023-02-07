@@ -2,6 +2,8 @@ local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local g   = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
+g.current_theme = 'gruvbox-baby'
+
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'bash', 'javascript', 'typescript',
@@ -174,7 +176,7 @@ g.gruvbox_transp_bg           = 1
 g.gruvbox_italic              = 1
 g.python_interpreter          = '/usr/local/opt/python/libexec/bin/python'
 
-require('transparent').setup({
+--[[ require('transparent').setup({
     enable = true, -- boolean: enable transparent
     extra_groups = { -- table/string: additional groups that should be clear
     -- In particular, when you set it to 'all', that means all avaliable groups
@@ -188,15 +190,15 @@ require('transparent').setup({
     'BufferLineIndicatorSelected',
 },
 exclude = {}, -- table: groups you don't want to clear
-})
+}) ]]
 
 
 require'lualine'.setup({
-    theme = 'tokyonight',
+    theme = g.current_theme,
     options = {
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
-        theme = "gruvbox-baby",
+        theme = g.current_theme
     },
     sections = {lualine_a = {
         {'mode', fmt = function(str) return str:sub(1,1) end}},
@@ -274,3 +276,19 @@ alpha.setup(startify.config)
 
 -- Enable transparent mode
 g.gruvbox_baby_transparent_mode = 1
+g.gruvbox_baby_telescope_theme = 1
+g.gruvbox_baby_use_original_palette = 1
+
+require('nightfox').setup({
+  options = {
+    transparent = true,
+  },
+  palettes = {},
+  specs = {},
+  groups = {}
+})
+
+g.nord_disable_background = true
+g.moonlight_disable_background = true
+g.seoul256_disable_background = true
+g.solarized_disable_background = true

@@ -110,7 +110,13 @@ require('packer').startup(function()
 
     -- Color Schemes
     -- use 'xiyaowong/nvim-transparent'
+    use 'shaunsingh/nord.nvim'
+    use 'shaunsingh/solarized.nvim'
+    use 'shaunsingh/seoul256.nvim'
+    use 'shaunsingh/moonlight.nvim'
+
     -- use 'gruvbox-community/gruvbox'
+    use 'EdenEast/nightfox.nvim'
     use 'luisiacc/gruvbox-baby'
     -- use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     -- use 'rmehri01/onenord.nvim'

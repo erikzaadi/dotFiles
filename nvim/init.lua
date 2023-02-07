@@ -29,4 +29,5 @@ require('defaults')
 --[[ require("gruvbox").setup({
   transparent_mode = true,
 }) ]]
-cmd 'colorscheme gruvbox-baby'
+cmd(":set background=dark")
+cmd(string.format('colorscheme %s', g.current_theme))

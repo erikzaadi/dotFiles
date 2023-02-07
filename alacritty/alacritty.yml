@@ -2,7 +2,7 @@ import:
   - ~/.config/alacritty/keymaps.yml
   - ~/.config/alacritty/theme.yml
 window:
-  opacity: 0.9
+  opacity: 0.95
   dynamic_padding: true
   decorations: none
   startup_mode: Maximized
