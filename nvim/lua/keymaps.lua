@@ -65,3 +65,10 @@ map('n', '<leader><leader>;', ':source $MYVIMRC<CR>', 'reload nvim config')
 map('n', '<leader><tab>', ':tabnext<CR>', 'Next', 'Tabs')
 map('n', '<leader><S-tab>', ':tabprevious<CR>', 'Previous', 'Tabs')
 map('n', '<leader><M-tab>', ':tabnew<CR>', 'New', 'Tabs')
+
+map('n', '<leader>drf', require('dbtpal').run)
+map('n', '<leader>drp', require('dbtpal').run_all)
+map('n', '<leader>dtf', require('dbtpal').test)
+map('n', '<leader>dm', require('dbtpal.telescope').dbt_picker)
+
+

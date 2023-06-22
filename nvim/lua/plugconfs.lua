@@ -13,6 +13,8 @@ require'nvim-treesitter.configs'.setup {
     },
     highlight = {
         enable = true,
+        disable = { "python" },
+
         additional_vim_regex_highlighting = false,
     },
 }
@@ -72,7 +74,7 @@ Telescope.setup{
 Telescope.load_extension('mapper')
 Telescope.load_extension('fzf')
 Telescope.load_extension('ultisnips')
-Telescope.load_extension('notify')
+-- Telescope.load_extension('notify')
 
 
 local cmp = require'cmp'
@@ -221,7 +223,7 @@ require('trouble').setup {
 
 require('gitsigns').setup()
 
-local eslint_node_version = '17.2.0'
+local eslint_node_version = g.node_version
 local eslint_node_bin_dir = string.format('%s/.nvm/versions/node/v%s/bin', os.getenv('HOME'), eslint_node_version)
 
 function prettier_current_file()
@@ -242,7 +244,7 @@ null_ls.setup({
 })
 
 -- Overriding vim.notify with fancy notify if fancy notify exists
-local notify = require("notify")
+--[[ local notify = require("notify")
 vim.notify = notify
 print = function(...)
     local print_safe_args = {}
@@ -250,12 +252,12 @@ print = function(...)
     for i = 1, #_ do
         table.insert(print_safe_args, tostring(_[i]))
     end
-    notify(table.concat(print_safe_args, ' '), "info")
-end
-notify.setup({
+    -- notify(table.concat(print_safe_args, ' '), "info")
+end ]]
+--[[ notify.setup({
     background_colour = "#3c3836",
 })
-
+ ]]
 function random_fortuned_cow()
     math.randomseed(os.time())
     local cowsay_list = vim.split(table.concat(vim.fn.systemlist("cowsay -l | tail -n +2"), " "), " ")
@@ -292,3 +294,28 @@ g.nord_disable_background = true
 g.moonlight_disable_background = true
 g.seoul256_disable_background = true
 g.solarized_disable_background = true
+
+local dbt = require('dbtpal')
+dbt.setup {
+    -- Path to the dbt executable
+    path_to_dbt = "dbt",
+
+    -- Path to the dbt project, if blank, will auto-detect
+    -- using currently open buffer for all sql,yml, and md files
+    path_to_dbt_project = "",
+
+    -- Path to dbt profiles directory
+    path_to_dbt_profiles_dir = vim.fn.expand "~/.dbt",
+
+    -- Search for ref/source files in macros and models folders
+    extended_path_search = true,
+
+    -- Prevent modifying sql files in target/(compiled|run) folders
+    protect_compiled_files = true
+
+}
+
+-- Enable Telescope Extension
+require'telescope'.load_extension('dbtpal')
+
+require'marks'.setup {}

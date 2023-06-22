@@ -4,13 +4,13 @@ fpath=(${DOTFILESDIR}/zsh/completions $fpath)
 
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 # zsh > bash
-autoload -U compinit
+autoload -Uz compinit
 compinit
-autoload -U bashcompinit
+autoload -Uz bashcompinit
 bashcompinit
 
 # complete -o nospace -C /usr/local/bin/terraform terraform
-complete -C /usr/local/bin/terraform terraform
+complete -C $(which terraform) terraform
 
 # Paths
 export MAILPATH=/var/mail/$USER

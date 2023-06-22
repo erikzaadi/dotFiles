@@ -54,13 +54,14 @@
     default = tracking
 
 [alias]
-    branch-name = "!git rev-parse --abbrev-ref HEAD"
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    last  = cat-file commit HEAD
-    st    = ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude -t -o -u -s -m -d
-    stc   = diff --stat --name-status --cached
-    cat   = -p cat-file -p
-    up    = !git remote update ; git gc
+    status-clean = status --untracked-files=no
+    branch-name  = "!git rev-parse --abbrev-ref HEAD"
+    lg           = log --graph --pretty=format: '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    last         = cat-file commit HEAD
+    st           = ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude -t -o -u -s -m -d
+    stc          = diff --stat --name-status --cached
+    cat          = -p cat-file -p
+    up           = !git remote update ; git gc
 
     top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
 

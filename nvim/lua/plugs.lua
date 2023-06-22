@@ -18,6 +18,8 @@ require('packer').startup(function()
     use 'tpope/vim-repeat'
     use 'tpope/vim-rhubarb'
 
+    use 'chentoast/marks.nvim'
+
     use 'b3nj5m1n/kommentary' -- sorry tpope
 
     use {
@@ -47,7 +49,13 @@ require('packer').startup(function()
         },
     }
 
-    use 'rcarriga/nvim-notify'
+    use {
+        'PedramNavid/dbtpal',
+
+        requires = { { 'nvim-lua/plenary.nvim' }, {'nvim-telescope/telescope.nvim'} }
+    }
+
+    -- use 'rcarriga/nvim-notify'
 
     -- General Vim end
 
