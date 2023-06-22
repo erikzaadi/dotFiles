@@ -31,7 +31,7 @@ what-year-is-it()
 }
 
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 export PATH=$HOME/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:${PATH}
 source ${DOTFILESDIR}/zsh/zshrc
 
@@ -46,4 +46,4 @@ eval "$(op completion zsh)"; compdef _op op
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 NODE_VERSION=$(node --version)
-export PATH=/usr/local/opt/openjdk@11/bin:~/.nvm/versions/node/${NODE_VERSION}/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/opt/openjdk@11/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:/usr/local/opt/ccache/libexec:~/Code/Opensource/mine/dotFiles/bin:/usr/local/sbin:~/.fzf/bin:~/salto
+export PATH=/usr/local/opt/openjdk@11/bin:~/.nvm/versions/node/${NODE_VERSION}/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/opt/openjdk@11/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ccache/libexec:~/Code/Opensource/mine/dotFiles/bin:/usr/local/sbin:~/.fzf/bin:$PATH
