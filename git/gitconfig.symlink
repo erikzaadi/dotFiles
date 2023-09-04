@@ -103,7 +103,7 @@
 
     fnm = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
-    fnmu = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}";git push origin master:master;}; f"
+    fnmu = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}";git push origin ${WANTED_BRANCH}:${WANTED_BRANCH};}; f"
 
     reset-date = commit --amend --date=now
 
@@ -145,9 +145,13 @@
 
 [credential]
     helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [ghi]
     token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
 [rebase]
     autosquash = true
 [pull]
 	ff = only
+[credential "https://dev.azure.com"]
+	useHttpPath = true

@@ -1,6 +1,10 @@
+eval $(/opt/homebrew/bin/brew shellenv)
+autoload -U +X bashcompinit && bashcompinit
 if [[ "${ZSHENV_LOADED:="BLA"}" = "BLA" ]]; then
     source $HOME/.zshenv
 fi
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+export TERM=alacritty
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export BROWSE=open
 export CLIPBOARD='reattach-to-user-namespace pbcopy'
@@ -25,19 +29,16 @@ what-year-is-it()
     brew cleanup -s
     antidote update -b
     tldr --update
-    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    nvim --headless "+Lazy! sync" +qa
     nvim --headless -c 'UpdateRemotePlugins | qa'
-    nvim --headless -c 'TSUpdate | qa'
+    nvim --headless -c 'TSUpdateSync | qa'
 }
 
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export PATH=$HOME/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:${PATH}
 source ${DOTFILESDIR}/zsh/zshrc
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 eval "$(op completion zsh)"; compdef _op op
@@ -46,4 +47,9 @@ eval "$(op completion zsh)"; compdef _op op
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 NODE_VERSION=$(node --version)
-export PATH=/usr/local/opt/openjdk@11/bin:~/.nvm/versions/node/${NODE_VERSION}/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/opt/openjdk@11/bin:~/bin:~/Code/Opensource/mine/dotFiles/bin-mac:~/.gocode/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ccache/libexec:~/Code/Opensource/mine/dotFiles/bin:/usr/local/sbin:~/.fzf/bin:$PATH
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin~/bin:${DOTFILESDIR}/bin-mac:~/.gocode/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:~/bin:/usr/local/opt/ccache/libexec:${DOTFILESDIR}/bin:/usr/local/sbin:~/.fzf/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

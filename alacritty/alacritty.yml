@@ -7,7 +7,7 @@ window:
   decorations: none
   startup_mode: Maximized
 font:
-  size: 22.0
+  size: 26.0
   normal:
     family: Hack Nerd Font Mono
   bold:

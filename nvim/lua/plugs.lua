@@ -1,101 +1,121 @@
-require('packer').startup(function()
-
-    use 'wbthomason/packer.nvim'
+require('lazy').setup({
     -- [[ Speed up ]]
-    use {
+    --[[ {
         'lewis6991/impatient.nvim',
         opt = true,
         config = function() require('impatient') end
-    }
+    } ]]
     -- General Vim
     -- TPope, make me a child
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-eunuch'
-    use 'tpope/vim-abolish'
-    -- use 'tpope/vim-commentary'
-    use 'tpope/vim-vinegar'
-    use 'tpope/vim-surround'
-    use 'tpope/vim-repeat'
-    use 'tpope/vim-rhubarb'
+    'tpope/vim-fugitive',
+    'tpope/vim-eunuch',
+    'tpope/vim-surround',
+    'tpope/vim-repeat',
 
-    use 'chentoast/marks.nvim'
+    'chentoast/marks.nvim',
 
-    use 'b3nj5m1n/kommentary' -- sorry tpope
-
-    use {
-        'lazytanuki/nvim-mapper',
-        before = 'telescope.nvim'
-    }
-    use 'skywind3000/asyncrun.vim'
-    use 'AndrewRadev/ginitpull.vim'
-    use 'rhysd/conflict-marker.vim'
-    use 'junegunn/gv.vim'
-    use 'junegunn/vim-easy-align'
-    use 'AndrewRadev/splitjoin.vim'
-    use 'vim-scripts/loremipsum'
-    use 'itspriddle/vim-stripper'
-    use 'Raimondi/delimitMate'
-    use 'editorconfig/editorconfig-vim'
-    use {
+    'b3nj5m1n/kommentary', -- sorry tpope
+    {
+        'gregorias/nvim-mapper',
+        dependencies = 'nvim-telescope/telescope.nvim',
+        config = function() require'nvim-mapper'.setup{} end,
+    },
+    {
+        'nvim-telescope/telescope-ui-select.nvim',
+        dependencies = 'nvim-telescope/telescope.nvim',
+    },
+    'skywind3000/asyncrun.vim',
+    'rhysd/conflict-marker.vim',
+    {
+        'junegunn/gv.vim',
+        dependencies = 'tpope/vim-fugitive'
+    },
+    'junegunn/vim-easy-align',
+    'vim-scripts/loremipsum',
+    'itspriddle/vim-stripper',
+    'Raimondi/delimitMate',
+    'editorconfig/editorconfig-vim',
+    {
         'moorereason/vim-markdownfmt',
         ft = { 'markdown' }
-    }
-    use 'idanarye/vim-merginal'
-    use {
+    },
+    {
         'fhill2/telescope-ultisnips.nvim',
-        require = {
+        dependencies = {
             'SirVer/ultisnips',
             'nvim-telescope/telescope.nvim',
         },
-    }
-
-    use {
+    },
+    {
         'PedramNavid/dbtpal',
+        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' }
+    },
+    {
+        'elentok/scriptify.nvim',
+        ft = 'sh',
+        opts = {},
+        cmd = { 'Scriptify' }
+    },
+    {
+        'elentok/togglr.nvim',
+        opts = {
+            key = nil,
+        },
+    },
 
-        requires = { { 'nvim-lua/plenary.nvim' }, {'nvim-telescope/telescope.nvim'} }
-    }
-
-    -- use 'rcarriga/nvim-notify'
-
+    'neovim/nvim-lspconfig',
     -- General Vim end
 
     -- Completion
 
-    use 'neovim/nvim-lspconfig'
-
-    use 'folke/lsp-colors.nvim'
-
-    use {
+    {
+        'nvimdev/guard.nvim',
+        -- branch = 'add-default-lsp-option',
+        config  = function ()
+            require('guard').setup({
+                fmt_on_save = false,
+                lsp_as_default_formatter = true,
+            })
+        end,
+        dev = false,
+    },
+    {
+        'nvimdev/lspsaga.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = function()
+            require('lspsaga').setup({})
+        end,
+    },
+    'folke/lsp-colors.nvim',
+    {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} },
-    }
-
-    use {
+        dependencies = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} },
+    },
+    {
         'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-    }
-
-    use {
+        dependencies = 'nvim-tree/nvim-web-devicons',
+    },
+    {
         'lewis6991/gitsigns.nvim',
-        requires = {
+        dependencies = {
             'nvim-lua/plenary.nvim'
         },
-    }
-
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-    }
-    use {
+    },
+    {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+    },
+    {
         'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make',
-    }
-
-    use 'jremmen/vim-ripgrep'
-
-    use {
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    },
+    'jremmen/vim-ripgrep',
+    {
         'hrsh7th/nvim-cmp',
-        requires = {
+        dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
@@ -105,106 +125,98 @@ require('packer').startup(function()
             'ray-x/cmp-treesitter',
             'quangnguyen30192/cmp-nvim-ultisnips',
         },
-    }
-    use {
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-    }
-    use {
+        build = ':TSUpdate',
+    },
+    {
         'Shougo/vimproc.vim',
-        run = 'make',
-    }
+        build = 'make',
+    },
     -- Completion End
 
     -- Color Schemes
-    -- use 'xiyaowong/nvim-transparent'
-    use 'shaunsingh/nord.nvim'
-    use 'shaunsingh/solarized.nvim'
-    use 'shaunsingh/seoul256.nvim'
-    use 'shaunsingh/moonlight.nvim'
-
-    -- use 'gruvbox-community/gruvbox'
-    use 'EdenEast/nightfox.nvim'
-    use 'luisiacc/gruvbox-baby'
-    -- use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    -- use 'rmehri01/onenord.nvim'
-    -- use { 'dracula/vim', as = 'dracula' }
+    'shaunsingh/nord.nvim',
+    'shaunsingh/solarized.nvim',
+    'luisiacc/gruvbox-baby',
+    'ellisonleao/gruvbox.nvim',
 
     -- Color Schemes end
 
     -- Python
-    use {
+    --[[ {
         'jmcantrell/vim-virtualenv',
         ft = {'python', 'markdown'},
-    }
+    }, ]]
     -- Python end
 
     -- Web (generic)
-    use {
+    {
         'rstacruz/vim-ultisnips-css',
         ft = { 'css' },
-        requires = 'SirVer/ultisnips',
-    }
-    use 'mattn/emmet-vim'
-    use 'ap/vim-css-color'
+        dependencies = 'SirVer/ultisnips',
+    },
+    'mattn/emmet-vim',
+    'ap/vim-css-color',
     -- Web (generic) end
 
     -- Typescript
     -- Typescript end
 
     -- Javascript / node
-    use 'jose-elias-alvarez/null-ls.nvim'
-    -- use 'MunifTanjim/prettier.nvim'
+    -- 'jose-elias-alvarez/null-ls.nvim',
     -- Javascript / node end
 
     -- Go
-    -- use 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
+    -- 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
     -- Go
 
     -- Scala
-    -- use 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
-    -- use 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
+    -- 'derekwyatt/vim-scala', { 'for' : ['scala', 'markdown'] }
+    -- 'natebosch/vim-lsc', { 'for' : ['scala', 'markdown'], 'do': 'install-vim-metal' }
     -- Scala End
 
     -- Misc
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    }
-    use 'cespare/vim-toml'
-    use 'hashivim/vim-terraform'
-    use {
+        dependencies = {'nvim-tree/nvim-web-devicons', opt = true},
+    },
+    'hashivim/vim-terraform',
+    {
         'Glench/Vim-Jinja2-Syntax',
         ft = { 'jinja', 'jinja2' },
-    }
-    use 'honza/vim-snippets'
-    use {
+    },
+    'honza/vim-snippets',
+    {
         'vim-scripts/nginx.vim',
         ft = { 'nginx', 'markdown' },
-    }
-    use {
+    },
+    {
         'tmux-plugins/vim-tmux',
         ft = { 'tmux', 'markdown' },
-    }
-    use {
+    },
+    {
         'sotte/presenting.vim',
         ft = { 'markdown' },
-    }
-    use {
+    },
+    {
         'ekalinin/Dockerfile.vim' ,
         ft = { 'Dockerfile', 'markdown' }
-    }
-    use {
+    },
+    {
         'jparise/vim-graphql',
         ft = { 'graphql', 'markdown' }
-    }
-    use 'segeljakt/vim-isotope'
-    use 'psliwka/vim-smoothie'
-    -- use 'mhinz/vim-startify'
-    use {
+    },
+    -- 'mhinz/vim-startify'
+    {
         'goolord/alpha-nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-    }
-    -- use 'tweekmonster/startuptime.vim'
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+    },
+    -- 'tweekmonster/startuptime.vim'
     -- Misc end
-end)
+}, {
+    dev = {
+        path = string.format('%s/mine', os.getenv('OPENSOURCEDIR')),
+    },
+})

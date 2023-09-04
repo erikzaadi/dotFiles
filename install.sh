@@ -1,13 +1,12 @@
 #!/bin/bash
-SCRIPT_BASE="$( cd -P "$( dirname "$0" )" && pwd )"
+SCRIPT_BASE="$(cd -P "$(dirname "$0")" && pwd)"
 export PATH=${PATH}:${SCRIPT_BASE}/bin
 
 #UBER hacky way to generate a star banner
-STAR_LINE="`python -c 'import os;columns = os.popen("stty size", "r").read().split()[-1];print "*" * int(columns)'`"
+STAR_LINE="$(python -c 'import os;columns = os.popen("stty size", "r").read().split()[-1];print "*" * int(columns)')"
 
-function log_message
-{
-    echo """${STAR_LINE}
+function log_message {
+  echo """${STAR_LINE}
 
     $1
 
@@ -27,36 +26,35 @@ log_message """
 """
 
 if [[ ! -d ${SCRIPT_BASE}/.git ]]; then
-    log_message "Not in git repo, cloning.."
-    git clone https://github.com/erikzaadi/dotFiles
-    ${SCRIPT_BASE}/dotFiles/install.sh
-    exit $?
+  log_message "Not in git repo, cloning.."
+  git clone https://github.com/erikzaadi/dotFiles
+  ${SCRIPT_BASE}/dotFiles/install.sh
+  exit $?
 else
-    log_message "Updating dotFiles repo and submodules.."
-    GIT_CMD_WITH_PATHS="git --git-dir=${SCRIPT_BASE}/.git --work-tree=${SCRIPT_BASE}"
-    ${GIT_CMD_WITH_PATHS} pull origin master
+  log_message "Updating dotFiles repo and submodules.."
+  GIT_CMD_WITH_PATHS="git --git-dir=${SCRIPT_BASE}/.git --work-tree=${SCRIPT_BASE}"
+  ${GIT_CMD_WITH_PATHS} pull origin master
 fi
 
 if [[ ! -f ~/.envvars.rc ]]; then
-    echo "export DOTFILESDIR=${SCRIPT_BASE}" > ~/.envvars.rc
+  echo "export DOTFILESDIR=${SCRIPT_BASE}" >~/.envvars.rc
 else
-    if [[ ! $(cat ~/.envvars.rc | grep DOTFILESDIR) ]]; then
-        echo "export DOTFILESDIR=${SCRIPT_BASE}" >> ~/.envvars.rc
-    else
-        sed -i ~/.envvars.rc -e "s/export\sDOTFILESDIR=.*$/export DOTFILESDIR=${SCRIPT_BASE}/"
-    fi
+  if [[ ! $(cat ~/.envvars.rc | grep DOTFILESDIR) ]]; then
+    echo "export DOTFILESDIR=${SCRIPT_BASE}" >>~/.envvars.rc
+  else
+    sed -i ~/.envvars.rc -e "s/export\sDOTFILESDIR=.*$/export DOTFILESDIR=${SCRIPT_BASE}/"
+  fi
 fi
 
-function symlink_for_pattern()
-{
-    PATTERN=$1
-    ORIGIN=$2
-    TARGET=$3
-    for symlink in `${SCRIPT_BASE}/bin/g_or_native find ${ORIGIN} -name "*${PATTERN}"`; do
-        TARGET_SYMLINK=$(basename ${symlink})
-        TARGET_SYMLINK=$(echo ${TARGET_SYMLINK} | ${SCRIPT_BASE}/bin/g_or_native sed -e "s/${PATTERN}//g")
-        ln -sf ${symlink} ~/.${TARGET_SYMLINK}
-    done
+function symlink_for_pattern() {
+  PATTERN=$1
+  ORIGIN=$2
+  TARGET=$3
+  for symlink in $(${SCRIPT_BASE}/bin/g_or_native find ${ORIGIN} -name "*${PATTERN}"); do
+    TARGET_SYMLINK=$(basename ${symlink})
+    TARGET_SYMLINK=$(echo ${TARGET_SYMLINK} | ${SCRIPT_BASE}/bin/g_or_native sed -e "s/${PATTERN}//g")
+    ln -sf ${symlink} ~/.${TARGET_SYMLINK}
+  done
 }
 
 log_message "Symlinking OS agnostic links.."
@@ -65,61 +63,73 @@ symlink_for_pattern ".symlink" ${SCRIPT_BASE} ~/
 symlink_for_pattern "\*" ${SCRIPT_BASE}/config ~/config
 
 if [[ "$(uname)" = "Darwin" ]]; then
-    log_message "Symlinking Mac links.."
-    symlink_for_pattern ".symlink-mac" ${SCRIPT_BASE} ~/
-    log_message "Brewing ALL THE THINGS.."
-    xcode-select --install
-    if [[ ! $(which brew) ]]; then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-    for tap in $(cat ${SCRIPT_BASE}/mac/tap);do
-        brew tap ${tap}
-    done
-    for keg in $(cat ${SCRIPT_BASE}/mac/brew);do
-        brew install ${keg}
-    done
-    for cask in $(cat ${SCRIPT_BASE}/mac/cask);do
-        brew install ${cask}
-    done
-#    log_message "Setting custom OS-X Settings.."
-#    bash ${SCRIPT_BASE}/mac/osx-settings
-    log_message "Installing python packages.."
-    pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
+  log_message "Symlinking Mac links.."
+  symlink_for_pattern ".symlink-mac" ${SCRIPT_BASE} ~/
+  log_message "Brewing ALL THE THINGS.."
+  xcode-select --install
+  if [[ ! $(which brew) ]]; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+#   for tap in $(cat ${SCRIPT_BASE}/mac/tap); do
+#    brew tap ${tap}
+#  done
+#  for keg in $(cat ${SCRIPT_BASE}/mac/brew); do
+#    brew install ${keg}
+#  done
+#  for cask in $(cat ${SCRIPT_BASE}/mac/cask); do
+#    brew install ${cask}
+#  done
+
+#  if [[ ! -f ~/.pyenv ]]; then
+#    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+#    OPENSSL_PREFIX=$(brew --prefix openssl)
+#    CONFIGURE_OPTS="-with-openssl=${OPENSSL_PREFIX}" pyenv install 3.9
+#
+#    pyenv virtualenv 3.9 neovim3
+#    pyenv activate neovim3
+#    pip install neovim flake8 anakin-language-server
+#    pyenv which python # Note the path
+#  fi
+
+  #    log_message "Setting custom OS-X Settings.."
+  #    bash ${SCRIPT_BASE}/mac/osx-settings
+#  log_message "Installing python packages.."
+#  pip install -r ${SCRIPT_BASE}/python/requirements.txt-mac
 else
-    log_message "Installing Antibody for zsh (FTW)"
-    curl -s https://raw.githubusercontent.com/getantibody/installer/master/install | bash -s
-    log_message "Symlinking Ubuntu links.."
-    symlink_for_pattern ".symlink-ubuntu" ${SCRIPT_BASE} ~/
-    log_message "apt-get ALL THE THINGS.."
-    sudo apt-get update
-    sudo apt-get install -y $(cat ${SCRIPT_BASE}/ubuntu/apt)
-    sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
-    log_message "Installing python packages.."
-    sudo pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
+  log_message "Installing Antibody for zsh (FTW)"
+  curl -s https://raw.githubusercontent.com/getantibody/installer/master/install | bash -s
+  log_message "Symlinking Ubuntu links.."
+  symlink_for_pattern ".symlink-ubuntu" ${SCRIPT_BASE} ~/
+  log_message "apt-get ALL THE THINGS.."
+  sudo apt-get update
+  sudo apt-get install -y $(cat ${SCRIPT_BASE}/ubuntu/apt)
+  sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
+  log_message "Installing python packages.."
+  sudo pip install -r ${SCRIPT_BASE}/python/requirements.txt-ubuntu
 fi
 
 if [[ "${SHELL}" != */zsh ]]; then
-    log_message "Setting zsh (FTW) as shell.."
-    ZSH=$(which zsh)
-    chsh -s ${ZSH}
-    sudo chsh -s ${ZSH}
+  log_message "Setting zsh (FTW) as shell.."
+  ZSH=$(which zsh)
+  chsh -s ${ZSH}
+  sudo chsh -s ${ZSH}
 fi
 
-if [[ ! -f ~/.nvm/nvm.sh ]];then
-    log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
-    git clone https://github.com/creationix/nvm.git ~/.nvm
-    source ~/.nvm/nvm.sh
-fi
-
-nvm install lastest
-nvm use node
-nvm alias default node
+#if [[ ! -f ~/.nvm/nvm.sh ]]; then
+#  log_message "Installing nvm and node v${LATEST_STABLE_NODE}"
+#  git clone https://github.com/creationix/nvm.git ~/.nvm
+#  source ~/.nvm/nvm.sh
+#fi
+#
+#nvm install lastest
+#nvm use node
+#nvm alias default node
 
 log_message "Installing node packages.."
-npm i -g $(cat ${SCRIPT_BASE}/node/packages | tr '\n' ' ')
+#npm i -g $(cat ${SCRIPT_BASE}/node/packages | tr '\n' ' ')
 
 log_message "Installing (Neo)Vim Packages.."
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-nvim --headless -c 'UpdateRemotePlugins | qa'
+#nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+#nvim --headless -c 'UpdateRemotePlugins | qa'
 
 log_message "Done, great success!!1"
