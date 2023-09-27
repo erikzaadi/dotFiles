@@ -27,22 +27,25 @@ log_message """
 
 if [[ ! -d ${SCRIPT_BASE}/.git ]]; then
   log_message "Not in git repo, cloning.."
-  git clone https://github.com/erikzaadi/dotFiles
+  git clone --recurse-submodules https://github.com/erikzaadi/dotFiles
   ${SCRIPT_BASE}/dotFiles/install.sh
   exit $?
 else
   log_message "Updating dotFiles repo and submodules.."
   GIT_CMD_WITH_PATHS="git --git-dir=${SCRIPT_BASE}/.git --work-tree=${SCRIPT_BASE}"
   ${GIT_CMD_WITH_PATHS} pull origin master
+  ${GIT_CMD_WITH_PATHS} submodules init --recursive
 fi
 
-if [[ ! -f ~/.envvars.rc ]]; then
-  echo "export DOTFILESDIR=${SCRIPT_BASE}" >~/.envvars.rc
+ENVARS_FILE=~/.envvars.rc
+
+if [[ ! -f ${ENVARS_FILE} ]]; then
+  echo "export DOTFILESDIR=${SCRIPT_BASE}" > ${ENVARS_FILE}
 else
-  if [[ ! $(cat ~/.envvars.rc | grep DOTFILESDIR) ]]; then
-    echo "export DOTFILESDIR=${SCRIPT_BASE}" >>~/.envvars.rc
+  if [[ ! $(cat ${ENVARS_FILE} | grep DOTFILESDIR) ]]; then
+    echo "export DOTFILESDIR=${SCRIPT_BASE}" >> ${ENVARS_FILE}
   else
-    sed -i ~/.envvars.rc -e "s/export\sDOTFILESDIR=.*$/export DOTFILESDIR=${SCRIPT_BASE}/"
+    sed -i ${ENVARS_FILE} -e "s/export\sDOTFILESDIR=.*$/export DOTFILESDIR=${SCRIPT_BASE}/"
   fi
 fi
 
@@ -56,6 +59,10 @@ function symlink_for_pattern() {
     ln -sf ${symlink} ~/.${TARGET_SYMLINK}
   done
 }
+
+
+ln -s ${SCRIPT_BASE}/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -s ${SCRIPT_BASE}/deps/kitty_gruvbox_theme ~/.config/kitty/theme
 
 log_message "Symlinking OS agnostic links.."
 

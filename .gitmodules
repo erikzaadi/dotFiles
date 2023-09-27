@@ -1,0 +1,3 @@
+[submodule "deps/kitty_gruvbox_theme"]
+	path = deps/kitty_gruvbox_theme
+	url = https://github.com/wdomitrz/kitty_gruvbox_theme.git

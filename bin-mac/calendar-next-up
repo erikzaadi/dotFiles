@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+which gcalcli > /dev/null
+if [[ $? != 0 ]]; then
+    echo ""
+    exit 0
+fi
 NEXT_UP=$(
     # get agenda for next 20 minutes in tsv
     gcalcli agenda --tsv $(date +"%H:%M") $(date -j -v +20M +"%H:%M") |\

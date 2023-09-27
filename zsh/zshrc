@@ -56,7 +56,7 @@ delete-line()
 }
 
 alias ms="tmuxp load -y"
-export TERM=screen-256color
+export TERM=xterm-kitty
 export EDITOR=nvim
 # if [[ $(which nvim) ]]; then
 #     export EDITOR=nvim

@@ -7,8 +7,8 @@ source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 export TERM=alacritty
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export BROWSE=open
-export CLIPBOARD='reattach-to-user-namespace pbcopy'
-export PASTE='reattach-to-user-namespace pbpaste'
+export CLIPBOARD='pbcopy'
+export PASTE='pbpaste'
 
 dashush()
 {

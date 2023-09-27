@@ -161,9 +161,9 @@ local servers = {
     'html',
     -- 'metals',
     'jsonls',
-    -- 'pylsp',
-    'anakin_language_server',
+    -- 'anakin_language_server',
     -- 'jedi_language_server',
+    'pylsp',
     -- 'graphql',
     'gopls',
     'bashls',
@@ -300,4 +300,17 @@ dbt.setup {
     -- Prevent modifying sql files in target/(compiled|run) folders
     protect_compiled_files = true
 
+}
+
+require'lspconfig'.pylsp.setup{
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'E501'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
 }
