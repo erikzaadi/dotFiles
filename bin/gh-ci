@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+PR_URL=$(gh pr view --json url -t '{{.url}}')
+SUCCESS_ICON=${DOTFILESDIR}/icons/success.png
+FAIL_ICON=${DOTFILESDIR}/icons/facepalm.png
+GH_ICON=${DOTFILESDIR}/icons/github_octocat.png
+_message() {
+    echo "GH Watch $([[ $1 == 0 ]] && echo "Succeded" || echo "Failed")"
+}
+_icon() {
+    echo "$([[ $1 == 0 ]] && echo ${SUCCESS_ICON} || echo ${FAIL_ICON})"
+}
+gh run watch; STATUS=$? terminal-notifier -title 'GH CI Done!!1' -message "$(_message ${STATUS})" -open "${PR_URL}" -appIcon "${GH_ICON}" -contentImage "$(_icon ${STATUS})" -group ${PR_URL}
