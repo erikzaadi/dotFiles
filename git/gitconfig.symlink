@@ -1,3 +1,4 @@
+; vim:ft=gitconfig:
 [github]
     user = erikzaadi
     token =
@@ -6,6 +7,12 @@
     name = erikzaadi
     email = erik.zaadi@gmail.com
     editor = nvim
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
 
 [color]
     diff = auto
@@ -33,7 +40,8 @@
     untracked = cyan
 
 [diff]
-    tool = nvimdiffftw
+    tool = difftastic
+    ; tool = nvimdiffftw
 
 [difftool]
     prompt = false
@@ -58,6 +66,7 @@
     branch-name  = "!git rev-parse --abbrev-ref HEAD"
     lg           = log --graph --pretty=format: '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     last         = cat-file commit HEAD
+    last-commit  = rev-parse HEAD
     st           = ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude -t -o -u -s -m -d
     stc          = diff --stat --name-status --cached
     cat          = -p cat-file -p
@@ -75,7 +84,7 @@
 
     log1 = log --pretty=oneline --abbrev-commit --decorate
 
-    findnext = rev-list --reverse -n1 HEAD..master
+    findnext = rev-list --reverse -n1 HEAD..main
     checkoutnext = !git checkout `git findnext`
 
     file-blame = !git ls-files | xargs -n1 -i{} git log -1 --pretty=format:\"%ci {}\" -- {}
@@ -101,20 +110,21 @@
 
     pullf = pull --ff-only
 
-    fnm = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+    fnm = "!f() { WANTED_BRANCH="${1:-main}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
 
-    fnmu = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}";git push origin ${WANTED_BRANCH}:${WANTED_BRANCH};}; f"
+
+    fnmu = "!f() { WANTED_BRANCH="${1:-main}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch upstream "${WANTED_BRANCH}:${WANTED_BRANCH}";git push origin ${WANTED_BRANCH}:${WANTED_BRANCH};}; f"
 
     reset-date = commit --amend --date=now
 
     # git rebase interactively based on branch ($1)
-    rbm = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash -i "${WANTED_BRANCH}"; }; f"
+    rbm = "!f() { WANTED_BRANCH="${1:-main}"; echo "Rebasing ${WANTED_BRANCH}";git rebase --autostash -i "${WANTED_BRANCH}"; }; f"
 
     micdrop = "!f() { PREVIOUS_BRANCH=$(git rev-parse --symbolic-full-name @{-1} | sed 's/refs\\/heads\\///g'); WANTED_BRANCH="${1:-${PREVIOUS_BRANCH}}"; echo "Cleaning up ${WANTED_BRANCH} like a boss!"; git branch -d "${WANTED_BRANCH}";git push origin ":${WANTED_BRANCH}"; }; f"
 
     prune-remote = remote prune origin
 
-    cleanup-local-merged = '!f() { git branch --merged ${1:-master} | grep -v " ${1:-master}$" | xargs -r git branch -d; }; f'
+    cleanup-local-merged = '!f() { git branch --merged ${1:-main} | grep -v " ${1:-main}$" | xargs -r git branch -d; }; f'
 
     reset-to-head = "!f() { WANTED_REMOTE="${1:-origin}"; NEEDED_REF="${WANTED_REMOTE}/$(git branch-name)"; echo "Resettin hard to ${NEEDED_REF}"; git reset --hard ${NEEDED_REF}"
 
@@ -144,7 +154,7 @@
 
 [credential]
     helper = osxkeychain
-	helper = 
+	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [ghi]
     token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
@@ -154,3 +164,5 @@
 	ff = only
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[init]
+	templatedir = ~/.git-templates

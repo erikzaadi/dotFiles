@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+PRESENTATION_NAME="$*"
+PRESENTATION_NAME_FORMATTED=$(echo ${PRESENTATION_NAME} | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+PRESENTATION_FINAL_DIR=${PRESENTATIONDIR}/${PRESENTATION_NAME_FORMATTED}
+
+TEMPLATE="""---
+title: "${PRESENTATION_NAME}"
+theme: night
+highlightTheme: gruvbox-dark
+---
+
+## ${PRESENTATION_NAME}
+
+#### FTW!
+
+----
+
+Here be dragons!
+
+"""
+
+
+if [[ ! -d ${PRESENTATION_FINAL_DIR} ]]; then
+    mkdir -p ${PRESENTATION_FINAL_DIR} > /dev/null
+    echo "${TEMPLATE}" > ${PRESENTATION_FINAL_DIR}/presentation.md
+fi
+
+echo ${PRESENTATION_FINAL_DIR}

@@ -1,16 +1,19 @@
 #all ze completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
 fpath=(${DOTFILESDIR}/zsh/completions $fpath)
 
-zstyle ':completion:*:*:make:*' tag-order 'targets'
-# zsh > bash
-autoload -Uz compinit
-compinit
-autoload -Uz bashcompinit
-bashcompinit
+# zstyle ':completion:*:*:make:*' tag-order 'targets'
+# # zsh > bash
+# autoload -Uz compinit
+# compinit
+# autoload -Uz bashcompinit
+# bashcompinit
 
 # complete -o nospace -C /usr/local/bin/terraform terraform
-complete -C $(which terraform) terraform
+# complete -C $(which terraform) terraform
 
 # Paths
 export MAILPATH=/var/mail/$USER
@@ -23,7 +26,7 @@ fi
 
 source $HOME/.zshenv
 
-source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+# source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 source <(kubectl completion zsh)
 
@@ -41,6 +44,7 @@ source $DOTFILESDIR/zsh/defaults
 alias chuck='sudo'
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
 alias pwdc='pwd | ${CLIPBOARD}'
+alias tf=terraform
 
 alias vimdiff='nvim -d'
 
@@ -56,7 +60,8 @@ delete-line()
 }
 
 alias ms="tmuxp load -y"
-export TERM=xterm-kitty
+export TERM=xterm-256color
+# export TERM=xterm-kitty
 export EDITOR=nvim
 # if [[ $(which nvim) ]]; then
 #     export EDITOR=nvim
@@ -91,7 +96,7 @@ function _git_deleteremote() {
   _git_branch
 }
 
-compdef '_path_files -/ -W ~/Documents/Presentations' pwo
+compdef '_path_files -/ -W ${PRESENTATIONDIR}' pwo
 
 function revealz()
 {
@@ -107,7 +112,7 @@ function revealz-print()
 
 function pwo()
 {
-    PRESENTATION_NAME=$1 ms presentation
+    PRESENTATION_NAME="$*" ms presentation
 }
 
 tfm() {
@@ -123,6 +128,7 @@ export FZF_DEFAULT_OPTS='
 '
 
 
-eval "$(starship init zsh)"
 eval "$(fnm env)"
 eval "$(fnm completions)"
+eval "$(starship init zsh)"
+command -v jira >/dev/null || jira completion zsh > /usr/local/share/zsh/site-functions/_jira

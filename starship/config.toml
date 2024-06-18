@@ -5,6 +5,7 @@ ${custom.git_branch_fixed}\
 $git_status\
 $git_state\
 $nodejs\
+$python\
 ${custom.raftt}\
 \n\
 ${custom.random_emoticon}\
@@ -59,3 +60,8 @@ error_symbol = "[➜](bold red) "
 
 [nodejs]
 format = "[🤖 $version](bold green)"
+
+[python]
+symbol = '👾 '
+pyenv_version_name = true
+format = '[${symbol}$virtualenv]($style)'

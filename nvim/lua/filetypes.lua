@@ -41,8 +41,8 @@ local g   = vim.g      -- a table to access global variables
     -- Spell-check Git messages
     cmd 'autocmd FileType gitcommit setlocal spell'
     cmd 'au BufNewFile,BufRead *.prisma setfiletype graphql'
-    cmd 'au BufNewFile,BufRead *.yaml set filetype=yaml.ansible'
-    cmd 'au BufNewFile,BufRead *.yml set filetype=yaml.ansible'
+    --[[ cmd 'au BufNewFile,BufRead *.yaml set filetype=yaml.ansible'
+    cmd 'au BufNewFile,BufRead *.yml set filetype=yaml.ansible' ]]
     cmd 'au FileType markdown nmap <leader>s :<C-u>call markdownfmt#Format()<CR>'
     cmd 'au BufNewFile,BufRead *.nacl set filetype=salto.vhdl'
 -- Misc end

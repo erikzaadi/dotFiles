@@ -6,7 +6,7 @@ if [[ $? != 0 ]]; then
 fi
 NEXT_UP=$(
     # get agenda for next 20 minutes in tsv
-    gcalcli agenda --tsv $(date +"%H:%M") $(date -j -v +20M +"%H:%M") |\
+    gcalcli agenda --tsv $(date +"%H:%M") $(date -d "+ 25 Minutes" +"%H:%M") |\
     # filter out all day events
     egrep -v '00:00' |\
     # format it (HH:MM-HH:MM TITLE)

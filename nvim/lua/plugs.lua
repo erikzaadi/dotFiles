@@ -7,13 +7,39 @@ require('lazy').setup({
     } ]]
     -- General Vim
     -- TPope, make me a child
+    'tpope/vim-rhubarb',
     'tpope/vim-fugitive',
     'tpope/vim-eunuch',
     'tpope/vim-surround',
     'tpope/vim-repeat',
-
+    {
+        'kdheepak/lazygit.nvim',
+        dependencies =  {
+            'nvim-telescope/telescope.nvim',
+            'nvim-lua/plenary.nvim'
+        },
+        config = function() require('telescope').load_extension('lazygit') end,
+    },
     'chentoast/marks.nvim',
+    'mfussenegger/nvim-dap',
+    'theHamsta/nvim-dap-virtual-text',
+    {
+        'ray-x/guihua.lua',
+        build = 'cd lua/fzy && make'
+    },
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+    {
+        "ray-x/go.nvim",
+        dependencies = {  -- optional packages
+        "ray-x/guihua.lua",
+        },
+        config = function() require("go").setup() end,
+        event = {"CmdlineEnter"},
+        ft = {"go", 'gomod'},
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    },
 
+    'jrop/jq.nvim',
     'b3nj5m1n/kommentary', -- sorry tpope
     {
         'gregorias/nvim-mapper',
@@ -25,6 +51,7 @@ require('lazy').setup({
         dependencies = 'nvim-telescope/telescope.nvim',
     },
     'skywind3000/asyncrun.vim',
+    'puremourning/vimspector',
     'rhysd/conflict-marker.vim',
     {
         'junegunn/gv.vim',
@@ -54,10 +81,6 @@ require('lazy').setup({
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         }
-    },
-    {
-        'PedramNavid/dbtpal',
-        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' }
     },
     {
         'elentok/scriptify.nvim',
@@ -118,8 +141,9 @@ require('lazy').setup({
         dependencies = 'nvim-tree/nvim-web-devicons',
     },
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+      "ibhagwan/fzf-lua",
+      -- optional for icon support
+      dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     'jremmen/vim-ripgrep',
     {
@@ -146,10 +170,11 @@ require('lazy').setup({
     -- Completion End
 
     -- Color Schemes
-    'shaunsingh/nord.nvim',
-    'shaunsingh/solarized.nvim',
-    'luisiacc/gruvbox-baby',
-    'ellisonleao/gruvbox.nvim',
+    -- 'shaunsingh/nord.nvim',
+    -- 'shaunsingh/solarized.nvim',
+    -- 'luisiacc/gruvbox-baby',
+    -- 'ellisonleao/gruvbox.nvim',
+    'sainnhe/gruvbox-material',
 
     -- Color Schemes end
 
@@ -178,7 +203,7 @@ require('lazy').setup({
     -- Javascript / node end
 
     -- Go
-    -- 'fatih/vim-go', { 'for' : ['go', 'markdown'] }
+    -- 'fatih/vim-go',
     -- Go
 
     -- Scala
@@ -224,6 +249,11 @@ require('lazy').setup({
     },
     -- 'tweekmonster/startuptime.vim'
     -- Misc end
+
+    'yasuhiroki/github-actions-yaml.vim',
+    'aklt/plantuml-syntax',
+    'weirongxu/plantuml-previewer.vim',
+    'tyru/open-browser.vim'
 }, {
     dev = {
         path = string.format('%s/mine', os.getenv('OPENSOURCEDIR')),

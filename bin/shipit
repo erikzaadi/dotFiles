@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+HEAD_BRANCH=${1:-main}
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git checkout ${HEAD_BRANCH}
+git merge --ff-only ${CURRENT_BRANCH}
+git push
+git branch -d ${CURRENT_BRANCH}
+git push origin :${CURRENT_BRANCH}

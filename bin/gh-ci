@@ -9,4 +9,6 @@ _message() {
 _icon() {
     echo "$([[ $1 == 0 ]] && echo ${SUCCESS_ICON} || echo ${FAIL_ICON})"
 }
-gh run watch; STATUS=$? terminal-notifier -title 'GH CI Done!!1' -message "$(_message ${STATUS})" -open "${PR_URL}" -appIcon "${GH_ICON}" -contentImage "$(_icon ${STATUS})" -group ${PR_URL}
+gh run watch
+STATUS=$?
+terminal-notifier -title 'GH CI Done!!1' -message "$(_message ${STATUS})" -open "${PR_URL}" -appIcon "${GH_ICON}" -contentImage "$(_icon ${STATUS})" -group ${PR_URL}

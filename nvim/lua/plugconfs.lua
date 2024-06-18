@@ -3,7 +3,7 @@ local g   = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 local expand = vim.fn.expand
 
-g.current_theme = 'gruvbox'
+g.current_theme = 'gruvbox-material'
 
 require'nvim-treesitter.configs'.setup {
     auto_install = false,
@@ -38,14 +38,6 @@ require('nvim-mapper').setup({
 local telescopeactions = require('telescope.actions')
 local Telescope = require('telescope')
 Telescope.setup{
-    extensions = {
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = 'smart_case',
-        },
-    },
     defaults = {
         vimgrep_arguments = {
             '/opt/homebrew/bin/rg',
@@ -76,9 +68,7 @@ Telescope.setup{
 
 local telescope_extensions = {
     'mapper',
-    'fzf',
     'ultisnips',
-    'dbtpal',
     'ui-select',
 }
 
@@ -163,6 +153,7 @@ local servers = {
     'jsonls',
     -- 'anakin_language_server',
     -- 'jedi_language_server',
+    'ruff_lsp',
     'pylsp',
     -- 'graphql',
     'gopls',
@@ -175,7 +166,7 @@ for _, proto in ipairs(servers) do
     }
 end
 
---[[ lsp.pylsp.setup {
+lsp.pylsp.setup {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     pylsp = {
@@ -196,7 +187,7 @@ end
             }
         }
     }
- ]]
+}
 
 g.plug_timeout                = 180
 g.UltiSnipsSnippetDirectories = {string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
@@ -210,8 +201,8 @@ g.markdown_fenced_languages   = {
     'scala', 'javascript', 'yaml', 'json',
     'go', 'tmux', 'ansible',
 }
-g.gruvbox_transp_bg           = 1
-g.gruvbox_italic              = 1
+-- g.gruvbox_transp_bg           = 1
+-- g.gruvbox_italic              = 1
 g.python_host_prog            = expand('~/.pyenv/shims/python')
 g.python3_host_prog           = expand('~/.pyenv/shims/python')
 g.python_interpreter          = expand('~/.pyenv/shims/python')
@@ -267,50 +258,35 @@ startify.section.header.val = random_fortuned_cow()
 alpha.setup(startify.config)
 
 
--- Enable transparent mode
-g.gruvbox_baby_transparent_mode = 1
-g.gruvbox_baby_telescope_theme = 1
-g.gruvbox_baby_use_original_palette = 1
-
-
-require('gruvbox').setup({
+--[[ require('gruvbox').setup({
    transparent_mode = true,
-})
+}) ]]
 
-g.nord_disable_background = true
+--[[ g.nord_disable_background = true
 g.moonlight_disable_background = true
 g.seoul256_disable_background = true
-g.solarized_disable_background = true
-
-local dbt = require('dbtpal')
-dbt.setup {
-    -- Path to the dbt executable
-    path_to_dbt = 'dbt',
-
-    -- Path to the dbt project, if blank, will auto-detect
-    -- using currently open buffer for all sql,yml, and md files
-    path_to_dbt_project = '',
-
-    -- Path to dbt profiles directory
-    path_to_dbt_profiles_dir = vim.fn.expand '~/.dbt',
-
-    -- Search for ref/source files in macros and models folders
-    extended_path_search = true,
-
-    -- Prevent modifying sql files in target/(compiled|run) folders
-    protect_compiled_files = true
-
-}
+g.solarized_disable_background = true ]]
 
 require'lspconfig'.pylsp.setup{
   settings = {
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = {'E501'},
+          ignore = {'E501', 'W503'},
           maxLineLength = 100
         }
       }
     }
   }
 }
+
+require("go").setup({
+     dap_debug_keymap = false, -- set keymaps for debugger
+     -- launch_json = cmd('pwd') .. "/.vscode/launch.json"
+})
+
+g.gruvbox_material_foreground = "original"
+g.gruvbox_material_transparent_background = 1
+g.gruvbox_material_enable_bold = 1
+g.gruvbox_material_dim_inactive_windows = 1
+g.gruvbox_material_better_performance = 1

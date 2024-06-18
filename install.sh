@@ -40,7 +40,8 @@ fi
 ENVARS_FILE=~/.envvars.rc
 
 if [[ ! -f ${ENVARS_FILE} ]]; then
-  echo "export DOTFILESDIR=${SCRIPT_BASE}" > ${ENVARS_FILE}
+  echo """# vim: ft=bash
+export DOTFILESDIR=${SCRIPT_BASE}""" > ${ENVARS_FILE}
 else
   if [[ ! $(cat ${ENVARS_FILE} | grep DOTFILESDIR) ]]; then
     echo "export DOTFILESDIR=${SCRIPT_BASE}" >> ${ENVARS_FILE}
@@ -91,6 +92,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
 #    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 #    OPENSSL_PREFIX=$(brew --prefix openssl)
 #    CONFIGURE_OPTS="-with-openssl=${OPENSSL_PREFIX}" pyenv install 3.9
+#    TODO: Add global with latest
 #
 #    pyenv virtualenv 3.9 neovim3
 #    pyenv activate neovim3
@@ -136,6 +138,7 @@ log_message "Installing node packages.."
 #npm i -g $(cat ${SCRIPT_BASE}/node/packages | tr '\n' ' ')
 
 log_message "Installing (Neo)Vim Packages.."
+# TODO: Just run once due to lazy
 #nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 #nvim --headless -c 'UpdateRemotePlugins | qa'
 

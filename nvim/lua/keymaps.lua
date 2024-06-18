@@ -22,6 +22,7 @@ map('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>', 'Open tree at current f
 map('n', '<leader>Q', '<cmd>lua prettier_current_file()<cr>', 'Format file with prettier')
 map('n', '<leader>E', '<cmd>:NvimTreeToggle<cr>', 'Toggle File Tree')
 map('n', '<leader>b', '<cmd>Telescope buffers<cr>', 'Show buffers')
+map('n', '<leader>B', '<cmd>lua require"dap".toggle_breakpoint()<cr>', 'Toggle breakpoint')
 map('n', '<leader>h', '<cmd>Telescope help_tags<cr>', 'Toggle help')
 map('n', '<leader>I', '<cmd>Lspsaga code_action<cr>', 'Show Code Actions')
 map('n', '<leader>d', '<cmd>Lspsaga goto_definition<CR>', 'Go to Definition')
@@ -70,10 +71,3 @@ map('n', '<leader><leader>;', ':source $MYVIMRC<CR>', 'reload nvim config')
 map('n', '<leader><tab>', ':tabnext<CR>', 'Next', 'Tabs')
 map('n', '<leader><S-tab>', ':tabprevious<CR>', 'Previous', 'Tabs')
 map('n', '<leader><M-tab>', ':tabnew<CR>', 'New', 'Tabs')
-
-map('n', '<leader>drf', require('dbtpal').run)
-map('n', '<leader>drp', require('dbtpal').run_all)
-map('n', '<leader>dtf', require('dbtpal').test)
-map('n', '<leader>dm', require('dbtpal.telescope').dbt_picker)
-
-
