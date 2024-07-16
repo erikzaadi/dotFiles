@@ -141,7 +141,7 @@ end
 local servers = {
     'sqlls',
     'yamlls',
-    'tsserver',
+    -- 'tsserver',
     'eslint',
     'dockerls',
     'terraformls',
@@ -158,6 +158,7 @@ local servers = {
     -- 'graphql',
     'gopls',
     'bashls',
+    'typescript-tools',
 }
 for _, proto in ipairs(servers) do
     lsp[proto].setup {

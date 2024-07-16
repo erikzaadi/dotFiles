@@ -154,7 +154,7 @@
 
 [credential]
     helper = osxkeychain
-	helper =
+	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [ghi]
     token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
@@ -162,7 +162,7 @@
     autosquash = true
 [pull]
 	ff = only
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 [init]
 	templatedir = ~/.git-templates
+[credential "https://dev.azure.com"]
+	useHttpPath = true

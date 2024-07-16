@@ -196,6 +196,11 @@ require('lazy').setup({
     -- Web (generic) end
 
     -- Typescript
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
     -- Typescript end
 
     -- Javascript / node
