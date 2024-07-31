@@ -12,6 +12,9 @@ case ${CURRENT_LANGUAGE} in
     Swedish)
         echo ${SWEDEN}
         ;;
+    'Swedish - Pro')
+        echo ${SWEDEN}
+        ;;
     Hebrew)
         echo ${ISRAEL}
         ;;
