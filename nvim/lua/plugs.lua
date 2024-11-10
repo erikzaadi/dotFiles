@@ -104,10 +104,10 @@ require('lazy').setup({
         'nvimdev/guard.nvim',
         -- branch = 'add-default-lsp-option',
         config  = function ()
-            require('guard').setup({
+            vim.g.guard_config = {
                 fmt_on_save = false,
                 lsp_as_default_formatter = true,
-            })
+            }
         end,
         dev = false,
     },

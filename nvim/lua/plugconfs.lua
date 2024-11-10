@@ -132,12 +132,17 @@ cmp.setup.cmdline(':', {
 local lsp = require 'lspconfig'
 
 local on_attach = function(client, bufnr)
+    --[[ if client.name == 'ruff_lsp' then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+    end ]]
+
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     --Enable completion triggered by <c-x><c-o>
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md for full list
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md for full list
 local servers = {
     'sqlls',
     'yamlls',
@@ -153,8 +158,9 @@ local servers = {
     'jsonls',
     -- 'anakin_language_server',
     -- 'jedi_language_server',
-    'ruff_lsp',
-    'pylsp',
+    -- 'ruff_lsp',
+    'ruff',
+    -- 'pylsp',
     -- 'graphql',
     'gopls',
     'bashls',
@@ -167,6 +173,17 @@ for _, proto in ipairs(servers) do
     }
 end
 
+-- https://jdhao.github.io/2023/07/22/neovim-pylsp-setup/#make-pylsp-work-inside-a-virtual-env
+local venv_path = os.getenv('VIRTUAL_ENV')
+local py_path = nil
+-- decide which python executable to use for mypy
+if venv_path ~= nil then
+    py_path = venv_path .. "/bin/python3"
+else
+    py_path = vim.g.python3_host_prog
+end
+
+
 lsp.pylsp.setup {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -176,6 +193,12 @@ lsp.pylsp.setup {
                 autopep8 = {
                     enabled = true
                 },
+                pylsp_mypy = {
+                    enabled = true,
+                    overrides = { "--python-executable", py_path, true },
+                    report_progress = true,
+                    live_mode = false
+                },
                 yapf = {
                     enabled = false
                 },
@@ -183,7 +206,7 @@ lsp.pylsp.setup {
                     enabled = false
                 },
                 black = {
-                    enable = false
+                    enable = true
                 }
             }
         }
@@ -204,10 +227,10 @@ g.markdown_fenced_languages   = {
 }
 -- g.gruvbox_transp_bg           = 1
 -- g.gruvbox_italic              = 1
-g.python_host_prog            = expand('~/.pyenv/shims/python')
+--[[ g.python_host_prog            = expand('~/.pyenv/shims/python')
 g.python3_host_prog           = expand('~/.pyenv/shims/python')
 g.python_interpreter          = expand('~/.pyenv/shims/python')
-
+ ]]
 require'lualine'.setup({
     theme = g.current_theme,
     options = {
@@ -285,6 +308,12 @@ require("go").setup({
      dap_debug_keymap = false, -- set keymaps for debugger
      -- launch_json = cmd('pwd') .. "/.vscode/launch.json"
 })
+
+local ft = require('guard.filetype')
+ft("typescript,javascript,typescriptreact,javascriptreact,svelte")
+  -- :fmt('prettier')
+  :fmt({ fn = function() vim.cmd('EslintFixAll') end })
+  :append('lsp')
 
 g.gruvbox_material_foreground = "original"
 g.gruvbox_material_transparent_background = 1

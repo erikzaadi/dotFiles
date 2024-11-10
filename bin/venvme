@@ -1,8 +1,11 @@
 #!/bin/bash
 
-VENV_DIR=$1
-if [[ "${VENV_DIR}" = "" ]]; then
-    VENV_DIR="${PWD}/.venv"
+VENV_DIR=${1:-"${PWD}/.venv"}
+if [[ ! -d ${VENV_DIR} ]]; then
+    python -m venv ${VENV_DIR}
 fi
-source ${VENV_DIR}/bin/activate
+source "${VENV_DIR}/bin/activate"
 export PATH=${VENV_DIR}/bin:${PATH}
+if [[ ${VIM_ME_DADDY:-NOPE} != "NOPE" ]]; then
+    pip install neovim pylsp-mypy ruff-lsp
+fi

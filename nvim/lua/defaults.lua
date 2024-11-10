@@ -56,7 +56,7 @@ opt.spellfile               = string.format('%s/.vim/vim-spell-en.utf-8.add', vi
 -- opt.complete            += kspel
 opt.spell                   = false
 opt.spelllang               = { 'en_us' }
-opt.conceallevel            = 2
+opt.conceallevel            = 0
 opt.concealcursor           = 'niv'
 opt.signcolumn              = 'yes'
 

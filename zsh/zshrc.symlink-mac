@@ -53,7 +53,7 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-export PATH=$(brew --prefix)/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:$(brew --prefix coreutils)/libexec/gnubin:/Applications/Docker.app/Contents/Resources/bin:${HOME}/.bin:$PATH
+export PATH=$(brew --prefix)/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/cli-plugins:${HOME}/.bin:$PATH
 #NODE_VERSION=$(node --version)
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"

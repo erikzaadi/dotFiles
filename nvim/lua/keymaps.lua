@@ -35,7 +35,7 @@ map('n', '<leader>tw', '<cmd>lua require(\'togglr\').toggle_word()<cr>', 'Toggle
 map('n', '<leader>td', '<cmd>:TodoTelescope<cr>', 'Toggle TODO Telescope')
 map('n', '<leader>tb', '<cmd>:TodoTrouble<cr>', 'Toggle TODO Trouble')
 map('n', '<leader>T', '<cmd>Lspsaga peek_type_definition<CR>', 'Show type definition')
-map('n', '<leader>i', '<cmd>GuardFmt<CR>', 'FORMAT ZE THINGZ')
+map('n', '<leader>i', '<cmd>lua vim.lsp.buf.format()<CR>', 'FORMAT ZE THINGZ')
 map('n', '<leader>[', '<cmd>lua require("trouble").open(); require("trouble").previous({ skip_group=true, jump = true })<CR>', 'Goto previous error')
 map('n', '<leader>]', '<cmd>lua require("trouble").open(); require("trouble").next({ skip_group=true, jump = true })<CR>', 'Goto next error')
 map('n', '<leader>s', '<cmd>:Telescope ultisnips theme=get_dropdown<cr>', 'Show snippets')
