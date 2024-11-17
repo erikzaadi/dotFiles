@@ -1,3 +1,25 @@
+--[[
+
+    Beginners Neovim config
+
+    Prerequisites:
+        brew install hashicorp/tap/terraform-ls neovim rg tflint
+        node (use fnm / nvm)
+            npm i -g sql-language-server yaml-language-server vscode-langservers-extracted dockerfile-language-server-nodejs bash-language-server typescript
+        python
+            pip install neovim ruff
+        go
+            go install golang.org/x/tools/gopls@latest
+
+    Copy this file to `~/.config/nvim/init.lua`
+
+    Run once and wait for all the installations to finish
+
+    Then press `Space + m` to see all the keymaps
+
+]]--
+
+
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
@@ -78,7 +100,7 @@ opt.termguicolors   = true
         }
     })
 
--- Plug Confs
+-- Plug Configurations
 
     g.current_theme = 'gruvbox-material' -- or 'nord'
 
@@ -150,12 +172,10 @@ opt.termguicolors   = true
         'terraformls',
         'tflint',
         'bashls',
-        'groovyls',
         'html',
         'jsonls',
         'ruff',
         'gopls',
-        'bashls',
         'typescript-tools',
     }
     for _, proto in ipairs(servers) do
