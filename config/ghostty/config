@@ -1,0 +1,15 @@
+# vi: ft=config
+theme = gruvbox-dark-soft-contrast
+background-opacity = 0.92
+font-family = Hack Nerd Font Mono
+font-size = 18
+window-decoration = false
+macos-option-as-alt = true
+term = xterm-256color
+desktop-notifications = true
+link-url = true
+quit-after-last-window-closed = true
+confirm-close-surface = false
+keybind = cmd+ctrl+left=unbind
+keybind = cmd+ctrl+right=unbind
+keybind = cmd+ctrl+up=unbind

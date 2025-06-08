@@ -39,7 +39,7 @@ require('lazy').setup({
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
 
-    'jrop/jq.nvim',
+    'yochem/jq-playground.nvim',
     'b3nj5m1n/kommentary', -- sorry tpope
     {
         'gregorias/nvim-mapper',

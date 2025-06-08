@@ -2,7 +2,7 @@
 
 VENV_DIR=${1:-"${PWD}/.venv"}
 if [[ ! -d ${VENV_DIR} ]]; then
-    python -m venv ${VENV_DIR}
+    python -m venv "${VENV_DIR}"
 fi
 source "${VENV_DIR}/bin/activate"
 export PATH=${VENV_DIR}/bin:${PATH}

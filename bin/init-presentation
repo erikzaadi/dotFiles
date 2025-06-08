@@ -1,12 +1,30 @@
 #!/usr/bin/env bash
 PRESENTATION_NAME="$*"
-PRESENTATION_NAME_FORMATTED=$(echo ${PRESENTATION_NAME} | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-PRESENTATION_FINAL_DIR=${PRESENTATIONDIR}/${PRESENTATION_NAME_FORMATTED}
+PRESENTATION_NAME_FORMATTED="$(echo "${PRESENTATION_NAME}" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')"
+PRESENTATION_FINAL_DIR="${PRESENTATIONDIR}/${PRESENTATION_NAME_FORMATTED}"
+PRESENTATION_TEMPLATE_DIR="${PRESENTATIONDIR}/template"
 
 TEMPLATE="""---
-title: "${PRESENTATION_NAME}"
-theme: night
-highlightTheme: gruvbox-dark
+author: Erik Zaadi
+browserExporter: false
+contextMenu: false
+download: false
+favicon: './images/avatar.png'
+mdc: true
+monaco: false
+monacoTypesSource: none
+presenter: false
+record: false
+routerMode: hash
+title: ${PRESENTATION_NAME}
+titleTemplate: '%s'
+drawings:
+  enabled: false
+
+
+defaults:
+    transition: slide-left
+    layout: center
 ---
 
 ## ${PRESENTATION_NAME}
@@ -18,17 +36,17 @@ highlightTheme: gruvbox-dark
 Here be dragons!
 
 ---
-
-## FIN
-
-![](https://media.giphy.com/media/11RgbBSgomKx6o/giphy.gif) <!-- .element height="70%" width="70%" -->
+src: ../template/fin.md
+---
 
 """
 
 
-if [[ ! -d ${PRESENTATION_FINAL_DIR} ]]; then
-    mkdir -p ${PRESENTATION_FINAL_DIR} > /dev/null
-    echo "${TEMPLATE}" > ${PRESENTATION_FINAL_DIR}/presentation.md
+if [[ ! -d "${PRESENTATION_FINAL_DIR}" ]]; then
+    mkdir -p "${PRESENTATION_FINAL_DIR}/images" > /dev/null
+    echo "${TEMPLATE}" > "${PRESENTATION_FINAL_DIR}/presentation.md"
+    ln "${PRESENTATION_TEMPLATE_DIR}/index.html" "${PRESENTATION_FINAL_DIR}/index.html"
+    ln "${PRESENTATION_TEMPLATE_DIR}/avatar-512.png" "${PRESENTATION_FINAL_DIR}/images/avatar.png"
 fi
 
-echo ${PRESENTATION_FINAL_DIR}
+echo "${PRESENTATION_FINAL_DIR}"

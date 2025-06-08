@@ -152,10 +152,6 @@
 [mergetool "native"]
     cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 
-[credential]
-    helper = osxkeychain
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
 [ghi]
     token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
 [rebase]
@@ -164,5 +160,12 @@
 	ff = only
 [init]
 	templatedir = ~/.git-templates
+[credential]
+	guiPrompt = false
+    ; helper = osxkeychain
+	helper = /usr/local/share/gcm-core/git-credential-manager
+	credentialStore = cache
+[credential "ghe.contoso.com"]
+	provider = github
 [credential "https://dev.azure.com"]
 	useHttpPath = true

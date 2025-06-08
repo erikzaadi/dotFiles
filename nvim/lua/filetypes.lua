@@ -14,7 +14,7 @@ local g   = vim.g      -- a table to access global variables
     cmd 'au BufNewFile,BufRead *.json set conceallevel=0'
     cmd 'autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart'
     cmd 'autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear'
-    cmd 'au FileType javascript,coffee,typescript,typescriptreact,jsx,tsx,ts set softtabstop=2 tabstop=2 shiftwidth=2 expandtab'
+    cmd 'au FileType javascript,coffee,typescript,typescriptreact,jsx,tsx,ts set softtabstop=2 tabstop=2 shiftwidth=2 noexpandtab'
 -- Javascript / Coffeescript / Node end
 
 -- Go

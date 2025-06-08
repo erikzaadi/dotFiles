@@ -4,9 +4,10 @@ if [[ $? != 0 ]]; then
     echo ""
     exit 0
 fi
+CALENDAR=$(gcalcli list  | grep owner | awk '{print $3};' | tail -n 1)
 NEXT_UP=$(
     # get agenda for next 20 minutes in tsv
-    gcalcli agenda --tsv "$(date +"%H:%M")" "$(date -d "+ 25 Minutes" +"%H:%M")" --details 'title' | \
+    gcalcli agenda --calendar "${CALENDAR}" --tsv "$(date +"%H:%M")" "$(date -d "+ 25 Minutes" +"%H:%M")" --details 'title' | \
         jq -Rsj 'split("\n")[1:-1] |
          map([split("\t")[]|split(",")] | {
                  "start_date":.[0],
