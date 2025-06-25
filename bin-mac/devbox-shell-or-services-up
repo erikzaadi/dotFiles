@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+TARGET_DIR="${1}"
+
+if [ ! -f "${TARGET_DIR}/devbox.json" ]; then
+    echo "No devbox detected"
+    exit 0
+fi
+
+if [ -f "${TARGET_DIR}/process-compose.yml" ]; then
+    devbox services up
+else
+    devbox shell
+fi
