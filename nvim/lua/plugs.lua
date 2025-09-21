@@ -95,7 +95,7 @@ require('lazy').setup({
         },
     },
 
-    'neovim/nvim-lspconfig',
+    -- 'neovim/nvim-lspconfig',
     -- General Vim end
 
     -- Completion
@@ -258,7 +258,15 @@ require('lazy').setup({
     'yasuhiroki/github-actions-yaml.vim',
     'aklt/plantuml-syntax',
     'weirongxu/plantuml-previewer.vim',
-    'tyru/open-browser.vim'
+    --[[ 'tyru/open-browser.vim',
+    {
+        'NickvanDyke/opencode.nvim',
+        dependencies = { 'folke/snacks.nvim', },
+        ---@type opencode.Config
+        opts = {
+            -- Your configuration, if any
+        },
+    } ]]
 }, {
     dev = {
         path = string.format('%s/mine', os.getenv('OPENSOURCEDIR')),
