@@ -129,28 +129,18 @@ cmp.setup.cmdline(':', {
     })
 })
 
--- local lsp = require 'lspconfig'
-local lsp = vim.lsp
+local lsp = require 'lspconfig'
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
-})
-
--- local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
     --[[ if client.name == 'ruff_lsp' then
         -- Disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
     end ]]
 
-    -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     --Enable completion triggered by <c-x><c-o>
-    -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
--- end
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md for full list
 local servers = {
@@ -177,11 +167,10 @@ local servers = {
     'typescript-tools',
 }
 for _, proto in ipairs(servers) do
-    lsp.config[proto] = {
+    lsp[proto].setup {
         on_attach = on_attach,
         capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }
-    lsp.enable({proto})
 end
 
 -- https://jdhao.github.io/2023/07/22/neovim-pylsp-setup/#make-pylsp-work-inside-a-virtual-env
@@ -195,7 +184,8 @@ else
 end
 
 
-lsp.config.pylsp = {
+lsp.pylsp.setup {
+    on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     pylsp = {
         settings = {
@@ -222,7 +212,6 @@ lsp.config.pylsp = {
         }
     }
 }
-lsp.enable({'pylsp'})
 
 g.plug_timeout                = 180
 g.UltiSnipsSnippetDirectories = {string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
@@ -302,7 +291,7 @@ g.moonlight_disable_background = true
 g.seoul256_disable_background = true
 g.solarized_disable_background = true ]]
 
-lsp.config.pylsp = {
+require'lspconfig'.pylsp.setup{
   settings = {
     pylsp = {
       plugins = {
