@@ -1,7 +1,5 @@
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local g   = vim.g      -- a table to access global variables
-local opt = vim.opt  -- to set options
-local expand = vim.fn.expand
+local cmd = vim.cmd
+local g   = vim.g
 
 g.current_theme = 'gruvbox-material'
 
@@ -11,7 +9,7 @@ require'nvim-treesitter.configs'.setup {
         'bash', 'javascript', 'typescript',
         'yaml', 'css',
         'go', 'html', 'json', 'prisma',
-        'scala', 'graphql', 'lua', 'tsx',
+        'graphql', 'lua', 'tsx',
         'markdown', 'markdown_inline', 'python',
         'hcl', 'dockerfile', 'editorconfig', 'git_config', 'git_rebase',
         'gitattributes', 'gitcommit', 'gitignore', 'gomod', 'gosum',
@@ -22,79 +20,21 @@ require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
         disable = {},
-
         additional_vim_regex_highlighting = false,
     },
 }
-
-require'nvim-tree'.setup {
-    actions = {
-        change_dir = {
-            enable = false,
-        },
-    },
-}
-
-require('nvim-mapper').setup({
-    no_map = true,
-    search_path = os.getenv('HOME') .. '/.config/nvim/lua',
-})
-
-local telescopeactions = require('telescope.actions')
-local Telescope = require('telescope')
-Telescope.setup{
-    defaults = {
-        preview = {
-            treesitter = false,
-        },
-        vimgrep_arguments = {
-            '/opt/homebrew/bin/rg',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-            -- '-u',
-        },
-        -- initial_mode = 'insert',
-        file_ignore_patterns = { 'node_modules' },
-        file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-        color_devicons = true,
-        mappings = {
-            i = {
-                ['<esc>'] = telescopeactions.close,
-            },
-        },
-        --[[ borderchars = {
-            prompt = { '─', ' ', ' ', ' ', '─', '─', ' ', ' ' },
-            results = { ' ' },
-            preview = { ' ' },
-        }, ]]
-    },
-}
-
-local telescope_extensions = {
-    'mapper',
-    'ultisnips',
-    'ui-select',
-}
-
-for i, telescope_extension in ipairs(telescope_extensions) do
-    Telescope.load_extension(telescope_extension)
-end
 
 local cmp = require'cmp'
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn['UltiSnips#Anon'](args.body) -- For `ultisnips` users.
+            vim.fn['UltiSnips#Anon'](args.body)
         end,
     },
     mapping = {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-y>'] = cmp.config.disable,
         ['<C-e>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
@@ -103,10 +43,9 @@ cmp.setup({
             if cmp.visible() then
                 cmp.select_next_item()
             else
-                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                fallback()
             end
         end, { 'i', 's' }),
-
         ['<S-Tab>'] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -115,9 +54,7 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-        { name = 'bazel' },
         { name = 'spell' },
-        -- { name = 'treesitter' },
         { name = 'nvim_lsp' },
         { name = 'ultisnips' },
         { name = 'buffer' },
@@ -137,115 +74,33 @@ cmp.setup.cmdline(':', {
     })
 })
 
-local lsp = require 'lspconfig'
-
-local on_attach = function(client, bufnr)
-    --[[ if client.name == 'ruff_lsp' then
-        -- Disable hover in favor of Pyright
-        client.server_capabilities.hoverProvider = false
-    end ]]
-
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    --Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
-
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md for full list
 local servers = {
-    'sqlls',
-    'yamlls',
-    -- 'tsserver',
-    'eslint',
-    'dockerls',
-    'terraformls',
-    'tflint',
-    'bashls',
-    'groovyls',
-    'html',
-    -- 'metals',
-    'jsonls',
-    -- 'anakin_language_server',
-    -- 'jedi_language_server',
-    -- 'ruff_lsp',
-    -- 'ruff',
-    'pylsp',
-    -- 'basedpyright',
-    -- 'graphql',
-    'gopls',
-    'bashls',
-    'typescript-tools',
+    'sqlls', 'yamlls', 'eslint', 'dockerls',
+    'terraformls', 'tflint', 'bashls', 'html',
+    'jsonls', 'pylsp', 'gopls',
+    -- typescript-tools is managed by its own plugin (pmizio/typescript-tools.nvim)
 }
-capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+vim.lsp.config('*', { capabilities = capabilities })
+-- server-specific overrides: vim.lsp.config('yamlls', { settings = {...} }) merges with the wildcard above
 
 for _, proto in ipairs(servers) do
-    -- lsp[proto].setup {
-    vim.lsp.config(proto, {
-        on_attach = on_attach,
-        capabilities = capabilities
-    })
     vim.lsp.enable(proto)
 end
 
--- https://jdhao.github.io/2023/07/22/neovim-pylsp-setup/#make-pylsp-work-inside-a-virtual-env
-local venv_path = os.getenv('VIRTUAL_ENV')
-local py_path = nil
--- decide which python executable to use for mypy
-if venv_path ~= nil then
-    py_path = venv_path .. "/bin/python3"
-else
-    py_path = vim.g.python3_host_prog
-end
-
-
---[[ vim.lsp.config('pylsp', {
-    on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    settings = {
-        plugins = {
-            autopep8 = {
-                enabled = true
-            },
-            pylsp_mypy = {
-                enabled = true,
-                overrides = { "--python-executable", py_path, true },
-                report_progress = true,
-                live_mode = false
-            },
-            yapf = {
-                enabled = false
-            },
-            pyflakes = {
-                enabled = false
-            },
-            black = {
-                enable = true
-            },
-            pycodestyle = {
-                ignore = {'E501', 'W503'},
-                maxLineLength = 100
-            }
-        }
-    }
-}) ]]
-
-g.plug_timeout                = 180
 g.UltiSnipsSnippetDirectories = {string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
 g.netrw_liststyle             = 3
 g.netrw_hide                  = 0
-g.delimitmate_expand_cr       = 2
 g.markdownfmt_autosave        = 0
 g.markdownfmt_command         = 'mdfmt'
 g.markdown_fenced_languages   = {
-    'python', 'sh', 'nginx', 'bash=sh',
-    'scala', 'javascript', 'yaml', 'json',
-    'go', 'tmux', 'ansible',
+    'css', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'ts=typescript',
+    'html', 'python', 'go', 'yaml', 'sh', 'bash=sh', 'zsh',
+    'sql', 'terraform', 'hcl', 'lua', 'rust', 'toml', 'graphql', 'tmux',
 }
--- g.gruvbox_transp_bg           = 1
--- g.gruvbox_italic              = 1
---[[ g.python_host_prog            = expand('~/.pyenv/shims/python')
-g.python3_host_prog           = expand('~/.pyenv/shims/python')
-g.python_interpreter          = expand('~/.pyenv/shims/python')
- ]]
+
 require'lualine'.setup({
     theme = g.current_theme,
     options = {
@@ -253,23 +108,22 @@ require'lualine'.setup({
         section_separators = { left = '', right = ''},
         theme = g.current_theme
     },
-    sections = {lualine_a = {
-        {'mode', fmt = function(str) return str:sub(1,1) end}},
-        lualine_b = {'branch'}}
+    sections = {
+        lualine_a = {
+            { 'mode', fmt = function(str) return str:sub(1,1) end }
+        },
+        lualine_b = { 'branch' }
     }
-)
+})
 
 require('trouble').setup {
-    position = 'bottom',
-    height = 10,
-    -- icons = true,
-    action_keys = {
-        close = 'q',
-        cancel = '<esc>',
-        refresh = 'r',
-    },
-    auto_open = false,
     auto_close = true,
+    focus = true,
+    win = {
+        type = 'float',
+        size = { width = 0.8, height = 0.3 },
+        position = 'bottom',
+    },
 }
 
 function prettier_current_file()
@@ -279,41 +133,12 @@ function prettier_current_file()
     vim.cmd(command)
 end
 
-function random_fortuned_cow()
-    math.randomseed(os.time())
-    local cowsay_list = vim.split(table.concat(vim.fn.systemlist('cowsay -l | tail -n +2'), ' '), ' ')
-    local random_index = math.random(#cowsay_list)
-    local random_cow = cowsay_list[random_index]
-
-
-    local fortune_cow = vim.fn.systemlist('fortune -s | cowsay -f ' .. random_cow)
-
-    return fortune_cow
-end
-
-local alpha = require'alpha'
-local startify = require'alpha.themes.startify'
-startify.section.header.val = random_fortuned_cow()
-alpha.setup(startify.config)
-
-
---[[ require('gruvbox').setup({
-   transparent_mode = true,
-}) ]]
-
---[[ g.nord_disable_background = true
-g.moonlight_disable_background = true
-g.seoul256_disable_background = true
-g.solarized_disable_background = true ]]
-
 require("go").setup({
-     dap_debug_keymap = false, -- set keymaps for debugger
-     -- launch_json = cmd('pwd') .. "/.vscode/launch.json"
+    dap_debug_keymap = false,
 })
 
 local ft = require('guard.filetype')
 ft("typescript,javascript,typescriptreact,javascriptreact,svelte")
-  -- :fmt('prettier')
   :fmt({ fn = function() vim.cmd('EslintFixAll') end })
   :append('lsp')
 
@@ -324,6 +149,14 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*',
+    callback = function()
+        local pos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd([[%s/\s\+$//e]])
+        vim.api.nvim_win_set_cursor(0, pos)
+    end,
+})
 
 local function set_normal_float_highlight()
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
@@ -339,5 +172,3 @@ g.gruvbox_material_transparent_background = 1
 g.gruvbox_material_enable_bold = 1
 g.gruvbox_material_dim_inactive_windows = 1
 g.gruvbox_material_better_performance = 1
-
-
