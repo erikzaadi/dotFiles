@@ -1,10 +1,8 @@
-mafredri/zsh-async
 zsh-users/zsh-completions
 belak/zsh-utils path:completion
 zlsun/solarized-man
-zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
 lukechilds/zsh-better-npm-completion
-superbrothers/zsh-kubectl-prompt
 Aloxaf/fzf-tab
 # dsifford/yarn-completion path:yarn-completion.bash
 https://github.com/larz258/Zshopt kind:path

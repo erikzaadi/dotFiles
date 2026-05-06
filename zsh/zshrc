@@ -1,21 +1,13 @@
 #all ze completions
-fpath=(/usr/local/share/zsh-completions $fpath)
-fpath=(/usr/local/share/zsh/site-functions $fpath)
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-fpath=($(brew --prefix)/share/zsh-completions $fpath)
+fpath=(${HOMEBREW_PREFIX}/share/zsh/site-functions $fpath)
+fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
 fpath=(${DOTFILESDIR}/zsh/completions $fpath)
 
-# zstyle ':completion:*:*:make:*' tag-order 'targets'
-# # zsh > bash
-# autoload -Uz compinit
-# compinit
-# autoload -Uz bashcompinit
-# bashcompinit
-
-# complete -o nospace -C /usr/local/bin/terraform terraform
-# complete -C $(which terraform) terraform
 
 # Paths
+export GOPATH=~/.gocode
+export ANSIBLE_COW_SELECTION=moofasa
+export NODE_HEAPDUMP_OPTIONS=nosignal
 export MAILPATH=/var/mail/$USER
 
 if [[ $(which bat) ]]; then
@@ -28,13 +20,7 @@ source $HOME/.zshenv
 
 # source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
-source <(kubectl completion zsh)
-
-source <(antidote init)
-
-antidote load
-
-antidote bundle < $DOTFILESDIR/zsh/plugins
+antidote load $DOTFILESDIR/zsh/plugins
 
 autoload -U promptinit; promptinit
 
@@ -42,11 +28,19 @@ source $DOTFILESDIR/zsh/defaults
 
 
 alias chuck='sudo'
+alias wife=sudo
+alias butt=mutt
 alias git-last="git log -1 | g_or_native tail -1 | g_or_native awk '{print $1}'"
 alias pwdc='pwd | ${CLIPBOARD}'
 alias tf=terraform
+alias prw='gh pr view -w'
+alias k='kubectl'
 
 alias vimdiff='nvim -d'
+
+editor-changed() {
+    ${EDITOR} -p $(git diff ${1:-master} --name-only)
+}
 
 psgrep() {
     ps aux | g_or_native grep $1 | egrep -v "grep"
@@ -132,6 +126,6 @@ export FZF_DEFAULT_OPTS='
 
 
 eval "$(fnm env)"
-eval "$(fnm completions)"
+eval "$(fnm completions --shell zsh)"
 eval "$(starship init zsh)"
-command -v jira >/dev/null || jira completion zsh > /usr/local/share/zsh/site-functions/_jira
+command -v jira >/dev/null && [[ ! -f ${HOMEBREW_PREFIX}/share/zsh/site-functions/_jira ]] && jira completion zsh > ${HOMEBREW_PREFIX}/share/zsh/site-functions/_jira

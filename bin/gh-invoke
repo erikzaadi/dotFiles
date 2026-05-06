@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# gh-invoke — select a workflow_dispatch workflow, collect inputs, and trigger it
+# requires: gh, fzf, yq (brew install yq), jq
+set -euo pipefail
+
+_need() { command -v "$1" &>/dev/null || { echo "error: requires $1" >&2; exit 1; }; }
+_need gh; _need fzf; _need yq; _need jq
+
+# 1. Pick an active workflow
+workflow=$(gh workflow list --json name,path,state \
+    | jq -r '.[] | select(.state=="active") | "\(.name)\t\(.path)"' \
+    | fzf --with-nth=1 --delimiter=$'\t' --prompt="Workflow > " --height=40% \
+    | cut -f2)
+[[ -z "$workflow" ]] && exit 0
+
+# 2. Parse workflow_dispatch inputs from the workflow YAML
+inputs_json=$(gh workflow view "$workflow" --yaml \
+    | yq -o=json '.["on"].workflow_dispatch.inputs // {}')
+
+input_names=$(echo "$inputs_json" | jq -r 'keys[]')
+
+if [[ -z "$input_names" ]]; then
+    echo "No inputs defined — triggering directly..."
+    gh workflow run "$workflow"
+    echo "✓ Triggered — gh run list --workflow='$(basename "$workflow")'"
+    exit 0
+fi
+
+# 3. Collect a value for each input
+args=()
+while IFS= read -r name; do
+    cfg=$(echo "$inputs_json" | jq -r --arg n "$name" '.[$n]')
+    desc=$(echo "$cfg"     | jq -r '.description // ""')
+    required=$(echo "$cfg" | jq -r '.required    // false')
+    default=$(echo "$cfg"  | jq -r '.default     // ""')
+    type=$(echo "$cfg"     | jq -r '.type        // "string"')
+
+    label="$name"
+    [[ -n "$desc" ]]             && label="$name — $desc"
+    [[ "$required" == "true" ]]  && label="* $label"
+    [[ -n "$default" ]]          && label="$label [${default}]"
+
+    case "$type" in
+        boolean)
+            value=$(printf 'true\nfalse' \
+                | fzf --prompt="$label: " --height=10%)
+            ;;
+        choice)
+            value=$(echo "$cfg" | jq -r '.options[]' \
+                | fzf --prompt="$label: " --height=40%)
+            ;;
+        *)
+            read -r -p "$label: " value
+            [[ -z "$value" ]] && value="$default"
+            ;;
+    esac
+
+    [[ -n "$value" ]] && args+=(-f "$name=$value")
+done <<< "$input_names"
+
+# 4. Trigger
+echo "▶  $workflow"
+gh workflow run "$workflow" "${args[@]+"${args[@]}"}"
+echo "✓  Triggered — gh run list --workflow='$(basename "$workflow")'"
