@@ -53,10 +53,44 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-export PATH=$(brew --prefix)/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/cli-plugins:${HOME}/.bin:$PATH
+export PATH=$(brew --prefix)/bin:${DOTFILESDIR}/bin-mac:${GOPATH}/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/cli-plugins:${HOME}/.bin:${HOME}/.local/bin:$PATH
 #NODE_VERSION=$(node --version)
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+c () {
+  if [ -f .claude_session ]; then
+      local cmd session_id encoded_cwd session_file claude_dir
+      cmd=$(cat .claude_session)
+      session_id=$(echo "$cmd" | sed -n 's/.*--resume[[:space:]]\+\([^ ]*\).*/\1/p')
+      if [ -n "$session_id" ]; then
+          claude_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+          encoded_cwd=$(pwd | sed 's/[^a-zA-Z0-9]/-/g')
+          session_file="$claude_dir/projects/$encoded_cwd/$session_id.jsonl"
+          if [ -f "$session_file" ]; then
+              rm -f .claude_session
+              eval "$cmd"
+              return
+          fi
+      fi
+      rm -f .claude_session
+      claude "$@"
+  else
+      claude "$@"
+  fi
+}
+
+#TODO wrap c for private/work
+alias claude-personal='CLAUDE_CONFIG_DIR=~/.claude-personal c'
+
+# Personal Account (default profile in ~/.gemini)
+alias gemp='gemini'
+
+# Work Account (separate profile in ~/.gemini-work)
+alias gemw='GEMINI_CLI_HOME=~/.gemini-work gemini'
+
+# Resume the session from the local .gemini_session file
+alias gemr='[ -f .gemini_session ] && eval $(cat .gemini_session) || echo "No .gemini_session file found."'

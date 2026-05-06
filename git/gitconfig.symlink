@@ -160,11 +160,13 @@
 	ff = only
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = main
 [credential]
 	guiPrompt = false
     ; helper = osxkeychain
-	helper = /usr/local/share/gcm-core/git-credential-manager
 	credentialStore = cache
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "ghe.contoso.com"]
 	provider = github
 [credential "https://dev.azure.com"]

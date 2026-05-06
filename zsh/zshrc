@@ -112,7 +112,10 @@ function revealz-print()
 
 function pwo()
 {
-    PRESENTATION_NAME="$*" ms presentation
+    local formatted
+    formatted="$(echo "$*" | tr '[:upper:]' '[:lower:]' | sed -E 's/ ?& ?/-and-/g' | sed 's/ /-/g' | sed -E 's/-+/-/g')"
+    echo "About to call pwo - $* - ${formatted}"
+    PRESENTATION_NAME="$*" PRESENTATION_NAME_FORMATTED="${formatted}" ms presentation
 }
 
 tfm() {

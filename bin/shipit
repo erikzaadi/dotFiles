@@ -6,4 +6,4 @@ git checkout ${HEAD_BRANCH}
 git merge --ff-only ${CURRENT_BRANCH}
 git push
 git branch -d ${CURRENT_BRANCH}
-git push origin :${CURRENT_BRANCH}
+#git push origin :${CURRENT_BRANCH}

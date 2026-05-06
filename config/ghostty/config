@@ -13,3 +13,4 @@ confirm-close-surface = false
 keybind = cmd+ctrl+left=unbind
 keybind = cmd+ctrl+right=unbind
 keybind = cmd+ctrl+up=unbind
+keybind = shift+enter=text:\x0a

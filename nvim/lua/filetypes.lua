@@ -35,7 +35,11 @@ local g   = vim.g      -- a table to access global variables
     cmd 'autocmd FileType gitcommit call setpos(\'.\', [0, 1, 1, 0])'
     cmd 'au BufNewFile,BufReadPost *.md set filetype=markdown'
     cmd 'au BufNewFile,BufReadPost *.mdx set filetype=markdown'
-    g.markdown_fenced_languages = {'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'stylus', 'python', 'go', 'yaml', 'sh', 'bash=sh', 'zsh', 'groovy'}
+    g.markdown_fenced_languages = {
+        'css', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'ts=typescript',
+        'ruby', 'xml', 'html', 'python', 'go', 'yaml', 'sh', 'bash=sh', 'zsh', 'groovy',
+        'sql', 'terraform', 'hcl', 'lua', 'rust', 'toml', 'graphql',
+    }
     -- Spell-check Markdown files
     cmd 'autocmd FileType markdown setlocal spell'
     -- Spell-check Git messages

@@ -95,6 +95,36 @@ require('lazy').setup({
         },
     },
 
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            {
+                terminal = {
+                    -- Basic terminal settings
+                    win = {
+                        -- Set backdrop to 0 or 100 to remove shadow behind the terminal
+                        backdrop = 0,
+                        wo = {
+                            winblend = 0, -- Set to a higher number if you want subtle opacity
+                        },
+                    },
+                },
+                styles = {
+                    -- Ensure floating terminals are transparent
+                    terminal = {
+                        background = "none",
+                    },
+                    -- Ensure lazygit is transparent
+                    lazygit = {
+                        background = "none",
+                    },
+                },
+            }
+        },
+    },
     'neovim/nvim-lspconfig',
     -- General Vim end
 
@@ -258,8 +288,37 @@ require('lazy').setup({
     'yasuhiroki/github-actions-yaml.vim',
     'aklt/plantuml-syntax',
     'weirongxu/plantuml-previewer.vim',
-    'tyru/open-browser.vim'
-}, {
+    'tyru/open-browser.vim',
+    {
+        "coder/claudecode.nvim",
+        dev = true,
+        dependencies = { "folke/snacks.nvim" },
+        config = true,
+             opts = {
+                terminal = {
+                    provider = "none", -- no UI actions; server + tools remain available
+                },
+            },
+            --[[ opts = {
+                terminal = {
+                    provider = "snacks",   -- was "none"
+                    split_side = "right",  -- or "left", "bottom"
+                    split_width_percentage = 0.35,
+                },
+            }, ]]
+            --[[ keys = {
+                { "<leader>cc", "<cmd>ClaudeCode<cr>",          desc = "Toggle Claude" },
+                { "<leader>cf", "<cmd>ClaudeCodeFocus<cr>",     desc = "Focus Claude" },
+                { "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+                { "<leader>cb", "<cmd>ClaudeCodeAdd %<cr>",     desc = "Add current buffer" },
+                { "<leader>cs", "<cmd>ClaudeCodeSend<cr>",      mode = "v", desc = "Send to Claude" },
+                { "<leader>ca", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+                { "<leader>cd", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
+            },
+ ]]
+
+        }
+    }, {
     dev = {
         path = string.format('%s/mine', os.getenv('OPENSOURCEDIR')),
     },

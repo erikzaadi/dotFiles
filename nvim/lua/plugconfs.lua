@@ -12,11 +12,16 @@ require'nvim-treesitter.configs'.setup {
         'yaml', 'css',
         'go', 'html', 'json', 'prisma',
         'scala', 'graphql', 'lua', 'tsx',
-        'markdown', 'markdown_inline', 'python'
+        'markdown', 'markdown_inline', 'python',
+        'hcl', 'dockerfile', 'editorconfig', 'git_config', 'git_rebase',
+        'gitattributes', 'gitcommit', 'gitignore', 'gomod', 'gosum',
+        'gotmpl', 'helm', 'jq', 'json5', 'luadoc', 'muttrc', 'nginx',
+        'prql', 'regex', 'requirements', 'ruby', 'rust', 'sql', 'ssh_config',
+        'terraform', 'tmux', 'toml', 'vue', 'xml',
     },
     highlight = {
         enable = true,
-        disable = { 'markdown' },
+        disable = {},
 
         additional_vim_regex_highlighting = false,
     },
@@ -39,6 +44,9 @@ local telescopeactions = require('telescope.actions')
 local Telescope = require('telescope')
 Telescope.setup{
     defaults = {
+        preview = {
+            treesitter = false,
+        },
         vimgrep_arguments = {
             '/opt/homebrew/bin/rg',
             '--color=never',
@@ -159,18 +167,23 @@ local servers = {
     -- 'anakin_language_server',
     -- 'jedi_language_server',
     -- 'ruff_lsp',
-    'ruff',
-    -- 'pylsp',
+    -- 'ruff',
+    'pylsp',
+    -- 'basedpyright',
     -- 'graphql',
     'gopls',
     'bashls',
     'typescript-tools',
 }
+capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 for _, proto in ipairs(servers) do
-    lsp[proto].setup {
+    -- lsp[proto].setup {
+    vim.lsp.config(proto, {
         on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    }
+        capabilities = capabilities
+    })
+    vim.lsp.enable(proto)
 end
 
 -- https://jdhao.github.io/2023/07/22/neovim-pylsp-setup/#make-pylsp-work-inside-a-virtual-env
@@ -184,34 +197,36 @@ else
 end
 
 
-lsp.pylsp.setup {
+--[[ vim.lsp.config('pylsp', {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    pylsp = {
-        settings = {
-            plugins = {
-                autopep8 = {
-                    enabled = true
-                },
-                pylsp_mypy = {
-                    enabled = true,
-                    overrides = { "--python-executable", py_path, true },
-                    report_progress = true,
-                    live_mode = false
-                },
-                yapf = {
-                    enabled = false
-                },
-                pyflakes = {
-                    enabled = false
-                },
-                black = {
-                    enable = true
-                }
+    settings = {
+        plugins = {
+            autopep8 = {
+                enabled = true
+            },
+            pylsp_mypy = {
+                enabled = true,
+                overrides = { "--python-executable", py_path, true },
+                report_progress = true,
+                live_mode = false
+            },
+            yapf = {
+                enabled = false
+            },
+            pyflakes = {
+                enabled = false
+            },
+            black = {
+                enable = true
+            },
+            pycodestyle = {
+                ignore = {'E501', 'W503'},
+                maxLineLength = 100
             }
         }
     }
-}
+}) ]]
 
 g.plug_timeout                = 180
 g.UltiSnipsSnippetDirectories = {string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
@@ -247,7 +262,7 @@ require'lualine'.setup({
 require('trouble').setup {
     position = 'bottom',
     height = 10,
-    icons = true,
+    -- icons = true,
     action_keys = {
         close = 'q',
         cancel = '<esc>',
@@ -291,19 +306,6 @@ g.moonlight_disable_background = true
 g.seoul256_disable_background = true
 g.solarized_disable_background = true ]]
 
-require'lspconfig'.pylsp.setup{
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {'E501', 'W503'},
-          maxLineLength = 100
-        }
-      }
-    }
-  }
-}
-
 require("go").setup({
      dap_debug_keymap = false, -- set keymaps for debugger
      -- launch_json = cmd('pwd') .. "/.vscode/launch.json"
@@ -315,8 +317,27 @@ ft("typescript,javascript,typescriptreact,javascriptreact,svelte")
   :fmt({ fn = function() vim.cmd('EslintFixAll') end })
   :append('lsp')
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'markdown', 'html' },
+    callback = function(ev)
+        pcall(vim.treesitter.stop, ev.buf)
+    end,
+})
+
+
+local function set_normal_float_highlight()
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = set_normal_float_highlight,
+})
+
 g.gruvbox_material_foreground = "original"
 g.gruvbox_material_transparent_background = 1
 g.gruvbox_material_enable_bold = 1
 g.gruvbox_material_dim_inactive_windows = 1
 g.gruvbox_material_better_performance = 1
+
+

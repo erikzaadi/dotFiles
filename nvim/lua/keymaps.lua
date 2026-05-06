@@ -36,8 +36,8 @@ map('n', '<leader>td', '<cmd>:TodoTelescope<cr>', 'Toggle TODO Telescope')
 map('n', '<leader>tb', '<cmd>:TodoTrouble<cr>', 'Toggle TODO Trouble')
 map('n', '<leader>T', '<cmd>Lspsaga peek_type_definition<CR>', 'Show type definition')
 map('n', '<leader>i', '<cmd>lua vim.lsp.buf.format()<CR>', 'FORMAT ZE THINGZ')
-map('n', '<leader>[', '<cmd>lua require("trouble").open(); require("trouble").previous({ skip_group=true, jump = true })<CR>', 'Goto previous error')
-map('n', '<leader>]', '<cmd>lua require("trouble").open(); require("trouble").next({ skip_group=true, jump = true })<CR>', 'Goto next error')
+map('n', '<leader>[', '<cmd>Trouble diagnostics prev skip_group=true jump=true<CR>', 'Goto previous error')
+map('n', '<leader>]', '<cmd>Trouble diagnostics next skip_group=true jump=true<CR>', 'Goto next error')
 map('n', '<leader>s', '<cmd>:Telescope ultisnips theme=get_dropdown<cr>', 'Show snippets')
 map('n', 'z=', '<Cmd>Telescope spell_suggest theme=get_dropdown<CR>', 'Spell suggestions')
 cmd 'xmap <Enter> <Plug>(EasyAlign)'
@@ -71,3 +71,33 @@ map('n', '<leader><leader>;', ':source $MYVIMRC<CR>', 'reload nvim config')
 map('n', '<leader><tab>', ':tabnext<CR>', 'Next', 'Tabs')
 map('n', '<leader><S-tab>', ':tabprevious<CR>', 'Previous', 'Tabs')
 map('n', '<leader><M-tab>', ':tabnew<CR>', 'New', 'Tabs')
+local function claude_resume()
+  local cwd = vim.fn.getcwd()
+  local session_file_path = cwd .. '/.claude_session'
+  if vim.fn.filereadable(session_file_path) == 1 then
+    local stored_cmd = (vim.fn.readfile(session_file_path)[1] or '')
+    local session_id = stored_cmd:match('%-%-resume%s+(%S+)')
+    if session_id then
+      local claude_dir = vim.env.CLAUDE_CONFIG_DIR or (vim.env.HOME .. '/.claude')
+      local encoded_cwd = cwd:gsub('[^a-zA-Z0-9]', '-')
+      local jsonl_path = claude_dir .. '/projects/' .. encoded_cwd .. '/' .. session_id .. '.jsonl'
+      if vim.fn.filereadable(jsonl_path) == 1 then
+        vim.cmd('ClaudeCode --resume')
+        return
+      end
+    end
+    vim.fn.delete(session_file_path)
+  end
+  vim.cmd('ClaudeCode')
+end
+-- map('n', "<leader>c", nil, "Claude Code")
+map('n', "<leader>cc", "<cmd>ClaudeCode<cr>", "Toggle Claude" )
+map('n', "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", "Focus Claude" )
+map('n', "<leader>cr", claude_resume, "Resume Claude")
+map('n', "<leader>cb", "<cmd>ClaudeCodeAdd %<cr>", "Add current buffer")
+map('v', "<leader>cs", "<cmd>ClaudeCodeSend<cr>", "Send to Claude")
+map('n', "<leader>ca", "<cmd>ClaudeCodeDiffAccept<cr>", "Accept diff")
+map('n', "<leader>cd", "<cmd>ClaudeCodeDiffDeny<cr>", "Deny diff")
+
+map('n', '<leader>z', function() Snacks.zen() end, 'Toggle Zen Mode')
+map('n', '<leader>Z', function() Snacks.zen.zoom() end, 'Toggle Zoom')
