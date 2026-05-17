@@ -19,70 +19,22 @@ require'nvim-treesitter.configs'.setup {
     },
     highlight = {
         enable = true,
-        disable = {},
+        -- nvim 0.12.2 ranged-parse crash in decoration provider for markdown
+        disable = { 'markdown', 'markdown_inline' },
         additional_vim_regex_highlighting = false,
     },
 }
 
-local cmp = require'cmp'
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            vim.fn['UltiSnips#Anon'](args.body)
-        end,
-    },
-    mapping = {
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-y>'] = cmp.config.disable,
-        ['<C-e>'] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.select_prev_item()
-            end
-        end, { 'i', 's' }),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = cmp.config.sources({
-        { name = 'spell' },
-        { name = 'nvim_lsp' },
-        { name = 'ultisnips' },
-        { name = 'buffer' },
-    })
-})
-
-cmp.setup.cmdline('/', {
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
-cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-        { name = 'path' },
-        { name = 'cmdline' },
-    })
-})
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md for full list
 local servers = {
     'sqlls', 'yamlls', 'eslint', 'dockerls',
     'terraformls', 'tflint', 'bashls', 'html',
-    'jsonls', 'pylsp', 'gopls',
+    'jsonls', 'pylsp', 'gopls', 'emmetls',
     -- typescript-tools is managed by its own plugin (pmizio/typescript-tools.nvim)
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 vim.lsp.config('*', { capabilities = capabilities })
 -- server-specific overrides: vim.lsp.config('yamlls', { settings = {...} }) merges with the wildcard above
 
@@ -90,7 +42,6 @@ for _, proto in ipairs(servers) do
     vim.lsp.enable(proto)
 end
 
-g.UltiSnipsSnippetDirectories = {string.format('%s/vim/snippets', vim.env.DOTFILESDIR)}
 g.netrw_liststyle             = 3
 g.netrw_hide                  = 0
 g.markdownfmt_autosave        = 0
@@ -141,11 +92,32 @@ local ft = require('guard.filetype')
 ft("typescript,javascript,typescriptreact,javascriptreact,svelte")
   :fmt({ fn = function() vim.cmd('EslintFixAll') end })
   :append('lsp')
-
+-- Neovim 0.12.2 treesitter ranged-parse crashes in the decoration provider for certain
+-- files (bash heredocs, markdown). Force vim syntax for markdown in all buffers since
+-- something (LSP/snacks) calls vim.treesitter.start() directly, bypassing the disable list.
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'markdown', 'html' },
+    pattern = { 'markdown' },
     callback = function(ev)
         pcall(vim.treesitter.stop, ev.buf)
+        vim.bo[ev.buf].syntax = 'markdown'
+    end,
+})
+-- Use vim syntax in the picker preview instead — treesitter still works normally for other filetypes.
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'VeryLazy',
+    once = true,
+    callback = function()
+        local ok, preview = pcall(require, 'snacks.picker.core.preview')
+        if not ok then return end
+        local orig = preview.highlight
+        preview.highlight = function(self, opts)
+            orig(self, opts)
+            local buf = self.win.buf
+            pcall(vim.treesitter.stop, buf)
+            local ft = (opts and opts.ft)
+                or (opts and opts.file and vim.filetype.match({ filename = opts.file }))
+            if ft then vim.bo[buf].syntax = ft end
+        end
     end,
 })
 

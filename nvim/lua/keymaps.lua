@@ -1,16 +1,16 @@
 vim.g.mapleader = ' '
 
 local keys = {
-    -- LSP / lspsaga
-    { "<leader>o", "<cmd>Lspsaga outline<cr>",            desc = "Toggle outline" },
-    { "<leader>I", "<cmd>Lspsaga code_action<cr>",        desc = "Show Code Actions" },
-    { "<leader>d", "<cmd>Lspsaga goto_definition<CR>",    desc = "Go to Definition" },
-    { "<leader>D", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go to Type Definition" },
-    { "<leader>k", "<cmd>Lspsaga hover_doc<CR>",          desc = "Hover doc" },
-    { "<leader>r", "<cmd>Lspsaga finder<CR>",             desc = "Show references / definitions" },
-    { "<leader>R", "<cmd>Lspsaga rename<CR>",             desc = "Rename" },
-    { "<leader>T", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type definition" },
-    { "<leader>i", "<cmd>lua vim.lsp.buf.format()<CR>",   desc = "Format" },
+    -- LSP
+    { "<leader>o", "<cmd>Outline<CR>",                                            desc = "Toggle outline" },
+    { "<leader>I", function() vim.lsp.buf.code_action() end,                      desc = "Show Code Actions" },
+    { "<leader>d", function() vim.lsp.buf.definition() end,                       desc = "Go to Definition" },
+    { "<leader>D", function() vim.lsp.buf.type_definition() end,                  desc = "Go to Type Definition" },
+    { "<leader>k", function() vim.lsp.buf.hover() end,                            desc = "Hover doc" },
+    { "<leader>r", function() Snacks.picker.lsp_references() end,                 desc = "Show references / definitions" },
+    { "<leader>R", function() vim.lsp.buf.rename() end,                           desc = "Rename" },
+    { "<leader>T", function() Snacks.picker.lsp_type_definitions() end,           desc = "Peek type definition" },
+    { "<leader>i", "<cmd>lua vim.lsp.buf.format()<CR>",                           desc = "Format" },
 
     -- Picker (snacks)
     { "<leader>m", function() Snacks.picker.keymaps() end,  desc = "Show all keymaps" },
@@ -41,12 +41,12 @@ local keys = {
     -- Editing
     { "<leader>Q",  "<cmd>lua prettier_current_file()<cr>", desc = "Format with prettier" },
     { "<leader>tw", function() require('togglr').toggle_word() end, desc = "Toggle word" },
-    { "<Enter>",    "<Plug>(EasyAlign)", mode = "x", desc = "Easy Align selected" },
 
     -- Debug
     { "<leader>B", function() require('dap').toggle_breakpoint() end, desc = "Toggle breakpoint" },
 
     -- UI / notifications
+    { "<leader>H",       function() Snacks.dashboard() end,     desc = "Dashboard (home)" },
     { "<leader>z",       function() Snacks.zen() end,           desc = "Toggle Zen Mode" },
     { "<leader>Z",       function() Snacks.zen.zoom() end,      desc = "Toggle Zoom" },
     { "<leader><leader>q", function() Snacks.notifier.hide() end, desc = "Remove notifications" },

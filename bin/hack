@@ -1,2 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+source ~/.zshenv
+export PATH="${PYENV_ROOT}/shims:${PATH}"
 tmuxp load hacking -y

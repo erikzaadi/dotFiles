@@ -6,11 +6,47 @@ set -euo pipefail
 _need() { command -v "$1" &>/dev/null || { echo "error: requires $1" >&2; exit 1; }; }
 _need gh; _need fzf; _need yq; _need jq
 
+open_browser=false
+while getopts ":w" opt; do
+    case $opt in
+        w) open_browser=true ;;
+        \?) echo "error: unknown flag -$OPTARG" >&2; exit 1 ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+query=""
+declare -A prefill=()
+for arg in "$@"; do
+    if [[ "$arg" == *=* ]]; then
+        prefill["${arg%%=*}"]="${arg#*=}"
+    elif [[ -z "$query" ]]; then
+        query="$arg"
+    fi
+done
+
 # 1. Pick an active workflow
-workflow=$(gh workflow list --json name,path,state \
-    | jq -r '.[] | select(.state=="active") | "\(.name)\t\(.path)"' \
-    | fzf --with-nth=1 --delimiter=$'\t' --prompt="Workflow > " --height=40% \
-    | cut -f2)
+workflow_list=$(gh workflow list --json name,path,state \
+    | jq -r '.[] | select(.state=="active") | "\(.name)\t\(.path)"')
+
+if [[ -n "$query" ]]; then
+    filtered=$(echo "$workflow_list" \
+        | fzf --filter="$query" --with-nth=1 --delimiter=$'\t' || true)
+    count=$(echo "$filtered" | grep -c '[^[:space:]]' || true)
+    if [[ "$count" -eq 1 ]]; then
+        workflow=$(echo "$filtered" | cut -f2)
+    else
+        workflow=$(echo "$workflow_list" \
+            | fzf --with-nth=1 --delimiter=$'\t' --prompt="Workflow > " --height=40% \
+                  --query="$query" \
+            | cut -f2)
+    fi
+else
+    workflow=$(echo "$workflow_list" \
+        | fzf --with-nth=1 --delimiter=$'\t' --prompt="Workflow > " --height=40% \
+        | cut -f2)
+fi
+
 [[ -z "$workflow" ]] && exit 0
 
 # 2. Parse workflow_dispatch inputs from the workflow YAML
@@ -19,15 +55,26 @@ inputs_json=$(gh workflow view "$workflow" --yaml \
 
 input_names=$(echo "$inputs_json" | jq -r 'keys[]')
 
+_trigger() {
+    echo "▶  $workflow"
+    gh workflow run "$workflow" "${args[@]+"${args[@]}"}"
+    echo "✓  Triggered — gh run list --workflow='$(basename "$workflow")'"
+    if $open_browser; then
+        sleep 2
+        run_url=$(gh run list --workflow="$workflow" --limit=1 --json url | jq -r '.[0].url')
+        [[ -n "$run_url" ]] && { open "$run_url" 2>/dev/null || xdg-open "$run_url" 2>/dev/null || echo "Open: $run_url"; }
+    fi
+}
+
+args=()
+
 if [[ -z "$input_names" ]]; then
     echo "No inputs defined — triggering directly..."
-    gh workflow run "$workflow"
-    echo "✓ Triggered — gh run list --workflow='$(basename "$workflow")'"
+    _trigger
     exit 0
 fi
 
 # 3. Collect a value for each input
-args=()
 while IFS= read -r name; do
     cfg=$(echo "$inputs_json" | jq -r --arg n "$name" '.[$n]')
     desc=$(echo "$cfg"     | jq -r '.description // ""')
@@ -40,25 +87,28 @@ while IFS= read -r name; do
     [[ "$required" == "true" ]]  && label="* $label"
     [[ -n "$default" ]]          && label="$label [${default}]"
 
-    case "$type" in
-        boolean)
-            value=$(printf 'true\nfalse' \
-                | fzf --prompt="$label: " --height=10%)
-            ;;
-        choice)
-            value=$(echo "$cfg" | jq -r '.options[]' \
-                | fzf --prompt="$label: " --height=40%)
-            ;;
-        *)
-            read -r -p "$label: " value
-            [[ -z "$value" ]] && value="$default"
-            ;;
-    esac
+    if [[ -v prefill["$name"] ]]; then
+        value="${prefill[$name]}"
+        echo "$label: $value (prefilled)"
+    else
+        case "$type" in
+            boolean)
+                value=$(printf 'true\nfalse' \
+                    | fzf --prompt="$label: " --height=10%)
+                ;;
+            choice)
+                value=$(echo "$cfg" | jq -r '.options[]' \
+                    | fzf --prompt="$label: " --height=40%)
+                ;;
+            *)
+                read -r -p "$label: " value
+                [[ -z "$value" ]] && value="$default"
+                ;;
+        esac
+    fi
 
     [[ -n "$value" ]] && args+=(-f "$name=$value")
 done <<< "$input_names"
 
 # 4. Trigger
-echo "▶  $workflow"
-gh workflow run "$workflow" "${args[@]+"${args[@]}"}"
-echo "✓  Triggered — gh run list --workflow='$(basename "$workflow")'"
+_trigger

@@ -10,8 +10,7 @@ require('lazy').setup({
     -- General Vim
     'tpope/vim-fugitive',
     'tpope/vim-eunuch',
-    'tpope/vim-surround',
-    'tpope/vim-repeat',
+    { 'kylechui/nvim-surround', event = 'VeryLazy', opts = {} },
     'mfussenegger/nvim-dap',
     'theHamsta/nvim-dap-virtual-text',
     {
@@ -28,15 +27,22 @@ require('lazy').setup({
         build = ':lua require("go.install").update_all_sync()'
     },
     'yochem/jq-playground.nvim',
-    'rhysd/conflict-marker.vim',
-    'junegunn/vim-easy-align',
+    { 'akinsho/git-conflict.nvim', version = '*', opts = {} },
+    { 'echasnovski/mini.align', version = '*', opts = {} },
     { 'folke/ts-comments.nvim', opts = {}, event = 'VeryLazy' },
     {
         'moorereason/vim-markdownfmt',
         ft = { 'markdown' }
     },
-    'SirVer/ultisnips',
-    'honza/vim-snippets',
+    {
+        'L3MON4D3/LuaSnip',
+        version = 'v2.*',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        config = function()
+            require('luasnip.loaders.from_vscode').lazy_load()
+            require('snippets')
+        end,
+    },
     {
         'folke/todo-comments.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
@@ -67,14 +73,31 @@ require('lazy').setup({
                 terminal = { background = "none" },
             },
             picker = { enabled = true },
-            explorer = { enabled = true },
+            explorer = {
+                enabled = true,
+                ignored = true,
+                hidden = true,
+            },
             notifier = { enabled = true },
             git = { enabled = true },
             words = { enabled = true },
             zen = { enabled = true },
+            image = { enabled = false },
             dashboard = {
                 preset = {
                     header = table.concat(random_fortuned_cow(), "\n"),
+                },
+                sections = {
+                    { section = "header" },
+                    {
+                        section = "terminal",
+                        cmd = "gh run list --limit 5 2>/dev/null || true",
+                        height = 7,
+                        padding = 1,
+                        ttl = 300,
+                    },
+                    { section = "keys" },
+                    { section = "startup" },
                 },
             },
         },
@@ -93,29 +116,31 @@ require('lazy').setup({
         end,
         dev = false,
     },
-    {
-        'nvimdev/lspsaga.nvim',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-            'nvim-tree/nvim-web-devicons'
-        },
-        config = function()
-            require('lspsaga').setup({})
-        end,
-    },
+    { 'hedyhli/outline.nvim', cmd = { 'Outline', 'OutlineOpen' }, opts = {} },
     {
         'folke/trouble.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
     },
     {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'f3fora/cmp-spell',
-            'hrsh7th/cmp-cmdline',
-            'quangnguyen30192/cmp-nvim-ultisnips',
+        'saghen/blink.cmp',
+        version = '*',
+        dependencies = { 'L3MON4D3/LuaSnip' },
+        opts = {
+            snippets = { preset = 'luasnip' },
+            keymap = {
+                ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+                ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+                ['<C-e>'] = { 'cancel', 'fallback' },
+                ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+                ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+                ['<CR>'] = { 'accept', 'fallback' },
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            completion = {
+                documentation = { auto_show = true },
+            },
         },
     },
     {
@@ -129,12 +154,6 @@ require('lazy').setup({
     -- Color Schemes end
 
     -- Web (generic)
-    {
-        'rstacruz/vim-ultisnips-css',
-        ft = { 'css' },
-        dependencies = 'SirVer/ultisnips',
-    },
-    'mattn/emmet-vim',
     { 'catgoose/nvim-colorizer.lua', opts = {} },
     -- Web (generic) end
 
@@ -155,10 +174,7 @@ require('lazy').setup({
         'Glench/Vim-Jinja2-Syntax',
         ft = { 'jinja', 'jinja2' },
     },
-    {
-        'sotte/presenting.vim',
-        ft = { 'markdown' },
-    },
+    { 'sotte/presenting.nvim', ft = { 'markdown' }, opts = {} },
     -- Misc end
 
     'yasuhiroki/github-actions-yaml.vim',

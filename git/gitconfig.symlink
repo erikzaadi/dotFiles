@@ -1,12 +1,10 @@
 ; vim:ft=gitconfig:
 [github]
     user = erikzaadi
-    token =
 
 [user]
     name = erikzaadi
     email = erik.zaadi@gmail.com
-    editor = nvim
 
 [difftool "difftastic"]
         cmd = difft "$LOCAL" "$REMOTE"
@@ -50,16 +48,17 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [merge]
-    ; tool = vimdiff
-    conflictstyle = diff3
-    prompt = false
+    conflictstyle = zdiff3
     tool = fugitive
 
 [rerere]
     enabled = true
 
+[fetch]
+    prune = true
+
 [push]
-    default = tracking
+    default = upstream
 
 [alias]
     status-clean = status --untracked-files=no
@@ -77,7 +76,7 @@
     pushu = !git push -u origin $(git symbolic-ref --short HEAD)
     pushf = !git push origin $(git symbolic-ref --short HEAD) --force-with-lease
 
-    tblog = log --not-grep='Auto-increment of build number due to changes in directory '
+    tblog = log --invert-grep --grep='Auto-increment of build number due to changes in directory '
 
     vgc = repack -f -a -d --depth=250 --window=250
     nvgc = !ionice -n7 nice -n20 git vgc
@@ -90,7 +89,7 @@
     file-blame = !git ls-files | xargs -n1 -i{} git log -1 --pretty=format:\"%ci {}\" -- {}
     amend = commit --amend -C HEAD
 
-    pr = !hub pull-request -o
+    pr = !gh pr create --web
 
     su = submodule update --init
 
@@ -126,7 +125,7 @@
 
     cleanup-local-merged = '!f() { git branch --merged ${1:-main} | grep -v " ${1:-main}$" | xargs -r git branch -d; }; f'
 
-    reset-to-head = "!f() { WANTED_REMOTE="${1:-origin}"; NEEDED_REF="${WANTED_REMOTE}/$(git branch-name)"; echo "Resettin hard to ${NEEDED_REF}"; git reset --hard ${NEEDED_REF}"
+    reset-to-head = "!f() { WANTED_REMOTE=\"${1:-origin}\"; NEEDED_REF=\"${WANTED_REMOTE}/$(git branch-name)\"; echo \"Resetting hard to ${NEEDED_REF}\"; git reset --hard \"${NEEDED_REF}\"; }; f"
 
     list-aliases = "!git config -l | grep alias | cut -c 7-"
 
@@ -141,10 +140,8 @@
 	excludesfile = /Users/erikzaadi/.gitignore
 
 [help]
-    autocorrect = 1
+    autocorrect = prompt
 
-[gitreview]
-    username = erikzaadi
 [mergetool]
     prompt = false
 [mergetool "fugitive"]
@@ -152,8 +149,6 @@
 [mergetool "native"]
     cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 
-[ghi]
-    token = !security find-internet-password -a erikzaadi -s github.com -l 'ghi token' -w
 [rebase]
     autosquash = true
 [pull]
@@ -167,7 +162,5 @@
 	credentialStore = cache
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
-[credential "ghe.contoso.com"]
-	provider = github
 [credential "https://dev.azure.com"]
 	useHttpPath = true
