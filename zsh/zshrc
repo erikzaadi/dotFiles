@@ -18,6 +18,8 @@ fi
 
 source $HOME/.zshenv
 
+export SHELL_EMOTICON=$($DOTFILESDIR/bin/random_emoticon)
+
 # source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 antidote load $DOTFILESDIR/zsh/plugins

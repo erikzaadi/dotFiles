@@ -1,14 +1,13 @@
 format = """
-${custom.directory_with_git_root}\
-${custom.directory_relative_to_home}\
-${custom.git_branch_fixed}\
+$directory\
+$git_branch\
 $git_status\
 $git_state\
 $nodejs\
 $python\
 ${custom.raftt}\
 \n\
-${custom.random_emoticon}\
+${env_var.SHELL_EMOTICON}\
 $character
 """
 
@@ -17,11 +16,15 @@ $cmd_duration\
 $status\
 """
 
-[custom.directory_with_git_root]
-command = "realpath --relative-base=\"$(git rev-parse --show-toplevel)/..\" ."
+[directory]
 style = "bold cyan"
-when = "git rev-parse --show-toplevel"
-format = "[](bold bright-blue)[$symbol($output )]($style)"
+truncate_to_repo = true
+format = "[](bold bright-blue)[$path ]($style)"
+home_symbol = "~"
+
+[git_branch]
+style = "bold purple"
+format = "[$branch ]($style)"
 
 [custom.raftt]
 command = "raftt-widget"
@@ -29,12 +32,6 @@ style = "bold cyan"
 detect_folders = [".raftt"]
 format = "[$symbol( $output )]($style)"
 disabled = true
-
-[custom.directory_relative_to_home]
-command = "realpath --relative-base=\"$HOME\" ."
-style = "bold cyan"
-when = "git rev-parse --show-toplevel && return 1 || return 0"
-format = "[~](bold #FFFFFF)[$symbol($output )]($style)"
 
 [status]
 disabled = false
@@ -44,15 +41,10 @@ symbol = "🤦"
 min_time = 500
 format = "\n[$duration](bold yellow)"
 
-[custom.random_emoticon]
-command = "random_emoticon"
-when = "return 0"
+[env_var.SHELL_EMOTICON]
+variable = "SHELL_EMOTICON"
 style = "yellow"
-
-[custom.git_branch_fixed]
-command = "git rev-parse --abbrev-ref HEAD"
-when = "git rev-parse --show-toplevel"
-style = "bold purple"
+format = "[$env_value ]($style)"
 
 [character]
 success_symbol = "[➜](bold green) "
@@ -60,6 +52,7 @@ error_symbol = "[➜](bold red) "
 
 [nodejs]
 format = "[🤖 $version](bold green)"
+detect_extensions = []
 
 [python]
 symbol = '👾 '
